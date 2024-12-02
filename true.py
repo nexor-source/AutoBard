@@ -15,8 +15,27 @@ MOUSEEVENTF_RIGHTUP = 0x0010
 played_notes = 0
 
 # 定义分辨率
-my_res = (2560, 1440)
-cal_res = (1920, 1080)
+RES_BENCHMARK = (2560, 1440)
+
+# 使用 mss 获取屏幕分辨率
+def get_screen_resolution_mss():
+    with mss.mss() as sct:
+        monitor = sct.monitors[1]  # 获取主屏幕
+        screen_width = monitor["width"]
+        screen_height = monitor["height"]
+        return screen_width, screen_height
+
+# 获取实际分辨率
+RES_NOW = get_screen_resolution_mss()
+print("Current resolution: ", RES_NOW)
+
+# 计算比例因子
+scale_x = RES_NOW[0] / RES_BENCHMARK[0]
+scale_y = RES_NOW[1] / RES_BENCHMARK[1]
+
+def scale(value, axis):
+    return int(value * (scale_x if axis == 'x' else scale_y))
+
 
 def click_right():
     ctypes.windll.user32.mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0)
@@ -28,10 +47,15 @@ def get_note_area():
     # bar = pyautogui.screenshot(region=(1020, 1145, 1540 - 1020, 1176 - 1145))
     # bar = cv2.cvtColor(np.array(bar), cv2.COLOR_RGB2BGR)
     with mss.mss() as sct:
-        monitor = {"top": 1145, "left": 1020, "width": 520, "height": 31}
+        monitor = {
+            "top": scale(1145, 'y'),
+            "left": scale(1020, 'x'),
+            "width": scale(520, 'x'),
+            "height": scale(31, 'y')
+        }
         bar = np.array(sct.grab(monitor))
     bar = cv2.cvtColor(bar, cv2.COLOR_BGRA2BGR)
-    # cv2.imwrite('bar.jpg', bar)
+    cv2.imwrite('bar.jpg', bar)
     # 对(232,178,54)(RGB)进行相似颜色提取轮廓
     benchmark = np.uint8([[54, 178, 232]])
     delta = 44
@@ -41,19 +65,19 @@ def get_note_area():
     mask = cv2.inRange(bar, lower, upper)
     kernel = np.ones((2, 2), np.uint8)
     mask = cv2.dilate(mask, kernel, iterations=1)
-    # cv2.imwrite('bar_mask.jpg', mask)
+    cv2.imwrite('bar_mask.jpg', mask)
 
 
     # 获取长方形的轮廓
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     # 只保留面具较大的和边特别长的轮廓
-    contours = [contour for contour in contours if cv2.contourArea(contour) > 60 and cv2.boundingRect(contour)[2] > 5]
+    contours = [contour for contour in contours if cv2.contourArea(contour) > 60 * scale_x * scale_y and cv2.boundingRect(contour)[2] > 5 * scale_x]
 
     # 绘制轮廓
-    # for contour in contours:
-    #     x, y, w, h = cv2.boundingRect(contour)
-    #     cv2.rectangle(bar, (x, y), (x + w, y + h), (0, 255, 0), 2)
-    # cv2.imwrite('bar_masked.jpg', bar)
+    for contour in contours:
+        x, y, w, h = cv2.boundingRect(contour)
+        cv2.rectangle(bar, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    cv2.imwrite('bar_masked.jpg', bar)
 
 
     # 返回轮廓
@@ -63,11 +87,16 @@ def get_pointer_area():
     # pointer = pyautogui.screenshot(region=(1020, 1094, 1540 - 1020, 1220 - 1094))
     # pointer = cv2.cvtColor(np.array(pointer), cv2.COLOR_RGB2BGR)
     with mss.mss() as sct:
-        monitor = {"top": 1094, "left": 1020, "width": 520, "height": 126}
+        monitor = {
+            "top": scale(1094, 'y'),
+            "left": scale(1020, 'x'),
+            "width": scale(520, 'x'),
+            "height": scale(126, 'y')
+        }
         pointer = np.array(sct.grab(monitor))
     pointer = cv2.cvtColor(pointer, cv2.COLOR_BGRA2BGR)
 
-    # cv2.imwrite('pointer.jpg', pointer)
+    cv2.imwrite('pointer.jpg', pointer)
 
     # 对(243,196,118)(RGB)进行相似颜色提取轮廓
     benchmark = np.uint8([[118, 196, 243]])
@@ -77,30 +106,27 @@ def get_pointer_area():
     upper = np.clip(np.array([benchmark[0][0] + delta, benchmark[0][1] + delta, benchmark[0][2] + delta]), 0, 255)
     mask = cv2.inRange(pointer, lower, upper)
     # mask 60~72 行像素全部改为黑色
-    mask[60:72, :] = 0
+    mask[scale(60, 'y'):scale(72, 'y'), :] = 0
 
-    # cv2.imwrite('pointer_mask_original.jpg', mask)
+    cv2.imwrite('pointer_mask_original.jpg', mask)
 
-    # # 使用形态学操作去除小的白色噪声
-    # kernel = np.ones((3, 3), np.uint8)
-    # mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
     # 每一列如果有白色像素超过10个，就将这一列全部变为白色
     for i in range(mask.shape[1]):
         if np.sum(mask[:, i] == 255) > 40:
             mask[:, i] = 255
 
-    # cv2.imwrite('pointer_mask.jpg', mask)
+    cv2.imwrite('pointer_mask.jpg', mask)
 
     # 获取长方形的轮廓
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     # # 只保留边特别长的轮廓
-    contours = [contour for contour in contours if cv2.boundingRect(contour)[3] > 60 and cv2.boundingRect(contour)[2] > 3]
+    contours = [contour for contour in contours if cv2.boundingRect(contour)[3] > 60 * scale_y and cv2.boundingRect(contour)[2] > 2 * scale_x]
 
     # 绘制轮廓
     for contour in contours:
         x, y, w, h = cv2.boundingRect(contour)
         cv2.rectangle(pointer, (x, y), (x + w, y + h), (0, 255, 0), 2)
-    # cv2.imwrite('pointer_masked.jpg', pointer)
+    cv2.imwrite('pointer_masked.jpg', pointer)
 
 
     # 返回轮廓
@@ -158,7 +184,7 @@ def check_and_click(note_contours, pointers):
     remain_notes = len(note_contours)
     for note in note_contours:
         # 如果pointer在note范围内，点击
-        if note[0] - 4 < pointer_x < note[0] + note[2]:
+        if note[0] - 4 * scale_x < pointer_x < note[0] + note[2]:
             click_right()
             # 输出后停顿0.1s
             time.sleep(0.1)
