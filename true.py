@@ -1,32 +1,37 @@
 import cv2
 import numpy as np
 import mouse
-import pyautogui
 import time
 import ctypes
-import random
-import winsound
+import mss
+# import winsound
+
 
 # 定义常量
 MOUSEEVENTF_RIGHTDOWN = 0x0008
 MOUSEEVENTF_RIGHTUP = 0x0010
+
+# 消除脚本输出的右键信号
+played_notes = 0
 
 # 定义分辨率
 my_res = (2560, 1440)
 cal_res = (1920, 1080)
 
 def click_right():
-    mouse.unhook(on_right_click)  # 禁用右键点击事件监听器
     ctypes.windll.user32.mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0)
     time.sleep(0.01)
     ctypes.windll.user32.mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0)
-    mouse.hook(on_right_click)  # 重新启用右键点击事件监听器
     
 
 def get_note_area():
-    bar = pyautogui.screenshot(region=(1020, 1145, 1540 - 1020, 1176 - 1145))
-    bar = cv2.cvtColor(np.array(bar), cv2.COLOR_RGB2BGR)
-    cv2.imwrite('bar.jpg', bar)
+    # bar = pyautogui.screenshot(region=(1020, 1145, 1540 - 1020, 1176 - 1145))
+    # bar = cv2.cvtColor(np.array(bar), cv2.COLOR_RGB2BGR)
+    with mss.mss() as sct:
+        monitor = {"top": 1145, "left": 1020, "width": 520, "height": 31}
+        bar = np.array(sct.grab(monitor))
+    bar = cv2.cvtColor(bar, cv2.COLOR_BGRA2BGR)
+    # cv2.imwrite('bar.jpg', bar)
     # 对(232,178,54)(RGB)进行相似颜色提取轮廓
     benchmark = np.uint8([[54, 178, 232]])
     delta = 44
@@ -36,7 +41,7 @@ def get_note_area():
     mask = cv2.inRange(bar, lower, upper)
     kernel = np.ones((2, 2), np.uint8)
     mask = cv2.dilate(mask, kernel, iterations=1)
-    cv2.imwrite('bar_mask.jpg', mask)
+    # cv2.imwrite('bar_mask.jpg', mask)
 
 
     # 获取长方形的轮廓
@@ -45,18 +50,22 @@ def get_note_area():
     contours = [contour for contour in contours if cv2.contourArea(contour) > 60 and cv2.boundingRect(contour)[2] > 5]
 
     # 绘制轮廓
-    for contour in contours:
-        x, y, w, h = cv2.boundingRect(contour)
-        cv2.rectangle(bar, (x, y), (x + w, y + h), (0, 255, 0), 2)
-    cv2.imwrite('bar_masked.jpg', bar)
+    # for contour in contours:
+    #     x, y, w, h = cv2.boundingRect(contour)
+    #     cv2.rectangle(bar, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    # cv2.imwrite('bar_masked.jpg', bar)
 
 
     # 返回轮廓
     return contours
 
 def get_pointer_area():
-    pointer = pyautogui.screenshot(region=(1020, 1094, 1540 - 1020, 1220 - 1094))
-    pointer = cv2.cvtColor(np.array(pointer), cv2.COLOR_RGB2BGR)
+    # pointer = pyautogui.screenshot(region=(1020, 1094, 1540 - 1020, 1220 - 1094))
+    # pointer = cv2.cvtColor(np.array(pointer), cv2.COLOR_RGB2BGR)
+    with mss.mss() as sct:
+        monitor = {"top": 1094, "left": 1020, "width": 520, "height": 126}
+        pointer = np.array(sct.grab(monitor))
+    pointer = cv2.cvtColor(pointer, cv2.COLOR_BGRA2BGR)
 
     # cv2.imwrite('pointer.jpg', pointer)
 
@@ -126,9 +135,12 @@ def play_song():
         time.sleep(0.03)
         print(f"Loop duration: {time.time() - loop_start_time:.4f} seconds")  # 输出循环用时
     print("end auto playing song\n")
+    
+
 
 
 def check_and_click(note_contours, pointers):
+    global played_notes
     # 如果pointers数量大于1，报错
     if len(pointers) != 1:
         print('[ERROR] Pointer number is not 1')
@@ -151,6 +163,7 @@ def check_and_click(note_contours, pointers):
             # 输出后停顿0.1s
             time.sleep(0.1)
             print("play note🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵")
+            played_notes += 1
             remain_notes -= 1
             return remain_notes
         # pointer已经超过了这个note，剩余音符数减一
@@ -163,26 +176,30 @@ def check_and_click(note_contours, pointers):
     # 如果pointer已经超越了所有NOTE，返回0
     return 0
 
-def on_right_click(event):
-    # 检查是否是按钮事件
-    if isinstance(event, mouse.ButtonEvent):
-        # 判断是否为右键按下事件
-        if event.event_type == 'down' and event.button == 'right':
-            print("[[right click!]]")
-            global click_times
-            click_times.append(time.time())
-            winsound.Beep(1000, 100)  # 频率为1000Hz，持续时间为200毫秒
-            # 保留最近的两次点击时间
-            if len(click_times) > 2:
-                click_times.pop(0)
-            # 检查两次点击时间间隔是否小于0.2秒
-            if len(click_times) == 2 and click_times[1] - click_times[0] < 0.2:
-                play_song()
+def on_mouse_event():
+    # 用不到0.0001秒的时间忽略弹奏状态所有弹奏的音符
+    global played_notes
+    if played_notes:
+        played_notes -= 1
+        return
+    # 判断是否为右键按下事件
+    print("[[right click!]]")
+    global click_times
+    click_times.append(time.time())
+    # winsound.Beep(1000, 100)  # 频率为1000Hz，持续时间为200毫秒
+    # 保留最近的两次点击时间
+    if len(click_times) > 2:
+        click_times.pop(0)
+    # 检查两次点击时间间隔是否小于0.2秒
+    if len(click_times) == 2 and click_times[1] - click_times[0] < 0.2:
+        play_song()
+        pass
 
+    
 click_times = []
 
 # 监听右键点击事件
-mouse.hook(on_right_click)
+mouse.on_right_click(on_mouse_event)
 
 # 保持程序运行
 while True:
