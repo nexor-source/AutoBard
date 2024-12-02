@@ -5,7 +5,7 @@ import time
 import ctypes
 import mss
 # import winsound
-
+# pyinstaller --onefile true.py
 
 # 定义常量
 MOUSEEVENTF_RIGHTDOWN = 0x0008
@@ -55,7 +55,7 @@ def get_note_area():
         }
         bar = np.array(sct.grab(monitor))
     bar = cv2.cvtColor(bar, cv2.COLOR_BGRA2BGR)
-    cv2.imwrite('bar.jpg', bar)
+    # cv2.imwrite('bar.jpg', bar)
     # 对(232,178,54)(RGB)进行相似颜色提取轮廓
     benchmark = np.uint8([[54, 178, 232]])
     delta = 44
@@ -65,7 +65,7 @@ def get_note_area():
     mask = cv2.inRange(bar, lower, upper)
     kernel = np.ones((2, 2), np.uint8)
     mask = cv2.dilate(mask, kernel, iterations=1)
-    cv2.imwrite('bar_mask.jpg', mask)
+    # cv2.imwrite('bar_mask.jpg', mask)
 
 
     # 获取长方形的轮廓
@@ -77,7 +77,7 @@ def get_note_area():
     for contour in contours:
         x, y, w, h = cv2.boundingRect(contour)
         cv2.rectangle(bar, (x, y), (x + w, y + h), (0, 255, 0), 2)
-    cv2.imwrite('bar_masked.jpg', bar)
+    # cv2.imwrite('bar_masked.jpg', bar)
 
 
     # 返回轮廓
@@ -96,7 +96,7 @@ def get_pointer_area():
         pointer = np.array(sct.grab(monitor))
     pointer = cv2.cvtColor(pointer, cv2.COLOR_BGRA2BGR)
 
-    cv2.imwrite('pointer.jpg', pointer)
+    # cv2.imwrite('pointer.jpg', pointer)
 
     # 对(243,196,118)(RGB)进行相似颜色提取轮廓
     benchmark = np.uint8([[118, 196, 243]])
@@ -108,14 +108,14 @@ def get_pointer_area():
     # mask 60~72 行像素全部改为黑色
     mask[scale(60, 'y'):scale(72, 'y'), :] = 0
 
-    cv2.imwrite('pointer_mask_original.jpg', mask)
+    # cv2.imwrite('pointer_mask_original.jpg', mask)
 
     # 每一列如果有白色像素超过10个，就将这一列全部变为白色
     for i in range(mask.shape[1]):
         if np.sum(mask[:, i] == 255) > 40:
             mask[:, i] = 255
 
-    cv2.imwrite('pointer_mask.jpg', mask)
+    # cv2.imwrite('pointer_mask.jpg', mask)
 
     # 获取长方形的轮廓
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -126,7 +126,7 @@ def get_pointer_area():
     for contour in contours:
         x, y, w, h = cv2.boundingRect(contour)
         cv2.rectangle(pointer, (x, y), (x + w, y + h), (0, 255, 0), 2)
-    cv2.imwrite('pointer_masked.jpg', pointer)
+    # cv2.imwrite('pointer_masked.jpg', pointer)
 
 
     # 返回轮廓
@@ -226,6 +226,7 @@ click_times = []
 
 # 监听右键点击事件
 mouse.on_right_click(on_mouse_event)
+print("SYSTEM ONLINE")
 
 # 保持程序运行
 while True:
