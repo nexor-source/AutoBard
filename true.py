@@ -32,6 +32,7 @@ print("Current resolution: ", RES_NOW)
 # 计算比例因子
 scale_x = RES_NOW[0] / RES_BENCHMARK[0]
 scale_y = RES_NOW[1] / RES_BENCHMARK[1]
+print("Scale factor: ", scale_x, scale_y)
 
 def scale(value, axis):
     return int(value * (scale_x if axis == 'x' else scale_y))
@@ -55,6 +56,8 @@ def get_note_area():
         }
         bar = np.array(sct.grab(monitor))
     bar = cv2.cvtColor(bar, cv2.COLOR_BGRA2BGR)
+    # 将bar 差值为2560 * 1440 的分辨率
+    bar = cv2.resize(bar, (520, 31), interpolation=cv2.INTER_CUBIC)
     # cv2.imwrite('bar.jpg', bar)
     # 对(232,178,54)(RGB)进行相似颜色提取轮廓
     benchmark = np.uint8([[54, 178, 232]])
@@ -71,7 +74,7 @@ def get_note_area():
     # 获取长方形的轮廓
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     # 只保留面具较大的和边特别长的轮廓
-    contours = [contour for contour in contours if cv2.contourArea(contour) > 60 * scale_x * scale_y and cv2.boundingRect(contour)[2] > 5 * scale_x]
+    contours = [contour for contour in contours if cv2.contourArea(contour) > 60 and cv2.boundingRect(contour)[2] > 5]
 
     # 绘制轮廓
     for contour in contours:
@@ -84,8 +87,6 @@ def get_note_area():
     return contours
 
 def get_pointer_area():
-    # pointer = pyautogui.screenshot(region=(1020, 1094, 1540 - 1020, 1220 - 1094))
-    # pointer = cv2.cvtColor(np.array(pointer), cv2.COLOR_RGB2BGR)
     with mss.mss() as sct:
         monitor = {
             "top": scale(1094, 'y'),
@@ -95,6 +96,8 @@ def get_pointer_area():
         }
         pointer = np.array(sct.grab(monitor))
     pointer = cv2.cvtColor(pointer, cv2.COLOR_BGRA2BGR)
+    # 将pointer 差值为2560 * 1440 的分辨率
+    pointer = cv2.resize(pointer, (520, 126), interpolation=cv2.INTER_CUBIC)
 
     # cv2.imwrite('pointer.jpg', pointer)
 
@@ -110,22 +113,44 @@ def get_pointer_area():
 
     # cv2.imwrite('pointer_mask_original.jpg', mask)
 
-    # 每一列如果有白色像素超过10个，就将这一列全部变为白色
+    # 取mask的48~85行
+    mask = mask[48:85, :]
+
+    # 每一列如果有白色像素超过15个，就将这一列全部变为白色
     for i in range(mask.shape[1]):
-        if np.sum(mask[:, i] == 255) > 40:
+        if np.sum(mask[:, i] == 255) > 18:
             mask[:, i] = 255
 
     # cv2.imwrite('pointer_mask.jpg', mask)
 
-    # 获取长方形的轮廓
-    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    # # 只保留边特别长的轮廓
-    contours = [contour for contour in contours if cv2.boundingRect(contour)[3] > 60 * scale_y and cv2.boundingRect(contour)[2] > 2 * scale_x]
+    # # 获取长方形的轮廓
+    # contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    # # # 只保留边特别长的轮廓
+    # contours = [contour for contour in contours if (cv2.boundingRect(contour)[3] > 30 * scale_y and cv2.boundingRect(contour)[2] > 2 * scale_x) ]    
+    # # # 计算mask轮廓内白色像素占比
+    # # for contour in contours:
+    # #     x, y, w, h = cv2.boundingRect(contour)
+    # #     white_pixels = np.sum(mask[y:y+h, x:x+w] == 255)
+    # #     total_pixels = w * h
+    # #     if white_pixels / total_pixels < 0.75:
+    # #         contours.remove(contour)
+
+    # 遍历mask的每一列，如果某一列的左右两列和自己都是白色，则创造一个contour，这个contour代表这全白的三列，并且加入到contours里
+    contours = []
+    for i in range(1, mask.shape[1] - 1):
+        if np.sum(mask[:, i - 1] == 255) == np.sum(mask[:, i] == 255) == mask.shape[0]:
+            contours.append(np.array([[[i - 1, 0]], [[i - 1, mask.shape[0]]], [[i, mask.shape[0]]], [[i, 0]]]))
+            mask[:, i-3:i+3] = 0
 
     # 绘制轮廓
     for contour in contours:
         x, y, w, h = cv2.boundingRect(contour)
-        cv2.rectangle(pointer, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        cv2.rectangle(pointer, (x, y + 48), (x + w, y + h + 48), (0, 255, 0), 2)
+    if len(contours) != 1:
+        # cv2.imwrite('error_pointer.jpg', pointer)
+        # cv2.imwrite('error_pointer_mask.jpg', mask)
+        pass
+
     # cv2.imwrite('pointer_masked.jpg', pointer)
 
 
@@ -158,7 +183,7 @@ def play_song():
             remaining_notes = check_and_click(note_contours, pointers)
             print("remaining_notes: ", (remaining_notes))
         # 检测间隔时间
-        time.sleep(0.03)
+        # time.sleep(0.03)
         print(f"Loop duration: {time.time() - loop_start_time:.4f} seconds")  # 输出循环用时
     print("end auto playing song\n")
     
@@ -184,10 +209,10 @@ def check_and_click(note_contours, pointers):
     remain_notes = len(note_contours)
     for note in note_contours:
         # 如果pointer在note范围内，点击
-        if note[0] - 4 * scale_x < pointer_x < note[0] + note[2]:
+        if note[0] < pointer_x < note[0] + note[2]:
             click_right()
             # 输出后停顿0.1s
-            time.sleep(0.1)
+            time.sleep(0.15)
             print("play note🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵")
             played_notes += 1
             remain_notes -= 1
