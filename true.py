@@ -14,6 +14,9 @@ MOUSEEVENTF_RIGHTUP = 0x0010
 # 消除脚本输出的右键信号
 played_notes = 0
 
+# 定义全局变量
+global mask, pointer
+
 # 定义分辨率
 RES_BENCHMARK = (2560, 1440)
 
@@ -57,7 +60,8 @@ def get_note_area():
         bar = np.array(sct.grab(monitor))
     bar = cv2.cvtColor(bar, cv2.COLOR_BGRA2BGR)
     # 将bar 差值为2560 * 1440 的分辨率
-    bar = cv2.resize(bar, (520, 31), interpolation=cv2.INTER_CUBIC)
+    if scale_x != 1 or scale_y != 1:
+        bar = cv2.resize(bar, (520, 31), interpolation=cv2.INTER_CUBIC)
     # cv2.imwrite('bar.jpg', bar)
     # 对(232,178,54)(RGB)进行相似颜色提取轮廓
     benchmark = np.uint8([[54, 178, 232]])
@@ -87,6 +91,7 @@ def get_note_area():
     return contours
 
 def get_pointer_area():
+    global pointer, mask
     with mss.mss() as sct:
         monitor = {
             "top": scale(1094, 'y'),
@@ -97,7 +102,8 @@ def get_pointer_area():
         pointer = np.array(sct.grab(monitor))
     pointer = cv2.cvtColor(pointer, cv2.COLOR_BGRA2BGR)
     # 将pointer 差值为2560 * 1440 的分辨率
-    pointer = cv2.resize(pointer, (520, 126), interpolation=cv2.INTER_CUBIC)
+    if scale_x != 1 or scale_y != 1:
+        pointer = cv2.resize(pointer, (520, 126), interpolation=cv2.INTER_CUBIC)
 
     # cv2.imwrite('pointer.jpg', pointer)
 
@@ -136,11 +142,12 @@ def get_pointer_area():
     # #         contours.remove(contour)
 
     # 遍历mask的每一列，如果某一列的左右两列和自己都是白色，则创造一个contour，这个contour代表这全白的三列，并且加入到contours里
+    _mask = mask.copy()
     contours = []
-    for i in range(1, mask.shape[1] - 1):
-        if np.sum(mask[:, i - 1] == 255) == np.sum(mask[:, i] == 255) == mask.shape[0]:
-            contours.append(np.array([[[i - 1, 0]], [[i - 1, mask.shape[0]]], [[i, mask.shape[0]]], [[i, 0]]]))
-            mask[:, i-3:i+3] = 0
+    for i in range(1, _mask.shape[1] - 1):
+        if np.sum(_mask[:, i - 1] == 255) == np.sum(_mask[:, i] == 255) == _mask.shape[0]:
+            contours.append(np.array([[[i - 1, 0]], [[i - 1, _mask.shape[0]]], [[i, _mask.shape[0]]], [[i, 0]]]))
+            _mask[:, i-3:i+3] = 0
 
     # 绘制轮廓
     for contour in contours:
@@ -168,7 +175,7 @@ def play_song():
     # 记录开始时间
     start_time = time.time()
     # 无限循环，弹奏所有的剩余音符
-    while remaining_notes and frame < 2:
+    while remaining_notes and frame < 3:
         loop_start_time = time.time()  # 记录循环开始时间
         # 如果弹奏超过6秒直接掐断
         if time.time() - start_time > 6:
@@ -176,12 +183,17 @@ def play_song():
         # 获取pointer区域
         pointers = get_pointer_area()
         print("pointers: ", len(pointers))
-        if len(pointers) != 1:
+        if len(pointers) < 1:
             frame += 1
-        else: 
+            global mask, pointer
+            # cv2.imwrite('no_pointer_mask'+str(frame)+'.jpg', mask)
+            # cv2.imwrite('no_pointer_pointer'+str(frame)+'.jpg', pointer)
+        elif len(pointers) == 1: 
             frame = 0
             remaining_notes = check_and_click(note_contours, pointers)
             print("remaining_notes: ", (remaining_notes))
+        else:
+            frame = 0
         # 检测间隔时间
         # time.sleep(0.03)
         print(f"Loop duration: {time.time() - loop_start_time:.4f} seconds")  # 输出循环用时
@@ -198,8 +210,8 @@ def check_and_click(note_contours, pointers):
         return False
 
     # 如果pointers里唯一的指针x坐标中心位置在note_contours里某个轮廓的x坐标范围内，说明需要点击
-    pointer = cv2.boundingRect(pointers[0])
-    pointer_x = pointer[0] + pointer[2] / 2
+    _pointer = cv2.boundingRect(pointers[0])
+    pointer_x = _pointer[0] + _pointer[2] / 2
 
     # 将note_contours取cv2.boundingRect建立新列表
     note_contours = [cv2.boundingRect(note_contour) for note_contour in note_contours]
@@ -214,6 +226,9 @@ def check_and_click(note_contours, pointers):
             # 输出后停顿0.1s
             time.sleep(0.15)
             print("play note🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵")
+            global mask, pointer
+            # cv2.imwrite('play_time_mask'+str(remain_notes-1)+'.jpg', mask)
+            # cv2.imwrite('play_time_pointer'+str(remain_notes-1)+'.jpg', pointer)
             played_notes += 1
             remain_notes -= 1
             return remain_notes
