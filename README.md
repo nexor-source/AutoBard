@@ -26,7 +26,7 @@
 
 首先对游戏中演奏画面进行截图，然后使用画图吸管之类的工具获取**音符中心颜色**与**指针中心颜色**，打开config.json文件，找到note_bgr和pointer_bgr，将你获取的RGB通道数值进行更新（注意config中的数字是BGR的顺序，如果你获取RGB则需要反过来）
 
-![tutorial]([.\debug_images\tutorial.png](https://github.com/nexor-source/AutoBard/blob/main/debug_images/tutorial.png))
+![image](https://github.com/nexor-source/AutoBard/blob/main/debug_images/tutorial.png)
 
 ### 调试模式 与 检测容差的调整
 
