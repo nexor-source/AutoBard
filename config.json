@@ -1,0 +1,7 @@
+{
+    "note_bgr": [14, 150, 232],
+    "pointer_bgr": [61, 211, 243],
+    "debug_mode": false,
+    "note_tolerance": 50,
+    "pointer_tolerance": 50
+}
