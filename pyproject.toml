@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autobard-refactored"
+version = "2.0.0"
+description = "Low-latency, testable visual detector for a horizontal rhythm bar"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "GPL-3.0-only"}
+authors = [{name = "AutoBard contributors"}]
+dependencies = [
+  "numpy>=2.0,<3",
+  "opencv-python>=4.10,<5",
+  "mss>=10,<12",
+  "pynput>=1.7,<2",
+]
+
+[project.optional-dependencies]
+windows-fast = ["dxcam>=0.3,<0.4"]
+dev = ["pytest>=9,<10"]
+
+[project.scripts]
+autobard = "autobard.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

@@ -1,0 +1,5 @@
+numpy>=2.0,<3
+opencv-python>=4.10,<5
+mss>=10,<12
+pynput>=1.7,<2
+# Windows 上推荐额外安装：dxcam>=0.3,<0.4

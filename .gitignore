@@ -1,3 +1,10 @@
-build/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
 dist/
-*.jpg
+build/
+debug_output/
+config/settings.local.json

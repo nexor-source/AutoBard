@@ -1,0 +1,91 @@
+{
+  "window": {
+    "title_contains": "Dark and Darker",
+    "fallback_to_primary_monitor": true
+  },
+  "capture": {
+    "backend": "auto",
+    "target_fps": 120,
+    "monitor_index": 1,
+    "roi_normalized": [
+      0.3984375,
+      0.7597222,
+      0.6015625,
+      0.8472222
+    ]
+  },
+  "vision": {
+    "note_band_normalized": [
+      0.0,
+      0.4047619,
+      1.0,
+      0.6507937
+    ],
+    "notes": {
+      "pixel_quantile": 0.76,
+      "column_coverage": 0.2,
+      "min_width_ratio": 0.009,
+      "max_width_ratio": 0.2,
+      "merge_gap_ratio": 0.006,
+      "min_confidence": 0.2
+    },
+    "pointer": {
+      "analysis_y": [
+        0.36,
+        0.72
+      ],
+      "excluded_y": [
+        [
+          0.47,
+          0.59
+        ]
+      ],
+      "motion_weight": 0.48,
+      "edge_weight": 0.3,
+      "color_weight": 0.22,
+      "prediction_weight": 0.45,
+      "prediction_sigma_ratio": 0.035,
+      "min_confidence": 0.2,
+      "max_width_ratio": 0.04
+    }
+  },
+  "tracking": {
+    "history_size": 18,
+    "min_fit_samples": 4,
+    "min_speed_px_s": 20.0,
+    "max_speed_px_s": 3000.0,
+    "backward_tolerance_ratio": 0.025,
+    "max_prediction_error_ratio": 0.18,
+    "prediction_hold_ms": 90
+  },
+  "scheduler": {
+    "input_latency_ms": 22,
+    "hit_window_ratio": 0.008,
+    "miss_margin_ratio": 0.012
+  },
+  "session": {
+    "initial_note_frames": 5,
+    "initial_frame_spacing_ms": 8,
+    "max_duration_s": 8.0,
+    "pointer_lost_timeout_ms": 320,
+    "minimum_runtime_ms": 250
+  },
+  "action": {
+    "mode": "dry_run",
+    "kind": "mouse_right",
+    "key": "space",
+    "press_duration_ms": 8,
+    "acknowledge_online_risk": false
+  },
+  "hotkeys": {
+    "start": "<f8>",
+    "abort": "<f9>",
+    "quit": "<f10>"
+  },
+  "debug": {
+    "enabled": true,
+    "output_dir": "debug_output",
+    "save_every_n_frames": 0,
+    "record_video": false
+  }
+}
