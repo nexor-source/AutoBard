@@ -137,26 +137,59 @@ class AutoBardSession:
                             break
 
                     predicted = tracker.predict(captured.timestamp)
-                    measurement = pointer_detector.detect(captured.image, predicted)
+                    bootstrap_x = (
+                        notes[0].right
+                        if predicted is None and frame_count > 1
+                        else None
+                    )
+                    measurement = pointer_detector.detect(
+                        captured.image,
+                        predicted,
+                        bootstrap_x=bootstrap_x,
+                    )
                     accepted = measurement is not None and tracker.update(captured.timestamp, measurement)
 
                     pointer_for_schedule: float | None = None
+                    measured_x = measurement.x if accepted and measurement is not None else None
                     shown_measurement = measurement if accepted else None
                     if accepted:
-                        pointer_for_schedule = tracker.last_x
+                        next_note = scheduler.next_pending_note
+                        model_max_width = width * float(
+                            self.config["scheduler"].get(
+                                "model_schedule_max_note_width_ratio",
+                                0.05,
+                            )
+                        )
+                        # Narrow notes are vulnerable to a one-frame visual jump,
+                        # so schedule those from the constant-speed model. Wide
+                        # notes have enough tolerance for the live measurement,
+                        # which avoids model phase error becoming cumulative.
+                        use_model = (
+                            tracker.has_locked_speed
+                            and next_note is not None
+                            and next_note.right - next_note.left <= model_max_width
+                        )
+                        pointer_for_schedule = (
+                            tracker.predict(captured.timestamp)
+                            if use_model
+                            else tracker.last_x
+                        )
                         last_valid_pointer_at = captured.timestamp
                     elif last_valid_pointer_at is not None and captured.timestamp - last_valid_pointer_at <= prediction_hold_s:
                         pointer_for_schedule = tracker.predict(captured.timestamp)
                         if pointer_for_schedule is not None:
                             shown_measurement = PointerMeasurement(pointer_for_schedule, tracker.last_confidence * 0.6, 1.0)
 
+                    event_labels: list[str] = []
                     if pointer_for_schedule is not None:
                         update = scheduler.update(captured.timestamp, pointer_for_schedule, tracker.speed)
+                        event_labels.extend(f"M{note.index}" for note in update.newly_missed)
                         for note in update.due:
                             action.hit_note(note, captured.timestamp)
-                            # A successful in-game hit snaps the pointer back to the
-                            # note center. Start a fresh motion segment there instead
-                            # of letting the reset corrupt the previous speed fit.
+                            event_labels.append(f"H{note.index}")
+                            # input_latency_ms compensates the age of the captured
+                            # image. The physical click and in-game snap happen at
+                            # submission time, so anchor the new segment now.
                             tracker.reanchor_after_hit(captured.timestamp, note.target)
                         if update.newly_missed:
                             LOGGER.debug("Missed notes: %s", [note.index for note in update.newly_missed])
@@ -170,6 +203,8 @@ class AutoBardSession:
                         shown_measurement.confidence if shown_measurement else 0.0,
                         tracker.speed,
                         scheduler.pending_count,
+                        measured_x=measured_x,
+                        events=";".join(event_labels),
                     )
 
                     if scheduler.complete:

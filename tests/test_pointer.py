@@ -43,3 +43,34 @@ def test_pointer_detector_does_not_return_to_a_static_note_behind_prediction() -
 
     assert measurement is not None
     assert abs(measurement.x - 250) < 7
+
+
+def test_pointer_detector_ignores_a_changed_capture_border_during_bootstrap() -> None:
+    detector = PointerDetector({**CONFIG, "bootstrap_border_ratio": 0.03})
+    first = frame(110)
+    assert detector.detect(first) is None
+
+    second = frame(120)
+    cv2.rectangle(second, (0, 0), (5, second.shape[0] - 1), (255, 255, 255), -1)
+    measurement = detector.detect(second)
+
+    assert measurement is not None
+    assert abs(measurement.x - 120) < 7
+
+
+def test_bootstrap_window_rejects_distant_animated_scenery() -> None:
+    detector = PointerDetector({
+        **CONFIG,
+        "bootstrap_border_ratio": 0.03,
+        "bootstrap_search_ratio": 0.10,
+    })
+    first = frame(110)
+    cv2.rectangle(first, (345, 5), (370, 84), (20, 40, 80), -1)
+    assert detector.detect(first) is None
+
+    second = frame(120)
+    cv2.rectangle(second, (345, 5), (370, 84), (240, 250, 255), -1)
+    measurement = detector.detect(second, bootstrap_x=100)
+
+    assert measurement is not None
+    assert abs(measurement.x - 120) < 7

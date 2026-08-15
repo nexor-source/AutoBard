@@ -52,3 +52,22 @@ def test_note_detector_ignores_warm_horizontal_rails() -> None:
     result = NoteDetector(CONFIG).detect(image)
 
     assert len(result.notes) == 4
+
+
+def test_note_detector_expands_dim_shoulders_and_uses_geometric_center() -> None:
+    image = np.full((32, 220, 3), (18, 18, 22), dtype=np.uint8)
+    cv2.rectangle(image, (80, 9), (119, 23), (75, 120, 175), -1)
+    cv2.rectangle(image, (91, 6), (112, 26), (25, 185, 245), -1)
+
+    result = NoteDetector({
+        **CONFIG,
+        "edge_vertical_coverage": 0.30,
+        "min_brightness_p90": 0,
+        "max_width_ratio": 0.30,
+    }).detect(image)
+
+    assert len(result.notes) == 1
+    note = result.notes[0]
+    assert note.left < 91
+    assert note.right > 113
+    assert abs(note.target - (note.left + note.right - 1) / 2.0) < 0.01

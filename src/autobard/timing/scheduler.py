@@ -46,14 +46,13 @@ class NoteScheduler:
             trigger_x = note.target - latency_lead
             crossed = self.previous_x is not None and self.previous_x < trigger_x <= pointer_x
             reached = pointer_x >= trigger_x
-            inside = note.left <= pointer_x and abs(pointer_x - trigger_x) <= self.hit_window
             # A very large detector jump must not turn already-passed notes into
             # delayed clicks. Normal frame-to-frame crossings remain inside the
             # note bounds plus the configured miss margin.
             if pointer_x > note.right + self.miss_margin:
                 note.status = "missed"
                 missed.append(note)
-            elif crossed or reached or inside:
+            elif crossed or reached:
                 note.status = "hit"
                 note.triggered_at = timestamp
                 due.append(note)
@@ -64,6 +63,10 @@ class NoteScheduler:
     @property
     def pending_count(self) -> int:
         return sum(note.status == "pending" for note in self.notes)
+
+    @property
+    def next_pending_note(self) -> Note | None:
+        return next((note for note in self.notes if note.status == "pending"), None)
 
     @property
     def complete(self) -> bool:

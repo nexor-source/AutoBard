@@ -75,6 +75,30 @@ class NoteDetector:
         intervals = intervals_from_bool(one_d.ravel() > 0)
         intervals = merge_intervals(intervals, max_gap=close_w)
 
+        # The bright core is reliable for finding a note, but its darker orange
+        # shoulders are part of the same hit box. Expand only from an already
+        # confirmed core, using a lower vertical-coverage threshold. This keeps
+        # thin horizontal rails from becoming notes while making the reported
+        # rectangle match the full visible note geometry.
+        edge_vertical_coverage = float(self.config.get("edge_vertical_coverage", 0.35))
+        edge_vertical_coverage = float(np.clip(edge_vertical_coverage, 0.0, minimum_vertical_coverage))
+        expanded: list[tuple[int, int]] = []
+        for left, right in intervals:
+            while (
+                left > 0
+                and column_score[left - 1] >= column_threshold
+                and coverage[left - 1] >= edge_vertical_coverage
+            ):
+                left -= 1
+            while (
+                right < width
+                and column_score[right] >= column_threshold
+                and coverage[right] >= edge_vertical_coverage
+            ):
+                right += 1
+            expanded.append((left, right))
+        intervals = merge_intervals(sorted(expanded), max_gap=close_w)
+
         min_width = max(2, math.ceil(width * float(self.config.get("min_width_ratio", 0.009))))
         max_width = max(min_width + 1, round(width * float(self.config.get("max_width_ratio", 0.20))))
         minimum_confidence = float(self.config.get("min_confidence", 0.20))
@@ -87,9 +111,10 @@ class NoteDetector:
             segment = column_score[left:right]
             if segment.size == 0:
                 continue
-            xs = np.arange(left, right, dtype=np.float32)
-            weights = np.maximum(segment - column_threshold + 0.02, 0.001)
-            target = float(np.average(xs, weights=weights))
+            # Brightness is asymmetric in the real artwork and biases a
+            # weighted centroid slightly to the right. Timing should use the
+            # geometric center of the complete hit box instead.
+            target = float((left + right - 1) / 2.0)
             confidence = float(np.clip(np.mean(segment), 0.0, 1.0))
             if confidence < minimum_confidence:
                 continue

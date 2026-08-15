@@ -56,6 +56,20 @@ def test_hit_window_cannot_fire_before_note_left_edge() -> None:
     assert scheduler.update(0.02, 529.0, 304.5).due == [note]
 
 
+def test_hit_window_does_not_add_a_second_early_trigger_margin() -> None:
+    note = Note(0, 179, 204, 191, 1.0)
+    scheduler = NoteScheduler(
+        [note],
+        {"input_latency_ms": 45, "hit_window_ratio": 0.008, "miss_margin_ratio": 0.012},
+        581,
+    )
+
+    # The compensated trigger is x=186.5. Being inside the visible note is not
+    # sufficient; input_latency_ms already provides the intended early lead.
+    assert scheduler.update(0.0, 182.0, 100.0).due == []
+    assert scheduler.update(0.02, 187.0, 100.0).due == [note]
+
+
 def test_first_note_is_intentionally_skipped_without_a_hit() -> None:
     first = Note(0, 77, 121, 98.2, 1.0)
     second = Note(1, 186, 198, 191.3, 1.0)
@@ -94,3 +108,13 @@ def test_all_notes_behind_initial_pointer_are_skipped() -> None:
     assert update.due == []
     assert update.newly_missed == notes[:2]
     assert notes[2].status == "pending"
+
+
+def test_next_pending_note_tracks_scheduler_progress() -> None:
+    first = Note(0, 95, 105, 100, 1.0)
+    second = Note(1, 195, 205, 200, 1.0)
+    scheduler = NoteScheduler([first, second], {"input_latency_ms": 0}, 500)
+
+    assert scheduler.next_pending_note is first
+    scheduler.update(0.0, 100, None)
+    assert scheduler.next_pending_note is second

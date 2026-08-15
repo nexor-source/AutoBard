@@ -23,7 +23,16 @@ class DebugRecorder:
         self.directory.mkdir(parents=True, exist_ok=True)
         self.csv_handle = (self.directory / "tracking.csv").open("w", newline="", encoding="utf-8")
         self.csv_writer = csv.writer(self.csv_handle)
-        self.csv_writer.writerow(["frame", "timestamp", "pointer_x", "confidence", "speed", "pending"])
+        self.csv_writer.writerow([
+            "frame",
+            "timestamp",
+            "pointer_x",
+            "measured_x",
+            "confidence",
+            "speed",
+            "pending",
+            "events",
+        ])
         if self.record_video:
             width, height = frame_size
             self.video = cv2.VideoWriter(
@@ -37,12 +46,31 @@ class DebugRecorder:
         if self.enabled:
             cv2.imwrite(str(self.directory / name), image)
 
-    def record(self, frame_index: int, timestamp: float, overlay: np.ndarray, pointer_x: float | None,
-               confidence: float, speed: float | None, pending: int) -> None:
+    def record(
+        self,
+        frame_index: int,
+        timestamp: float,
+        overlay: np.ndarray,
+        pointer_x: float | None,
+        confidence: float,
+        speed: float | None,
+        pending: int,
+        measured_x: float | None = None,
+        events: str = "",
+    ) -> None:
         if not self.enabled:
             return
         assert self.csv_writer is not None
-        self.csv_writer.writerow([frame_index, f"{timestamp:.9f}", pointer_x, confidence, speed, pending])
+        self.csv_writer.writerow([
+            frame_index,
+            f"{timestamp:.9f}",
+            pointer_x,
+            measured_x,
+            confidence,
+            speed,
+            pending,
+            events,
+        ])
         if self.video is not None:
             self.video.write(overlay)
         if self.save_every > 0 and frame_index % self.save_every == 0:

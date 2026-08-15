@@ -33,7 +33,12 @@ class PointerDetector:
             row_mask[:] = True
         return row_mask
 
-    def detect(self, bgr: np.ndarray, predicted_x: float | None = None) -> PointerMeasurement | None:
+    def detect(
+        self,
+        bgr: np.ndarray,
+        predicted_x: float | None = None,
+        bootstrap_x: float | None = None,
+    ) -> PointerMeasurement | None:
         height, width = bgr.shape[:2]
         gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
         rows = self._row_mask(height)
@@ -50,13 +55,17 @@ class PointerDetector:
         self._previous_gray = gray
         # During a live session the pointer is moving. Waiting for one frame difference
         # is safer than locking the tracker onto a static note edge.
-        if not has_previous and predicted_x is None:
+        if not has_previous and predicted_x is None and bootstrap_x is None:
             return None
 
         gold = warm_gold_score(bgr)
         color_col = np.percentile(gold[rows, :], 88, axis=0)
 
-        motion = robust_unit(motion_col)
+        # A 2-4 px pointer occupies far less than five percent of this narrow
+        # ROI. The generic 95th-percentile normalization can therefore see a
+        # zero high bound and erase the entire temporal-motion signal. Use a
+        # sparse-signal percentile for motion while retaining robust scaling.
+        motion = robust_unit(motion_col, low_q=50.0, high_q=99.0)
         edges = robust_unit(edge_col)
         color = robust_unit(color_col)
         combined = (
@@ -86,6 +95,40 @@ class PointerDetector:
             if local.any():
                 selection_scores = np.where(local, combined, -np.inf)
                 statistics_scores = combined[local]
+        else:
+            # Capture/overlay borders can change between the priming frame and
+            # the first live frame, producing an extremely strong false motion
+            # peak at x=0. Bootstrap must also emphasize temporal motion so a
+            # bright static note cannot beat the moving pointer.
+            combined = smooth_1d(
+                0.78 * motion + 0.10 * edges + 0.12 * color,
+                kernel=max(3, round(width * 0.007)),
+            )
+            border = max(
+                2,
+                round(width * float(self.config.get("bootstrap_border_ratio", 0.03))),
+            )
+            if border * 2 < width:
+                selection_scores = combined.copy()
+                selection_scores[:border] = -np.inf
+                selection_scores[-border:] = -np.inf
+                statistics_scores = combined[border:-border]
+            if bootstrap_x is not None and np.isfinite(bootstrap_x):
+                # At session start the pointer must be near the intentionally
+                # missed first note. A wider-than-normal local window rejects
+                # unrelated animated scenery (for example flames at the far
+                # right) without requiring an exact initial position.
+                xs = np.arange(width, dtype=np.float32)
+                radius = max(
+                    12.0,
+                    width * float(self.config.get("bootstrap_search_ratio", 0.10)),
+                )
+                local = np.abs(xs - float(bootstrap_x)) <= radius
+                local[:border] = False
+                local[-border:] = False
+                if local.any():
+                    selection_scores = np.where(local, combined, -np.inf)
+                    statistics_scores = combined[local]
 
         peak_x = int(np.argmax(selection_scores))
         peak = float(combined[peak_x])

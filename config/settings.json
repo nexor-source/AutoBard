@@ -29,7 +29,8 @@
       "merge_gap_ratio": 0.006,
       "min_confidence": 0.2,
       "min_brightness_p90": 60,
-      "min_vertical_coverage": 0.68
+      "min_vertical_coverage": 0.68,
+      "edge_vertical_coverage": 0.35
     },
     "pointer": {
       "analysis_y": [
@@ -48,6 +49,8 @@
       "prediction_weight": 0.7,
       "prediction_sigma_ratio": 0.035,
       "prediction_search_ratio": 0.06,
+      "bootstrap_border_ratio": 0.03,
+      "bootstrap_search_ratio": 0.1,
       "min_confidence": 0.2,
       "max_width_ratio": 0.04
     }
@@ -66,7 +69,8 @@
     "input_latency_ms": 45,
     "hit_window_ratio": 0.008,
     "miss_margin_ratio": 0.012,
-    "initial_skip_notes": 1
+    "initial_skip_notes": 1,
+    "model_schedule_max_note_width_ratio": 0.05
   },
   "session": {
     "initial_note_frames": 5,

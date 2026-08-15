@@ -62,6 +62,11 @@ class PointerTracker:
             return self._fallback_speed
         return None
 
+    @property
+    def has_locked_speed(self) -> bool:
+        """Whether the constant speed for this performance is established."""
+        return self._session_speed is not None
+
     def predict(self, timestamp: float) -> float | None:
         if self.last_x is None or self.last_timestamp is None:
             return None

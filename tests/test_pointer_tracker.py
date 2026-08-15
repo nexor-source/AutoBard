@@ -81,6 +81,20 @@ def test_post_hit_false_slow_fit_cannot_take_over() -> None:
     assert abs(tracker.speed - 230.0) < 1.0
 
 
+def test_locked_trajectory_ignores_an_upcoming_note_measurement_jump() -> None:
+    tracker = PointerTracker(CONFIG, 500)
+    for index in range(4):
+        timestamp = index * 0.02
+        assert tracker.update(timestamp, measurement(100.0 + 200.0 * timestamp))
+
+    tracker.reanchor_after_hit(0.10, 150.0)
+    assert tracker.update(0.20, measurement(185.0))
+
+    # The raw detector jumped 15 px ahead of the constant-speed trajectory.
+    assert tracker.last_x == 185.0
+    assert abs((tracker.predict(0.20) or 0.0) - 170.0) < 1.0
+
+
 def test_reset_allows_a_different_speed_in_the_next_session() -> None:
     tracker = PointerTracker(CONFIG, 500)
     for index in range(4):
