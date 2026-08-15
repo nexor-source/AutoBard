@@ -9,6 +9,7 @@ import cv2
 import numpy as np
 
 from .actions import create_action_sink
+from .actions.base import ActionSink
 from .capture import create_capture
 from .debug import DebugRecorder
 from .debug.overlay import draw_overlay
@@ -31,9 +32,10 @@ class SessionResult:
 
 
 class AutoBardSession:
-    def __init__(self, config: dict, capture_rect: Rect) -> None:
+    def __init__(self, config: dict, capture_rect: Rect, action: ActionSink | None = None) -> None:
         self.config = config
         self.capture_rect = capture_rect
+        self.action = action
         self.abort_event = threading.Event()
 
     def abort(self) -> None:
@@ -63,7 +65,10 @@ class AutoBardSession:
             self.capture_rect,
             int(capture_cfg.get("target_fps", 120)),
         )
-        action = create_action_sink(self.config["action"])
+        action = self.action
+        owns_action = action is None
+        if action is None:
+            action = create_action_sink(self.config["action"])
         start_wall = time.perf_counter()
         state = SessionState.READING_NOTES
         frame_count = 0
@@ -75,7 +80,8 @@ class AutoBardSession:
                 height, width = initial.shape[:2]
                 note_band = Rect(0, 0, width, height).subrect_from_normalized(vision_cfg["note_band_normalized"])
                 note_crop = note_band.crop(initial)
-                note_result = NoteDetector(vision_cfg["notes"]).detect(note_crop)
+                note_detector = NoteDetector(vision_cfg["notes"])
+                note_result = note_detector.detect(note_crop)
                 notes: list[Note] = []
                 for note in note_result.notes:
                     note.left += note_band.left
@@ -101,11 +107,35 @@ class AutoBardSession:
                 lost_timeout_s = float(self.config["session"].get("pointer_lost_timeout_ms", 320)) / 1000.0
                 minimum_runtime_s = float(self.config["session"].get("minimum_runtime_ms", 250)) / 1000.0
                 max_duration_s = float(self.config["session"].get("max_duration_s", 8.0))
+                note_lost_timeout_s = max(
+                    0.0,
+                    float(self.config["session"].get("note_lost_timeout_ms", 500)) / 1000.0,
+                )
+                note_check_interval_s = max(
+                    0.0,
+                    float(self.config["session"].get("note_check_interval_ms", 50)) / 1000.0,
+                )
+                last_note_seen_at = initial_timestamp
+                next_note_check_at = initial_timestamp + note_check_interval_s
 
                 while not self.abort_event.is_set():
                     captured = source.read()
                     frame_count += 1
                     elapsed = captured.timestamp - first_timestamp
+
+                    if note_lost_timeout_s > 0 and captured.timestamp >= next_note_check_at:
+                        current_notes = note_detector.detect(note_band.crop(captured.image)).notes
+                        next_note_check_at = captured.timestamp + note_check_interval_s
+                        if current_notes:
+                            last_note_seen_at = captured.timestamp
+                        elif captured.timestamp - last_note_seen_at >= note_lost_timeout_s:
+                            LOGGER.info(
+                                "No notes detected for %.0fms; ending session",
+                                note_lost_timeout_s * 1000,
+                            )
+                            state = SessionState.FINISHED
+                            break
+
                     predicted = tracker.predict(captured.timestamp)
                     measurement = pointer_detector.detect(captured.image, predicted)
                     accepted = measurement is not None and tracker.update(captured.timestamp, measurement)
@@ -124,6 +154,10 @@ class AutoBardSession:
                         update = scheduler.update(captured.timestamp, pointer_for_schedule, tracker.speed)
                         for note in update.due:
                             action.hit_note(note, captured.timestamp)
+                            # A successful in-game hit snaps the pointer back to the
+                            # note center. Start a fresh motion segment there instead
+                            # of letting the reset corrupt the previous speed fit.
+                            tracker.reanchor_after_hit(captured.timestamp, note.target)
                         if update.newly_missed:
                             LOGGER.debug("Missed notes: %s", [note.index for note in update.newly_missed])
 
@@ -169,3 +203,5 @@ class AutoBardSession:
         finally:
             if recorder is not None:
                 recorder.close()
+            if owns_action:
+                action.close()

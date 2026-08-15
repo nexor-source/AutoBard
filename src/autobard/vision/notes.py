@@ -32,6 +32,17 @@ class NoteDetector:
         if width < 8 or height < 3:
             return NoteDetectionResult([], np.zeros((height, width), np.uint8), np.zeros(width), 1.0)
 
+        brightness = cv2.cvtColor(bgr[:, :, :3], cv2.COLOR_BGR2HSV)[:, :, 2]
+        brightness_p90 = float(np.percentile(brightness, 90))
+        minimum_brightness_p90 = float(self.config.get("min_brightness_p90", 60))
+        if brightness_p90 < minimum_brightness_p90:
+            return NoteDetectionResult(
+                [],
+                np.zeros((height, width), np.uint8),
+                np.zeros(width, dtype=np.float32),
+                1.0,
+            )
+
         score = warm_gold_score(bgr)
         pixel_quantile = float(self.config.get("pixel_quantile", 0.76))
         threshold = float(np.quantile(score, pixel_quantile))
@@ -51,7 +62,11 @@ class NoteDetector:
         minimum_coverage = float(self.config.get("column_coverage", 0.20))
         adaptive = float(np.median(column_score) + 1.8 * np.median(np.abs(column_score - np.median(column_score))))
         column_threshold = max(minimum_coverage, adaptive)
-        active = column_score >= column_threshold
+        # Real note blocks fill most of the tightly calibrated note band. Thin
+        # horizontal rails, text strokes, and pointer trails can have a strong
+        # color score but do not cover enough rows to be notes.
+        minimum_vertical_coverage = float(self.config.get("min_vertical_coverage", 0.68))
+        active = (column_score >= column_threshold) & (coverage >= minimum_vertical_coverage)
         # 1-D close/open avoids the old per-column Python loop.
         one_d = (active.astype(np.uint8) * 255).reshape(1, -1)
         close_w = max(2, round(width * float(self.config.get("merge_gap_ratio", 0.006))))

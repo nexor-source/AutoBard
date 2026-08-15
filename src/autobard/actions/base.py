@@ -9,3 +9,6 @@ class ActionSink(ABC):
     @abstractmethod
     def hit_note(self, note: Note, timestamp: float) -> None:
         raise NotImplementedError
+
+    def close(self) -> None:
+        """Release resources held by an action sink."""

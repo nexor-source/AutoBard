@@ -1,8 +1,10 @@
 # AutoBard 2.0（重构版）
 
+.\.venv\Scripts\python.exe -m autobard --config config\settings.json run
+
 这是对旧版单文件脚本的完整重构。旧实现保存在 `legacy/`，新实现默认只做视觉检测和日志输出，不会主动发送键鼠信号。
 
-> 在线游戏可能禁止自动化操作并导致账号处罚。项目不包含反作弊绕过、隐藏进程或驱动级输入。开发和调参请优先使用 `dry_run`、录像或截图。
+> 在线游戏可能禁止自动化操作并导致账号处罚。`system_input` 使用 USB/IP 虚拟 HID 设备，但不包含或尝试反作弊绕过。开发和调参请优先使用 `dry_run`、录像或截图。
 
 ## 本次重构解决了什么
 
@@ -23,7 +25,7 @@ src/autobard/
 ├── vision/         # 演奏条候选、音符检测、指针检测
 ├── tracking/       # 指针跟踪和鲁棒速度估计
 ├── timing/         # 一次性音符调度器
-├── actions/        # dry-run / beep / SendInput
+├── actions/        # dry-run / beep / VIIPER USB/IP / Win32 兼容后端
 ├── debug/          # 叠加图、CSV、视频记录
 ├── calibration.py  # 两步框选校准
 ├── runtime.py      # 单次演奏状态机
@@ -42,7 +44,9 @@ python -m pip install -U pip
 pip install -e ".[windows-fast]"
 ```
 
-DXcam 当前版本的 `grab/start/get_latest_frame` 可以直接返回 NumPy 图像；本项目连续捕获时使用固定长度缓冲区，并始终消费最新帧。没有安装 DXcam 时会回退到持久化的 MSS 对象。
+默认使用与 legacy 版本相同、启动更快的 MSS 后端。也可以把 `capture.backend` 改成 `auto` 或 `dxcam`；DXcam 连续捕获时使用固定长度缓冲区，并始终消费最新帧，但独占全屏切换时可能发生 DXGI access loss。
+
+使用 VIIPER 输出前还需安装 [usbip-win2](https://github.com/vadimgrn/usbip-win2) 的 Windows USB/IP 客户端驱动。项目从 `runtime/viiper.exe` 启动 VIIPER，并使用其本地自动挂载功能，不需要另外运行 `usbip.exe` 命令。
 
 ## 第一次使用：重新校准位置
 
@@ -75,11 +79,11 @@ autobard --config config/settings.json calibrate --output config/settings.json
 autobard --config config/settings.json run
 ```
 
-- `F8`：开始一次检测
+- 快速双击鼠标右键：开始一次检测（默认两次点击间隔不超过 350ms）
 - `F9`：中止当前检测
 - `F10`：退出程序
 
-建议先手动开始演奏，再按 `F8`。命中结果只写日志，不会发输入。每次运行的调试文件在：
+建议先手动开始演奏，再快速双击鼠标右键。连续 1000ms 检测不到音符时，本次检测会自动结束。命中结果只写日志，不会发输入。每次运行的调试文件在：
 
 ```text
 debug_output/YYYYMMDD_HHMMSS_xxxxxx/
@@ -125,19 +129,38 @@ autobard --config config/settings.json analyze-video performance.mp4 --output-di
 
 ### 3. system_input
 
-系统输入模块使用 Windows `SendInput`，支持右键或普通键：
+系统输入默认通过 VIIPER 和 USB/IP 创建虚拟 HID 鼠标并发送右键：
 
 ```json
 "action": {
   "mode": "system_input",
   "kind": "mouse_right",
-  "key": "space",
-  "press_duration_ms": 8,
-  "acknowledge_online_risk": true
+  "mouse_backend": "viiper",
+  "press_duration_ms": 10,
+  "acknowledge_online_risk": true,
+  "viiper": {
+    "executable": "runtime/viiper.exe",
+    "host": "127.0.0.1",
+    "api_port": 3242,
+    "usb_port": 3241,
+    "startup_timeout_s": 10.0
+  }
 }
 ```
 
-使用键盘时把 `kind` 改成 `key`。该模式默认锁定，必须显式确认风险；它不保证目标游戏接受输入，也不会尝试绕过任何保护机制。
+服务启动时会先启动（或复用已运行的）VIIPER 服务、创建虚拟鼠标并通过 USB/IP 自动挂载；出现 `AutoBard online` 后设备已经就绪。命中时发送右键按下和释放两个 HID 报告，退出 AutoBard 时删除本程序创建的设备。`mouse_event` 和 `send_input` 仍保留为兼容后端，但不再是默认值。VIIPER 后端当前只支持 `kind: "mouse_right"`。该模式默认锁定，必须显式确认风险；它不保证目标程序接受输入。
+
+可以脱离视觉检测单独验证动作输出。运行后在倒计时内切到记事本等普通窗口；如果右键菜单弹出，说明 Windows 已接收到输入：
+
+```powershell
+autobard --config config/settings.json test-input --delay-s 5
+```
+
+还可以临时切换输入后端并延长按键时间，而不修改配置文件：
+
+```powershell
+autobard --config config/settings.json test-input --delay-s 5 --mouse-backend send_input --duration-ms 100
+```
 
 ## 最常调的参数
 
@@ -166,7 +189,7 @@ autobard --config config/settings.json analyze-video performance.mp4 --output-di
     "motion_weight": 0.48,
     "edge_weight": 0.30,
     "color_weight": 0.22,
-    "prediction_weight": 0.45
+    "prediction_weight": 0.70
   }
 }
 ```
@@ -174,6 +197,8 @@ autobard --config config/settings.json analyze-video performance.mp4 --output-di
 - 游戏颜色变化大：降低 `color_weight`，提高 `motion_weight`。
 - 画面运动干扰大：提高 `prediction_weight`，并缩小 `prediction_sigma_ratio`。
 - 初始几帧难找：适当提高 `edge_weight` 或重新校准更紧的 ROI。
+
+一次演奏条内的指针速度保持不变。第一次有效 hit 时，跟踪器会锁定本局已经拟合出的速度；后续 hit 只把轨迹位置重新锚定到该 note 中心，不再重新估算速度，因此中心附近的抖动不会让后续 note 延迟。每次开始新的演奏条都会创建新的跟踪器并重新估速，所以不同演奏条之间的速度可以不同。`prediction_search_ratio` 和 `max_prediction_error_ratio` 用于防止检测重新锁到刚命中的静止 note。
 
 ### 命中整体偏早或偏晚
 
@@ -183,6 +208,8 @@ autobard --config config/settings.json analyze-video performance.mp4 --output-di
 
 - 实际命中偏晚：增大 `input_latency_ms`。
 - 实际命中偏早：减小该值。
+
+`initial_skip_notes` 默认为 1：启动检测时第一颗音符固定记为 miss，且首次观察到的指针左侧音符全部跳过。这符合“第一次右键开始演奏、第二次右键启动检测并主动牺牲第一颗”的操作方式，也避免对已经越过的音符补发点击。
 
 ## 性能测试
 

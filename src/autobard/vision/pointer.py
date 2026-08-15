@@ -65,6 +65,8 @@ class PointerDetector:
             + float(self.config.get("color_weight", 0.22)) * color
         )
         combined = smooth_1d(combined, kernel=max(3, round(width * 0.007)))
+        selection_scores = combined
+        statistics_scores = combined
 
         if predicted_x is not None and np.isfinite(predicted_x):
             sigma = max(2.0, width * float(self.config.get("prediction_sigma_ratio", 0.035)))
@@ -72,10 +74,23 @@ class PointerDetector:
             prior = np.exp(-0.5 * ((xs - float(predicted_x)) / sigma) ** 2)
             combined += float(self.config.get("prediction_weight", 0.45)) * prior
 
-        peak_x = int(np.argmax(combined))
+            # Once a trajectory exists, a global maximum is often the bright,
+            # static note that was just hit. Restrict selection to a generous
+            # window around the projected pointer; the window still tolerates
+            # the observed per-session speed variation.
+            search_radius = max(
+                8.0,
+                width * float(self.config.get("prediction_search_ratio", 0.06)),
+            )
+            local = np.abs(xs - float(predicted_x)) <= search_radius
+            if local.any():
+                selection_scores = np.where(local, combined, -np.inf)
+                statistics_scores = combined[local]
+
+        peak_x = int(np.argmax(selection_scores))
         peak = float(combined[peak_x])
-        baseline = float(np.median(combined))
-        spread = float(np.median(np.abs(combined - baseline)) + 1e-6)
+        baseline = float(np.median(statistics_scores))
+        spread = float(np.median(np.abs(statistics_scores - baseline)) + 1e-6)
         distinctness = float(np.clip((peak - baseline) / (6.0 * spread), 0.0, 1.0))
         confidence = float(np.clip(0.62 * peak + 0.38 * distinctness, 0.0, 1.0))
         if confidence < float(self.config.get("min_confidence", 0.20)):

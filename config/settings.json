@@ -4,22 +4,22 @@
     "fallback_to_primary_monitor": true
   },
   "capture": {
-    "backend": "auto",
+    "backend": "mss",
     "target_fps": 120,
     "monitor_index": 1,
     "roi_normalized": [
-      0.3984375,
-      0.7597222,
-      0.6015625,
-      0.8472222
+      0.3859375,
+      0.768125,
+      0.612890625,
+      0.843125
     ]
   },
   "vision": {
     "note_band_normalized": [
-      0.0,
-      0.4047619,
-      1.0,
-      0.6507937
+      0.008605851979345954,
+      0.425,
+      0.9931153184165232,
+      0.575
     ],
     "notes": {
       "pixel_quantile": 0.76,
@@ -27,7 +27,9 @@
       "min_width_ratio": 0.009,
       "max_width_ratio": 0.2,
       "merge_gap_ratio": 0.006,
-      "min_confidence": 0.2
+      "min_confidence": 0.2,
+      "min_brightness_p90": 60,
+      "min_vertical_coverage": 0.68
     },
     "pointer": {
       "analysis_y": [
@@ -43,8 +45,9 @@
       "motion_weight": 0.48,
       "edge_weight": 0.3,
       "color_weight": 0.22,
-      "prediction_weight": 0.45,
+      "prediction_weight": 0.7,
       "prediction_sigma_ratio": 0.035,
+      "prediction_search_ratio": 0.06,
       "min_confidence": 0.2,
       "max_width_ratio": 0.04
     }
@@ -55,30 +58,42 @@
     "min_speed_px_s": 20.0,
     "max_speed_px_s": 3000.0,
     "backward_tolerance_ratio": 0.025,
-    "max_prediction_error_ratio": 0.18,
-    "prediction_hold_ms": 90
+    "max_prediction_error_ratio": 0.05,
+    "prediction_hold_ms": 90,
+    "speed_hold_ms": 1200
   },
   "scheduler": {
-    "input_latency_ms": 22,
+    "input_latency_ms": 45,
     "hit_window_ratio": 0.008,
-    "miss_margin_ratio": 0.012
+    "miss_margin_ratio": 0.012,
+    "initial_skip_notes": 1
   },
   "session": {
     "initial_note_frames": 5,
     "initial_frame_spacing_ms": 8,
     "max_duration_s": 8.0,
     "pointer_lost_timeout_ms": 320,
-    "minimum_runtime_ms": 250
+    "minimum_runtime_ms": 250,
+    "note_lost_timeout_ms": 1000,
+    "note_check_interval_ms": 50
   },
   "action": {
-    "mode": "dry_run",
+    "mode": "system_input",
     "kind": "mouse_right",
     "key": "space",
-    "press_duration_ms": 8,
-    "acknowledge_online_risk": false
+    "mouse_backend": "viiper",
+    "press_duration_ms": 10,
+    "acknowledge_online_risk": true,
+    "viiper": {
+      "executable": "runtime/viiper.exe",
+      "host": "127.0.0.1",
+      "api_port": 3242,
+      "usb_port": 3241,
+      "startup_timeout_s": 10.0
+    }
   },
   "hotkeys": {
-    "start": "<f8>",
+    "double_right_click_interval_ms": 350,
     "abort": "<f9>",
     "quit": "<f10>"
   },

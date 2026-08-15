@@ -1,0 +1,20 @@
+time=2026-08-15T10:25:57.207+08:00 level=INFO msg="Starting VIIPER USB-IP server" addr=127.0.0.1:3241
+time=2026-08-15T10:25:57.219+08:00 level=INFO msg="Auto-attach is enabled, checking prerequisites..."
+time=2026-08-15T10:25:57.219+08:00 level=INFO msg="USBIP server listening" addr=127.0.0.1:3241
+time=2026-08-15T10:25:57.222+08:00 level=INFO msg="Auto-attach prerequisites satisfied"
+time=2026-08-15T10:25:57.222+08:00 level=INFO msg="API listening" addr=127.0.0.1:3242
+time=2026-08-15T10:25:57.687+08:00 level=INFO msg="api cmd" remote=127.0.0.1:60130 path=ping
+time=2026-08-15T10:25:57.703+08:00 level=INFO msg="api cmd" remote=127.0.0.1:49302 path=bus/create
+time=2026-08-15T10:25:57.718+08:00 level=INFO msg="api cmd" remote=127.0.0.1:49303 path=bus/1/add
+time=2026-08-15T10:25:57.718+08:00 level=INFO msg="Auto-attaching localhost client via native IOCTL" remote=127.0.0.1:49303 busID=1 deviceID=1
+time=2026-08-15T10:25:57.722+08:00 level=INFO msg="Client connected" remote=127.0.0.1:49304
+time=2026-08-15T10:25:57.722+08:00 level=INFO msg=OP_REQ_IMPORT
+time=2026-08-15T10:25:57.722+08:00 level=INFO msg="Import request" busid=1-1
+time=2026-08-15T10:25:57.723+08:00 level=INFO msg="Successfully attached device via IOCTL" remote=127.0.0.1:49303 busID=1 deviceID=1 usbPort=1
+time=2026-08-15T10:25:57.724+08:00 level=INFO msg="api cmd" remote=127.0.0.1:49305 path=bus/1/1
+time=2026-08-15T10:25:57.724+08:00 level=INFO msg="api stream begin" remote=127.0.0.1:49305 path=bus/1/1
+time=2026-08-15T10:31:41.681+08:00 level=INFO msg="client disconnected" remote=127.0.0.1:49305
+time=2026-08-15T10:31:41.682+08:00 level=INFO msg="api stream end" remote=127.0.0.1:49305 path=bus/1/1
+time=2026-08-15T10:31:41.684+08:00 level=INFO msg="api cmd" remote=127.0.0.1:64204 path=bus/1/remove
+time=2026-08-15T10:31:41.684+08:00 level=INFO msg="device removed, closing URB stream"
+time=2026-08-15T10:31:41.686+08:00 level=INFO msg="api cmd" remote=127.0.0.1:64205 path=bus/remove

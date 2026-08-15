@@ -12,6 +12,7 @@ CONFIG = {
     "color_weight": 0.12,
     "prediction_weight": 0.45,
     "prediction_sigma_ratio": 0.035,
+    "prediction_search_ratio": 0.06,
     "min_confidence": 0.12,
     "max_width_ratio": 0.05,
 }
@@ -32,3 +33,13 @@ def test_pointer_detector_tracks_moving_line() -> None:
     second = detector.detect(frame(120), predicted_x=120)
     assert second is not None
     assert abs(second.x - 120) < 7
+
+
+def test_pointer_detector_does_not_return_to_a_static_note_behind_prediction() -> None:
+    detector = PointerDetector(CONFIG)
+    detector.detect(frame(170), predicted_x=170)
+
+    measurement = detector.detect(frame(250), predicted_x=250)
+
+    assert measurement is not None
+    assert abs(measurement.x - 250) < 7

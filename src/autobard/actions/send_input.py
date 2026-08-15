@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import ctypes
+import logging
 import os
 import threading
+import time
 from ctypes import wintypes
 
 from autobard.models import Note
@@ -22,6 +24,7 @@ VK_CODES = {
 }
 
 ULONG_PTR = wintypes.WPARAM
+LOGGER = logging.getLogger("autobard.action")
 
 
 class MOUSEINPUT(ctypes.Structure):
@@ -72,27 +75,64 @@ def _mouse(flags: int) -> None:
     _send(INPUT(type=INPUT_MOUSE, mi=MOUSEINPUT(0, 0, 0, flags, 0, 0)))
 
 
+def _legacy_mouse_event(flags: int) -> None:
+    ctypes.windll.user32.mouse_event(flags, 0, 0, 0, 0)
+
+
 def _key(vk: int, flags: int = 0) -> None:
     _send(INPUT(type=INPUT_KEYBOARD, ki=KEYBDINPUT(vk, 0, flags, 0, 0)))
 
 
+def _release_mouse_right() -> None:
+    try:
+        _mouse(MOUSEEVENTF_RIGHTUP)
+    except Exception:
+        LOGGER.exception("Failed to release mouse_right")
+
+
 class SendInputAction(ActionSink):
-    def __init__(self, kind: str, key: str, press_duration_ms: int) -> None:
+    def __init__(self, kind: str, key: str, press_duration_ms: int, mouse_backend: str = "send_input") -> None:
         if os.name != "nt":
             raise RuntimeError("SendInput is available only on Windows")
         self.kind = kind
         self.key = key.casefold()
         self.duration = max(0.0, press_duration_ms / 1000.0)
+        self.mouse_backend = mouse_backend.casefold()
+        if self.mouse_backend not in {"send_input", "mouse_event"}:
+            raise ValueError(f"Unsupported mouse input backend: {mouse_backend}")
 
     def hit_note(self, note: Note, timestamp: float) -> None:
         if self.kind == "mouse_right":
+            if self.mouse_backend == "mouse_event":
+                # Match the working legacy implementation exactly: the deprecated
+                # mouse_event API and a synchronous down/hold/up sequence.
+                _legacy_mouse_event(MOUSEEVENTF_RIGHTDOWN)
+                if self.duration:
+                    time.sleep(self.duration)
+                _legacy_mouse_event(MOUSEEVENTF_RIGHTUP)
+                LOGGER.info(
+                    "MOUSE-EVENT mouse_right note=%d target=%.1f duration_ms=%.0f t=%.6f",
+                    note.index,
+                    note.target,
+                    self.duration * 1000,
+                    timestamp,
+                )
+                return
+
             _mouse(MOUSEEVENTF_RIGHTDOWN)
             if self.duration:
-                timer = threading.Timer(self.duration, _mouse, args=(MOUSEEVENTF_RIGHTUP,))
+                timer = threading.Timer(self.duration, _release_mouse_right)
                 timer.daemon = True
                 timer.start()
             else:
                 _mouse(MOUSEEVENTF_RIGHTUP)
+            LOGGER.info(
+                "SYSTEM-INPUT mouse_right note=%d target=%.1f duration_ms=%.0f t=%.6f",
+                note.index,
+                note.target,
+                self.duration * 1000,
+                timestamp,
+            )
             return
         if self.kind == "key":
             vk = VK_CODES.get(self.key)
