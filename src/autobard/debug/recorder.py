@@ -13,11 +13,17 @@ class DebugRecorder:
         self.enabled = bool(config.get("enabled", False))
         self.save_every = int(config.get("save_every_n_frames", 0))
         self.record_video = bool(config.get("record_video", False))
+        self.event_follow_frames = max(0, int(config.get("event_follow_frames", 6)))
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
         self.directory = Path(config.get("output_dir", "debug_output")) / stamp
         self.csv_handle = None
         self.csv_writer = None
         self.video = None
+        self._event_index = 0
+        self._event_label = ""
+        self._event_remaining = 0
+        self._event_offset = 0
+        self._event_images: list[tuple[str, np.ndarray]] = []
         if not self.enabled:
             return
         self.directory.mkdir(parents=True, exist_ok=True)
@@ -32,6 +38,9 @@ class DebugRecorder:
             "speed",
             "pending",
             "events",
+            "schedule_mode",
+            "action_submit_delay_ms",
+            "action_call_ms",
         ])
         if self.record_video:
             width, height = frame_size
@@ -57,6 +66,9 @@ class DebugRecorder:
         pending: int,
         measured_x: float | None = None,
         events: str = "",
+        schedule_mode: str = "",
+        action_submit_delay_ms: str = "",
+        action_call_ms: str = "",
     ) -> None:
         if not self.enabled:
             return
@@ -70,13 +82,33 @@ class DebugRecorder:
             speed,
             pending,
             events,
+            schedule_mode,
+            action_submit_delay_ms,
+            action_call_ms,
         ])
+        if any(part.startswith("H") for part in events.split(";")):
+            self._event_index += 1
+            self._event_label = events.replace(";", "_")
+            self._event_remaining = self.event_follow_frames + 1
+            self._event_offset = 0
+        if self._event_remaining > 0:
+            name = (
+                f"event_{self._event_index:02d}_{self._event_label}_"
+                f"f{frame_index:05d}_p{self._event_offset:02d}.jpg"
+            )
+            self._event_images.append((name, overlay.copy()))
+            self._event_remaining -= 1
+            self._event_offset += 1
         if self.video is not None:
             self.video.write(overlay)
         if self.save_every > 0 and frame_index % self.save_every == 0:
             cv2.imwrite(str(self.directory / f"frame_{frame_index:05d}.jpg"), overlay)
 
     def close(self) -> None:
+        if self.enabled:
+            for name, image in self._event_images:
+                cv2.imwrite(str(self.directory / name), image)
+        self._event_images.clear()
         if self.video is not None:
             self.video.release()
             self.video = None

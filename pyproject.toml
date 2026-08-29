@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "autobard-refactored"
-version = "2.0.0"
+version = "2.1.0"
 description = "Low-latency, testable visual detector for a horizontal rhythm bar"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -20,9 +20,11 @@ dependencies = [
 [project.optional-dependencies]
 windows-fast = ["dxcam>=0.3,<0.4"]
 dev = ["pytest>=9,<10"]
+build = ["pyinstaller>=6,<7", "pytest>=9,<10"]
 
 [project.scripts]
 autobard = "autobard.cli:main"
+autobard-gui = "autobard.gui:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.0
+
+- Added a Windows GUI for service control, calibration, settings and logs.
+- Added a PyInstaller onedir build containing VIIPER and the default configuration.
+- Added SHA-256-verified GitHub Releases update checks and in-place Windows updates.
+- Added a GitHub Actions workflow for producing versioned Windows release assets.
+- Added public lifecycle controls to the hotkey service for GUI integration.
+
 ## 2.0.0
 
 - Rebuilt the project as an installable Python package.

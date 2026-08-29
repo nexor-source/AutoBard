@@ -35,3 +35,13 @@ def test_slow_right_clicks_do_not_start_session(monkeypatch) -> None:
     service._on_click(0, 0, mouse.Button.right, False)
 
     assert not service.start_event.is_set()
+
+
+def test_public_service_controls_delegate_to_runtime() -> None:
+    service = HotkeyService(_config())
+
+    service.request_session()
+    assert service.start_event.is_set()
+
+    service.stop()
+    assert service.quit_event.is_set()

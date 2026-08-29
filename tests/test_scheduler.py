@@ -56,7 +56,7 @@ def test_hit_window_cannot_fire_before_note_left_edge() -> None:
     assert scheduler.update(0.02, 529.0, 304.5).due == [note]
 
 
-def test_hit_window_does_not_add_a_second_early_trigger_margin() -> None:
+def test_hit_window_allows_a_bounded_early_trigger_inside_the_note() -> None:
     note = Note(0, 179, 204, 191, 1.0)
     scheduler = NoteScheduler(
         [note],
@@ -64,10 +64,49 @@ def test_hit_window_does_not_add_a_second_early_trigger_margin() -> None:
         581,
     )
 
-    # The compensated trigger is x=186.5. Being inside the visible note is not
-    # sufficient; input_latency_ms already provides the intended early lead.
-    assert scheduler.update(0.0, 182.0, 100.0).due == []
-    assert scheduler.update(0.02, 187.0, 100.0).due == [note]
+    # The compensated trigger is x=186.5. The visual margin remains bounded by
+    # the note's left edge: x=181 is too early, while x=182 is accepted.
+    assert scheduler.update(0.0, 181.0, 100.0).due == []
+    assert scheduler.update(0.02, 182.0, 100.0).due == [note]
+
+
+def test_model_timing_anticipates_the_next_frame_at_high_speed() -> None:
+    config = {
+        "input_latency_ms": 45,
+        "hit_window_ratio": 0.008,
+        "model_input_latency_ms": 50,
+        "model_hit_window_ratio": 0.004,
+        "miss_margin_ratio": 0.012,
+    }
+    live_note = Note(0, 395, 426, 410, 1.0)
+    model_note = Note(0, 395, 426, 410, 1.0)
+    live = NoteScheduler([live_note], config, 581)
+    model = NoteScheduler([model_note], config, 581)
+    live.update(0.0, 380.0, 362.0)
+    model.update(0.0, 380.0, 362.0, use_model=True)
+
+    assert live.update(0.02, 392.3, 362.0).due == []
+    assert model.update(0.02, 392.3, 362.0, use_model=True).due == [model_note]
+
+
+def test_model_window_does_not_fire_a_slow_note_too_early() -> None:
+    config = {
+        "input_latency_ms": 45,
+        "hit_window_ratio": 0.008,
+        "model_input_latency_ms": 50,
+        "model_hit_window_ratio": 0.004,
+        "miss_margin_ratio": 0.012,
+    }
+    live_note = Note(0, 366, 391, 378, 1.0)
+    model_note = Note(0, 366, 391, 378, 1.0)
+    live = NoteScheduler([live_note], config, 581)
+    model = NoteScheduler([model_note], config, 581)
+    live.update(0.0, 360.0, 104.0)
+    model.update(0.0, 360.0, 104.0, use_model=True)
+
+    assert live.update(0.02, 368.9, 104.0).due == [live_note]
+    assert model.update(0.02, 368.9, 104.0, use_model=True).due == []
+    assert model.update(0.04, 373.0, 104.0, use_model=True).due == [model_note]
 
 
 def test_first_note_is_intentionally_skipped_without_a_hit() -> None:

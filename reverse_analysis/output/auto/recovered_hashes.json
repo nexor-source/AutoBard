@@ -1,0 +1,378 @@
+{
+  "algorithm": {
+    "initial": "0xB1F48651",
+    "case_folding": "ASCII lowercase converted to uppercase",
+    "step": "hash = ((hash XOR character) * 0x010001AB) modulo 2^32"
+  },
+  "module_hashes": {
+    "0x1582182F": [
+      "ws2_32.dll"
+    ],
+    "0x386DC37D": [
+      "user32.dll"
+    ],
+    "0x875D81E7": [
+      "kernel32.dll"
+    ],
+    "0x9FFA651F": [
+      "ntdll.dll"
+    ],
+    "0xE4001C5A": [
+      "shell32.dll"
+    ]
+  },
+  "api_hashes": {
+    "0x04AE5004": [
+      {
+        "module": "KernelBase.dll",
+        "name": "FindNextFileA"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "FindNextFileA"
+      }
+    ],
+    "0x11170B6E": [
+      {
+        "module": "ws2_32.dll",
+        "name": "sendto"
+      }
+    ],
+    "0x1D295D5D": [
+      {
+        "module": "user32.dll",
+        "name": "GetWindowThreadProcessId"
+      }
+    ],
+    "0x243AEEF1": [
+      {
+        "module": "KernelBase.dll",
+        "name": "CloseHandle"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "CloseHandle"
+      }
+    ],
+    "0x31C4C8C9": [
+      {
+        "module": "ws2_32.dll",
+        "name": "htons"
+      }
+    ],
+    "0x39299190": [
+      {
+        "module": "KernelBase.dll",
+        "name": "GetSystemDirectoryA"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "GetSystemDirectoryA"
+      }
+    ],
+    "0x399596DA": [
+      {
+        "module": "KernelBase.dll",
+        "name": "FindClose"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "FindClose"
+      }
+    ],
+    "0x40792BC4": [
+      {
+        "module": "KernelBase.dll",
+        "name": "GetFileSize"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "GetFileSize"
+      }
+    ],
+    "0x42A1C55B": [
+      {
+        "module": "ws2_32.dll",
+        "name": "send"
+      }
+    ],
+    "0x464D7E2B": [
+      {
+        "module": "user32.dll",
+        "name": "GetWindow"
+      }
+    ],
+    "0x4EE9F32F": [
+      {
+        "module": "KernelBase.dll",
+        "name": "ReadFile"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "ReadFile"
+      }
+    ],
+    "0x55A87EAE": [
+      {
+        "module": "KernelBase.dll",
+        "name": "WriteFile"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "WriteFile"
+      }
+    ],
+    "0x5C2059DF": [
+      {
+        "module": "ws2_32.dll",
+        "name": "shutdown"
+      }
+    ],
+    "0x5CE6F7FF": [
+      {
+        "module": "KernelBase.dll",
+        "name": "CreateDirectoryA"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "CreateDirectoryA"
+      }
+    ],
+    "0x6909CF30": [
+      {
+        "module": "ws2_32.dll",
+        "name": "socket"
+      }
+    ],
+    "0x70D84BDC": [
+      {
+        "module": "KernelBase.dll",
+        "name": "Sleep"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "Sleep"
+      }
+    ],
+    "0x74E10826": [
+      {
+        "module": "ws2_32.dll",
+        "name": "closesocket"
+      }
+    ],
+    "0x7ACB8A78": [
+      {
+        "module": "kernel32.dll",
+        "name": "RtlZeroMemory"
+      },
+      {
+        "module": "ntdll.dll",
+        "name": "RtlZeroMemory"
+      }
+    ],
+    "0x7EBAF452": [
+      {
+        "module": "KernelBase.dll",
+        "name": "CreateFileA"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "CreateFileA"
+      }
+    ],
+    "0x831E04B8": [
+      {
+        "module": "ws2_32.dll",
+        "name": "getaddrinfo"
+      }
+    ],
+    "0x833D1475": [
+      {
+        "module": "KernelBase.dll",
+        "name": "VirtualAlloc"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "VirtualAlloc"
+      }
+    ],
+    "0x8378EE44": [
+      {
+        "module": "ws2_32.dll",
+        "name": "freeaddrinfo"
+      }
+    ],
+    "0x88AEFF03": [
+      {
+        "module": "ws2_32.dll",
+        "name": "WSAStartup"
+      }
+    ],
+    "0x8DE975B1": [
+      {
+        "module": "kernel32.dll",
+        "name": "lstrcatA"
+      }
+    ],
+    "0x8F3EC221": [
+      {
+        "module": "ws2_32.dll",
+        "name": "recvfrom"
+      }
+    ],
+    "0x8FACB393": [
+      {
+        "module": "KernelBase.dll",
+        "name": "LoadLibraryA"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "LoadLibraryA"
+      }
+    ],
+    "0x90EC614B": [
+      {
+        "module": "ws2_32.dll",
+        "name": "ioctlsocket"
+      }
+    ],
+    "0x91C424BC": [
+      {
+        "module": "shell32.dll",
+        "name": "SHGetFolderPathA"
+      }
+    ],
+    "0x97554F0E": [
+      {
+        "module": "user32.dll",
+        "name": "GetTopWindow"
+      }
+    ],
+    "0x9758F50E": [
+      {
+        "module": "ws2_32.dll",
+        "name": "WSACleanup"
+      }
+    ],
+    "0x97E48871": [
+      {
+        "module": "KernelBase.dll",
+        "name": "GetTickCount"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "GetTickCount"
+      }
+    ],
+    "0x9A6F9D11": [
+      {
+        "module": "ws2_32.dll",
+        "name": "recv"
+      }
+    ],
+    "0x9D846488": [
+      {
+        "module": "KernelBase.dll",
+        "name": "GetModuleHandleA"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "GetModuleHandleA"
+      }
+    ],
+    "0xAA2CDDF3": [
+      {
+        "module": "KernelBase.dll",
+        "name": "DeleteFileA"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "DeleteFileA"
+      }
+    ],
+    "0xAB36B1F1": [
+      {
+        "module": "KernelBase.dll",
+        "name": "GetProcAddress"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "GetProcAddress"
+      }
+    ],
+    "0xB40E1064": [
+      {
+        "module": "KernelBase.dll",
+        "name": "GetCurrentProcessId"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "GetCurrentProcessId"
+      }
+    ],
+    "0xD4D757FC": [
+      {
+        "module": "ws2_32.dll",
+        "name": "setsockopt"
+      }
+    ],
+    "0xDC0C72C1": [
+      {
+        "module": "KernelBase.dll",
+        "name": "FindFirstFileA"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "FindFirstFileA"
+      }
+    ],
+    "0xDC8B7DCD": [
+      {
+        "module": "ws2_32.dll",
+        "name": "connect"
+      }
+    ],
+    "0xE4D4B38C": [
+      {
+        "module": "user32.dll",
+        "name": "ShowWindow"
+      }
+    ],
+    "0xEBCEFE63": [
+      {
+        "module": "kernel32.dll",
+        "name": "RtlMoveMemory"
+      },
+      {
+        "module": "ntdll.dll",
+        "name": "RtlMoveMemory"
+      }
+    ],
+    "0xED1517A6": [
+      {
+        "module": "KernelBase.dll",
+        "name": "VirtualFree"
+      },
+      {
+        "module": "kernel32.dll",
+        "name": "VirtualFree"
+      }
+    ],
+    "0xF6131600": [
+      {
+        "module": "ws2_32.dll",
+        "name": "WSAGetLastError"
+      }
+    ]
+  },
+  "unresolved_module_hashes": [],
+  "unresolved_api_hashes": [],
+  "scanned_export_modules": [
+    "KernelBase.dll",
+    "kernel32.dll",
+    "ntdll.dll",
+    "shell32.dll",
+    "user32.dll",
+    "ws2_32.dll"
+  ]
+}

@@ -22,6 +22,7 @@ def _package_defaults() -> dict[str, Any]:
     # A compact fallback allows the package to run even if the external file was moved.
     return {
         "window": {"title_contains": "Dark and Darker", "fallback_to_primary_monitor": True},
+        "calibration": {"countdown_s": 5},
         "capture": {"backend": "mss", "target_fps": 120, "monitor_index": 1,
                     "roi_normalized": [0.3984375, 0.7597222, 0.6015625, 0.8472222]},
         "vision": {
@@ -44,12 +45,12 @@ def _package_defaults() -> dict[str, Any]:
                      "max_prediction_error_ratio": 0.05, "prediction_hold_ms": 90,
                      "speed_hold_ms": 1200},
         "scheduler": {"input_latency_ms": 22, "hit_window_ratio": 0.008,
+                      "model_input_latency_ms": 27, "model_hit_window_ratio": 0.004,
                       "miss_margin_ratio": 0.012, "initial_skip_notes": 1,
                       "model_schedule_max_note_width_ratio": 0.05},
         "session": {"initial_note_frames": 5, "initial_frame_spacing_ms": 8,
                     "max_duration_s": 8.0, "pointer_lost_timeout_ms": 320,
-                    "minimum_runtime_ms": 250, "note_lost_timeout_ms": 1000,
-                    "note_check_interval_ms": 50},
+                    "minimum_runtime_ms": 250, "post_complete_observe_ms": 150},
         "action": {
             "mode": "dry_run",
             "kind": "mouse_right",
@@ -68,7 +69,11 @@ def _package_defaults() -> dict[str, Any]:
         "hotkeys": {"double_right_click_interval_ms": 350,
                     "abort": "<f9>", "quit": "<f10>"},
         "debug": {"enabled": True, "output_dir": "debug_output",
-                  "save_every_n_frames": 0, "record_video": False},
+                  "save_every_n_frames": 0, "record_video": False,
+                  "event_follow_frames": 6},
+        "updates": {"enabled": True, "check_on_start": True,
+                    "github_repo": "nexor-source/AutoBard",
+                    "asset_name": "AutoBard-win64.zip", "timeout_s": 15.0},
     }
 
 
@@ -101,3 +106,6 @@ def validate_config(config: Mapping[str, Any]) -> None:
             raise ValueError(f"{name} has invalid bounds")
     if int(config["capture"]["target_fps"]) <= 0:
         raise ValueError("capture.target_fps must be positive")
+    countdown_s = int(config.get("calibration", {}).get("countdown_s", 5))
+    if not 0 <= countdown_s <= 60:
+        raise ValueError("calibration.countdown_s must be between 0 and 60")

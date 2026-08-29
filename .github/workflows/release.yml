@@ -1,0 +1,67 @@
+name: Build Windows release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Create virtual environment
+        shell: pwsh
+        run: python -m venv .venv
+
+      - name: Install dependencies
+        shell: pwsh
+        run: .\.venv\Scripts\python.exe -m pip install -e ".[windows-fast,build]"
+
+      - name: Verify tag version
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        run: |
+          $packageVersion = .\.venv\Scripts\python.exe -c "import autobard; print(autobard.__version__)"
+          $tagVersion = "${{ github.ref_name }}".TrimStart("v")
+          if ($packageVersion.Trim() -ne $tagVersion) {
+            throw "Tag version $tagVersion does not match package version $packageVersion"
+          }
+
+      - name: Test and package
+        shell: pwsh
+        run: .\scripts\build_windows.ps1 -SkipInstall
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AutoBard-win64
+          path: |
+            dist/AutoBard-win64.zip
+            dist/AutoBard-win64.zip.sha256
+          if-no-files-found: error
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ github.ref_name }}" `
+            dist/AutoBard-win64.zip `
+            dist/AutoBard-win64.zip.sha256 `
+            --verify-tag `
+            --generate-notes `
+            --title "AutoBard ${{ github.ref_name }}"

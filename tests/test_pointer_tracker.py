@@ -95,6 +95,8 @@ def test_locked_trajectory_ignores_an_upcoming_note_measurement_jump() -> None:
     assert abs((tracker.predict(0.20) or 0.0) - 170.0) < 1.0
 
 
+
+
 def test_reset_allows_a_different_speed_in_the_next_session() -> None:
     tracker = PointerTracker(CONFIG, 500)
     for index in range(4):

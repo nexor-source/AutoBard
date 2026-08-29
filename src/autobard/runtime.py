@@ -21,6 +21,18 @@ from .vision import NoteDetector, PointerDetector
 LOGGER = logging.getLogger(__name__)
 
 
+def _capture_has_signal(bgr: np.ndarray) -> bool:
+    """Reject only genuinely blank capture frames, not frames with changed notes."""
+    if bgr.ndim != 3 or bgr.shape[2] < 3 or bgr.size == 0:
+        return False
+    # The captured rhythm bar contributes well over one percent bright pixels
+    # even in the darkest collected samples. An intermittent MSS black frame
+    # has no such signal. This deliberately does not depend on note color:
+    # already-hit notes change color and narrow pending notes may occupy less
+    # than ten percent of the note band.
+    return float(np.percentile(bgr[:, :, :3], 99.0)) >= 32.0
+
+
 @dataclass(slots=True)
 class SessionResult:
     state: SessionState
@@ -107,34 +119,18 @@ class AutoBardSession:
                 lost_timeout_s = float(self.config["session"].get("pointer_lost_timeout_ms", 320)) / 1000.0
                 minimum_runtime_s = float(self.config["session"].get("minimum_runtime_ms", 250)) / 1000.0
                 max_duration_s = float(self.config["session"].get("max_duration_s", 8.0))
-                note_lost_timeout_s = max(
+                completed_at: float | None = None
+                post_complete_observe_s = max(
                     0.0,
-                    float(self.config["session"].get("note_lost_timeout_ms", 500)) / 1000.0,
+                    float(self.config["session"].get("post_complete_observe_ms", 150)) / 1000.0,
                 )
-                note_check_interval_s = max(
-                    0.0,
-                    float(self.config["session"].get("note_check_interval_ms", 50)) / 1000.0,
-                )
-                last_note_seen_at = initial_timestamp
-                next_note_check_at = initial_timestamp + note_check_interval_s
 
                 while not self.abort_event.is_set():
                     captured = source.read()
                     frame_count += 1
                     elapsed = captured.timestamp - first_timestamp
 
-                    if note_lost_timeout_s > 0 and captured.timestamp >= next_note_check_at:
-                        current_notes = note_detector.detect(note_band.crop(captured.image)).notes
-                        next_note_check_at = captured.timestamp + note_check_interval_s
-                        if current_notes:
-                            last_note_seen_at = captured.timestamp
-                        elif captured.timestamp - last_note_seen_at >= note_lost_timeout_s:
-                            LOGGER.info(
-                                "No notes detected for %.0fms; ending session",
-                                note_lost_timeout_s * 1000,
-                            )
-                            state = SessionState.FINISHED
-                            break
+                    capture_has_signal = _capture_has_signal(captured.image)
 
                     predicted = tracker.predict(captured.timestamp)
                     bootstrap_x = (
@@ -142,16 +138,21 @@ class AutoBardSession:
                         if predicted is None and frame_count > 1
                         else None
                     )
-                    measurement = pointer_detector.detect(
-                        captured.image,
-                        predicted,
-                        bootstrap_x=bootstrap_x,
+                    measurement = (
+                        pointer_detector.detect(
+                            captured.image,
+                            predicted,
+                            bootstrap_x=bootstrap_x,
+                        )
+                        if capture_has_signal
+                        else None
                     )
                     accepted = measurement is not None and tracker.update(captured.timestamp, measurement)
 
                     pointer_for_schedule: float | None = None
                     measured_x = measurement.x if accepted and measurement is not None else None
                     shown_measurement = measurement if accepted else None
+                    schedule_uses_model = False
                     if accepted:
                         next_note = scheduler.next_pending_note
                         model_max_width = width * float(
@@ -160,39 +161,60 @@ class AutoBardSession:
                                 0.05,
                             )
                         )
-                        # Narrow notes are vulnerable to a one-frame visual jump,
-                        # so schedule those from the constant-speed model. Wide
-                        # notes have enough tolerance for the live measurement,
-                        # which avoids model phase error becoming cumulative.
-                        use_model = (
+                        # The empirically best behavior uses the smooth model
+                        # only for narrow notes. Wide notes retain the live
+                        # measurement and its larger visual tolerance.
+                        schedule_uses_model = (
                             tracker.has_locked_speed
                             and next_note is not None
                             and next_note.right - next_note.left <= model_max_width
                         )
                         pointer_for_schedule = (
                             tracker.predict(captured.timestamp)
-                            if use_model
+                            if schedule_uses_model
                             else tracker.last_x
                         )
                         last_valid_pointer_at = captured.timestamp
-                    elif last_valid_pointer_at is not None and captured.timestamp - last_valid_pointer_at <= prediction_hold_s:
+                    elif (
+                        capture_has_signal
+                        and last_valid_pointer_at is not None
+                        and captured.timestamp - last_valid_pointer_at <= prediction_hold_s
+                    ):
                         pointer_for_schedule = tracker.predict(captured.timestamp)
                         if pointer_for_schedule is not None:
                             shown_measurement = PointerMeasurement(pointer_for_schedule, tracker.last_confidence * 0.6, 1.0)
 
                     event_labels: list[str] = []
+                    action_submit_delays: list[str] = []
+                    action_call_durations: list[str] = []
                     if pointer_for_schedule is not None:
-                        update = scheduler.update(captured.timestamp, pointer_for_schedule, tracker.speed)
+                        update = scheduler.update(
+                            captured.timestamp,
+                            pointer_for_schedule,
+                            tracker.speed,
+                            use_model=schedule_uses_model,
+                        )
                         event_labels.extend(f"M{note.index}" for note in update.newly_missed)
                         for note in update.due:
-                            action.hit_note(note, captured.timestamp)
+                            action_started = time.perf_counter()
+                            action.hit_note(note, action_started)
+                            action_finished = time.perf_counter()
+                            action_submit_delays.append(
+                                f"{(action_started - captured.timestamp) * 1000.0:.3f}"
+                            )
+                            action_call_durations.append(
+                                f"{(action_finished - action_started) * 1000.0:.3f}"
+                            )
                             event_labels.append(f"H{note.index}")
-                            # input_latency_ms compensates the age of the captured
-                            # image. The physical click and in-game snap happen at
-                            # submission time, so anchor the new segment now.
-                            tracker.reanchor_after_hit(captured.timestamp, note.target)
+                            # Anchor at the actual VIIPER submission time.
+                            # Using the earlier capture timestamp made the
+                            # next model segment 5-12 ms too early.
+                            tracker.reanchor_after_hit(action_started, note.target)
                         if update.newly_missed:
-                            LOGGER.debug("Missed notes: %s", [note.index for note in update.newly_missed])
+                            LOGGER.debug(
+                                "Missed notes: %s",
+                                [note.index for note in update.newly_missed],
+                            )
 
                     overlay = draw_overlay(captured.image, notes, note_band, shown_measurement, tracker.speed)
                     recorder.record(
@@ -205,11 +227,18 @@ class AutoBardSession:
                         scheduler.pending_count,
                         measured_x=measured_x,
                         events=";".join(event_labels),
+                        schedule_mode="model" if schedule_uses_model else "live",
+                        action_submit_delay_ms=";".join(action_submit_delays),
+                        action_call_ms=";".join(action_call_durations),
                     )
 
                     if scheduler.complete:
                         state = SessionState.FINISHED
-                        break
+                        if completed_at is None:
+                            completed_at = captured.timestamp
+                        if captured.timestamp - completed_at >= post_complete_observe_s:
+                            break
+                        continue
                     if elapsed >= max_duration_s:
                         LOGGER.warning("Session timed out after %.2fs", elapsed)
                         state = SessionState.FINISHED

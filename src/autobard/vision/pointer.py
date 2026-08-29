@@ -113,22 +113,6 @@ class PointerDetector:
                 selection_scores[:border] = -np.inf
                 selection_scores[-border:] = -np.inf
                 statistics_scores = combined[border:-border]
-            if bootstrap_x is not None and np.isfinite(bootstrap_x):
-                # At session start the pointer must be near the intentionally
-                # missed first note. A wider-than-normal local window rejects
-                # unrelated animated scenery (for example flames at the far
-                # right) without requiring an exact initial position.
-                xs = np.arange(width, dtype=np.float32)
-                radius = max(
-                    12.0,
-                    width * float(self.config.get("bootstrap_search_ratio", 0.10)),
-                )
-                local = np.abs(xs - float(bootstrap_x)) <= radius
-                local[:border] = False
-                local[-border:] = False
-                if local.any():
-                    selection_scores = np.where(local, combined, -np.inf)
-                    statistics_scores = combined[local]
 
         peak_x = int(np.argmax(selection_scores))
         peak = float(combined[peak_x])
@@ -148,4 +132,14 @@ class PointerDetector:
         while right < width - 1 and right - peak_x < max_width and combined[right + 1] >= half_height:
             right += 1
         measured_x = float((left + right) / 2.0)
+        if bootstrap_x is not None and np.isfinite(bootstrap_x):
+            # Keep the successful global motion search, but reject an implausible
+            # winner far away from the first note. The next frame gets a fresh
+            # global attempt instead of being forced onto a static note edge.
+            radius = max(
+                12.0,
+                width * float(self.config.get("bootstrap_search_ratio", 0.10)),
+            )
+            if abs(measured_x - float(bootstrap_x)) > radius:
+                return None
         return PointerMeasurement(measured_x, confidence, float(right - left + 1))

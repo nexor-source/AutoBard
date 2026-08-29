@@ -1,0 +1,481 @@
+{
+  "input": "D:\\workApp\\Github\\AutoBard\\reverse_analysis\\output\\payload.bin",
+  "input_sha256": "C024DF023E491B4037E308878EC9F12062AE13A0E148F09EBC8066B1533D0507",
+  "layers_peeled": 18,
+  "final_entry": "0x1D3",
+  "final_sha256": "2065E6DEB694BC2D0D6D8F45650BF2D2BDF395DF0CAB28A9B94E26BCD7C04DF8",
+  "stop_reason": "unsupported setup instruction at 0x1D7: mov rax, rsp",
+  "layers": [
+    {
+      "number": 1,
+      "kind": "tail-mutation",
+      "old_entry": "0x0",
+      "new_entry": "0x5",
+      "description": "0x0: call 0x4737 | 0x4737: cmovge r9, r9 | 0x473B: jmp 0x4744 | 0x4744: pop rax | 0x4745: jmp 0x474e | 0x474E: rol dword ptr [rax], 0x8f | 0x4751: jmp 0x475a | 0x475A: add dword ptr [rax + 4], 0x9efc6a2e | 0x4761: cmovl rsi, rsi | 0x4765: ror dword ptr [rax + 8], 5 | 0x4769: ror dword ptr [rax + 0xc], 0xe0 | 0x476D: jmp 0x4776 | 0x4776: cmovne r13, r13 | 0x477A: add dword ptr [rax + 0x10], 0x486dc6af | 0x4781: jmp rax",
+      "sha256": "F3F1C93DDADCB98EDC639B39D63A522F5D3E275DE5DACF1715091FC8169F73FA"
+    },
+    {
+      "number": 2,
+      "kind": "rolling-xor",
+      "old_entry": "0x5",
+      "new_entry": "0x29",
+      "description": "rolling XOR: base=0x28, count=0x470E, initial_key=0x7E",
+      "sha256": "75DF90C8B0BA54F37F7B911F35684388AD887DAC0ED2B319E9514C583421320C"
+    },
+    {
+      "number": 3,
+      "kind": "tail-mutation",
+      "old_entry": "0x29",
+      "new_entry": "0x37",
+      "description": "0x29: jmp 0x32 | 0x32: call 0x46f6 | 0x46F6: jmp 0x46ff | 0x46FF: pop rax | 0x4700: jmp 0x4709 | 0x4709: rol dword ptr [rax + 4], 0xc0 | 0x470D: cmovle rcx, rcx | 0x4711: ror dword ptr [rax + 8], 0xa5 | 0x4715: jmp 0x471e | 0x471E: add dword ptr [rax + 0xc], 0xdf9b61f7 | 0x4725: jmp 0x472e | 0x472E: sub dword ptr [rax + 0x10], 0xb777dbe5 | 0x4735: jmp rax",
+      "sha256": "652D71EB5569E167629E4FF5AFB8B71FDF29BF517948629591590932F7179EA7"
+    },
+    {
+      "number": 4,
+      "kind": "rolling-xor",
+      "old_entry": "0x37",
+      "new_entry": "0x56",
+      "description": "rolling XOR: base=0x55, count=0x46A0, initial_key=0x82",
+      "sha256": "3BBD2696BB1B8A7A37D006D5F910080DEC4E24D461D4366B5F689504FFFB2DBB"
+    },
+    {
+      "number": 5,
+      "kind": "tail-mutation",
+      "old_entry": "0x56",
+      "new_entry": "0x5F",
+      "description": "0x56: shl rsi, 0 | 0x5A: call 0x46bd | 0x46BD: cmovb r9, r9 | 0x46C1: jmp 0x46ca | 0x46CA: pop r14 | 0x46CC: jmp 0x46d5 | 0x46D5: ror dword ptr [r14 + 9], 0x90 | 0x46DA: not dword ptr [r14 + 0xd] | 0x46DE: jmp 0x46e7 | 0x46E7: not dword ptr [r14 + 0x11] | 0x46EB: shr r13, 0 | 0x46EF: not dword ptr [r14 + 0x15] | 0x46F3: jmp r14",
+      "sha256": "22B3FF7091741EBA691B0240D84183C81B0C5D1B0CEDD8447C6AFB9D77F1D1D8"
+    },
+    {
+      "number": 6,
+      "kind": "rolling-xor",
+      "old_entry": "0x5F",
+      "new_entry": "0x83",
+      "description": "rolling XOR: base=0x82, count=0x463A, initial_key=0x04",
+      "sha256": "8A73ED2ED2BB1640D6895323C169BAEA25BDA8061A8951EB376C4275869A27BC"
+    },
+    {
+      "number": 7,
+      "kind": "tail-mutation",
+      "old_entry": "0x83",
+      "new_entry": "0x8C",
+      "description": "0x83: cmovnp rsi, rsi | 0x87: call 0x4663 | 0x4663: pop r9 | 0x4665: add dword ptr [r9 + 0xd], 0xe2347a46 | 0x466D: rcl r15, 0 | 0x4671: jmp 0x467a | 0x467A: ror dword ptr [r9 + 0x11], 0xe8 | 0x467F: jmp 0x4688 | 0x4688: shl rdx, 0 | 0x468C: add dword ptr [r9 + 0x15], 0x32f35ea7 | 0x4694: jmp 0x469d | 0x469D: sub dword ptr [r9 + 0x19], 0x810e7d8d | 0x46A5: cmova r10, r10 | 0x46A9: jmp 0x46b2 | 0x46B2: xor dword ptr [r9 + 0x1d], 0x611e755b | 0x46BA: jmp r9",
+      "sha256": "BFEF8F2EBE50CD78B046F29AB673880F0B748C2DD5F1F6EA7FEE3AC55E3FF222"
+    },
+    {
+      "number": 8,
+      "kind": "rolling-xor",
+      "old_entry": "0x8C",
+      "new_entry": "0xBE",
+      "description": "rolling XOR: base=0xBD, count=0x45A5, initial_key=0xEC",
+      "sha256": "700A0F0DA5AA6E5A006E7A628EC312396A5A018444DA263993B62A9D94D71CE4"
+    },
+    {
+      "number": 9,
+      "kind": "tail-mutation",
+      "old_entry": "0xBE",
+      "new_entry": "0xCC",
+      "description": "0xBE: jmp 0xc7 | 0xC7: call 0x461f | 0x461F: jmp 0x4628 | 0x4628: pop rdx | 0x4629: mov r9, r9 | 0x462C: ror dword ptr [rdx + 9], 0x5e | 0x4630: jmp 0x4639 | 0x4639: not dword ptr [rdx + 0xd] | 0x463C: cmc | 0x463D: jmp 0x4646 | 0x4646: xor dword ptr [rdx + 0x11], 0x7469dc22 | 0x464D: jmp 0x4656 | 0x4656: cmova rsi, rsi | 0x465A: xor dword ptr [rdx + 0x15], 0x9f18c4d5 | 0x4661: jmp rdx",
+      "sha256": "E87DCDD12896B37D4D97F0CAECE6BF268FD1584668CCBE53D9E5ADC9FC6C74D8"
+    },
+    {
+      "number": 10,
+      "kind": "rolling-xor",
+      "old_entry": "0xCC",
+      "new_entry": "0xF4",
+      "description": "rolling XOR: base=0xF3, count=0x452B, initial_key=0x51",
+      "sha256": "275A52D56FD25287CF50891D9539138667649BC78B9549537C060E59D7FCE9C5"
+    },
+    {
+      "number": 11,
+      "kind": "tail-mutation",
+      "old_entry": "0xF4",
+      "new_entry": "0xFD",
+      "description": "0xF4: cmovl r8, r8 | 0xF8: call 0x45bd | 0x45BD: pop rdx | 0x45BE: shl r12, 0 | 0x45C2: jmp 0x45cb | 0x45CB: add dword ptr [rdx + 1], 0x7dbbaeb4 | 0x45D2: jmp 0x45db | 0x45DB: not dword ptr [rdx + 5] | 0x45DE: jmp 0x45e7 | 0x45E7: not dword ptr [rdx + 9] | 0x45EA: jmp 0x45f3 | 0x45F3: sub dword ptr [rdx + 0xd], 0x5ec6f8c2 | 0x45FA: jmp 0x45fd | 0x45FD: jmp 0x4606 | 0x4606: add dword ptr [rdx + 0x11], 0x57eb08d9 | 0x460D: jmp 0x4616 | 0x4616: add dword ptr [rdx + 0x15], 0x38905135 | 0x461D: jmp rdx",
+      "sha256": "A716C3A7454E7450A3DDFCC1EFA91D1FCC899EA902E9C62EB8097C5AEBCD1033"
+    },
+    {
+      "number": 12,
+      "kind": "rolling-xor",
+      "old_entry": "0xFD",
+      "new_entry": "0x126",
+      "description": "rolling XOR: base=0x125, count=0x4497, initial_key=0x18",
+      "sha256": "42EC9F153493C2D009526E82127703FA631AF4AA6871FEE3963431C6D0CB268C"
+    },
+    {
+      "number": 13,
+      "kind": "tail-mutation",
+      "old_entry": "0x126",
+      "new_entry": "0x134",
+      "description": "0x126: jmp 0x12f | 0x12F: call 0x454f | 0x454F: jmp 0x4558 | 0x4558: cmovns rsi, rsi | 0x455C: pop r8 | 0x455E: jmp 0x4567 | 0x4567: cmovp r8, r8 | 0x456B: add dword ptr [r8 + 0xa], 0xa47fbb44 | 0x4573: sub dword ptr [r8 + 0xe], 0x2c93885d | 0x457B: jmp 0x4584 | 0x4584: cmovg rsi, rsi | 0x4588: xor dword ptr [r8 + 0x12], 0xc75001e6 | 0x4590: jmp 0x4599 | 0x4599: sub dword ptr [r8 + 0x16], 0x5688e8a7 | 0x45A1: jmp 0x45aa | 0x45AA: sub dword ptr [r8 + 0x1a], 0xbed1433a | 0x45B2: xor dword ptr [r8 + 0x1e], 0x75fb3a2f | 0x45BA: jmp r8",
+      "sha256": "EA21DFF47E68E446394B3A0E94083B30F2C29D61A96EB6D82346E92E94D2A9CC"
+    },
+    {
+      "number": 14,
+      "kind": "rolling-xor",
+      "old_entry": "0x134",
+      "new_entry": "0x166",
+      "description": "rolling XOR: base=0x165, count=0x43E9, initial_key=0x18",
+      "sha256": "E8FF4C8B45871AA2BAC1C2122C2C300F7534D7A32BD5E6EDC84BFCAA5650895F"
+    },
+    {
+      "number": 15,
+      "kind": "tail-mutation",
+      "old_entry": "0x166",
+      "new_entry": "0x175",
+      "description": "0x166: cmc | 0x167: jmp 0x170 | 0x170: call 0x4509 | 0x4509: mov r10, r10 | 0x450C: jmp 0x4515 | 0x4515: pop r12 | 0x4517: ror r11, 0 | 0x451B: jmp 0x4524 | 0x4524: not dword ptr [r12] | 0x4528: jmp 0x4531 | 0x4531: rol dword ptr [r12 + 4], 0xea | 0x4537: rol dword ptr [r12 + 8], 0x14 | 0x453D: jmp 0x4546 | 0x4546: rol dword ptr [r12 + 0xc], 0xdb | 0x454C: jmp r12",
+      "sha256": "1AD21437CB71F630588F5EF5A640F47DD3D886AB643264C57A218BF4716D8C2E"
+    },
+    {
+      "number": 16,
+      "kind": "rolling-xor",
+      "old_entry": "0x175",
+      "new_entry": "0x194",
+      "description": "rolling XOR: base=0x193, count=0x4375, initial_key=0x4E",
+      "sha256": "AE8DEE7D23C1089E6A5258C87027A131281A312019C5BF53B546880D2E01A718"
+    },
+    {
+      "number": 17,
+      "kind": "tail-mutation",
+      "old_entry": "0x194",
+      "new_entry": "0x19D",
+      "description": "0x194: cmovae rsi, rsi | 0x198: call 0x44be | 0x44BE: pop rdx | 0x44BF: jmp 0x44c8 | 0x44C8: sub dword ptr [rdx], 0xa6da032b | 0x44CE: not dword ptr [rdx + 4] | 0x44D1: not dword ptr [rdx + 8] | 0x44D4: not dword ptr [rdx + 0xc] | 0x44D7: jmp 0x44e0 | 0x44E0: xor dword ptr [rdx + 0x10], 0x3995aa5 | 0x44E7: jmp 0x44f0 | 0x44F0: add dword ptr [rdx + 0x14], 0xac137148 | 0x44F7: jmp 0x4500 | 0x4500: add dword ptr [rdx + 0x18], 0x986f5646 | 0x4507: jmp rdx",
+      "sha256": "9234302FDF2C8A77E35EB1D44E2973C58E346D0D9721919CABDF94C172CB6AF3"
+    },
+    {
+      "number": 18,
+      "kind": "rolling-xor",
+      "old_entry": "0x19D",
+      "new_entry": "0x1D3",
+      "description": "rolling XOR: base=0x1D2, count=0x42EB, initial_key=0xD5",
+      "sha256": "2065E6DEB694BC2D0D6D8F45650BF2D2BDF395DF0CAB28A9B94E26BCD7C04DF8"
+    }
+  ],
+  "strings": [
+    {
+      "offset": "0x1E4",
+      "encoding": "ascii",
+      "value": "` UAUAVH"
+    },
+    {
+      "offset": "0x27D",
+      "encoding": "ascii",
+      "value": "A^A]]"
+    },
+    {
+      "offset": "0x2B4",
+      "encoding": "ascii",
+      "value": "8DMV2u"
+    },
+    {
+      "offset": "0x515",
+      "encoding": "ascii",
+      "value": "+~MFH"
+    },
+    {
+      "offset": "0x732",
+      "encoding": "ascii",
+      "value": "t$0E3"
+    },
+    {
+      "offset": "0x10E4",
+      "encoding": "ascii",
+      "value": " LcT$PLc"
+    },
+    {
+      "offset": "0x17D1",
+      "encoding": "ascii",
+      "value": "E#te k"
+    },
+    {
+      "offset": "0x197C",
+      "encoding": "ascii",
+      "value": "x ATAUAVH"
+    },
+    {
+      "offset": "0x19E4",
+      "encoding": "ascii",
+      "value": "T$ L+"
+    },
+    {
+      "offset": "0x1A23",
+      "encoding": "ascii",
+      "value": "A^A]A\\"
+    },
+    {
+      "offset": "0x1A40",
+      "encoding": "ascii",
+      "value": "UVWATAUAVAWH"
+    },
+    {
+      "offset": "0x1E31",
+      "encoding": "ascii",
+      "value": "`A_A^A]A\\_^]"
+    },
+    {
+      "offset": "0x1F7B",
+      "encoding": "ascii",
+      "value": "D+IHH"
+    },
+    {
+      "offset": "0x1FA0",
+      "encoding": "ascii",
+      "value": "9_HrLH"
+    },
+    {
+      "offset": "0x201B",
+      "encoding": "ascii",
+      "value": "@USVWATAUAVAWH"
+    },
+    {
+      "offset": "0x20A5",
+      "encoding": "ascii",
+      "value": "E E!E "
+    },
+    {
+      "offset": "0x20B4",
+      "encoding": "ascii",
+      "value": "E$E!E$"
+    },
+    {
+      "offset": "0x2209",
+      "encoding": "ascii",
+      "value": "HA_A^A]A\\_^[]"
+    },
+    {
+      "offset": "0x235A",
+      "encoding": "ascii",
+      "value": "WATAUH"
+    },
+    {
+      "offset": "0x2401",
+      "encoding": "ascii",
+      "value": "A]A\\_"
+    },
+    {
+      "offset": "0x242C",
+      "encoding": "ascii",
+      "value": "` AUH"
+    },
+    {
+      "offset": "0x2459",
+      "encoding": "ascii",
+      "value": "L$@E3"
+    },
+    {
+      "offset": "0x27D6",
+      "encoding": "ascii",
+      "value": "MagnA"
+    },
+    {
+      "offset": "0x27DE",
+      "encoding": "ascii",
+      "value": "et WA"
+    },
+    {
+      "offset": "0x27E6",
+      "encoding": "ascii",
+      "value": "ire fA"
+    },
+    {
+      "offset": "0x27FF",
+      "encoding": "ascii",
+      "value": "tranA"
+    },
+    {
+      "offset": "0x2807",
+      "encoding": "ascii",
+      "value": "scrifA"
+    },
+    {
+      "offset": "0x2851",
+      "encoding": "ascii",
+      "value": "cliefA"
+    },
+    {
+      "offset": "0x2862",
+      "encoding": "ascii",
+      "value": "servfA"
+    },
+    {
+      "offset": "0x2871",
+      "encoding": "ascii",
+      "value": " profA"
+    },
+    {
+      "offset": "0x2BBD",
+      "encoding": "ascii",
+      "value": "D$0E3"
+    },
+    {
+      "offset": "0x2CA5",
+      "encoding": "ascii",
+      "value": "UWATH"
+    },
+    {
+      "offset": "0x2D19",
+      "encoding": "ascii",
+      "value": "`wg8]\\ub8]]u]8]^uX"
+    },
+    {
+      "offset": "0x2DBA",
+      "encoding": "ascii",
+      "value": "WATAUAVAWH"
+    },
+    {
+      "offset": "0x2EEF",
+      "encoding": "ascii",
+      "value": "A_A^A]A\\_"
+    },
+    {
+      "offset": "0x2F38",
+      "encoding": "ascii",
+      "value": "p WATAUAVAWH"
+    },
+    {
+      "offset": "0x30E1",
+      "encoding": "ascii",
+      "value": "A_A^A]A\\_"
+    },
+    {
+      "offset": "0x339A",
+      "encoding": "ascii",
+      "value": "WATAUAVAWH"
+    },
+    {
+      "offset": "0x33B3",
+      "encoding": "ascii",
+      "value": "taHcA<D"
+    },
+    {
+      "offset": "0x342A",
+      "encoding": "ascii",
+      "value": " A_A^A]A\\_"
+    },
+    {
+      "offset": "0x34FA",
+      "encoding": "ascii",
+      "value": "UATAUH"
+    },
+    {
+      "offset": "0x36C0",
+      "encoding": "ascii",
+      "value": "|$pL+"
+    },
+    {
+      "offset": "0x36D1",
+      "encoding": "ascii",
+      "value": "@A]A\\]"
+    },
+    {
+      "offset": "0x36FA",
+      "encoding": "ascii",
+      "value": "WATAUAVAWH"
+    },
+    {
+      "offset": "0x3726",
+      "encoding": "ascii",
+      "value": "Hcr<H"
+    },
+    {
+      "offset": "0x3787",
+      "encoding": "ascii",
+      "value": "Hco<D"
+    },
+    {
+      "offset": "0x387F",
+      "encoding": "ascii",
+      "value": "H+E0H"
+    },
+    {
+      "offset": "0x395A",
+      "encoding": "ascii",
+      "value": " A_A^A]A\\_"
+    },
+    {
+      "offset": "0x39D5",
+      "encoding": "ascii",
+      "value": "VWATAUAVH"
+    },
+    {
+      "offset": "0x3A27",
+      "encoding": "ascii",
+      "value": "D$ @2"
+    },
+    {
+      "offset": "0x3AD3",
+      "encoding": "ascii",
+      "value": "@A^A]A\\_^"
+    },
+    {
+      "offset": "0x3BB2",
+      "encoding": "ascii",
+      "value": "t$ UWATAUAWH"
+    },
+    {
+      "offset": "0x3D89",
+      "encoding": "ascii",
+      "value": "A_A]A\\_]"
+    },
+    {
+      "offset": "0x3D9B",
+      "encoding": "ascii",
+      "value": "@USVWATAUAVAWH"
+    },
+    {
+      "offset": "0x3DBF",
+      "encoding": "ascii",
+      "value": "H!t$P"
+    },
+    {
+      "offset": "0x3EE3",
+      "encoding": "ascii",
+      "value": "L$PE3"
+    },
+    {
+      "offset": "0x3F7E",
+      "encoding": "ascii",
+      "value": "D$lj!WW"
+    },
+    {
+      "offset": "0x4158",
+      "encoding": "ascii",
+      "value": "H!t$PH"
+    },
+    {
+      "offset": "0x4228",
+      "encoding": "ascii",
+      "value": "D$HE3"
+    },
+    {
+      "offset": "0x4251",
+      "encoding": "ascii",
+      "value": "9\\$@u4E;"
+    },
+    {
+      "offset": "0x425A",
+      "encoding": "ascii",
+      "value": "u/D;D$Xu(H"
+    },
+    {
+      "offset": "0x42D9",
+      "encoding": "ascii",
+      "value": "A_A^A]A\\_^[]"
+    },
+    {
+      "offset": "0x42E7",
+      "encoding": "ascii",
+      "value": "%@)!#!$m"
+    },
+    {
+      "offset": "0x4595",
+      "encoding": "ascii",
+      "value": "qynZA"
+    },
+    {
+      "offset": "0x45A5",
+      "encoding": "ascii",
+      "value": " >(hFA"
+    }
+  ]
+}

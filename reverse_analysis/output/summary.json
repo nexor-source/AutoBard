@@ -1,0 +1,9224 @@
+{
+  "sample": "D:\\7.0_64_create_thread_safe.exe",
+  "sha256": "8FDF00F61A4953846BEDC651F05BBD09B0247D9781C89DCE98FDDE72F18D9656",
+  "machine": "0x8664",
+  "image_base": "0x140000000",
+  "entry_rva": "0x1C48",
+  "function_count": 407,
+  "imports": {
+    "0x14000E000": "KERNEL32.dll!GetFileSizeEx",
+    "0x14000E008": "KERNEL32.dll!VirtualProtect",
+    "0x14000E010": "KERNEL32.dll!SetLastError",
+    "0x14000E018": "KERNEL32.dll!VirtualFree",
+    "0x14000E020": "KERNEL32.dll!GetCurrentProcess",
+    "0x14000E028": "KERNEL32.dll!WriteFile",
+    "0x14000E030": "KERNEL32.dll!VirtualAlloc",
+    "0x14000E038": "KERNEL32.dll!GetModuleFileNameW",
+    "0x14000E040": "KERNEL32.dll!WaitForSingleObject",
+    "0x14000E048": "KERNEL32.dll!CreateFileW",
+    "0x14000E050": "KERNEL32.dll!GetCurrentThreadId",
+    "0x14000E058": "KERNEL32.dll!GetExitCodeThread",
+    "0x14000E060": "KERNEL32.dll!GetLastError",
+    "0x14000E068": "KERNEL32.dll!CloseHandle",
+    "0x14000E070": "KERNEL32.dll!CreateThread",
+    "0x14000E078": "KERNEL32.dll!GetModuleHandleW",
+    "0x14000E080": "KERNEL32.dll!FlushInstructionCache",
+    "0x14000E088": "KERNEL32.dll!WriteConsoleW",
+    "0x14000E090": "KERNEL32.dll!GetConsoleMode",
+    "0x14000E098": "KERNEL32.dll!GetConsoleOutputCP",
+    "0x14000E0A0": "KERNEL32.dll!FlushFileBuffers",
+    "0x14000E0A8": "KERNEL32.dll!HeapReAlloc",
+    "0x14000E0B0": "KERNEL32.dll!HeapSize",
+    "0x14000E0B8": "KERNEL32.dll!GetProcessHeap",
+    "0x14000E0C0": "KERNEL32.dll!GetStringTypeW",
+    "0x14000E0C8": "KERNEL32.dll!GetFileType",
+    "0x14000E0D0": "KERNEL32.dll!SetStdHandle",
+    "0x14000E0D8": "KERNEL32.dll!FreeEnvironmentStringsW",
+    "0x14000E0E0": "KERNEL32.dll!GetEnvironmentStringsW",
+    "0x14000E0E8": "KERNEL32.dll!WideCharToMultiByte",
+    "0x14000E0F0": "KERNEL32.dll!MultiByteToWideChar",
+    "0x14000E0F8": "KERNEL32.dll!GetCommandLineW",
+    "0x14000E100": "KERNEL32.dll!GetCommandLineA",
+    "0x14000E108": "KERNEL32.dll!GetCPInfo",
+    "0x14000E110": "KERNEL32.dll!GetOEMCP",
+    "0x14000E118": "KERNEL32.dll!GetACP",
+    "0x14000E120": "KERNEL32.dll!IsValidCodePage",
+    "0x14000E128": "KERNEL32.dll!FindNextFileW",
+    "0x14000E130": "KERNEL32.dll!FindFirstFileExW",
+    "0x14000E138": "KERNEL32.dll!SetFilePointerEx",
+    "0x14000E140": "KERNEL32.dll!ReadFile",
+    "0x14000E148": "KERNEL32.dll!RtlCaptureContext",
+    "0x14000E150": "KERNEL32.dll!RtlLookupFunctionEntry",
+    "0x14000E158": "KERNEL32.dll!RtlVirtualUnwind",
+    "0x14000E160": "KERNEL32.dll!UnhandledExceptionFilter",
+    "0x14000E168": "KERNEL32.dll!SetUnhandledExceptionFilter",
+    "0x14000E170": "KERNEL32.dll!TerminateProcess",
+    "0x14000E178": "KERNEL32.dll!IsProcessorFeaturePresent",
+    "0x14000E180": "KERNEL32.dll!QueryPerformanceCounter",
+    "0x14000E188": "KERNEL32.dll!GetCurrentProcessId",
+    "0x14000E190": "KERNEL32.dll!GetSystemTimeAsFileTime",
+    "0x14000E198": "KERNEL32.dll!InitializeSListHead",
+    "0x14000E1A0": "KERNEL32.dll!IsDebuggerPresent",
+    "0x14000E1A8": "KERNEL32.dll!GetStartupInfoW",
+    "0x14000E1B0": "KERNEL32.dll!RtlUnwindEx",
+    "0x14000E1B8": "KERNEL32.dll!RtlPcToFileHeader",
+    "0x14000E1C0": "KERNEL32.dll!RaiseException",
+    "0x14000E1C8": "KERNEL32.dll!EncodePointer",
+    "0x14000E1D0": "KERNEL32.dll!EnterCriticalSection",
+    "0x14000E1D8": "KERNEL32.dll!LeaveCriticalSection",
+    "0x14000E1E0": "KERNEL32.dll!DeleteCriticalSection",
+    "0x14000E1E8": "KERNEL32.dll!InitializeCriticalSectionAndSpinCount",
+    "0x14000E1F0": "KERNEL32.dll!TlsAlloc",
+    "0x14000E1F8": "KERNEL32.dll!TlsGetValue",
+    "0x14000E200": "KERNEL32.dll!TlsSetValue",
+    "0x14000E208": "KERNEL32.dll!TlsFree",
+    "0x14000E210": "KERNEL32.dll!FreeLibrary",
+    "0x14000E218": "KERNEL32.dll!GetProcAddress",
+    "0x14000E220": "KERNEL32.dll!LoadLibraryExW",
+    "0x14000E228": "KERNEL32.dll!GetModuleHandleExW",
+    "0x14000E230": "KERNEL32.dll!GetStdHandle",
+    "0x14000E238": "KERNEL32.dll!ExitProcess",
+    "0x14000E240": "KERNEL32.dll!HeapAlloc",
+    "0x14000E248": "KERNEL32.dll!HeapFree",
+    "0x14000E250": "KERNEL32.dll!FlsAlloc",
+    "0x14000E258": "KERNEL32.dll!FlsGetValue",
+    "0x14000E260": "KERNEL32.dll!FlsSetValue",
+    "0x14000E268": "KERNEL32.dll!FlsFree",
+    "0x14000E270": "KERNEL32.dll!InitializeCriticalSectionEx",
+    "0x14000E278": "KERNEL32.dll!LCMapStringW",
+    "0x14000E280": "KERNEL32.dll!FindClose"
+  },
+  "import_callers": {
+    "KERNEL32.dll!CloseHandle": [
+      "0x115C",
+      "0x12C0",
+      "0xC534",
+      "0xC550",
+      "0xC74C"
+    ],
+    "KERNEL32.dll!CreateFileW": [
+      "0x12C0",
+      "0xC4E0",
+      "0xC550"
+    ],
+    "KERNEL32.dll!CreateThread": [
+      "0x1734"
+    ],
+    "KERNEL32.dll!DeleteCriticalSection": [
+      "0x4A34",
+      "0x7460",
+      "0x8B90",
+      "0xA290",
+      "0xC078"
+    ],
+    "KERNEL32.dll!EncodePointer": [
+      "0x3D00"
+    ],
+    "KERNEL32.dll!ExitProcess": [
+      "0x5D70"
+    ],
+    "KERNEL32.dll!FindClose": [
+      "0x7708"
+    ],
+    "KERNEL32.dll!FindFirstFileExW": [
+      "0x7708"
+    ],
+    "KERNEL32.dll!FindNextFileW": [
+      "0x7708"
+    ],
+    "KERNEL32.dll!FlushFileBuffers": [
+      "0xB2DC"
+    ],
+    "KERNEL32.dll!FlushInstructionCache": [
+      "0x11D4"
+    ],
+    "KERNEL32.dll!FreeEnvironmentStringsW": [
+      "0x8A18"
+    ],
+    "KERNEL32.dll!FreeLibrary": [
+      "0x4A6C",
+      "0x5DA0",
+      "0x6F78",
+      "0x7388"
+    ],
+    "KERNEL32.dll!GetACP": [
+      "0x7F04"
+    ],
+    "KERNEL32.dll!GetCPInfo": [
+      "0x801C",
+      "0x85B8"
+    ],
+    "KERNEL32.dll!GetCommandLineA": [
+      "0x8880"
+    ],
+    "KERNEL32.dll!GetCommandLineW": [
+      "0x8880"
+    ],
+    "KERNEL32.dll!GetConsoleMode": [
+      "0xBD48"
+    ],
+    "KERNEL32.dll!GetConsoleOutputCP": [
+      "0xB3FC"
+    ],
+    "KERNEL32.dll!GetCurrentProcess": [
+      "0x11D4",
+      "0x1C5C",
+      "0x51DC",
+      "0x5D70"
+    ],
+    "KERNEL32.dll!GetCurrentProcessId": [
+      "0x2040"
+    ],
+    "KERNEL32.dll!GetCurrentThreadId": [
+      "0x2040"
+    ],
+    "KERNEL32.dll!GetEnvironmentStringsW": [
+      "0x8A18"
+    ],
+    "KERNEL32.dll!GetExitCodeThread": [
+      "0x115C"
+    ],
+    "KERNEL32.dll!GetFileSizeEx": [
+      "0x12C0"
+    ],
+    "KERNEL32.dll!GetFileType": [
+      "0x8E24",
+      "0x8F24"
+    ],
+    "KERNEL32.dll!GetLastError": [
+      "0x115C",
+      "0x11D4",
+      "0x12C0",
+      "0x1734",
+      "0x323C",
+      "0x4A6C",
+      "0x4DD0",
+      "0x4E38",
+      "0x4EA4",
+      "0x6A84",
+      "0x6C04",
+      "0x6F20",
+      "0x6F78",
+      "0xB2DC",
+      "0xB3FC",
+      "0xB890",
+      "0xB998",
+      "0xBAB4",
+      "0xBD48",
+      "0xC228",
+      "0xC550",
+      "0xC74C"
+    ],
+    "KERNEL32.dll!GetModuleFileNameW": [
+      "0x12C0",
+      "0x56F8"
+    ],
+    "KERNEL32.dll!GetModuleHandleExW": [
+      "0x5DA0"
+    ],
+    "KERNEL32.dll!GetModuleHandleW": [
+      "0x2300",
+      "0x5C8C"
+    ],
+    "KERNEL32.dll!GetOEMCP": [
+      "0x7F04"
+    ],
+    "KERNEL32.dll!GetProcAddress": [
+      "0x4A6C",
+      "0x5DA0",
+      "0x6F78"
+    ],
+    "KERNEL32.dll!GetProcessHeap": [
+      "0x9A20"
+    ],
+    "KERNEL32.dll!GetStartupInfoW": [
+      "0x22BC",
+      "0x8E24"
+    ],
+    "KERNEL32.dll!GetStdHandle": [
+      "0x8F24"
+    ],
+    "KERNEL32.dll!GetStringTypeW": [
+      "0x93B8"
+    ],
+    "KERNEL32.dll!GetSystemTimeAsFileTime": [
+      "0x2040"
+    ],
+    "KERNEL32.dll!HeapAlloc": [
+      "0x6EA0",
+      "0x74C0"
+    ],
+    "KERNEL32.dll!HeapFree": [
+      "0x6F20"
+    ],
+    "KERNEL32.dll!HeapReAlloc": [
+      "0xB260"
+    ],
+    "KERNEL32.dll!InitializeCriticalSectionAndSpinCount": [
+      "0x4CE8"
+    ],
+    "KERNEL32.dll!IsDebuggerPresent": [
+      "0x2170",
+      "0x4EF0"
+    ],
+    "KERNEL32.dll!IsProcessorFeaturePresent": [
+      "0x1C90",
+      "0x2170",
+      "0x51DC",
+      "0x65D4"
+    ],
+    "KERNEL32.dll!IsValidCodePage": [
+      "0x85B8"
+    ],
+    "KERNEL32.dll!LCMapStringW": [
+      "0x71BC"
+    ],
+    "KERNEL32.dll!LoadLibraryExW": [
+      "0x4A6C",
+      "0x6F78"
+    ],
+    "KERNEL32.dll!QueryPerformanceCounter": [
+      "0x2040"
+    ],
+    "KERNEL32.dll!RaiseException": [
+      "0x30F4",
+      "0x431C"
+    ],
+    "KERNEL32.dll!ReadFile": [
+      "0x12C0"
+    ],
+    "KERNEL32.dll!RtlCaptureContext": [
+      "0x1D64",
+      "0x2170",
+      "0x4EF0"
+    ],
+    "KERNEL32.dll!RtlLookupFunctionEntry": [
+      "0x1D64",
+      "0x2170",
+      "0x2838",
+      "0x4EF0"
+    ],
+    "KERNEL32.dll!RtlPcToFileHeader": [
+      "0x30F4"
+    ],
+    "KERNEL32.dll!RtlUnwindEx": [
+      "0x2A58",
+      "0x2CCC"
+    ],
+    "KERNEL32.dll!RtlVirtualUnwind": [
+      "0x1D64",
+      "0x2170",
+      "0x4EF0"
+    ],
+    "KERNEL32.dll!SetFilePointerEx": [
+      "0x12C0",
+      "0xC228"
+    ],
+    "KERNEL32.dll!SetLastError": [
+      "0x323C",
+      "0x4DD0",
+      "0x4E38",
+      "0x4EA4",
+      "0x6A84",
+      "0x6C04"
+    ],
+    "KERNEL32.dll!SetStdHandle": [
+      "0x8CD8"
+    ],
+    "KERNEL32.dll!SetUnhandledExceptionFilter": [
+      "0x1C5C",
+      "0x2170",
+      "0x4EF0"
+    ],
+    "KERNEL32.dll!TerminateProcess": [
+      "0x5D70"
+    ],
+    "KERNEL32.dll!TlsSetValue": [
+      "0x4C94"
+    ],
+    "KERNEL32.dll!UnhandledExceptionFilter": [
+      "0x1C5C",
+      "0x2170",
+      "0x4EF0"
+    ],
+    "KERNEL32.dll!VirtualAlloc": [
+      "0x11D4"
+    ],
+    "KERNEL32.dll!VirtualFree": [
+      "0x11D4",
+      "0x1734"
+    ],
+    "KERNEL32.dll!VirtualProtect": [
+      "0x11D4",
+      "0x6F78",
+      "0x7314"
+    ],
+    "KERNEL32.dll!WaitForSingleObject": [
+      "0x115C"
+    ],
+    "KERNEL32.dll!WriteConsoleW": [
+      "0xC550"
+    ],
+    "KERNEL32.dll!WriteFile": [
+      "0xB3FC",
+      "0xB890",
+      "0xB998",
+      "0xBAB4",
+      "0xBD48"
+    ]
+  },
+  "interesting_functions": [
+    {
+      "rva": "0x115C",
+      "va": "0x14000115C",
+      "end_rva": "0x11CA",
+      "source": "pdata",
+      "instruction_count": 30,
+      "direct_calls": [],
+      "called_by": [
+        "0x1734"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!CloseHandle",
+        "KERNEL32.dll!GetExitCodeThread",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!WaitForSingleObject"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x11D4",
+      "va": "0x1400011D4",
+      "end_rva": "0x12BE",
+      "source": "pdata",
+      "instruction_count": 63,
+      "direct_calls": [
+        "0xD050"
+      ],
+      "called_by": [
+        "0x1734"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!FlushInstructionCache",
+        "KERNEL32.dll!GetCurrentProcess",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!VirtualAlloc",
+        "KERNEL32.dll!VirtualFree",
+        "KERNEL32.dll!VirtualProtect"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x12C0",
+      "va": "0x1400012C0",
+      "end_rva": "0x15B2",
+      "source": "pdata",
+      "instruction_count": 183,
+      "direct_calls": [
+        "0x15C4",
+        "0x1960",
+        "0xCC90",
+        "0xD8A0"
+      ],
+      "called_by": [
+        "0x1734"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!CloseHandle",
+        "KERNEL32.dll!CreateFileW",
+        "KERNEL32.dll!GetFileSizeEx",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!GetModuleFileNameW",
+        "KERNEL32.dll!ReadFile",
+        "KERNEL32.dll!SetFilePointerEx"
+      ],
+      "strings": [
+        "BLT_PAYLOAD_001"
+      ]
+    },
+    {
+      "rva": "0x15C4",
+      "va": "0x1400015C4",
+      "end_rva": "0x1720",
+      "source": "pdata",
+      "instruction_count": 95,
+      "direct_calls": [
+        "0x10C4",
+        "0x1720",
+        "0x1980",
+        "0x19BC",
+        "0x51DC",
+        "0xCC90",
+        "0xD050"
+      ],
+      "called_by": [
+        "0x12C0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1734",
+      "va": "0x140001734",
+      "end_rva": "0x183F",
+      "source": "pdata",
+      "instruction_count": 70,
+      "direct_calls": [
+        "0x115C",
+        "0x11D4",
+        "0x12C0",
+        "0x19BC",
+        "0x51DC"
+      ],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!CreateThread",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!VirtualFree"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x19F0",
+      "va": "0x1400019F0",
+      "end_rva": "0x1AA6",
+      "source": "pdata",
+      "instruction_count": 48,
+      "direct_calls": [
+        "0x1E78",
+        "0x2028",
+        "0x20F0",
+        "0x20F4",
+        "0x20FC",
+        "0x2104",
+        "0x2114",
+        "0x2118",
+        "0x2148",
+        "0x2170",
+        "0x22F8",
+        "0x23C8",
+        "0x54AC",
+        "0x54D0",
+        "0x56F8",
+        "0x5AC4",
+        "0x5E80",
+        "0x5F6C",
+        "0x601C"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1AD4",
+      "va": "0x140001AD4",
+      "end_rva": "0x1C45",
+      "source": "pdata",
+      "instruction_count": 99,
+      "direct_calls": [
+        "0x1734",
+        "0x1E00",
+        "0x1E3C",
+        "0x1F04",
+        "0x1F9C",
+        "0x1FC0",
+        "0x2154",
+        "0x215C",
+        "0x2170",
+        "0x22BC",
+        "0x2300",
+        "0x5ACC",
+        "0x5B20",
+        "0x5B58",
+        "0x5E0C",
+        "0x5E1C",
+        "0x5E2C",
+        "0x5E38",
+        "0x5E74"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1C48",
+      "va": "0x140001C48",
+      "end_rva": "0x1C5A",
+      "source": "pdata",
+      "instruction_count": 4,
+      "direct_calls": [
+        "0x2040"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1E78",
+      "va": "0x140001E78",
+      "end_rva": "0x1F03",
+      "source": "pdata",
+      "instruction_count": 36,
+      "direct_calls": [
+        "0x2170",
+        "0x26D8",
+        "0x63CC"
+      ],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2170",
+      "va": "0x140002170",
+      "end_rva": "0x22BB",
+      "source": "pdata",
+      "instruction_count": 71,
+      "direct_calls": [
+        "0x2164",
+        "0xCC90"
+      ],
+      "called_by": [
+        "0x19F0",
+        "0x1AD4",
+        "0x1E78"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!IsDebuggerPresent",
+        "KERNEL32.dll!IsProcessorFeaturePresent",
+        "KERNEL32.dll!RtlCaptureContext",
+        "KERNEL32.dll!RtlLookupFunctionEntry",
+        "KERNEL32.dll!RtlVirtualUnwind",
+        "KERNEL32.dll!SetUnhandledExceptionFilter",
+        "KERNEL32.dll!UnhandledExceptionFilter"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x2364",
+      "va": "0x140002364",
+      "end_rva": "0x23C7",
+      "source": "pdata",
+      "instruction_count": 29,
+      "direct_calls": [
+        "0x30C0",
+        "0x30D4",
+        "0x65B4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x26F0",
+      "va": "0x1400026F0",
+      "end_rva": "0x2744",
+      "source": "pdata",
+      "instruction_count": 22,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x3D00"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2744",
+      "va": "0x140002744",
+      "end_rva": "0x27A6",
+      "source": "pdata",
+      "instruction_count": 31,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x27A8",
+        "0x27D4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x27D4",
+      "va": "0x1400027D4",
+      "end_rva": "0x2838",
+      "source": "pdata",
+      "instruction_count": 29,
+      "direct_calls": [
+        "0x2744",
+        "0x2838",
+        "0x3414",
+        "0x45A0"
+      ],
+      "called_by": [
+        "0x4084"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2920",
+      "va": "0x140002920",
+      "end_rva": "0x2A56",
+      "source": "pdata",
+      "instruction_count": 93,
+      "direct_calls": [
+        "0x3414",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x3810",
+        "0x3D00"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2B5C",
+      "va": "0x140002B5C",
+      "end_rva": "0x2B96",
+      "source": "pdata",
+      "instruction_count": 18,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x431C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2B98",
+      "va": "0x140002B98",
+      "end_rva": "0x2BEB",
+      "source": "pdata",
+      "instruction_count": 26,
+      "direct_calls": [
+        "0x3220",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x431C",
+        "0xDB00"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2BEC",
+      "va": "0x140002BEC",
+      "end_rva": "0x2BFE",
+      "source": "pdata",
+      "instruction_count": 5,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x3484",
+        "0x3738",
+        "0x3810",
+        "0x3D00",
+        "0x3F64",
+        "0x4084",
+        "0x45A0",
+        "0x47C4",
+        "0x48AC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2C00",
+      "va": "0x140002C00",
+      "end_rva": "0x2C12",
+      "source": "pdata",
+      "instruction_count": 5,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x3484",
+        "0x3678",
+        "0x3810",
+        "0x3F64",
+        "0x4084",
+        "0x47C4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2C14",
+      "va": "0x140002C14",
+      "end_rva": "0x2C2C",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x45A0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2C2C",
+      "va": "0x140002C2C",
+      "end_rva": "0x2C44",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x3810"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2C44",
+      "va": "0x140002C44",
+      "end_rva": "0x2CCA",
+      "source": "pdata",
+      "instruction_count": 36,
+      "direct_calls": [
+        "0x3220",
+        "0x42B4"
+      ],
+      "called_by": [
+        "0xCA4C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3004",
+      "va": "0x140003004",
+      "end_rva": "0x3033",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x431C",
+        "0xDB00"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3058",
+      "va": "0x140003058",
+      "end_rva": "0x30BE",
+      "source": "pdata",
+      "instruction_count": 29,
+      "direct_calls": [
+        "0x3220",
+        "0x65B4"
+      ],
+      "called_by": [
+        "0xDB86"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x30C0",
+      "va": "0x1400030C0",
+      "end_rva": "0x30D2",
+      "source": "pdata",
+      "instruction_count": 5,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x2364"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x30D4",
+      "va": "0x1400030D4",
+      "end_rva": "0x30E6",
+      "source": "pdata",
+      "instruction_count": 5,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x2364"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x30E8",
+      "va": "0x1400030E8",
+      "end_rva": "0x30F2",
+      "source": "pdata",
+      "instruction_count": 3,
+      "direct_calls": [
+        "0x65B4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x319C",
+      "va": "0x14000319C",
+      "end_rva": "0x31C4",
+      "source": "pdata",
+      "instruction_count": 14,
+      "direct_calls": [
+        "0x3308",
+        "0x49EC",
+        "0x4A34"
+      ],
+      "called_by": [
+        "0x1E3C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x31C4",
+      "va": "0x1400031C4",
+      "end_rva": "0x31DD",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [
+        "0x3350",
+        "0x4A34"
+      ],
+      "called_by": [
+        "0x1E3C",
+        "0x1FC0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3220",
+      "va": "0x140003220",
+      "end_rva": "0x3239",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [
+        "0x323C",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x26F0",
+        "0x2744",
+        "0x2B5C",
+        "0x2B98",
+        "0x2BEC",
+        "0x2C00",
+        "0x2C14",
+        "0x2C2C",
+        "0x2C44",
+        "0x3004",
+        "0x3058",
+        "0x30C0",
+        "0x30D4",
+        "0x3810",
+        "0x3D00",
+        "0x4084",
+        "0x431C",
+        "0x4508",
+        "0x45A0",
+        "0xCB30",
+        "0xD9A6",
+        "0xDA4D",
+        "0xDB00",
+        "0xDB9C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x323C",
+      "va": "0x14000323C",
+      "end_rva": "0x3305",
+      "source": "pdata",
+      "instruction_count": 55,
+      "direct_calls": [
+        "0x4C4C",
+        "0x4C94",
+        "0x6030",
+        "0x66B0"
+      ],
+      "called_by": [
+        "0x3220"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!SetLastError"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x3308",
+      "va": "0x140003308",
+      "end_rva": "0x334F",
+      "source": "pdata",
+      "instruction_count": 18,
+      "direct_calls": [
+        "0x3350",
+        "0x4BBC",
+        "0x4C94"
+      ],
+      "called_by": [
+        "0x319C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3350",
+      "va": "0x140003350",
+      "end_rva": "0x3375",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [
+        "0x4C04"
+      ],
+      "called_by": [
+        "0x31C4",
+        "0x3308"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3378",
+      "va": "0x140003378",
+      "end_rva": "0x339F",
+      "source": "pdata",
+      "instruction_count": 12,
+      "direct_calls": [
+        "0x341C"
+      ],
+      "called_by": [
+        "0x45A0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x341C",
+      "va": "0x14000341C",
+      "end_rva": "0x3482",
+      "source": "pdata",
+      "instruction_count": 34,
+      "direct_calls": [
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x3378",
+        "0x4084"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3484",
+      "va": "0x140003484",
+      "end_rva": "0x3676",
+      "source": "pdata",
+      "instruction_count": 144,
+      "direct_calls": [
+        "0x2BEC",
+        "0x2C00",
+        "0x3034",
+        "0x65D4",
+        "0xD050"
+      ],
+      "called_by": [
+        "0x3678"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3678",
+      "va": "0x140003678",
+      "end_rva": "0x3738",
+      "source": "pdata",
+      "instruction_count": 56,
+      "direct_calls": [
+        "0x2C00",
+        "0x3034",
+        "0x3484",
+        "0x4934",
+        "0x4940",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x3738"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3738",
+      "va": "0x140003738",
+      "end_rva": "0x380E",
+      "source": "pdata",
+      "instruction_count": 58,
+      "direct_calls": [
+        "0x2838",
+        "0x2A58",
+        "0x2BEC",
+        "0x3678"
+      ],
+      "called_by": [
+        "0x3810",
+        "0x3D00"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3810",
+      "va": "0x140003810",
+      "end_rva": "0x3CFF",
+      "source": "pdata",
+      "instruction_count": 315,
+      "direct_calls": [
+        "0x1960",
+        "0x27A8",
+        "0x2838",
+        "0x2920",
+        "0x2A58",
+        "0x2BEC",
+        "0x2C00",
+        "0x2C2C",
+        "0x2F8C",
+        "0x30F4",
+        "0x3220",
+        "0x3738",
+        "0x3D00",
+        "0x3F64",
+        "0x42F8",
+        "0x472C",
+        "0x47C4",
+        "0x48AC",
+        "0x65B4",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x4084"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3D00",
+      "va": "0x140003D00",
+      "end_rva": "0x3F61",
+      "source": "pdata",
+      "instruction_count": 141,
+      "direct_calls": [
+        "0x26F0",
+        "0x2920",
+        "0x2BEC",
+        "0x3220",
+        "0x3738",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x3810"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!EncodePointer"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x4084",
+      "va": "0x140004084",
+      "end_rva": "0x42B1",
+      "source": "pdata",
+      "instruction_count": 145,
+      "direct_calls": [
+        "0x27D4",
+        "0x2BEC",
+        "0x2C00",
+        "0x3220",
+        "0x341C",
+        "0x3810",
+        "0x45A0",
+        "0x49B4",
+        "0x65D4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x431C",
+      "va": "0x14000431C",
+      "end_rva": "0x4508",
+      "source": "pdata",
+      "instruction_count": 117,
+      "direct_calls": [
+        "0x2B5C",
+        "0x2B98",
+        "0x2F8C",
+        "0x3004",
+        "0x3220",
+        "0x49B4",
+        "0x4D90"
+      ],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!RaiseException"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x4508",
+      "va": "0x140004508",
+      "end_rva": "0x459D",
+      "source": "pdata",
+      "instruction_count": 42,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0xDADF"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x45A0",
+      "va": "0x1400045A0",
+      "end_rva": "0x4729",
+      "source": "pdata",
+      "instruction_count": 112,
+      "direct_calls": [
+        "0x2BEC",
+        "0x2C14",
+        "0x3220",
+        "0x3378",
+        "0x33CC",
+        "0x4D90",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x27D4",
+        "0x4084"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x47C4",
+      "va": "0x1400047C4",
+      "end_rva": "0x48AB",
+      "source": "pdata",
+      "instruction_count": 71,
+      "direct_calls": [
+        "0x2BEC",
+        "0x2C00",
+        "0x3F64",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x3810"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x49EC",
+      "va": "0x1400049EC",
+      "end_rva": "0x4A32",
+      "source": "pdata",
+      "instruction_count": 22,
+      "direct_calls": [
+        "0x4A34",
+        "0x4CE8"
+      ],
+      "called_by": [
+        "0x319C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x4A6C",
+      "va": "0x140004A6C",
+      "end_rva": "0x4BBB",
+      "source": "pdata",
+      "instruction_count": 88,
+      "direct_calls": [
+        "0x6740"
+      ],
+      "called_by": [
+        "0x4BBC",
+        "0x4C04",
+        "0x4C4C",
+        "0x4C94",
+        "0x4CE8"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!FreeLibrary",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!GetProcAddress",
+        "KERNEL32.dll!LoadLibraryExW"
+      ],
+      "strings": [
+        "api-ms-"
+      ]
+    },
+    {
+      "rva": "0x4BBC",
+      "va": "0x140004BBC",
+      "end_rva": "0x4C01",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x4A6C"
+      ],
+      "called_by": [
+        "0x3308"
+      ],
+      "import_calls": [],
+      "strings": [
+        "FlsAlloc"
+      ]
+    },
+    {
+      "rva": "0x4C04",
+      "va": "0x140004C04",
+      "end_rva": "0x4C4A",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x4A6C"
+      ],
+      "called_by": [
+        "0x3350"
+      ],
+      "import_calls": [],
+      "strings": [
+        "FlsFree"
+      ]
+    },
+    {
+      "rva": "0x4C4C",
+      "va": "0x140004C4C",
+      "end_rva": "0x4C92",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x4A6C"
+      ],
+      "called_by": [
+        "0x323C"
+      ],
+      "import_calls": [],
+      "strings": [
+        "FlsGetValue"
+      ]
+    },
+    {
+      "rva": "0x4C94",
+      "va": "0x140004C94",
+      "end_rva": "0x4CE5",
+      "source": "pdata",
+      "instruction_count": 21,
+      "direct_calls": [
+        "0x4A6C"
+      ],
+      "called_by": [
+        "0x323C",
+        "0x3308"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!TlsSetValue"
+      ],
+      "strings": [
+        "FlsSetValue"
+      ]
+    },
+    {
+      "rva": "0x4CE8",
+      "va": "0x140004CE8",
+      "end_rva": "0x4D49",
+      "source": "pdata",
+      "instruction_count": 25,
+      "direct_calls": [
+        "0x4A6C"
+      ],
+      "called_by": [
+        "0x49EC"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!InitializeCriticalSectionAndSpinCount"
+      ],
+      "strings": [
+        "InitializeCriticalSectionEx"
+      ]
+    },
+    {
+      "rva": "0x4DD0",
+      "va": "0x140004DD0",
+      "end_rva": "0x4E37",
+      "source": "pdata",
+      "instruction_count": 30,
+      "direct_calls": [
+        "0x65D4",
+        "0x6C94"
+      ],
+      "called_by": [
+        "0x5068",
+        "0x66C0",
+        "0xA094",
+        "0xC444"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!SetLastError"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x4EF0",
+      "va": "0x140004EF0",
+      "end_rva": "0x505D",
+      "source": "pdata",
+      "instruction_count": 86,
+      "direct_calls": [
+        "0x1960",
+        "0x2164",
+        "0xCC90"
+      ],
+      "called_by": [
+        "0x51DC",
+        "0x65D4"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!IsDebuggerPresent",
+        "KERNEL32.dll!RtlCaptureContext",
+        "KERNEL32.dll!RtlLookupFunctionEntry",
+        "KERNEL32.dll!RtlVirtualUnwind",
+        "KERNEL32.dll!SetUnhandledExceptionFilter",
+        "KERNEL32.dll!UnhandledExceptionFilter"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x5068",
+      "va": "0x140005068",
+      "end_rva": "0x5103",
+      "source": "pdata",
+      "instruction_count": 39,
+      "direct_calls": [
+        "0x4DD0",
+        "0x5104"
+      ],
+      "called_by": [
+        "0x51BC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5104",
+      "va": "0x140005104",
+      "end_rva": "0x51BB",
+      "source": "pdata",
+      "instruction_count": 50,
+      "direct_calls": [
+        "0x4E38",
+        "0x4EA4",
+        "0x51DC",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x5068",
+        "0xBC28",
+        "0xBD48",
+        "0xC320",
+        "0xC39C",
+        "0xC688"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x51DC",
+      "va": "0x1400051DC",
+      "end_rva": "0x5223",
+      "source": "pdata",
+      "instruction_count": 16,
+      "direct_calls": [
+        "0x4EF0"
+      ],
+      "called_by": [
+        "0x15C4",
+        "0x1734",
+        "0x5104",
+        "0x58E4",
+        "0x7708",
+        "0x7B08"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetCurrentProcess",
+        "KERNEL32.dll!IsProcessorFeaturePresent"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x5874",
+      "va": "0x140005874",
+      "end_rva": "0x58E2",
+      "source": "pdata",
+      "instruction_count": 33,
+      "direct_calls": [
+        "0x58E4",
+        "0x6F20",
+        "0x8A18"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x58E4",
+      "va": "0x1400058E4",
+      "end_rva": "0x5A02",
+      "source": "pdata",
+      "instruction_count": 87,
+      "direct_calls": [
+        "0x51DC",
+        "0x5A04",
+        "0x6EA0",
+        "0x6F20",
+        "0x7520"
+      ],
+      "called_by": [
+        "0x5874"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5BCC",
+      "va": "0x140005BCC",
+      "end_rva": "0x5C8C",
+      "source": "pdata",
+      "instruction_count": 50,
+      "direct_calls": [
+        "0x5B20",
+        "0x6388",
+        "0x65B4",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x5B94"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5C8C",
+      "va": "0x140005C8C",
+      "end_rva": "0x5D6F",
+      "source": "pdata",
+      "instruction_count": 65,
+      "direct_calls": [
+        "0x5B94",
+        "0x5D70",
+        "0x5DA0",
+        "0x73CC",
+        "0x8AB4"
+      ],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!GetModuleHandleW"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x5D70",
+      "va": "0x140005D70",
+      "end_rva": "0x5D9D",
+      "source": "pdata",
+      "instruction_count": 14,
+      "direct_calls": [
+        "0x5DA0"
+      ],
+      "called_by": [
+        "0x5C8C"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!ExitProcess",
+        "KERNEL32.dll!GetCurrentProcess",
+        "KERNEL32.dll!TerminateProcess"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x5DA0",
+      "va": "0x140005DA0",
+      "end_rva": "0x5E04",
+      "source": "pdata",
+      "instruction_count": 26,
+      "direct_calls": [
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x5C8C",
+        "0x5D70"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!FreeLibrary",
+        "KERNEL32.dll!GetModuleHandleExW",
+        "KERNEL32.dll!GetProcAddress"
+      ],
+      "strings": [
+        "CorExitProcess",
+        "mscoree.dll"
+      ]
+    },
+    {
+      "rva": "0x5E38",
+      "va": "0x140005E38",
+      "end_rva": "0x5E74",
+      "source": "pdata",
+      "instruction_count": 16,
+      "direct_calls": [
+        "0x65B4"
+      ],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5F6C",
+      "va": "0x140005F6C",
+      "end_rva": "0x5FD5",
+      "source": "pdata",
+      "instruction_count": 32,
+      "direct_calls": [
+        "0x51BC",
+        "0x6BA4",
+        "0x6E78"
+      ],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x65B4",
+      "va": "0x1400065B4",
+      "end_rva": "0x65D3",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [
+        "0x65D4",
+        "0x6BA4",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x2364",
+        "0x3058",
+        "0x30E8",
+        "0x3810",
+        "0x5BCC",
+        "0x5E38",
+        "0xCB30",
+        "0xDA4D"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x65D4",
+      "va": "0x1400065D4",
+      "end_rva": "0x662A",
+      "source": "pdata",
+      "instruction_count": 21,
+      "direct_calls": [
+        "0x4EF0",
+        "0x5E2C",
+        "0x9B7C",
+        "0x9BCC"
+      ],
+      "called_by": [
+        "0x2920",
+        "0x2B98",
+        "0x3220",
+        "0x341C",
+        "0x3484",
+        "0x3678",
+        "0x3810",
+        "0x3D00",
+        "0x4084",
+        "0x45A0",
+        "0x47C4",
+        "0x4DD0",
+        "0x65B4",
+        "0x6BA4",
+        "0x6BC0",
+        "0x6F78",
+        "0x8484",
+        "0x987C"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!IsProcessorFeaturePresent"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x66C0",
+      "va": "0x1400066C0",
+      "end_rva": "0x6736",
+      "source": "pdata",
+      "instruction_count": 30,
+      "direct_calls": [
+        "0x4DD0",
+        "0xA338",
+        "0xA3A4"
+      ],
+      "called_by": [
+        "0xA3DC",
+        "0xB3FC",
+        "0xBD48"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6BA4",
+      "va": "0x140006BA4",
+      "end_rva": "0x6BBD",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [
+        "0x65D4",
+        "0x6C04"
+      ],
+      "called_by": [
+        "0x5F6C",
+        "0x65B4",
+        "0x7C90",
+        "0x859C",
+        "0x987C",
+        "0x9BCC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6BC0",
+      "va": "0x140006BC0",
+      "end_rva": "0x6C02",
+      "source": "pdata",
+      "instruction_count": 20,
+      "direct_calls": [
+        "0x65D4",
+        "0x6A84",
+        "0x7198"
+      ],
+      "called_by": [
+        "0x853C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6CF0",
+      "va": "0x140006CF0",
+      "end_rva": "0x6D34",
+      "source": "pdata",
+      "instruction_count": 19,
+      "direct_calls": [
+        "0x6C04",
+        "0x6D34",
+        "0x7188",
+        "0x7344"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6F78",
+      "va": "0x140006F78",
+      "end_rva": "0x712A",
+      "source": "pdata",
+      "instruction_count": 114,
+      "direct_calls": [
+        "0x65D4",
+        "0x6740",
+        "0x7444",
+        "0x7498"
+      ],
+      "called_by": [
+        "0x712C",
+        "0x71BC",
+        "0x72B0",
+        "0x7344"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!FreeLibrary",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!GetProcAddress",
+        "KERNEL32.dll!LoadLibraryExW",
+        "KERNEL32.dll!VirtualProtect"
+      ],
+      "strings": [
+        "api-ms-",
+        "ext-ms-"
+      ]
+    },
+    {
+      "rva": "0x712C",
+      "va": "0x14000712C",
+      "end_rva": "0x7188",
+      "source": "pdata",
+      "instruction_count": 24,
+      "direct_calls": [
+        "0x6F78"
+      ],
+      "called_by": [
+        "0x73CC"
+      ],
+      "import_calls": [],
+      "strings": [
+        "AppPolicyGetProcessTerminationMethod"
+      ]
+    },
+    {
+      "rva": "0x71BC",
+      "va": "0x1400071BC",
+      "end_rva": "0x72AE",
+      "source": "pdata",
+      "instruction_count": 57,
+      "direct_calls": [
+        "0x6F78",
+        "0x72B0",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0xADB8"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!LCMapStringW"
+      ],
+      "strings": [
+        "LCMapStringEx"
+      ]
+    },
+    {
+      "rva": "0x72B0",
+      "va": "0x1400072B0",
+      "end_rva": "0x7312",
+      "source": "pdata",
+      "instruction_count": 27,
+      "direct_calls": [
+        "0x6F78",
+        "0xA974",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x71BC"
+      ],
+      "import_calls": [],
+      "strings": [
+        "LocaleNameToLCID"
+      ]
+    },
+    {
+      "rva": "0x7314",
+      "va": "0x140007314",
+      "end_rva": "0x7344",
+      "source": "pdata",
+      "instruction_count": 11,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!VirtualProtect"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x7344",
+      "va": "0x140007344",
+      "end_rva": "0x7386",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x6F78"
+      ],
+      "called_by": [
+        "0x6CF0"
+      ],
+      "import_calls": [],
+      "strings": [
+        "FlsGetValue2"
+      ]
+    },
+    {
+      "rva": "0x73CC",
+      "va": "0x1400073CC",
+      "end_rva": "0x73FB",
+      "source": "pdata",
+      "instruction_count": 15,
+      "direct_calls": [
+        "0x712C",
+        "0x8AD0"
+      ],
+      "called_by": [
+        "0x5C8C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x7708",
+      "va": "0x140007708",
+      "end_rva": "0x7B05",
+      "source": "pdata",
+      "instruction_count": 283,
+      "direct_calls": [
+        "0x1960",
+        "0x51BC",
+        "0x51DC",
+        "0x5698",
+        "0x6E78",
+        "0x6F20",
+        "0x75B0",
+        "0x7B08",
+        "0x9360",
+        "0xAA20",
+        "0xCC90"
+      ],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!FindClose",
+        "KERNEL32.dll!FindFirstFileExW",
+        "KERNEL32.dll!FindNextFileW"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x7B08",
+      "va": "0x140007B08",
+      "end_rva": "0x7C8E",
+      "source": "pdata",
+      "instruction_count": 115,
+      "direct_calls": [
+        "0x51DC",
+        "0x6EA0",
+        "0x6F20",
+        "0x75B0",
+        "0x9960"
+      ],
+      "called_by": [
+        "0x7708"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x7C90",
+      "va": "0x140007C90",
+      "end_rva": "0x7D2B",
+      "source": "pdata",
+      "instruction_count": 41,
+      "direct_calls": [
+        "0x6BA4",
+        "0xA304",
+        "0xA370"
+      ],
+      "called_by": [
+        "0x7F04",
+        "0x93B8",
+        "0xB0EC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x8214",
+      "va": "0x140008214",
+      "end_rva": "0x8483",
+      "source": "pdata",
+      "instruction_count": 157,
+      "direct_calls": [
+        "0x5F30",
+        "0x6E78",
+        "0x6F20",
+        "0x74C0",
+        "0x7D34",
+        "0x7F04",
+        "0x8484",
+        "0x85B8"
+      ],
+      "called_by": [
+        "0x853C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x8484",
+      "va": "0x140008484",
+      "end_rva": "0x853C",
+      "source": "pdata",
+      "instruction_count": 48,
+      "direct_calls": [
+        "0x65D4",
+        "0x6F20",
+        "0x7444",
+        "0x7498"
+      ],
+      "called_by": [
+        "0x8214"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x853C",
+      "va": "0x14000853C",
+      "end_rva": "0x859C",
+      "source": "pdata",
+      "instruction_count": 19,
+      "direct_calls": [
+        "0x6BC0",
+        "0x8214"
+      ],
+      "called_by": [
+        "0xB184"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x859C",
+      "va": "0x14000859C",
+      "end_rva": "0x85B8",
+      "source": "pdata",
+      "instruction_count": 6,
+      "direct_calls": [
+        "0x6BA4"
+      ],
+      "called_by": [
+        "0xA370",
+        "0xA3A4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x987C",
+      "va": "0x14000987C",
+      "end_rva": "0x98EA",
+      "source": "pdata",
+      "instruction_count": 30,
+      "direct_calls": [
+        "0x65D4",
+        "0x6BA4",
+        "0x7444",
+        "0x7498",
+        "0x98EC"
+      ],
+      "called_by": [
+        "0xA304",
+        "0xA338"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9BCC",
+      "va": "0x140009BCC",
+      "end_rva": "0x9E28",
+      "source": "pdata",
+      "instruction_count": 175,
+      "direct_calls": [
+        "0x51BC",
+        "0x5E2C",
+        "0x6BA4",
+        "0x6C04",
+        "0x6E78",
+        "0x7444",
+        "0x7498",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x65D4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA008",
+      "va": "0x14000A008",
+      "end_rva": "0xA094",
+      "source": "pdata",
+      "instruction_count": 47,
+      "direct_calls": [
+        "0xA94C",
+        "0xBC28"
+      ],
+      "called_by": [
+        "0xA094",
+        "0xC39C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA094",
+      "va": "0x14000A094",
+      "end_rva": "0xA166",
+      "source": "pdata",
+      "instruction_count": 62,
+      "direct_calls": [
+        "0x4DD0",
+        "0x9FA8",
+        "0xA008",
+        "0xA94C",
+        "0xB368"
+      ],
+      "called_by": [
+        "0x9E28"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA304",
+      "va": "0x14000A304",
+      "end_rva": "0xA335",
+      "source": "pdata",
+      "instruction_count": 14,
+      "direct_calls": [
+        "0x987C"
+      ],
+      "called_by": [
+        "0x7C90"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA338",
+      "va": "0x14000A338",
+      "end_rva": "0xA36D",
+      "source": "pdata",
+      "instruction_count": 15,
+      "direct_calls": [
+        "0x987C"
+      ],
+      "called_by": [
+        "0x66C0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xADB8",
+      "va": "0x14000ADB8",
+      "end_rva": "0xB0E9",
+      "source": "pdata",
+      "instruction_count": 228,
+      "direct_calls": [
+        "0x1960",
+        "0x6F20",
+        "0x71BC",
+        "0x74C0",
+        "0x88A8",
+        "0x8938",
+        "0xC210",
+        "0xCAE0"
+      ],
+      "called_by": [
+        "0xB0EC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xB0EC",
+      "va": "0x14000B0EC",
+      "end_rva": "0xB182",
+      "source": "pdata",
+      "instruction_count": 35,
+      "direct_calls": [
+        "0x7C90",
+        "0xADB8"
+      ],
+      "called_by": [
+        "0x801C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xB3FC",
+      "va": "0x14000B3FC",
+      "end_rva": "0xB88F",
+      "source": "pdata",
+      "instruction_count": 304,
+      "direct_calls": [
+        "0x1960",
+        "0x66C0",
+        "0x8938",
+        "0xA3DC",
+        "0xA794",
+        "0xD050"
+      ],
+      "called_by": [
+        "0xBD48"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetConsoleOutputCP",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!WriteFile"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xB890",
+      "va": "0x14000B890",
+      "end_rva": "0xB997",
+      "source": "pdata",
+      "instruction_count": 75,
+      "direct_calls": [
+        "0x1960",
+        "0xCAE0"
+      ],
+      "called_by": [
+        "0xBD48"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!WriteFile"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xB998",
+      "va": "0x14000B998",
+      "end_rva": "0xBAB3",
+      "source": "pdata",
+      "instruction_count": 77,
+      "direct_calls": [
+        "0x1960",
+        "0xCAE0"
+      ],
+      "called_by": [
+        "0xBD48"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!WriteFile"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xBAB4",
+      "va": "0x14000BAB4",
+      "end_rva": "0xBC28",
+      "source": "pdata",
+      "instruction_count": 100,
+      "direct_calls": [
+        "0x1960",
+        "0x8938",
+        "0xCAE0"
+      ],
+      "called_by": [
+        "0xBD48"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!WriteFile"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xBC28",
+      "va": "0x14000BC28",
+      "end_rva": "0xBD45",
+      "source": "pdata",
+      "instruction_count": 79,
+      "direct_calls": [
+        "0x5104",
+        "0x8C88",
+        "0x8CB0",
+        "0xBD48"
+      ],
+      "called_by": [
+        "0xA008"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xBD48",
+      "va": "0x14000BD48",
+      "end_rva": "0xC077",
+      "source": "pdata",
+      "instruction_count": 229,
+      "direct_calls": [
+        "0x5104",
+        "0x66C0",
+        "0x6E30",
+        "0xB3FC",
+        "0xB890",
+        "0xB998",
+        "0xBAB4",
+        "0xC170",
+        "0xC2D8",
+        "0xC2E0"
+      ],
+      "called_by": [
+        "0xBC28"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetConsoleMode",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!WriteFile"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xC2E0",
+      "va": "0x14000C2E0",
+      "end_rva": "0xC320",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0xC4E0",
+        "0xC550"
+      ],
+      "called_by": [
+        "0xBD48"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC320",
+      "va": "0x14000C320",
+      "end_rva": "0xC39A",
+      "source": "pdata",
+      "instruction_count": 39,
+      "direct_calls": [
+        "0x5104",
+        "0xA2EC",
+        "0xA2F8",
+        "0xC39C",
+        "0xC81C"
+      ],
+      "called_by": [
+        "0xC444"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC39C",
+      "va": "0x14000C39C",
+      "end_rva": "0xC441",
+      "source": "pdata",
+      "instruction_count": 51,
+      "direct_calls": [
+        "0x5104",
+        "0x6F20",
+        "0xA008",
+        "0xA94C",
+        "0xC12C",
+        "0xC688",
+        "0xC81C"
+      ],
+      "called_by": [
+        "0xC320"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC444",
+      "va": "0x14000C444",
+      "end_rva": "0xC4DC",
+      "source": "pdata",
+      "instruction_count": 40,
+      "direct_calls": [
+        "0x4DD0",
+        "0xC320"
+      ],
+      "called_by": [
+        "0xC078"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC4E0",
+      "va": "0x14000C4E0",
+      "end_rva": "0xC532",
+      "source": "pdata",
+      "instruction_count": 21,
+      "direct_calls": [],
+      "called_by": [
+        "0xC2E0"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!CreateFileW"
+      ],
+      "strings": [
+        "CONOUT$",
+        "￾￿￿￿"
+      ]
+    },
+    {
+      "rva": "0xC550",
+      "va": "0x14000C550",
+      "end_rva": "0xC60E",
+      "source": "pdata",
+      "instruction_count": 48,
+      "direct_calls": [],
+      "called_by": [
+        "0xC2E0"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!CloseHandle",
+        "KERNEL32.dll!CreateFileW",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!WriteConsoleW"
+      ],
+      "strings": [
+        "CONOUT$",
+        "￾￿￿￿"
+      ]
+    },
+    {
+      "rva": "0xC688",
+      "va": "0x14000C688",
+      "end_rva": "0xC749",
+      "source": "pdata",
+      "instruction_count": 48,
+      "direct_calls": [
+        "0x5104",
+        "0xC610"
+      ],
+      "called_by": [
+        "0xC39C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xCB30",
+      "va": "0x14000CB30",
+      "end_rva": "0xCB7B",
+      "source": "pdata",
+      "instruction_count": 22,
+      "direct_calls": [
+        "0x2CCC",
+        "0x3220",
+        "0x65B4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xD9A6",
+      "va": "0x14000D9A6",
+      "end_rva": "0xDA4D",
+      "source": "pdata",
+      "instruction_count": 40,
+      "direct_calls": [
+        "0x3220",
+        "0x42B4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDA4D",
+      "va": "0x14000DA4D",
+      "end_rva": "0xDADF",
+      "source": "pdata",
+      "instruction_count": 41,
+      "direct_calls": [
+        "0x3220",
+        "0x65B4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDB00",
+      "va": "0x14000DB00",
+      "end_rva": "0xDB86",
+      "source": "pdata",
+      "instruction_count": 38,
+      "direct_calls": [
+        "0x2B98",
+        "0x2F8C",
+        "0x3004",
+        "0x3220"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDB9C",
+      "va": "0x14000DB9C",
+      "end_rva": "0xDBBF",
+      "source": "pdata",
+      "instruction_count": 12,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    }
+  ],
+  "all_functions": [
+    {
+      "rva": "0x1000",
+      "va": "0x140001000",
+      "end_rva": "0x1032",
+      "source": "pdata",
+      "instruction_count": 15,
+      "direct_calls": [
+        "0x2EE4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1048",
+      "va": "0x140001048",
+      "end_rva": "0x108A",
+      "source": "pdata",
+      "instruction_count": 19,
+      "direct_calls": [
+        "0x19BC",
+        "0x2F64"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x10A0",
+      "va": "0x1400010A0",
+      "end_rva": "0x10C4",
+      "source": "call-target",
+      "instruction_count": 10,
+      "direct_calls": [],
+      "called_by": [
+        "0x10C4"
+      ],
+      "import_calls": [],
+      "strings": [
+        "bad array new length"
+      ]
+    },
+    {
+      "rva": "0x10C4",
+      "va": "0x1400010C4",
+      "end_rva": "0x10E4",
+      "source": "pdata",
+      "instruction_count": 7,
+      "direct_calls": [
+        "0x10A0",
+        "0x30F4"
+      ],
+      "called_by": [
+        "0x15C4",
+        "0x1980"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x10E4",
+      "va": "0x1400010E4",
+      "end_rva": "0x1120",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x2EE4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1120",
+      "va": "0x140001120",
+      "end_rva": "0x115C",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x2EE4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x115C",
+      "va": "0x14000115C",
+      "end_rva": "0x11CA",
+      "source": "pdata",
+      "instruction_count": 30,
+      "direct_calls": [],
+      "called_by": [
+        "0x1734"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!CloseHandle",
+        "KERNEL32.dll!GetExitCodeThread",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!WaitForSingleObject"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x11D4",
+      "va": "0x1400011D4",
+      "end_rva": "0x12BE",
+      "source": "pdata",
+      "instruction_count": 63,
+      "direct_calls": [
+        "0xD050"
+      ],
+      "called_by": [
+        "0x1734"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!FlushInstructionCache",
+        "KERNEL32.dll!GetCurrentProcess",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!VirtualAlloc",
+        "KERNEL32.dll!VirtualFree",
+        "KERNEL32.dll!VirtualProtect"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x12C0",
+      "va": "0x1400012C0",
+      "end_rva": "0x15B2",
+      "source": "pdata",
+      "instruction_count": 183,
+      "direct_calls": [
+        "0x15C4",
+        "0x1960",
+        "0xCC90",
+        "0xD8A0"
+      ],
+      "called_by": [
+        "0x1734"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!CloseHandle",
+        "KERNEL32.dll!CreateFileW",
+        "KERNEL32.dll!GetFileSizeEx",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!GetModuleFileNameW",
+        "KERNEL32.dll!ReadFile",
+        "KERNEL32.dll!SetFilePointerEx"
+      ],
+      "strings": [
+        "BLT_PAYLOAD_001"
+      ]
+    },
+    {
+      "rva": "0x15B4",
+      "va": "0x1400015B4",
+      "end_rva": "0x15C3",
+      "source": "pdata",
+      "instruction_count": 6,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x15C4",
+      "va": "0x1400015C4",
+      "end_rva": "0x1720",
+      "source": "pdata",
+      "instruction_count": 95,
+      "direct_calls": [
+        "0x10C4",
+        "0x1720",
+        "0x1980",
+        "0x19BC",
+        "0x51DC",
+        "0xCC90",
+        "0xD050"
+      ],
+      "called_by": [
+        "0x12C0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1720",
+      "va": "0x140001720",
+      "end_rva": "0x1731",
+      "source": "pdata",
+      "instruction_count": 4,
+      "direct_calls": [
+        "0x1924"
+      ],
+      "called_by": [
+        "0x15C4"
+      ],
+      "import_calls": [],
+      "strings": [
+        "vector too long"
+      ]
+    },
+    {
+      "rva": "0x1734",
+      "va": "0x140001734",
+      "end_rva": "0x183F",
+      "source": "pdata",
+      "instruction_count": 70,
+      "direct_calls": [
+        "0x115C",
+        "0x11D4",
+        "0x12C0",
+        "0x19BC",
+        "0x51DC"
+      ],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!CreateThread",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!VirtualFree"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x1840",
+      "va": "0x140001840",
+      "end_rva": "0x1864",
+      "source": "call-target",
+      "instruction_count": 10,
+      "direct_calls": [],
+      "called_by": [
+        "0x1DD8"
+      ],
+      "import_calls": [],
+      "strings": [
+        "bad allocation"
+      ]
+    },
+    {
+      "rva": "0x1864",
+      "va": "0x140001864",
+      "end_rva": "0x18A0",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x2EE4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x18A0",
+      "va": "0x1400018A0",
+      "end_rva": "0x18E7",
+      "source": "pdata",
+      "instruction_count": 19,
+      "direct_calls": [
+        "0x2EE4"
+      ],
+      "called_by": [
+        "0x1924"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x18E8",
+      "va": "0x1400018E8",
+      "end_rva": "0x1924",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x2EE4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1924",
+      "va": "0x140001924",
+      "end_rva": "0x1947",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [
+        "0x18A0",
+        "0x30F4"
+      ],
+      "called_by": [
+        "0x1720"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1960",
+      "va": "0x140001960",
+      "end_rva": "0x197E",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [],
+      "called_by": [
+        "0x12C0",
+        "0x2A58",
+        "0x3810",
+        "0x4EF0",
+        "0x7708",
+        "0x801C",
+        "0x85B8",
+        "0x93B8",
+        "0xA58C",
+        "0xAD98",
+        "0xADB8",
+        "0xB3FC",
+        "0xB890",
+        "0xB998",
+        "0xBAB4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1980",
+      "va": "0x140001980",
+      "end_rva": "0x19BC",
+      "source": "pdata",
+      "instruction_count": 21,
+      "direct_calls": [
+        "0x10C4",
+        "0x1DD8",
+        "0x5230",
+        "0x5330"
+      ],
+      "called_by": [
+        "0x15C4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x19BC",
+      "va": "0x1400019BC",
+      "end_rva": "0x19C4",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x1048",
+        "0x15C4",
+        "0x1734",
+        "0x19C4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x19C4",
+      "va": "0x1400019C4",
+      "end_rva": "0x19EF",
+      "source": "pdata",
+      "instruction_count": 13,
+      "direct_calls": [
+        "0x19BC"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x19F0",
+      "va": "0x1400019F0",
+      "end_rva": "0x1AA6",
+      "source": "pdata",
+      "instruction_count": 48,
+      "direct_calls": [
+        "0x1E78",
+        "0x2028",
+        "0x20F0",
+        "0x20F4",
+        "0x20FC",
+        "0x2104",
+        "0x2114",
+        "0x2118",
+        "0x2148",
+        "0x2170",
+        "0x22F8",
+        "0x23C8",
+        "0x54AC",
+        "0x54D0",
+        "0x56F8",
+        "0x5AC4",
+        "0x5E80",
+        "0x5F6C",
+        "0x601C"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1AA8",
+      "va": "0x140001AA8",
+      "end_rva": "0x1AB8",
+      "source": "pdata",
+      "instruction_count": 5,
+      "direct_calls": [
+        "0x212C"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1AB8",
+      "va": "0x140001AB8",
+      "end_rva": "0x1AD1",
+      "source": "pdata",
+      "instruction_count": 6,
+      "direct_calls": [
+        "0x20F0",
+        "0x2354"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1AD4",
+      "va": "0x140001AD4",
+      "end_rva": "0x1C45",
+      "source": "pdata",
+      "instruction_count": 99,
+      "direct_calls": [
+        "0x1734",
+        "0x1E00",
+        "0x1E3C",
+        "0x1F04",
+        "0x1F9C",
+        "0x1FC0",
+        "0x2154",
+        "0x215C",
+        "0x2170",
+        "0x22BC",
+        "0x2300",
+        "0x5ACC",
+        "0x5B20",
+        "0x5B58",
+        "0x5E0C",
+        "0x5E1C",
+        "0x5E2C",
+        "0x5E38",
+        "0x5E74"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1C48",
+      "va": "0x140001C48",
+      "end_rva": "0x1C5A",
+      "source": "pdata",
+      "instruction_count": 4,
+      "direct_calls": [
+        "0x2040"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1C5C",
+      "va": "0x140001C5C",
+      "end_rva": "0x1C90",
+      "source": "pdata",
+      "instruction_count": 13,
+      "direct_calls": [],
+      "called_by": [
+        "0x1C90"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetCurrentProcess",
+        "KERNEL32.dll!SetUnhandledExceptionFilter",
+        "KERNEL32.dll!UnhandledExceptionFilter"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x1C90",
+      "va": "0x140001C90",
+      "end_rva": "0x1D63",
+      "source": "pdata",
+      "instruction_count": 39,
+      "direct_calls": [
+        "0x1C5C",
+        "0x1D64"
+      ],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!IsProcessorFeaturePresent"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x1D64",
+      "va": "0x140001D64",
+      "end_rva": "0x1DD8",
+      "source": "pdata",
+      "instruction_count": 33,
+      "direct_calls": [],
+      "called_by": [
+        "0x1C90"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!RtlCaptureContext",
+        "KERNEL32.dll!RtlLookupFunctionEntry",
+        "KERNEL32.dll!RtlVirtualUnwind"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x1DD8",
+      "va": "0x140001DD8",
+      "end_rva": "0x1DF8",
+      "source": "pdata",
+      "instruction_count": 7,
+      "direct_calls": [
+        "0x1840",
+        "0x30F4"
+      ],
+      "called_by": [
+        "0x1980"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1E00",
+      "va": "0x140001E00",
+      "end_rva": "0x1E39",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x26D8"
+      ],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1E3C",
+      "va": "0x140001E3C",
+      "end_rva": "0x1E76",
+      "source": "pdata",
+      "instruction_count": 19,
+      "direct_calls": [
+        "0x2440",
+        "0x319C",
+        "0x31C4",
+        "0x6568"
+      ],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1E78",
+      "va": "0x140001E78",
+      "end_rva": "0x1F03",
+      "source": "pdata",
+      "instruction_count": 36,
+      "direct_calls": [
+        "0x2170",
+        "0x26D8",
+        "0x63CC"
+      ],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1F04",
+      "va": "0x140001F04",
+      "end_rva": "0x1F9C",
+      "source": "pdata",
+      "instruction_count": 48,
+      "direct_calls": [],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1F9C",
+      "va": "0x140001F9C",
+      "end_rva": "0x1FC0",
+      "source": "pdata",
+      "instruction_count": 13,
+      "direct_calls": [
+        "0x26D8"
+      ],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1FC0",
+      "va": "0x140001FC0",
+      "end_rva": "0x1FE9",
+      "source": "pdata",
+      "instruction_count": 14,
+      "direct_calls": [
+        "0x31C4",
+        "0x657C"
+      ],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x1FEC",
+      "va": "0x140001FEC",
+      "end_rva": "0x2026",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x6378",
+        "0x63F4"
+      ],
+      "called_by": [
+        "0x2028"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2028",
+      "va": "0x140002028",
+      "end_rva": "0x203F",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [
+        "0x1FEC"
+      ],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2040",
+      "va": "0x140002040",
+      "end_rva": "0x20EF",
+      "source": "pdata",
+      "instruction_count": 39,
+      "direct_calls": [],
+      "called_by": [
+        "0x1C48"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetCurrentProcessId",
+        "KERNEL32.dll!GetCurrentThreadId",
+        "KERNEL32.dll!GetSystemTimeAsFileTime",
+        "KERNEL32.dll!QueryPerformanceCounter"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x20F0",
+      "va": "0x1400020F0",
+      "end_rva": "0x20F4",
+      "source": "call-target",
+      "instruction_count": 3,
+      "direct_calls": [],
+      "called_by": [
+        "0x19F0",
+        "0x1AB8"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x20F4",
+      "va": "0x1400020F4",
+      "end_rva": "0x20FC",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x20FC",
+      "va": "0x1400020FC",
+      "end_rva": "0x2104",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2104",
+      "va": "0x140002104",
+      "end_rva": "0x2114",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2114",
+      "va": "0x140002114",
+      "end_rva": "0x2118",
+      "source": "call-target",
+      "instruction_count": 3,
+      "direct_calls": [],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2118",
+      "va": "0x140002118",
+      "end_rva": "0x211C",
+      "source": "call-target",
+      "instruction_count": 2,
+      "direct_calls": [],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x211C",
+      "va": "0x14000211C",
+      "end_rva": "0x2124",
+      "source": "call-target",
+      "instruction_count": 2,
+      "direct_calls": [],
+      "called_by": [
+        "0x212C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2124",
+      "va": "0x140002124",
+      "end_rva": "0x212C",
+      "source": "call-target",
+      "instruction_count": 2,
+      "direct_calls": [],
+      "called_by": [
+        "0x212C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x212C",
+      "va": "0x14000212C",
+      "end_rva": "0x2147",
+      "source": "pdata",
+      "instruction_count": 7,
+      "direct_calls": [
+        "0x211C",
+        "0x2124"
+      ],
+      "called_by": [
+        "0x1AA8"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2148",
+      "va": "0x140002148",
+      "end_rva": "0x2154",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2154",
+      "va": "0x140002154",
+      "end_rva": "0x215C",
+      "source": "call-target",
+      "instruction_count": 2,
+      "direct_calls": [],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x215C",
+      "va": "0x14000215C",
+      "end_rva": "0x2164",
+      "source": "call-target",
+      "instruction_count": 2,
+      "direct_calls": [],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2164",
+      "va": "0x140002164",
+      "end_rva": "0x2170",
+      "source": "call-target",
+      "instruction_count": 3,
+      "direct_calls": [],
+      "called_by": [
+        "0x2170",
+        "0x4EF0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2170",
+      "va": "0x140002170",
+      "end_rva": "0x22BB",
+      "source": "pdata",
+      "instruction_count": 71,
+      "direct_calls": [
+        "0x2164",
+        "0xCC90"
+      ],
+      "called_by": [
+        "0x19F0",
+        "0x1AD4",
+        "0x1E78"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!IsDebuggerPresent",
+        "KERNEL32.dll!IsProcessorFeaturePresent",
+        "KERNEL32.dll!RtlCaptureContext",
+        "KERNEL32.dll!RtlLookupFunctionEntry",
+        "KERNEL32.dll!RtlVirtualUnwind",
+        "KERNEL32.dll!SetUnhandledExceptionFilter",
+        "KERNEL32.dll!UnhandledExceptionFilter"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x22BC",
+      "va": "0x1400022BC",
+      "end_rva": "0x22F6",
+      "source": "pdata",
+      "instruction_count": 12,
+      "direct_calls": [
+        "0xCC90"
+      ],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetStartupInfoW"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x22F8",
+      "va": "0x1400022F8",
+      "end_rva": "0x2300",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2300",
+      "va": "0x140002300",
+      "end_rva": "0x2352",
+      "source": "pdata",
+      "instruction_count": 22,
+      "direct_calls": [],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetModuleHandleW"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x2354",
+      "va": "0x140002354",
+      "end_rva": "0x2364",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x1AB8"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2364",
+      "va": "0x140002364",
+      "end_rva": "0x23C7",
+      "source": "pdata",
+      "instruction_count": 29,
+      "direct_calls": [
+        "0x30C0",
+        "0x30D4",
+        "0x65B4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x23C8",
+      "va": "0x1400023C8",
+      "end_rva": "0x2404",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2404",
+      "va": "0x140002404",
+      "end_rva": "0x2440",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2440",
+      "va": "0x140002440",
+      "end_rva": "0x26D5",
+      "source": "pdata",
+      "instruction_count": 155,
+      "direct_calls": [],
+      "called_by": [
+        "0x1E3C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x26D8",
+      "va": "0x1400026D8",
+      "end_rva": "0x26F0",
+      "source": "call-target",
+      "instruction_count": 16,
+      "direct_calls": [],
+      "called_by": [
+        "0x1E00",
+        "0x1E78",
+        "0x1F9C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x26F0",
+      "va": "0x1400026F0",
+      "end_rva": "0x2744",
+      "source": "pdata",
+      "instruction_count": 22,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x3D00"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2744",
+      "va": "0x140002744",
+      "end_rva": "0x27A6",
+      "source": "pdata",
+      "instruction_count": 31,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x27A8",
+        "0x27D4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x27A8",
+      "va": "0x1400027A8",
+      "end_rva": "0x27D2",
+      "source": "pdata",
+      "instruction_count": 14,
+      "direct_calls": [
+        "0x2744",
+        "0x3414"
+      ],
+      "called_by": [
+        "0x3810"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x27D4",
+      "va": "0x1400027D4",
+      "end_rva": "0x2838",
+      "source": "pdata",
+      "instruction_count": 29,
+      "direct_calls": [
+        "0x2744",
+        "0x2838",
+        "0x3414",
+        "0x45A0"
+      ],
+      "called_by": [
+        "0x4084"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2838",
+      "va": "0x140002838",
+      "end_rva": "0x291D",
+      "source": "pdata",
+      "instruction_count": 70,
+      "direct_calls": [
+        "0x3414"
+      ],
+      "called_by": [
+        "0x27D4",
+        "0x33A0",
+        "0x33D8",
+        "0x3738",
+        "0x3810",
+        "0x472C"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!RtlLookupFunctionEntry"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x2920",
+      "va": "0x140002920",
+      "end_rva": "0x2A56",
+      "source": "pdata",
+      "instruction_count": 93,
+      "direct_calls": [
+        "0x3414",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x3810",
+        "0x3D00"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2A58",
+      "va": "0x140002A58",
+      "end_rva": "0x2B5B",
+      "source": "pdata",
+      "instruction_count": 59,
+      "direct_calls": [
+        "0x1960"
+      ],
+      "called_by": [
+        "0x3738",
+        "0x3810"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!RtlUnwindEx"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x2B5C",
+      "va": "0x140002B5C",
+      "end_rva": "0x2B96",
+      "source": "pdata",
+      "instruction_count": 18,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x431C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2B98",
+      "va": "0x140002B98",
+      "end_rva": "0x2BEB",
+      "source": "pdata",
+      "instruction_count": 26,
+      "direct_calls": [
+        "0x3220",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x431C",
+        "0xDB00"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2BEC",
+      "va": "0x140002BEC",
+      "end_rva": "0x2BFE",
+      "source": "pdata",
+      "instruction_count": 5,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x3484",
+        "0x3738",
+        "0x3810",
+        "0x3D00",
+        "0x3F64",
+        "0x4084",
+        "0x45A0",
+        "0x47C4",
+        "0x48AC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2C00",
+      "va": "0x140002C00",
+      "end_rva": "0x2C12",
+      "source": "pdata",
+      "instruction_count": 5,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x3484",
+        "0x3678",
+        "0x3810",
+        "0x3F64",
+        "0x4084",
+        "0x47C4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2C14",
+      "va": "0x140002C14",
+      "end_rva": "0x2C2C",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x45A0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2C2C",
+      "va": "0x140002C2C",
+      "end_rva": "0x2C44",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x3810"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2C44",
+      "va": "0x140002C44",
+      "end_rva": "0x2CCA",
+      "source": "pdata",
+      "instruction_count": 36,
+      "direct_calls": [
+        "0x3220",
+        "0x42B4"
+      ],
+      "called_by": [
+        "0xCA4C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2CCC",
+      "va": "0x140002CCC",
+      "end_rva": "0x2EE3",
+      "source": "pdata",
+      "instruction_count": 154,
+      "direct_calls": [
+        "0x4980",
+        "0x49B0",
+        "0x49B4",
+        "0xC9D0"
+      ],
+      "called_by": [
+        "0xCB30"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!RtlUnwindEx"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x2EE4",
+      "va": "0x140002EE4",
+      "end_rva": "0x2F62",
+      "source": "pdata",
+      "instruction_count": 37,
+      "direct_calls": [
+        "0x5330",
+        "0x6030",
+        "0x6630",
+        "0xD6D0"
+      ],
+      "called_by": [
+        "0x1000",
+        "0x10E4",
+        "0x1120",
+        "0x1864",
+        "0x18A0",
+        "0x18E8",
+        "0x42BC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2F64",
+      "va": "0x140002F64",
+      "end_rva": "0x2F8C",
+      "source": "pdata",
+      "instruction_count": 12,
+      "direct_calls": [
+        "0x6030"
+      ],
+      "called_by": [
+        "0x1048"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x2F8C",
+      "va": "0x140002F8C",
+      "end_rva": "0x3000",
+      "source": "pdata",
+      "instruction_count": 36,
+      "direct_calls": [
+        "0x3000"
+      ],
+      "called_by": [
+        "0x3810",
+        "0x431C",
+        "0xDB00"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3000",
+      "va": "0x140003000",
+      "end_rva": "0x3004",
+      "source": "call-target",
+      "instruction_count": 2,
+      "direct_calls": [],
+      "called_by": [
+        "0x2F8C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3004",
+      "va": "0x140003004",
+      "end_rva": "0x3033",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x431C",
+        "0xDB00"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3034",
+      "va": "0x140003034",
+      "end_rva": "0x3058",
+      "source": "call-target",
+      "instruction_count": 12,
+      "direct_calls": [],
+      "called_by": [
+        "0x3484",
+        "0x3678"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3058",
+      "va": "0x140003058",
+      "end_rva": "0x30BE",
+      "source": "pdata",
+      "instruction_count": 29,
+      "direct_calls": [
+        "0x3220",
+        "0x65B4"
+      ],
+      "called_by": [
+        "0xDB86"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x30C0",
+      "va": "0x1400030C0",
+      "end_rva": "0x30D2",
+      "source": "pdata",
+      "instruction_count": 5,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x2364"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x30D4",
+      "va": "0x1400030D4",
+      "end_rva": "0x30E6",
+      "source": "pdata",
+      "instruction_count": 5,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0x2364"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x30E8",
+      "va": "0x1400030E8",
+      "end_rva": "0x30F2",
+      "source": "pdata",
+      "instruction_count": 3,
+      "direct_calls": [
+        "0x65B4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x30F4",
+      "va": "0x1400030F4",
+      "end_rva": "0x319B",
+      "source": "pdata",
+      "instruction_count": 44,
+      "direct_calls": [],
+      "called_by": [
+        "0x10C4",
+        "0x1924",
+        "0x1DD8",
+        "0x3810"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!RaiseException",
+        "KERNEL32.dll!RtlPcToFileHeader"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x319C",
+      "va": "0x14000319C",
+      "end_rva": "0x31C4",
+      "source": "pdata",
+      "instruction_count": 14,
+      "direct_calls": [
+        "0x3308",
+        "0x49EC",
+        "0x4A34"
+      ],
+      "called_by": [
+        "0x1E3C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x31C4",
+      "va": "0x1400031C4",
+      "end_rva": "0x31DD",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [
+        "0x3350",
+        "0x4A34"
+      ],
+      "called_by": [
+        "0x1E3C",
+        "0x1FC0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x31E0",
+      "va": "0x1400031E0",
+      "end_rva": "0x3200",
+      "source": "call-target",
+      "instruction_count": 18,
+      "direct_calls": [],
+      "called_by": [
+        "0x48AC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3200",
+      "va": "0x140003200",
+      "end_rva": "0x321F",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [
+        "0x6030"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3220",
+      "va": "0x140003220",
+      "end_rva": "0x3239",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [
+        "0x323C",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x26F0",
+        "0x2744",
+        "0x2B5C",
+        "0x2B98",
+        "0x2BEC",
+        "0x2C00",
+        "0x2C14",
+        "0x2C2C",
+        "0x2C44",
+        "0x3004",
+        "0x3058",
+        "0x30C0",
+        "0x30D4",
+        "0x3810",
+        "0x3D00",
+        "0x4084",
+        "0x431C",
+        "0x4508",
+        "0x45A0",
+        "0xCB30",
+        "0xD9A6",
+        "0xDA4D",
+        "0xDB00",
+        "0xDB9C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x323C",
+      "va": "0x14000323C",
+      "end_rva": "0x3305",
+      "source": "pdata",
+      "instruction_count": 55,
+      "direct_calls": [
+        "0x4C4C",
+        "0x4C94",
+        "0x6030",
+        "0x66B0"
+      ],
+      "called_by": [
+        "0x3220"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!SetLastError"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x3308",
+      "va": "0x140003308",
+      "end_rva": "0x334F",
+      "source": "pdata",
+      "instruction_count": 18,
+      "direct_calls": [
+        "0x3350",
+        "0x4BBC",
+        "0x4C94"
+      ],
+      "called_by": [
+        "0x319C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3350",
+      "va": "0x140003350",
+      "end_rva": "0x3375",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [
+        "0x4C04"
+      ],
+      "called_by": [
+        "0x31C4",
+        "0x3308"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3378",
+      "va": "0x140003378",
+      "end_rva": "0x339F",
+      "source": "pdata",
+      "instruction_count": 12,
+      "direct_calls": [
+        "0x341C"
+      ],
+      "called_by": [
+        "0x45A0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x33A0",
+      "va": "0x1400033A0",
+      "end_rva": "0x33C9",
+      "source": "pdata",
+      "instruction_count": 12,
+      "direct_calls": [
+        "0x2838"
+      ],
+      "called_by": [
+        "0x472C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x33CC",
+      "va": "0x1400033CC",
+      "end_rva": "0x33D8",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x45A0",
+        "0x472C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x33D8",
+      "va": "0x1400033D8",
+      "end_rva": "0x3413",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x2838"
+      ],
+      "called_by": [
+        "0x472C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3414",
+      "va": "0x140003414",
+      "end_rva": "0x341C",
+      "source": "call-target",
+      "instruction_count": 2,
+      "direct_calls": [],
+      "called_by": [
+        "0x27A8",
+        "0x27D4",
+        "0x2838",
+        "0x2920",
+        "0x472C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x341C",
+      "va": "0x14000341C",
+      "end_rva": "0x3482",
+      "source": "pdata",
+      "instruction_count": 34,
+      "direct_calls": [
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x3378",
+        "0x4084"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3484",
+      "va": "0x140003484",
+      "end_rva": "0x3676",
+      "source": "pdata",
+      "instruction_count": 144,
+      "direct_calls": [
+        "0x2BEC",
+        "0x2C00",
+        "0x3034",
+        "0x65D4",
+        "0xD050"
+      ],
+      "called_by": [
+        "0x3678"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3678",
+      "va": "0x140003678",
+      "end_rva": "0x3738",
+      "source": "pdata",
+      "instruction_count": 56,
+      "direct_calls": [
+        "0x2C00",
+        "0x3034",
+        "0x3484",
+        "0x4934",
+        "0x4940",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x3738"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3738",
+      "va": "0x140003738",
+      "end_rva": "0x380E",
+      "source": "pdata",
+      "instruction_count": 58,
+      "direct_calls": [
+        "0x2838",
+        "0x2A58",
+        "0x2BEC",
+        "0x3678"
+      ],
+      "called_by": [
+        "0x3810",
+        "0x3D00"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3810",
+      "va": "0x140003810",
+      "end_rva": "0x3CFF",
+      "source": "pdata",
+      "instruction_count": 315,
+      "direct_calls": [
+        "0x1960",
+        "0x27A8",
+        "0x2838",
+        "0x2920",
+        "0x2A58",
+        "0x2BEC",
+        "0x2C00",
+        "0x2C2C",
+        "0x2F8C",
+        "0x30F4",
+        "0x3220",
+        "0x3738",
+        "0x3D00",
+        "0x3F64",
+        "0x42F8",
+        "0x472C",
+        "0x47C4",
+        "0x48AC",
+        "0x65B4",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x4084"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x3D00",
+      "va": "0x140003D00",
+      "end_rva": "0x3F61",
+      "source": "pdata",
+      "instruction_count": 141,
+      "direct_calls": [
+        "0x26F0",
+        "0x2920",
+        "0x2BEC",
+        "0x3220",
+        "0x3738",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x3810"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!EncodePointer"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x3F64",
+      "va": "0x140003F64",
+      "end_rva": "0x4083",
+      "source": "pdata",
+      "instruction_count": 89,
+      "direct_calls": [
+        "0x2BEC",
+        "0x2C00",
+        "0xD790"
+      ],
+      "called_by": [
+        "0x3810",
+        "0x47C4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x4084",
+      "va": "0x140004084",
+      "end_rva": "0x42B1",
+      "source": "pdata",
+      "instruction_count": 145,
+      "direct_calls": [
+        "0x27D4",
+        "0x2BEC",
+        "0x2C00",
+        "0x3220",
+        "0x341C",
+        "0x3810",
+        "0x45A0",
+        "0x49B4",
+        "0x65D4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x42B4",
+      "va": "0x1400042B4",
+      "end_rva": "0x42BC",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x2C44",
+        "0xD9A6"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x42BC",
+      "va": "0x1400042BC",
+      "end_rva": "0x42F8",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x2EE4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x42F8",
+      "va": "0x1400042F8",
+      "end_rva": "0x431C",
+      "source": "call-target",
+      "instruction_count": 10,
+      "direct_calls": [],
+      "called_by": [
+        "0x3810"
+      ],
+      "import_calls": [],
+      "strings": [
+        "bad exception"
+      ]
+    },
+    {
+      "rva": "0x431C",
+      "va": "0x14000431C",
+      "end_rva": "0x4508",
+      "source": "pdata",
+      "instruction_count": 117,
+      "direct_calls": [
+        "0x2B5C",
+        "0x2B98",
+        "0x2F8C",
+        "0x3004",
+        "0x3220",
+        "0x49B4",
+        "0x4D90"
+      ],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!RaiseException"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x4508",
+      "va": "0x140004508",
+      "end_rva": "0x459D",
+      "source": "pdata",
+      "instruction_count": 42,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [
+        "0xDADF"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x45A0",
+      "va": "0x1400045A0",
+      "end_rva": "0x4729",
+      "source": "pdata",
+      "instruction_count": 112,
+      "direct_calls": [
+        "0x2BEC",
+        "0x2C14",
+        "0x3220",
+        "0x3378",
+        "0x33CC",
+        "0x4D90",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x27D4",
+        "0x4084"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x472C",
+      "va": "0x14000472C",
+      "end_rva": "0x47C2",
+      "source": "pdata",
+      "instruction_count": 44,
+      "direct_calls": [
+        "0x2838",
+        "0x33A0",
+        "0x33CC",
+        "0x33D8",
+        "0x3414"
+      ],
+      "called_by": [
+        "0x3810"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x47C4",
+      "va": "0x1400047C4",
+      "end_rva": "0x48AB",
+      "source": "pdata",
+      "instruction_count": 71,
+      "direct_calls": [
+        "0x2BEC",
+        "0x2C00",
+        "0x3F64",
+        "0x65D4"
+      ],
+      "called_by": [
+        "0x3810"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x48AC",
+      "va": "0x1400048AC",
+      "end_rva": "0x4934",
+      "source": "pdata",
+      "instruction_count": 41,
+      "direct_calls": [
+        "0x2BEC",
+        "0x31E0"
+      ],
+      "called_by": [
+        "0x3810"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x4934",
+      "va": "0x140004934",
+      "end_rva": "0x4940",
+      "source": "call-target",
+      "instruction_count": 6,
+      "direct_calls": [],
+      "called_by": [
+        "0x3678"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x4940",
+      "va": "0x140004940",
+      "end_rva": "0x4980",
+      "source": "call-target",
+      "instruction_count": 27,
+      "direct_calls": [],
+      "called_by": [
+        "0x3678"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x4980",
+      "va": "0x140004980",
+      "end_rva": "0x499B",
+      "source": "pdata",
+      "instruction_count": 5,
+      "direct_calls": [],
+      "called_by": [
+        "0x2CCC",
+        "0x4D90"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x49A0",
+      "va": "0x1400049A0",
+      "end_rva": "0x49A1",
+      "source": "pdata",
+      "instruction_count": 1,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x49B0",
+      "va": "0x1400049B0",
+      "end_rva": "0x49B1",
+      "source": "pdata",
+      "instruction_count": 1,
+      "direct_calls": [],
+      "called_by": [
+        "0x2CCC",
+        "0x4D90"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x49B4",
+      "va": "0x1400049B4",
+      "end_rva": "0x49EC",
+      "source": "call-target",
+      "instruction_count": 14,
+      "direct_calls": [],
+      "called_by": [
+        "0x2CCC",
+        "0x4084",
+        "0x431C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x49EC",
+      "va": "0x1400049EC",
+      "end_rva": "0x4A32",
+      "source": "pdata",
+      "instruction_count": 22,
+      "direct_calls": [
+        "0x4A34",
+        "0x4CE8"
+      ],
+      "called_by": [
+        "0x319C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x4A34",
+      "va": "0x140004A34",
+      "end_rva": "0x4A6B",
+      "source": "pdata",
+      "instruction_count": 16,
+      "direct_calls": [],
+      "called_by": [
+        "0x319C",
+        "0x31C4",
+        "0x49EC"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!DeleteCriticalSection"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x4A6C",
+      "va": "0x140004A6C",
+      "end_rva": "0x4BBB",
+      "source": "pdata",
+      "instruction_count": 88,
+      "direct_calls": [
+        "0x6740"
+      ],
+      "called_by": [
+        "0x4BBC",
+        "0x4C04",
+        "0x4C4C",
+        "0x4C94",
+        "0x4CE8"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!FreeLibrary",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!GetProcAddress",
+        "KERNEL32.dll!LoadLibraryExW"
+      ],
+      "strings": [
+        "api-ms-"
+      ]
+    },
+    {
+      "rva": "0x4BBC",
+      "va": "0x140004BBC",
+      "end_rva": "0x4C01",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x4A6C"
+      ],
+      "called_by": [
+        "0x3308"
+      ],
+      "import_calls": [],
+      "strings": [
+        "FlsAlloc"
+      ]
+    },
+    {
+      "rva": "0x4C04",
+      "va": "0x140004C04",
+      "end_rva": "0x4C4A",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x4A6C"
+      ],
+      "called_by": [
+        "0x3350"
+      ],
+      "import_calls": [],
+      "strings": [
+        "FlsFree"
+      ]
+    },
+    {
+      "rva": "0x4C4C",
+      "va": "0x140004C4C",
+      "end_rva": "0x4C92",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x4A6C"
+      ],
+      "called_by": [
+        "0x323C"
+      ],
+      "import_calls": [],
+      "strings": [
+        "FlsGetValue"
+      ]
+    },
+    {
+      "rva": "0x4C94",
+      "va": "0x140004C94",
+      "end_rva": "0x4CE5",
+      "source": "pdata",
+      "instruction_count": 21,
+      "direct_calls": [
+        "0x4A6C"
+      ],
+      "called_by": [
+        "0x323C",
+        "0x3308"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!TlsSetValue"
+      ],
+      "strings": [
+        "FlsSetValue"
+      ]
+    },
+    {
+      "rva": "0x4CE8",
+      "va": "0x140004CE8",
+      "end_rva": "0x4D49",
+      "source": "pdata",
+      "instruction_count": 25,
+      "direct_calls": [
+        "0x4A6C"
+      ],
+      "called_by": [
+        "0x49EC"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!InitializeCriticalSectionAndSpinCount"
+      ],
+      "strings": [
+        "InitializeCriticalSectionEx"
+      ]
+    },
+    {
+      "rva": "0x4D90",
+      "va": "0x140004D90",
+      "end_rva": "0x4DD0",
+      "source": "pdata",
+      "instruction_count": 16,
+      "direct_calls": [
+        "0x4980",
+        "0x49B0"
+      ],
+      "called_by": [
+        "0x431C",
+        "0x45A0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x4DD0",
+      "va": "0x140004DD0",
+      "end_rva": "0x4E37",
+      "source": "pdata",
+      "instruction_count": 30,
+      "direct_calls": [
+        "0x65D4",
+        "0x6C94"
+      ],
+      "called_by": [
+        "0x5068",
+        "0x66C0",
+        "0xA094",
+        "0xC444"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!SetLastError"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x4E38",
+      "va": "0x140004E38",
+      "end_rva": "0x4EA2",
+      "source": "pdata",
+      "instruction_count": 30,
+      "direct_calls": [
+        "0x6C94"
+      ],
+      "called_by": [
+        "0x5104"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!SetLastError"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x4EA4",
+      "va": "0x140004EA4",
+      "end_rva": "0x4EF0",
+      "source": "pdata",
+      "instruction_count": 22,
+      "direct_calls": [],
+      "called_by": [
+        "0x5104"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!SetLastError"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x4EF0",
+      "va": "0x140004EF0",
+      "end_rva": "0x505D",
+      "source": "pdata",
+      "instruction_count": 86,
+      "direct_calls": [
+        "0x1960",
+        "0x2164",
+        "0xCC90"
+      ],
+      "called_by": [
+        "0x51DC",
+        "0x65D4"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!IsDebuggerPresent",
+        "KERNEL32.dll!RtlCaptureContext",
+        "KERNEL32.dll!RtlLookupFunctionEntry",
+        "KERNEL32.dll!RtlVirtualUnwind",
+        "KERNEL32.dll!SetUnhandledExceptionFilter",
+        "KERNEL32.dll!UnhandledExceptionFilter"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x5060",
+      "va": "0x140005060",
+      "end_rva": "0x5068",
+      "source": "call-target",
+      "instruction_count": 2,
+      "direct_calls": [],
+      "called_by": [
+        "0x6484"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5068",
+      "va": "0x140005068",
+      "end_rva": "0x5103",
+      "source": "pdata",
+      "instruction_count": 39,
+      "direct_calls": [
+        "0x4DD0",
+        "0x5104"
+      ],
+      "called_by": [
+        "0x51BC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5104",
+      "va": "0x140005104",
+      "end_rva": "0x51BB",
+      "source": "pdata",
+      "instruction_count": 50,
+      "direct_calls": [
+        "0x4E38",
+        "0x4EA4",
+        "0x51DC",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x5068",
+        "0xBC28",
+        "0xBD48",
+        "0xC320",
+        "0xC39C",
+        "0xC688"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x51BC",
+      "va": "0x1400051BC",
+      "end_rva": "0x51DA",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [
+        "0x5068"
+      ],
+      "called_by": [
+        "0x56F8",
+        "0x5E80",
+        "0x5F6C",
+        "0x5FF0",
+        "0x6630",
+        "0x7520",
+        "0x75B0",
+        "0x76B8",
+        "0x7708",
+        "0x7D34",
+        "0x8BE0",
+        "0x8D94",
+        "0x9BCC",
+        "0xA94C",
+        "0xAA20",
+        "0xB210",
+        "0xB368",
+        "0xC170"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x51DC",
+      "va": "0x1400051DC",
+      "end_rva": "0x5223",
+      "source": "pdata",
+      "instruction_count": 16,
+      "direct_calls": [
+        "0x4EF0"
+      ],
+      "called_by": [
+        "0x15C4",
+        "0x1734",
+        "0x5104",
+        "0x58E4",
+        "0x7708",
+        "0x7B08"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetCurrentProcess",
+        "KERNEL32.dll!IsProcessorFeaturePresent"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x5230",
+      "va": "0x140005230",
+      "end_rva": "0x5263",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x5280",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x1980",
+        "0x6EA0",
+        "0x74C0",
+        "0xB260"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5270",
+      "va": "0x140005270",
+      "end_rva": "0x5280",
+      "source": "call-target",
+      "instruction_count": 10,
+      "direct_calls": [],
+      "called_by": [
+        "0x6484"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5280",
+      "va": "0x140005280",
+      "end_rva": "0x52B7",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x7444",
+        "0x7498"
+      ],
+      "called_by": [
+        "0x5230"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x52C0",
+      "va": "0x1400052C0",
+      "end_rva": "0x5319",
+      "source": "pdata",
+      "instruction_count": 26,
+      "direct_calls": [
+        "0x7444",
+        "0x7498"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5330",
+      "va": "0x140005330",
+      "end_rva": "0x5338",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x1980",
+        "0x2EE4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5338",
+      "va": "0x140005338",
+      "end_rva": "0x54A3",
+      "source": "pdata",
+      "instruction_count": 103,
+      "direct_calls": [
+        "0x6C04",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0xD970"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x54A4",
+      "va": "0x1400054A4",
+      "end_rva": "0x54AC",
+      "source": "call-target",
+      "instruction_count": 3,
+      "direct_calls": [],
+      "called_by": [
+        "0x8CD8"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x54AC",
+      "va": "0x1400054AC",
+      "end_rva": "0x54C0",
+      "source": "call-target",
+      "instruction_count": 15,
+      "direct_calls": [],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x54C0",
+      "va": "0x1400054C0",
+      "end_rva": "0x54D0",
+      "source": "call-target",
+      "instruction_count": 10,
+      "direct_calls": [],
+      "called_by": [
+        "0x6484"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x54D0",
+      "va": "0x1400054D0",
+      "end_rva": "0x54F4",
+      "source": "call-target",
+      "instruction_count": 10,
+      "direct_calls": [],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x54F4",
+      "va": "0x1400054F4",
+      "end_rva": "0x5696",
+      "source": "pdata",
+      "instruction_count": 130,
+      "direct_calls": [],
+      "called_by": [
+        "0x56F8"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5698",
+      "va": "0x140005698",
+      "end_rva": "0x56F5",
+      "source": "pdata",
+      "instruction_count": 29,
+      "direct_calls": [
+        "0x6EA0",
+        "0x6F20"
+      ],
+      "called_by": [
+        "0x56F8",
+        "0x7708"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x56F8",
+      "va": "0x1400056F8",
+      "end_rva": "0x5871",
+      "source": "pdata",
+      "instruction_count": 108,
+      "direct_calls": [
+        "0x51BC",
+        "0x54F4",
+        "0x5698",
+        "0x6E78",
+        "0x6F20",
+        "0x7D2C"
+      ],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetModuleFileNameW"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x5874",
+      "va": "0x140005874",
+      "end_rva": "0x58E2",
+      "source": "pdata",
+      "instruction_count": 33,
+      "direct_calls": [
+        "0x58E4",
+        "0x6F20",
+        "0x8A18"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x58E4",
+      "va": "0x1400058E4",
+      "end_rva": "0x5A02",
+      "source": "pdata",
+      "instruction_count": 87,
+      "direct_calls": [
+        "0x51DC",
+        "0x5A04",
+        "0x6EA0",
+        "0x6F20",
+        "0x7520"
+      ],
+      "called_by": [
+        "0x5874"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5A04",
+      "va": "0x140005A04",
+      "end_rva": "0x5A45",
+      "source": "pdata",
+      "instruction_count": 21,
+      "direct_calls": [
+        "0x6F20"
+      ],
+      "called_by": [
+        "0x58E4",
+        "0x5A48",
+        "0x5A64",
+        "0x5A80"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5A48",
+      "va": "0x140005A48",
+      "end_rva": "0x5A62",
+      "source": "pdata",
+      "instruction_count": 7,
+      "direct_calls": [
+        "0x5A04"
+      ],
+      "called_by": [
+        "0x5A80"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5A64",
+      "va": "0x140005A64",
+      "end_rva": "0x5A7E",
+      "source": "pdata",
+      "instruction_count": 7,
+      "direct_calls": [
+        "0x5A04"
+      ],
+      "called_by": [
+        "0x5A80"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5A80",
+      "va": "0x140005A80",
+      "end_rva": "0x5AC3",
+      "source": "pdata",
+      "instruction_count": 13,
+      "direct_calls": [
+        "0x5A04",
+        "0x5A48",
+        "0x5A64"
+      ],
+      "called_by": [
+        "0x6474"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5AC4",
+      "va": "0x140005AC4",
+      "end_rva": "0x5ACC",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5ACC",
+      "va": "0x140005ACC",
+      "end_rva": "0x5B20",
+      "source": "call-target",
+      "instruction_count": 27,
+      "direct_calls": [],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5B20",
+      "va": "0x140005B20",
+      "end_rva": "0x5B56",
+      "source": "pdata",
+      "instruction_count": 18,
+      "direct_calls": [
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x1AD4",
+        "0x5BCC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5B58",
+      "va": "0x140005B58",
+      "end_rva": "0x5B94",
+      "source": "pdata",
+      "instruction_count": 21,
+      "direct_calls": [
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5B94",
+      "va": "0x140005B94",
+      "end_rva": "0x5BCC",
+      "source": "pdata",
+      "instruction_count": 18,
+      "direct_calls": [
+        "0x5BCC",
+        "0x7444",
+        "0x7498"
+      ],
+      "called_by": [
+        "0x5C8C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5BCC",
+      "va": "0x140005BCC",
+      "end_rva": "0x5C8C",
+      "source": "pdata",
+      "instruction_count": 50,
+      "direct_calls": [
+        "0x5B20",
+        "0x6388",
+        "0x65B4",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x5B94"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5C8C",
+      "va": "0x140005C8C",
+      "end_rva": "0x5D6F",
+      "source": "pdata",
+      "instruction_count": 65,
+      "direct_calls": [
+        "0x5B94",
+        "0x5D70",
+        "0x5DA0",
+        "0x73CC",
+        "0x8AB4"
+      ],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!GetModuleHandleW"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x5D70",
+      "va": "0x140005D70",
+      "end_rva": "0x5D9D",
+      "source": "pdata",
+      "instruction_count": 14,
+      "direct_calls": [
+        "0x5DA0"
+      ],
+      "called_by": [
+        "0x5C8C"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!ExitProcess",
+        "KERNEL32.dll!GetCurrentProcess",
+        "KERNEL32.dll!TerminateProcess"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x5DA0",
+      "va": "0x140005DA0",
+      "end_rva": "0x5E04",
+      "source": "pdata",
+      "instruction_count": 26,
+      "direct_calls": [
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x5C8C",
+        "0x5D70"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!FreeLibrary",
+        "KERNEL32.dll!GetModuleHandleExW",
+        "KERNEL32.dll!GetProcAddress"
+      ],
+      "strings": [
+        "CorExitProcess",
+        "mscoree.dll"
+      ]
+    },
+    {
+      "rva": "0x5E04",
+      "va": "0x140005E04",
+      "end_rva": "0x5E0C",
+      "source": "call-target",
+      "instruction_count": 2,
+      "direct_calls": [],
+      "called_by": [
+        "0x6484"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5E0C",
+      "va": "0x140005E0C",
+      "end_rva": "0x5E1C",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5E1C",
+      "va": "0x140005E1C",
+      "end_rva": "0x5E2C",
+      "source": "call-target",
+      "instruction_count": 7,
+      "direct_calls": [],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5E2C",
+      "va": "0x140005E2C",
+      "end_rva": "0x5E38",
+      "source": "call-target",
+      "instruction_count": 3,
+      "direct_calls": [],
+      "called_by": [
+        "0x1AD4",
+        "0x65D4",
+        "0x9BCC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5E38",
+      "va": "0x140005E38",
+      "end_rva": "0x5E74",
+      "source": "pdata",
+      "instruction_count": 16,
+      "direct_calls": [
+        "0x65B4"
+      ],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5E74",
+      "va": "0x140005E74",
+      "end_rva": "0x5E80",
+      "source": "call-target",
+      "instruction_count": 5,
+      "direct_calls": [],
+      "called_by": [
+        "0x1AD4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5E80",
+      "va": "0x140005E80",
+      "end_rva": "0x5EBD",
+      "source": "pdata",
+      "instruction_count": 15,
+      "direct_calls": [
+        "0x51BC",
+        "0x6E78"
+      ],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5EC0",
+      "va": "0x140005EC0",
+      "end_rva": "0x5F2E",
+      "source": "pdata",
+      "instruction_count": 30,
+      "direct_calls": [
+        "0x7444",
+        "0x7498",
+        "0x98EC"
+      ],
+      "called_by": [
+        "0x5F3C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5F30",
+      "va": "0x140005F30",
+      "end_rva": "0x5F3C",
+      "source": "call-target",
+      "instruction_count": 3,
+      "direct_calls": [],
+      "called_by": [
+        "0x8214"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5F3C",
+      "va": "0x140005F3C",
+      "end_rva": "0x5F6A",
+      "source": "pdata",
+      "instruction_count": 12,
+      "direct_calls": [
+        "0x5EC0"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5F6C",
+      "va": "0x140005F6C",
+      "end_rva": "0x5FD5",
+      "source": "pdata",
+      "instruction_count": 32,
+      "direct_calls": [
+        "0x51BC",
+        "0x6BA4",
+        "0x6E78"
+      ],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5FE0",
+      "va": "0x140005FE0",
+      "end_rva": "0x5FF0",
+      "source": "call-target",
+      "instruction_count": 11,
+      "direct_calls": [],
+      "called_by": [
+        "0x6EA0",
+        "0x74C0",
+        "0xB260"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x5FF0",
+      "va": "0x140005FF0",
+      "end_rva": "0x601B",
+      "source": "pdata",
+      "instruction_count": 12,
+      "direct_calls": [
+        "0x51BC",
+        "0x6E78"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x601C",
+      "va": "0x14000601C",
+      "end_rva": "0x6030",
+      "source": "call-target",
+      "instruction_count": 14,
+      "direct_calls": [],
+      "called_by": [
+        "0x19F0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6030",
+      "va": "0x140006030",
+      "end_rva": "0x6038",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x2EE4",
+        "0x2F64",
+        "0x3200",
+        "0x323C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6038",
+      "va": "0x140006038",
+      "end_rva": "0x6073",
+      "source": "pdata",
+      "instruction_count": 19,
+      "direct_calls": [
+        "0x60B0",
+        "0x7444",
+        "0x7498"
+      ],
+      "called_by": [
+        "0x63F4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6074",
+      "va": "0x140006074",
+      "end_rva": "0x60AF",
+      "source": "pdata",
+      "instruction_count": 19,
+      "direct_calls": [
+        "0x6260",
+        "0x7444",
+        "0x7498"
+      ],
+      "called_by": [
+        "0x6388"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x60B0",
+      "va": "0x1400060B0",
+      "end_rva": "0x625E",
+      "source": "pdata",
+      "instruction_count": 125,
+      "direct_calls": [
+        "0x6F20",
+        "0x9960"
+      ],
+      "called_by": [
+        "0x6038"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6260",
+      "va": "0x140006260",
+      "end_rva": "0x6375",
+      "source": "pdata",
+      "instruction_count": 84,
+      "direct_calls": [
+        "0x6F20",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x6074"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6378",
+      "va": "0x140006378",
+      "end_rva": "0x6388",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x1FEC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6388",
+      "va": "0x140006388",
+      "end_rva": "0x63CB",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x6074"
+      ],
+      "called_by": [
+        "0x5BCC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x63CC",
+      "va": "0x1400063CC",
+      "end_rva": "0x63F4",
+      "source": "call-target",
+      "instruction_count": 14,
+      "direct_calls": [],
+      "called_by": [
+        "0x1E78",
+        "0x6450"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x63F4",
+      "va": "0x1400063F4",
+      "end_rva": "0x643C",
+      "source": "pdata",
+      "instruction_count": 20,
+      "direct_calls": [
+        "0x6038"
+      ],
+      "called_by": [
+        "0x1FEC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6450",
+      "va": "0x140006450",
+      "end_rva": "0x6473",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [
+        "0x63CC"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6474",
+      "va": "0x140006474",
+      "end_rva": "0x6484",
+      "source": "pdata",
+      "instruction_count": 5,
+      "direct_calls": [
+        "0x5A80"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6484",
+      "va": "0x140006484",
+      "end_rva": "0x64C1",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x5060",
+        "0x5270",
+        "0x54C0",
+        "0x5E04",
+        "0x9BAC"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x64CC",
+      "va": "0x1400064CC",
+      "end_rva": "0x650C",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x6F20"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x650C",
+      "va": "0x14000650C",
+      "end_rva": "0x6567",
+      "source": "pdata",
+      "instruction_count": 16,
+      "direct_calls": [
+        "0x6F20"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6568",
+      "va": "0x140006568",
+      "end_rva": "0x657C",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x1E3C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x657C",
+      "va": "0x14000657C",
+      "end_rva": "0x65B1",
+      "source": "pdata",
+      "instruction_count": 13,
+      "direct_calls": [
+        "0xA168"
+      ],
+      "called_by": [
+        "0x1FC0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x65B4",
+      "va": "0x1400065B4",
+      "end_rva": "0x65D3",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [
+        "0x65D4",
+        "0x6BA4",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x2364",
+        "0x3058",
+        "0x30E8",
+        "0x3810",
+        "0x5BCC",
+        "0x5E38",
+        "0xCB30",
+        "0xDA4D"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x65D4",
+      "va": "0x1400065D4",
+      "end_rva": "0x662A",
+      "source": "pdata",
+      "instruction_count": 21,
+      "direct_calls": [
+        "0x4EF0",
+        "0x5E2C",
+        "0x9B7C",
+        "0x9BCC"
+      ],
+      "called_by": [
+        "0x2920",
+        "0x2B98",
+        "0x3220",
+        "0x341C",
+        "0x3484",
+        "0x3678",
+        "0x3810",
+        "0x3D00",
+        "0x4084",
+        "0x45A0",
+        "0x47C4",
+        "0x4DD0",
+        "0x65B4",
+        "0x6BA4",
+        "0x6BC0",
+        "0x6F78",
+        "0x8484",
+        "0x987C"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!IsProcessorFeaturePresent"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x6630",
+      "va": "0x140006630",
+      "end_rva": "0x66AE",
+      "source": "pdata",
+      "instruction_count": 36,
+      "direct_calls": [
+        "0x51BC",
+        "0x6E78"
+      ],
+      "called_by": [
+        "0x2EE4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x66B0",
+      "va": "0x1400066B0",
+      "end_rva": "0x66C0",
+      "source": "call-target",
+      "instruction_count": 12,
+      "direct_calls": [],
+      "called_by": [
+        "0x323C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x66C0",
+      "va": "0x1400066C0",
+      "end_rva": "0x6736",
+      "source": "pdata",
+      "instruction_count": 30,
+      "direct_calls": [
+        "0x4DD0",
+        "0xA338",
+        "0xA3A4"
+      ],
+      "called_by": [
+        "0xA3DC",
+        "0xB3FC",
+        "0xBD48"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6740",
+      "va": "0x140006740",
+      "end_rva": "0x6774",
+      "source": "call-target",
+      "instruction_count": 20,
+      "direct_calls": [],
+      "called_by": [
+        "0x4A6C",
+        "0x6F78"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6774",
+      "va": "0x140006774",
+      "end_rva": "0x67B3",
+      "source": "pdata",
+      "instruction_count": 19,
+      "direct_calls": [
+        "0x7444",
+        "0x7498"
+      ],
+      "called_by": [
+        "0x689C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x67B4",
+      "va": "0x1400067B4",
+      "end_rva": "0x67F1",
+      "source": "pdata",
+      "instruction_count": 20,
+      "direct_calls": [
+        "0x6B3C",
+        "0x7444",
+        "0x7498"
+      ],
+      "called_by": [
+        "0x698C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x67F4",
+      "va": "0x1400067F4",
+      "end_rva": "0x6839",
+      "source": "pdata",
+      "instruction_count": 22,
+      "direct_calls": [
+        "0x6B3C",
+        "0x7444",
+        "0x7498"
+      ],
+      "called_by": [
+        "0x689C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x683C",
+      "va": "0x14000683C",
+      "end_rva": "0x689B",
+      "source": "pdata",
+      "instruction_count": 29,
+      "direct_calls": [
+        "0x6F20",
+        "0x7444",
+        "0x7498"
+      ],
+      "called_by": [
+        "0x698C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x689C",
+      "va": "0x14000689C",
+      "end_rva": "0x6969",
+      "source": "pdata",
+      "instruction_count": 48,
+      "direct_calls": [
+        "0x6774",
+        "0x67F4"
+      ],
+      "called_by": [
+        "0x6A84"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x696C",
+      "va": "0x14000696C",
+      "end_rva": "0x698C",
+      "source": "pdata",
+      "instruction_count": 11,
+      "direct_calls": [
+        "0x698C",
+        "0x6F20"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x698C",
+      "va": "0x14000698C",
+      "end_rva": "0x6A81",
+      "source": "pdata",
+      "instruction_count": 60,
+      "direct_calls": [
+        "0x67B4",
+        "0x683C",
+        "0x6F20"
+      ],
+      "called_by": [
+        "0x696C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6A84",
+      "va": "0x140006A84",
+      "end_rva": "0x6B39",
+      "source": "pdata",
+      "instruction_count": 51,
+      "direct_calls": [
+        "0x689C",
+        "0x6EA0",
+        "0x6F20",
+        "0x71AC"
+      ],
+      "called_by": [
+        "0x6BC0",
+        "0x6C04",
+        "0x6C94"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!SetLastError"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x6B3C",
+      "va": "0x140006B3C",
+      "end_rva": "0x6BA3",
+      "source": "pdata",
+      "instruction_count": 27,
+      "direct_calls": [
+        "0x9548",
+        "0x95D4",
+        "0x97D4"
+      ],
+      "called_by": [
+        "0x67B4",
+        "0x67F4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6BA4",
+      "va": "0x140006BA4",
+      "end_rva": "0x6BBD",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [
+        "0x65D4",
+        "0x6C04"
+      ],
+      "called_by": [
+        "0x5F6C",
+        "0x65B4",
+        "0x7C90",
+        "0x859C",
+        "0x987C",
+        "0x9BCC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6BC0",
+      "va": "0x140006BC0",
+      "end_rva": "0x6C02",
+      "source": "pdata",
+      "instruction_count": 20,
+      "direct_calls": [
+        "0x65D4",
+        "0x6A84",
+        "0x7198"
+      ],
+      "called_by": [
+        "0x853C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6C04",
+      "va": "0x140006C04",
+      "end_rva": "0x6C94",
+      "source": "pdata",
+      "instruction_count": 43,
+      "direct_calls": [
+        "0x6A84",
+        "0x7198",
+        "0x71A0"
+      ],
+      "called_by": [
+        "0x5338",
+        "0x6BA4",
+        "0x6CF0",
+        "0x6E54",
+        "0x6E78",
+        "0x9BCC"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!SetLastError"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x6C94",
+      "va": "0x140006C94",
+      "end_rva": "0x6CEF",
+      "source": "pdata",
+      "instruction_count": 27,
+      "direct_calls": [
+        "0x6A84",
+        "0x7198"
+      ],
+      "called_by": [
+        "0x4DD0",
+        "0x4E38"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6CF0",
+      "va": "0x140006CF0",
+      "end_rva": "0x6D34",
+      "source": "pdata",
+      "instruction_count": 19,
+      "direct_calls": [
+        "0x6C04",
+        "0x6D34",
+        "0x7188",
+        "0x7344"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6D34",
+      "va": "0x140006D34",
+      "end_rva": "0x6D56",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [
+        "0x7190"
+      ],
+      "called_by": [
+        "0x6CF0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6D60",
+      "va": "0x140006D60",
+      "end_rva": "0x6E2F",
+      "source": "pdata",
+      "instruction_count": 60,
+      "direct_calls": [],
+      "called_by": [
+        "0x6E30",
+        "0x6F20"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6E30",
+      "va": "0x140006E30",
+      "end_rva": "0x6E52",
+      "source": "pdata",
+      "instruction_count": 11,
+      "direct_calls": [
+        "0x6D60"
+      ],
+      "called_by": [
+        "0xBD48",
+        "0xC228",
+        "0xC74C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6E54",
+      "va": "0x140006E54",
+      "end_rva": "0x6E77",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [
+        "0x6C04"
+      ],
+      "called_by": [
+        "0x8CD8",
+        "0x8D94",
+        "0xB2DC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6E78",
+      "va": "0x140006E78",
+      "end_rva": "0x6E9B",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [
+        "0x6C04"
+      ],
+      "called_by": [
+        "0x56F8",
+        "0x5E80",
+        "0x5F6C",
+        "0x5FF0",
+        "0x6630",
+        "0x6EA0",
+        "0x6F20",
+        "0x74C0",
+        "0x7520",
+        "0x75B0",
+        "0x76B8",
+        "0x7708",
+        "0x7D34",
+        "0x8214",
+        "0x8BE0",
+        "0x8CD8",
+        "0x8D94",
+        "0x9960",
+        "0x9BCC",
+        "0xA94C",
+        "0xAA20",
+        "0xB210",
+        "0xB260",
+        "0xB2DC",
+        "0xB368",
+        "0xC170"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x6EA0",
+      "va": "0x140006EA0",
+      "end_rva": "0x6F15",
+      "source": "pdata",
+      "instruction_count": 36,
+      "direct_calls": [
+        "0x5230",
+        "0x5FE0",
+        "0x6E78"
+      ],
+      "called_by": [
+        "0x5698",
+        "0x58E4",
+        "0x6A84",
+        "0x7B08",
+        "0x8AE8",
+        "0xA170"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!HeapAlloc"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x6F20",
+      "va": "0x140006F20",
+      "end_rva": "0x6F5C",
+      "source": "pdata",
+      "instruction_count": 19,
+      "direct_calls": [
+        "0x6D60",
+        "0x6E78"
+      ],
+      "called_by": [
+        "0x5698",
+        "0x56F8",
+        "0x5874",
+        "0x58E4",
+        "0x5A04",
+        "0x60B0",
+        "0x6260",
+        "0x64CC",
+        "0x650C",
+        "0x683C",
+        "0x696C",
+        "0x698C",
+        "0x6A84",
+        "0x7708",
+        "0x7B08",
+        "0x7D34",
+        "0x8214",
+        "0x8484",
+        "0x8A18",
+        "0x8AE8",
+        "0x8B90",
+        "0x90A8",
+        "0x91B4",
+        "0x9220",
+        "0x9254",
+        "0x93B8",
+        "0x95D4",
+        "0x9774",
+        "0xA170",
+        "0xA290",
+        "0xADB8",
+        "0xB260",
+        "0xC078",
+        "0xC12C",
+        "0xC39C"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!HeapFree"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x6F78",
+      "va": "0x140006F78",
+      "end_rva": "0x712A",
+      "source": "pdata",
+      "instruction_count": 114,
+      "direct_calls": [
+        "0x65D4",
+        "0x6740",
+        "0x7444",
+        "0x7498"
+      ],
+      "called_by": [
+        "0x712C",
+        "0x71BC",
+        "0x72B0",
+        "0x7344"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!FreeLibrary",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!GetProcAddress",
+        "KERNEL32.dll!LoadLibraryExW",
+        "KERNEL32.dll!VirtualProtect"
+      ],
+      "strings": [
+        "api-ms-",
+        "ext-ms-"
+      ]
+    },
+    {
+      "rva": "0x712C",
+      "va": "0x14000712C",
+      "end_rva": "0x7188",
+      "source": "pdata",
+      "instruction_count": 24,
+      "direct_calls": [
+        "0x6F78"
+      ],
+      "called_by": [
+        "0x73CC"
+      ],
+      "import_calls": [],
+      "strings": [
+        "AppPolicyGetProcessTerminationMethod"
+      ]
+    },
+    {
+      "rva": "0x7188",
+      "va": "0x140007188",
+      "end_rva": "0x7190",
+      "source": "call-target",
+      "instruction_count": 2,
+      "direct_calls": [],
+      "called_by": [
+        "0x6CF0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x7190",
+      "va": "0x140007190",
+      "end_rva": "0x7198",
+      "source": "call-target",
+      "instruction_count": 2,
+      "direct_calls": [],
+      "called_by": [
+        "0x6D34"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x7198",
+      "va": "0x140007198",
+      "end_rva": "0x71A0",
+      "source": "call-target",
+      "instruction_count": 2,
+      "direct_calls": [],
+      "called_by": [
+        "0x6BC0",
+        "0x6C04",
+        "0x6C94"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x71A0",
+      "va": "0x1400071A0",
+      "end_rva": "0x71AC",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x6C04"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x71AC",
+      "va": "0x1400071AC",
+      "end_rva": "0x71B4",
+      "source": "call-target",
+      "instruction_count": 2,
+      "direct_calls": [],
+      "called_by": [
+        "0x6A84"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x71B4",
+      "va": "0x1400071B4",
+      "end_rva": "0x71BC",
+      "source": "call-target",
+      "instruction_count": 2,
+      "direct_calls": [],
+      "called_by": [
+        "0x73FC",
+        "0x8AE8",
+        "0xA170"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x71BC",
+      "va": "0x1400071BC",
+      "end_rva": "0x72AE",
+      "source": "pdata",
+      "instruction_count": 57,
+      "direct_calls": [
+        "0x6F78",
+        "0x72B0",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0xADB8"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!LCMapStringW"
+      ],
+      "strings": [
+        "LCMapStringEx"
+      ]
+    },
+    {
+      "rva": "0x72B0",
+      "va": "0x1400072B0",
+      "end_rva": "0x7312",
+      "source": "pdata",
+      "instruction_count": 27,
+      "direct_calls": [
+        "0x6F78",
+        "0xA974",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x71BC"
+      ],
+      "import_calls": [],
+      "strings": [
+        "LocaleNameToLCID"
+      ]
+    },
+    {
+      "rva": "0x7314",
+      "va": "0x140007314",
+      "end_rva": "0x7344",
+      "source": "pdata",
+      "instruction_count": 11,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!VirtualProtect"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x7344",
+      "va": "0x140007344",
+      "end_rva": "0x7386",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0x6F78"
+      ],
+      "called_by": [
+        "0x6CF0"
+      ],
+      "import_calls": [],
+      "strings": [
+        "FlsGetValue2"
+      ]
+    },
+    {
+      "rva": "0x7388",
+      "va": "0x140007388",
+      "end_rva": "0x73C9",
+      "source": "pdata",
+      "instruction_count": 20,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!FreeLibrary"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x73CC",
+      "va": "0x1400073CC",
+      "end_rva": "0x73FB",
+      "source": "pdata",
+      "instruction_count": 15,
+      "direct_calls": [
+        "0x712C",
+        "0x8AD0"
+      ],
+      "called_by": [
+        "0x5C8C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x73FC",
+      "va": "0x1400073FC",
+      "end_rva": "0x7444",
+      "source": "pdata",
+      "instruction_count": 23,
+      "direct_calls": [
+        "0x71B4",
+        "0x7460"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x7444",
+      "va": "0x140007444",
+      "end_rva": "0x7460",
+      "source": "call-target",
+      "instruction_count": 8,
+      "direct_calls": [],
+      "called_by": [
+        "0x5280",
+        "0x52C0",
+        "0x5B94",
+        "0x5EC0",
+        "0x6038",
+        "0x6074",
+        "0x6774",
+        "0x67B4",
+        "0x67F4",
+        "0x683C",
+        "0x6F78",
+        "0x7D34",
+        "0x8484",
+        "0x8BE0",
+        "0x902C",
+        "0x987C",
+        "0x9B34",
+        "0x9BCC",
+        "0x9EC4",
+        "0xC078"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x7460",
+      "va": "0x140007460",
+      "end_rva": "0x7497",
+      "source": "pdata",
+      "instruction_count": 16,
+      "direct_calls": [],
+      "called_by": [
+        "0x73FC"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!DeleteCriticalSection"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x7498",
+      "va": "0x140007498",
+      "end_rva": "0x74C0",
+      "source": "call-target",
+      "instruction_count": 20,
+      "direct_calls": [],
+      "called_by": [
+        "0x5280",
+        "0x52C0",
+        "0x5B94",
+        "0x5EC0",
+        "0x6038",
+        "0x6074",
+        "0x6774",
+        "0x67B4",
+        "0x67F4",
+        "0x683C",
+        "0x6F78",
+        "0x7D34",
+        "0x8484",
+        "0x8BE0",
+        "0x902C",
+        "0x987C",
+        "0x9B34",
+        "0x9BCC",
+        "0x9EC4",
+        "0xC078",
+        "0xDCB2"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x74C0",
+      "va": "0x1400074C0",
+      "end_rva": "0x751E",
+      "source": "pdata",
+      "instruction_count": 29,
+      "direct_calls": [
+        "0x5230",
+        "0x5FE0",
+        "0x6E78"
+      ],
+      "called_by": [
+        "0x8214",
+        "0x8A18",
+        "0x93B8",
+        "0xADB8",
+        "0xB260"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!HeapAlloc"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x7520",
+      "va": "0x140007520",
+      "end_rva": "0x75A3",
+      "source": "pdata",
+      "instruction_count": 38,
+      "direct_calls": [
+        "0x51BC",
+        "0x6E78"
+      ],
+      "called_by": [
+        "0x58E4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x75B0",
+      "va": "0x1400075B0",
+      "end_rva": "0x7636",
+      "source": "pdata",
+      "instruction_count": 44,
+      "direct_calls": [
+        "0x51BC",
+        "0x6E78"
+      ],
+      "called_by": [
+        "0x7708",
+        "0x7B08"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x7636",
+      "va": "0x140007636",
+      "end_rva": "0x76B8",
+      "source": "pdata",
+      "instruction_count": 39,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x76B8",
+      "va": "0x1400076B8",
+      "end_rva": "0x76E1",
+      "source": "pdata",
+      "instruction_count": 10,
+      "direct_calls": [
+        "0x51BC",
+        "0x6E78"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x76E1",
+      "va": "0x1400076E1",
+      "end_rva": "0x76F4",
+      "source": "pdata",
+      "instruction_count": 6,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x7708",
+      "va": "0x140007708",
+      "end_rva": "0x7B05",
+      "source": "pdata",
+      "instruction_count": 283,
+      "direct_calls": [
+        "0x1960",
+        "0x51BC",
+        "0x51DC",
+        "0x5698",
+        "0x6E78",
+        "0x6F20",
+        "0x75B0",
+        "0x7B08",
+        "0x9360",
+        "0xAA20",
+        "0xCC90"
+      ],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!FindClose",
+        "KERNEL32.dll!FindFirstFileExW",
+        "KERNEL32.dll!FindNextFileW"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x7B08",
+      "va": "0x140007B08",
+      "end_rva": "0x7C8E",
+      "source": "pdata",
+      "instruction_count": 115,
+      "direct_calls": [
+        "0x51DC",
+        "0x6EA0",
+        "0x6F20",
+        "0x75B0",
+        "0x9960"
+      ],
+      "called_by": [
+        "0x7708"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x7C90",
+      "va": "0x140007C90",
+      "end_rva": "0x7D2B",
+      "source": "pdata",
+      "instruction_count": 41,
+      "direct_calls": [
+        "0x6BA4",
+        "0xA304",
+        "0xA370"
+      ],
+      "called_by": [
+        "0x7F04",
+        "0x93B8",
+        "0xB0EC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x7D2C",
+      "va": "0x140007D2C",
+      "end_rva": "0x7D34",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0x56F8"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x7D34",
+      "va": "0x140007D34",
+      "end_rva": "0x7F02",
+      "source": "pdata",
+      "instruction_count": 122,
+      "direct_calls": [
+        "0x51BC",
+        "0x6E78",
+        "0x6F20",
+        "0x7444",
+        "0x7498",
+        "0xCC90"
+      ],
+      "called_by": [
+        "0x8214"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x7F04",
+      "va": "0x140007F04",
+      "end_rva": "0x7F81",
+      "source": "pdata",
+      "instruction_count": 31,
+      "direct_calls": [
+        "0x7C90"
+      ],
+      "called_by": [
+        "0x8214",
+        "0x85B8"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetACP",
+        "KERNEL32.dll!GetOEMCP"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x7F84",
+      "va": "0x140007F84",
+      "end_rva": "0x801C",
+      "source": "pdata",
+      "instruction_count": 38,
+      "direct_calls": [
+        "0xCC90"
+      ],
+      "called_by": [
+        "0x85B8"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x801C",
+      "va": "0x14000801C",
+      "end_rva": "0x8211",
+      "source": "pdata",
+      "instruction_count": 132,
+      "direct_calls": [
+        "0x1960",
+        "0x93B8",
+        "0xB0EC"
+      ],
+      "called_by": [
+        "0x85B8"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetCPInfo"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x8214",
+      "va": "0x140008214",
+      "end_rva": "0x8483",
+      "source": "pdata",
+      "instruction_count": 157,
+      "direct_calls": [
+        "0x5F30",
+        "0x6E78",
+        "0x6F20",
+        "0x74C0",
+        "0x7D34",
+        "0x7F04",
+        "0x8484",
+        "0x85B8"
+      ],
+      "called_by": [
+        "0x853C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x8484",
+      "va": "0x140008484",
+      "end_rva": "0x853C",
+      "source": "pdata",
+      "instruction_count": 48,
+      "direct_calls": [
+        "0x65D4",
+        "0x6F20",
+        "0x7444",
+        "0x7498"
+      ],
+      "called_by": [
+        "0x8214"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x853C",
+      "va": "0x14000853C",
+      "end_rva": "0x859C",
+      "source": "pdata",
+      "instruction_count": 19,
+      "direct_calls": [
+        "0x6BC0",
+        "0x8214"
+      ],
+      "called_by": [
+        "0xB184"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x859C",
+      "va": "0x14000859C",
+      "end_rva": "0x85B8",
+      "source": "pdata",
+      "instruction_count": 6,
+      "direct_calls": [
+        "0x6BA4"
+      ],
+      "called_by": [
+        "0xA370",
+        "0xA3A4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x85B8",
+      "va": "0x1400085B8",
+      "end_rva": "0x8880",
+      "source": "pdata",
+      "instruction_count": 197,
+      "direct_calls": [
+        "0x1960",
+        "0x7F04",
+        "0x7F84",
+        "0x801C",
+        "0xCC90"
+      ],
+      "called_by": [
+        "0x8214"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetCPInfo",
+        "KERNEL32.dll!IsValidCodePage"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x8880",
+      "va": "0x140008880",
+      "end_rva": "0x88A5",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!GetCommandLineA",
+        "KERNEL32.dll!GetCommandLineW"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x88A8",
+      "va": "0x1400088A8",
+      "end_rva": "0x8938",
+      "source": "call-target",
+      "instruction_count": 51,
+      "direct_calls": [],
+      "called_by": [
+        "0x93B8",
+        "0xA3DC",
+        "0xADB8"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x8938",
+      "va": "0x140008938",
+      "end_rva": "0x8A16",
+      "source": "pdata",
+      "instruction_count": 73,
+      "direct_calls": [],
+      "called_by": [
+        "0xADB8",
+        "0xB3FC",
+        "0xBAB4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x8A18",
+      "va": "0x140008A18",
+      "end_rva": "0x8AB4",
+      "source": "pdata",
+      "instruction_count": 46,
+      "direct_calls": [
+        "0x6F20",
+        "0x74C0",
+        "0xD050"
+      ],
+      "called_by": [
+        "0x5874"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!FreeEnvironmentStringsW",
+        "KERNEL32.dll!GetEnvironmentStringsW"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x8AB4",
+      "va": "0x140008AB4",
+      "end_rva": "0x8AD0",
+      "source": "call-target",
+      "instruction_count": 9,
+      "direct_calls": [],
+      "called_by": [
+        "0x5C8C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x8AD0",
+      "va": "0x140008AD0",
+      "end_rva": "0x8AE8",
+      "source": "call-target",
+      "instruction_count": 6,
+      "direct_calls": [],
+      "called_by": [
+        "0x73CC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x8AE8",
+      "va": "0x140008AE8",
+      "end_rva": "0x8B8D",
+      "source": "pdata",
+      "instruction_count": 46,
+      "direct_calls": [
+        "0x6EA0",
+        "0x6F20",
+        "0x71B4"
+      ],
+      "called_by": [
+        "0x8BE0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x8B90",
+      "va": "0x140008B90",
+      "end_rva": "0x8BE0",
+      "source": "pdata",
+      "instruction_count": 23,
+      "direct_calls": [
+        "0x6F20"
+      ],
+      "called_by": [
+        "0x9068"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!DeleteCriticalSection"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x8BE0",
+      "va": "0x140008BE0",
+      "end_rva": "0x8C88",
+      "source": "pdata",
+      "instruction_count": 47,
+      "direct_calls": [
+        "0x51BC",
+        "0x6E78",
+        "0x7444",
+        "0x7498",
+        "0x8AE8"
+      ],
+      "called_by": [
+        "0x8E24",
+        "0x902C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x8C88",
+      "va": "0x140008C88",
+      "end_rva": "0x8CB0",
+      "source": "call-target",
+      "instruction_count": 10,
+      "direct_calls": [],
+      "called_by": [
+        "0xB2DC",
+        "0xBC28",
+        "0xC610"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x8CB0",
+      "va": "0x140008CB0",
+      "end_rva": "0x8CD8",
+      "source": "call-target",
+      "instruction_count": 10,
+      "direct_calls": [],
+      "called_by": [
+        "0xB2DC",
+        "0xBC28",
+        "0xC610"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x8CD8",
+      "va": "0x140008CD8",
+      "end_rva": "0x8D92",
+      "source": "pdata",
+      "instruction_count": 52,
+      "direct_calls": [
+        "0x54A4",
+        "0x6E54",
+        "0x6E78"
+      ],
+      "called_by": [
+        "0xC74C"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!SetStdHandle"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x8D94",
+      "va": "0x140008D94",
+      "end_rva": "0x8E09",
+      "source": "pdata",
+      "instruction_count": 31,
+      "direct_calls": [
+        "0x51BC",
+        "0x6E54",
+        "0x6E78"
+      ],
+      "called_by": [
+        "0xB2DC",
+        "0xC228",
+        "0xC74C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x8E24",
+      "va": "0x140008E24",
+      "end_rva": "0x8F21",
+      "source": "pdata",
+      "instruction_count": 68,
+      "direct_calls": [
+        "0x8BE0",
+        "0xCC90"
+      ],
+      "called_by": [
+        "0x902C"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetFileType",
+        "KERNEL32.dll!GetStartupInfoW"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x8F24",
+      "va": "0x140008F24",
+      "end_rva": "0x902C",
+      "source": "pdata",
+      "instruction_count": 71,
+      "direct_calls": [],
+      "called_by": [
+        "0x902C"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetFileType",
+        "KERNEL32.dll!GetStdHandle"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x902C",
+      "va": "0x14000902C",
+      "end_rva": "0x9067",
+      "source": "pdata",
+      "instruction_count": 18,
+      "direct_calls": [
+        "0x7444",
+        "0x7498",
+        "0x8BE0",
+        "0x8E24",
+        "0x8F24"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9068",
+      "va": "0x140009068",
+      "end_rva": "0x90A8",
+      "source": "pdata",
+      "instruction_count": 18,
+      "direct_calls": [
+        "0x8B90"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x90A8",
+      "va": "0x1400090A8",
+      "end_rva": "0x91B2",
+      "source": "pdata",
+      "instruction_count": 60,
+      "direct_calls": [
+        "0x6F20"
+      ],
+      "called_by": [
+        "0x95D4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x91B4",
+      "va": "0x1400091B4",
+      "end_rva": "0x9220",
+      "source": "pdata",
+      "instruction_count": 28,
+      "direct_calls": [
+        "0x6F20"
+      ],
+      "called_by": [
+        "0x95D4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9220",
+      "va": "0x140009220",
+      "end_rva": "0x9252",
+      "source": "pdata",
+      "instruction_count": 16,
+      "direct_calls": [
+        "0x6F20"
+      ],
+      "called_by": [
+        "0x9254"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9254",
+      "va": "0x140009254",
+      "end_rva": "0x935C",
+      "source": "pdata",
+      "instruction_count": 57,
+      "direct_calls": [
+        "0x6F20",
+        "0x9220"
+      ],
+      "called_by": [
+        "0x9774"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9360",
+      "va": "0x140009360",
+      "end_rva": "0x93B8",
+      "source": "pdata",
+      "instruction_count": 28,
+      "direct_calls": [
+        "0xCB80"
+      ],
+      "called_by": [
+        "0x7708"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x93B8",
+      "va": "0x1400093B8",
+      "end_rva": "0x9547",
+      "source": "pdata",
+      "instruction_count": 114,
+      "direct_calls": [
+        "0x1960",
+        "0x6F20",
+        "0x74C0",
+        "0x7C90",
+        "0x88A8",
+        "0xCAE0",
+        "0xCC90"
+      ],
+      "called_by": [
+        "0x801C"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetStringTypeW"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x9548",
+      "va": "0x140009548",
+      "end_rva": "0x95D4",
+      "source": "call-target",
+      "instruction_count": 38,
+      "direct_calls": [],
+      "called_by": [
+        "0x6B3C",
+        "0x98EC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x95D4",
+      "va": "0x1400095D4",
+      "end_rva": "0x974A",
+      "source": "pdata",
+      "instruction_count": 89,
+      "direct_calls": [
+        "0x6F20",
+        "0x90A8",
+        "0x91B4",
+        "0x9774"
+      ],
+      "called_by": [
+        "0x6B3C",
+        "0x98EC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9774",
+      "va": "0x140009774",
+      "end_rva": "0x97AB",
+      "source": "pdata",
+      "instruction_count": 18,
+      "direct_calls": [
+        "0x6F20",
+        "0x9254"
+      ],
+      "called_by": [
+        "0x95D4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x97AC",
+      "va": "0x1400097AC",
+      "end_rva": "0x97D4",
+      "source": "call-target",
+      "instruction_count": 14,
+      "direct_calls": [],
+      "called_by": [
+        "0x97D4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x97D4",
+      "va": "0x1400097D4",
+      "end_rva": "0x987C",
+      "source": "pdata",
+      "instruction_count": 43,
+      "direct_calls": [
+        "0x97AC"
+      ],
+      "called_by": [
+        "0x6B3C",
+        "0x98EC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x987C",
+      "va": "0x14000987C",
+      "end_rva": "0x98EA",
+      "source": "pdata",
+      "instruction_count": 30,
+      "direct_calls": [
+        "0x65D4",
+        "0x6BA4",
+        "0x7444",
+        "0x7498",
+        "0x98EC"
+      ],
+      "called_by": [
+        "0xA304",
+        "0xA338"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x98EC",
+      "va": "0x1400098EC",
+      "end_rva": "0x9951",
+      "source": "pdata",
+      "instruction_count": 33,
+      "direct_calls": [
+        "0x9548",
+        "0x95D4",
+        "0x97D4"
+      ],
+      "called_by": [
+        "0x5EC0",
+        "0x987C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9960",
+      "va": "0x140009960",
+      "end_rva": "0x99F5",
+      "source": "pdata",
+      "instruction_count": 46,
+      "direct_calls": [
+        "0x6E78",
+        "0xB210",
+        "0xB260",
+        "0xCC90"
+      ],
+      "called_by": [
+        "0x60B0",
+        "0x7B08"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9A20",
+      "va": "0x140009A20",
+      "end_rva": "0x9A3C",
+      "source": "pdata",
+      "instruction_count": 7,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!GetProcessHeap"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0x9A78",
+      "va": "0x140009A78",
+      "end_rva": "0x9AF6",
+      "source": "pdata",
+      "instruction_count": 42,
+      "direct_calls": [
+        "0xCC50"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9AF8",
+      "va": "0x140009AF8",
+      "end_rva": "0x9B33",
+      "source": "pdata",
+      "instruction_count": 20,
+      "direct_calls": [
+        "0xCC50"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9B34",
+      "va": "0x140009B34",
+      "end_rva": "0x9B7C",
+      "source": "pdata",
+      "instruction_count": 21,
+      "direct_calls": [
+        "0x7444",
+        "0x7498"
+      ],
+      "called_by": [
+        "0x9B7C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9B7C",
+      "va": "0x140009B7C",
+      "end_rva": "0x9BAA",
+      "source": "pdata",
+      "instruction_count": 12,
+      "direct_calls": [
+        "0x9B34"
+      ],
+      "called_by": [
+        "0x65D4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9BAC",
+      "va": "0x140009BAC",
+      "end_rva": "0x9BCC",
+      "source": "call-target",
+      "instruction_count": 8,
+      "direct_calls": [],
+      "called_by": [
+        "0x6484"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9BCC",
+      "va": "0x140009BCC",
+      "end_rva": "0x9E28",
+      "source": "pdata",
+      "instruction_count": 175,
+      "direct_calls": [
+        "0x51BC",
+        "0x5E2C",
+        "0x6BA4",
+        "0x6C04",
+        "0x6E78",
+        "0x7444",
+        "0x7498",
+        "0xCC50"
+      ],
+      "called_by": [
+        "0x65D4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9E28",
+      "va": "0x140009E28",
+      "end_rva": "0x9EC4",
+      "source": "pdata",
+      "instruction_count": 56,
+      "direct_calls": [
+        "0xA094",
+        "0xA2EC",
+        "0xA2F8"
+      ],
+      "called_by": [
+        "0x9EC4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9EC4",
+      "va": "0x140009EC4",
+      "end_rva": "0x9FA5",
+      "source": "pdata",
+      "instruction_count": 64,
+      "direct_calls": [
+        "0x7444",
+        "0x7498",
+        "0x9E28"
+      ],
+      "called_by": [
+        "0x9FA8"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0x9FA8",
+      "va": "0x140009FA8",
+      "end_rva": "0xA005",
+      "source": "pdata",
+      "instruction_count": 26,
+      "direct_calls": [
+        "0x9EC4"
+      ],
+      "called_by": [
+        "0xA094"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA008",
+      "va": "0x14000A008",
+      "end_rva": "0xA094",
+      "source": "pdata",
+      "instruction_count": 47,
+      "direct_calls": [
+        "0xA94C",
+        "0xBC28"
+      ],
+      "called_by": [
+        "0xA094",
+        "0xC39C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA094",
+      "va": "0x14000A094",
+      "end_rva": "0xA166",
+      "source": "pdata",
+      "instruction_count": 62,
+      "direct_calls": [
+        "0x4DD0",
+        "0x9FA8",
+        "0xA008",
+        "0xA94C",
+        "0xB368"
+      ],
+      "called_by": [
+        "0x9E28"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA168",
+      "va": "0x14000A168",
+      "end_rva": "0xA170",
+      "source": "call-target",
+      "instruction_count": 3,
+      "direct_calls": [],
+      "called_by": [
+        "0x657C",
+        "0xA290"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA170",
+      "va": "0x14000A170",
+      "end_rva": "0xA290",
+      "source": "pdata",
+      "instruction_count": 72,
+      "direct_calls": [
+        "0x6EA0",
+        "0x6F20",
+        "0x71B4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA290",
+      "va": "0x14000A290",
+      "end_rva": "0xA2EB",
+      "source": "pdata",
+      "instruction_count": 21,
+      "direct_calls": [
+        "0x6F20",
+        "0xA168",
+        "0xC078",
+        "0xC12C"
+      ],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!DeleteCriticalSection"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xA2EC",
+      "va": "0x14000A2EC",
+      "end_rva": "0xA2F8",
+      "source": "call-target",
+      "instruction_count": 3,
+      "direct_calls": [],
+      "called_by": [
+        "0x9E28",
+        "0xC320"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA2F8",
+      "va": "0x14000A2F8",
+      "end_rva": "0xA304",
+      "source": "call-target",
+      "instruction_count": 3,
+      "direct_calls": [],
+      "called_by": [
+        "0x9E28",
+        "0xC320"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA304",
+      "va": "0x14000A304",
+      "end_rva": "0xA335",
+      "source": "pdata",
+      "instruction_count": 14,
+      "direct_calls": [
+        "0x987C"
+      ],
+      "called_by": [
+        "0x7C90"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA338",
+      "va": "0x14000A338",
+      "end_rva": "0xA36D",
+      "source": "pdata",
+      "instruction_count": 15,
+      "direct_calls": [
+        "0x987C"
+      ],
+      "called_by": [
+        "0x66C0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA370",
+      "va": "0x14000A370",
+      "end_rva": "0xA3A1",
+      "source": "pdata",
+      "instruction_count": 14,
+      "direct_calls": [
+        "0x859C"
+      ],
+      "called_by": [
+        "0x7C90"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA3A4",
+      "va": "0x14000A3A4",
+      "end_rva": "0xA3D9",
+      "source": "pdata",
+      "instruction_count": 15,
+      "direct_calls": [
+        "0x859C"
+      ],
+      "called_by": [
+        "0x66C0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA3DC",
+      "va": "0x14000A3DC",
+      "end_rva": "0xA554",
+      "source": "pdata",
+      "instruction_count": 103,
+      "direct_calls": [
+        "0x66C0",
+        "0x88A8",
+        "0xA74C"
+      ],
+      "called_by": [
+        "0xB3FC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA554",
+      "va": "0x14000A554",
+      "end_rva": "0xA58C",
+      "source": "call-target",
+      "instruction_count": 24,
+      "direct_calls": [],
+      "called_by": [
+        "0xA58C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA58C",
+      "va": "0x14000A58C",
+      "end_rva": "0xA749",
+      "source": "pdata",
+      "instruction_count": 130,
+      "direct_calls": [
+        "0x1960",
+        "0xA554",
+        "0xC1D0",
+        "0xC1D8"
+      ],
+      "called_by": [
+        "0xA74C",
+        "0xA794"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA74C",
+      "va": "0x14000A74C",
+      "end_rva": "0xA793",
+      "source": "pdata",
+      "instruction_count": 20,
+      "direct_calls": [
+        "0xA58C"
+      ],
+      "called_by": [
+        "0xA3DC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA794",
+      "va": "0x14000A794",
+      "end_rva": "0xA949",
+      "source": "pdata",
+      "instruction_count": 123,
+      "direct_calls": [
+        "0xA58C"
+      ],
+      "called_by": [
+        "0xB3FC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA94C",
+      "va": "0x14000A94C",
+      "end_rva": "0xA973",
+      "source": "pdata",
+      "instruction_count": 12,
+      "direct_calls": [
+        "0x51BC",
+        "0x6E78"
+      ],
+      "called_by": [
+        "0xA008",
+        "0xA094",
+        "0xC39C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xA974",
+      "va": "0x14000A974",
+      "end_rva": "0xAA1B",
+      "source": "pdata",
+      "instruction_count": 50,
+      "direct_calls": [
+        "0xB1A0"
+      ],
+      "called_by": [
+        "0x72B0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xAA20",
+      "va": "0x14000AA20",
+      "end_rva": "0xAAB2",
+      "source": "pdata",
+      "instruction_count": 37,
+      "direct_calls": [
+        "0x51BC",
+        "0x6E78",
+        "0xC1EC",
+        "0xCC90"
+      ],
+      "called_by": [
+        "0x7708"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xAAB2",
+      "va": "0x14000AAB2",
+      "end_rva": "0xAD98",
+      "source": "pdata",
+      "instruction_count": 218,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xAD98",
+      "va": "0x14000AD98",
+      "end_rva": "0xADB8",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [
+        "0x1960"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xADB8",
+      "va": "0x14000ADB8",
+      "end_rva": "0xB0E9",
+      "source": "pdata",
+      "instruction_count": 228,
+      "direct_calls": [
+        "0x1960",
+        "0x6F20",
+        "0x71BC",
+        "0x74C0",
+        "0x88A8",
+        "0x8938",
+        "0xC210",
+        "0xCAE0"
+      ],
+      "called_by": [
+        "0xB0EC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xB0EC",
+      "va": "0x14000B0EC",
+      "end_rva": "0xB182",
+      "source": "pdata",
+      "instruction_count": 35,
+      "direct_calls": [
+        "0x7C90",
+        "0xADB8"
+      ],
+      "called_by": [
+        "0x801C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xB184",
+      "va": "0x14000B184",
+      "end_rva": "0xB198",
+      "source": "pdata",
+      "instruction_count": 6,
+      "direct_calls": [
+        "0x853C"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xB1A0",
+      "va": "0x14000B1A0",
+      "end_rva": "0xB210",
+      "source": "call-target",
+      "instruction_count": 42,
+      "direct_calls": [],
+      "called_by": [
+        "0xA974"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xB210",
+      "va": "0x14000B210",
+      "end_rva": "0xB249",
+      "source": "pdata",
+      "instruction_count": 14,
+      "direct_calls": [
+        "0x51BC",
+        "0x6E78"
+      ],
+      "called_by": [
+        "0x9960"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xB260",
+      "va": "0x14000B260",
+      "end_rva": "0xB2DA",
+      "source": "pdata",
+      "instruction_count": 38,
+      "direct_calls": [
+        "0x5230",
+        "0x5FE0",
+        "0x6E78",
+        "0x6F20",
+        "0x74C0"
+      ],
+      "called_by": [
+        "0x9960"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!HeapReAlloc"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xB2DC",
+      "va": "0x14000B2DC",
+      "end_rva": "0xB367",
+      "source": "pdata",
+      "instruction_count": 40,
+      "direct_calls": [
+        "0x6E54",
+        "0x6E78",
+        "0x8C88",
+        "0x8CB0",
+        "0x8D94"
+      ],
+      "called_by": [
+        "0xB368"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!FlushFileBuffers",
+        "KERNEL32.dll!GetLastError"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xB368",
+      "va": "0x14000B368",
+      "end_rva": "0xB3F9",
+      "source": "pdata",
+      "instruction_count": 37,
+      "direct_calls": [
+        "0x51BC",
+        "0x6E78",
+        "0xB2DC"
+      ],
+      "called_by": [
+        "0xA094"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xB3FC",
+      "va": "0x14000B3FC",
+      "end_rva": "0xB88F",
+      "source": "pdata",
+      "instruction_count": 304,
+      "direct_calls": [
+        "0x1960",
+        "0x66C0",
+        "0x8938",
+        "0xA3DC",
+        "0xA794",
+        "0xD050"
+      ],
+      "called_by": [
+        "0xBD48"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetConsoleOutputCP",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!WriteFile"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xB890",
+      "va": "0x14000B890",
+      "end_rva": "0xB997",
+      "source": "pdata",
+      "instruction_count": 75,
+      "direct_calls": [
+        "0x1960",
+        "0xCAE0"
+      ],
+      "called_by": [
+        "0xBD48"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!WriteFile"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xB998",
+      "va": "0x14000B998",
+      "end_rva": "0xBAB3",
+      "source": "pdata",
+      "instruction_count": 77,
+      "direct_calls": [
+        "0x1960",
+        "0xCAE0"
+      ],
+      "called_by": [
+        "0xBD48"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!WriteFile"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xBAB4",
+      "va": "0x14000BAB4",
+      "end_rva": "0xBC28",
+      "source": "pdata",
+      "instruction_count": 100,
+      "direct_calls": [
+        "0x1960",
+        "0x8938",
+        "0xCAE0"
+      ],
+      "called_by": [
+        "0xBD48"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!WriteFile"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xBC28",
+      "va": "0x14000BC28",
+      "end_rva": "0xBD45",
+      "source": "pdata",
+      "instruction_count": 79,
+      "direct_calls": [
+        "0x5104",
+        "0x8C88",
+        "0x8CB0",
+        "0xBD48"
+      ],
+      "called_by": [
+        "0xA008"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xBD48",
+      "va": "0x14000BD48",
+      "end_rva": "0xC077",
+      "source": "pdata",
+      "instruction_count": 229,
+      "direct_calls": [
+        "0x5104",
+        "0x66C0",
+        "0x6E30",
+        "0xB3FC",
+        "0xB890",
+        "0xB998",
+        "0xBAB4",
+        "0xC170",
+        "0xC2D8",
+        "0xC2E0"
+      ],
+      "called_by": [
+        "0xBC28"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!GetConsoleMode",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!WriteFile"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xC078",
+      "va": "0x14000C078",
+      "end_rva": "0xC12A",
+      "source": "pdata",
+      "instruction_count": 46,
+      "direct_calls": [
+        "0x6F20",
+        "0x7444",
+        "0x7498",
+        "0xC444"
+      ],
+      "called_by": [
+        "0xA290"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!DeleteCriticalSection"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xC12C",
+      "va": "0x14000C12C",
+      "end_rva": "0xC16E",
+      "source": "pdata",
+      "instruction_count": 23,
+      "direct_calls": [
+        "0x6F20"
+      ],
+      "called_by": [
+        "0xA290",
+        "0xC39C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC170",
+      "va": "0x14000C170",
+      "end_rva": "0xC1CF",
+      "source": "pdata",
+      "instruction_count": 26,
+      "direct_calls": [
+        "0x51BC",
+        "0x6E78"
+      ],
+      "called_by": [
+        "0xBD48"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC1D0",
+      "va": "0x14000C1D0",
+      "end_rva": "0xC1D8",
+      "source": "call-target",
+      "instruction_count": 3,
+      "direct_calls": [],
+      "called_by": [
+        "0xA58C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC1D8",
+      "va": "0x14000C1D8",
+      "end_rva": "0xC1EC",
+      "source": "call-target",
+      "instruction_count": 5,
+      "direct_calls": [],
+      "called_by": [
+        "0xA58C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC1EC",
+      "va": "0x14000C1EC",
+      "end_rva": "0xC202",
+      "source": "pdata",
+      "instruction_count": 7,
+      "direct_calls": [],
+      "called_by": [
+        "0xAA20"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC210",
+      "va": "0x14000C210",
+      "end_rva": "0xC228",
+      "source": "call-target",
+      "instruction_count": 12,
+      "direct_calls": [],
+      "called_by": [
+        "0xADB8"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC228",
+      "va": "0x14000C228",
+      "end_rva": "0xC2D7",
+      "source": "pdata",
+      "instruction_count": 47,
+      "direct_calls": [
+        "0x6E30",
+        "0x8D94"
+      ],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!SetFilePointerEx"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xC2D8",
+      "va": "0x14000C2D8",
+      "end_rva": "0xC2E0",
+      "source": "call-target",
+      "instruction_count": 4,
+      "direct_calls": [],
+      "called_by": [
+        "0xBD48"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC2E0",
+      "va": "0x14000C2E0",
+      "end_rva": "0xC320",
+      "source": "pdata",
+      "instruction_count": 17,
+      "direct_calls": [
+        "0xC4E0",
+        "0xC550"
+      ],
+      "called_by": [
+        "0xBD48"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC320",
+      "va": "0x14000C320",
+      "end_rva": "0xC39A",
+      "source": "pdata",
+      "instruction_count": 39,
+      "direct_calls": [
+        "0x5104",
+        "0xA2EC",
+        "0xA2F8",
+        "0xC39C",
+        "0xC81C"
+      ],
+      "called_by": [
+        "0xC444"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC39C",
+      "va": "0x14000C39C",
+      "end_rva": "0xC441",
+      "source": "pdata",
+      "instruction_count": 51,
+      "direct_calls": [
+        "0x5104",
+        "0x6F20",
+        "0xA008",
+        "0xA94C",
+        "0xC12C",
+        "0xC688",
+        "0xC81C"
+      ],
+      "called_by": [
+        "0xC320"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC444",
+      "va": "0x14000C444",
+      "end_rva": "0xC4DC",
+      "source": "pdata",
+      "instruction_count": 40,
+      "direct_calls": [
+        "0x4DD0",
+        "0xC320"
+      ],
+      "called_by": [
+        "0xC078"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC4E0",
+      "va": "0x14000C4E0",
+      "end_rva": "0xC532",
+      "source": "pdata",
+      "instruction_count": 21,
+      "direct_calls": [],
+      "called_by": [
+        "0xC2E0"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!CreateFileW"
+      ],
+      "strings": [
+        "CONOUT$",
+        "￾￿￿￿"
+      ]
+    },
+    {
+      "rva": "0xC534",
+      "va": "0x14000C534",
+      "end_rva": "0xC550",
+      "source": "pdata",
+      "instruction_count": 7,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [
+        "KERNEL32.dll!CloseHandle"
+      ],
+      "strings": [
+        "￾￿￿￿"
+      ]
+    },
+    {
+      "rva": "0xC550",
+      "va": "0x14000C550",
+      "end_rva": "0xC60E",
+      "source": "pdata",
+      "instruction_count": 48,
+      "direct_calls": [],
+      "called_by": [
+        "0xC2E0"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!CloseHandle",
+        "KERNEL32.dll!CreateFileW",
+        "KERNEL32.dll!GetLastError",
+        "KERNEL32.dll!WriteConsoleW"
+      ],
+      "strings": [
+        "CONOUT$",
+        "￾￿￿￿"
+      ]
+    },
+    {
+      "rva": "0xC610",
+      "va": "0x14000C610",
+      "end_rva": "0xC687",
+      "source": "pdata",
+      "instruction_count": 34,
+      "direct_calls": [
+        "0x8C88",
+        "0x8CB0",
+        "0xC74C"
+      ],
+      "called_by": [
+        "0xC688"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC688",
+      "va": "0x14000C688",
+      "end_rva": "0xC749",
+      "source": "pdata",
+      "instruction_count": 48,
+      "direct_calls": [
+        "0x5104",
+        "0xC610"
+      ],
+      "called_by": [
+        "0xC39C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC74C",
+      "va": "0x14000C74C",
+      "end_rva": "0xC819",
+      "source": "pdata",
+      "instruction_count": 59,
+      "direct_calls": [
+        "0x6E30",
+        "0x8CD8",
+        "0x8D94"
+      ],
+      "called_by": [
+        "0xC610"
+      ],
+      "import_calls": [
+        "KERNEL32.dll!CloseHandle",
+        "KERNEL32.dll!GetLastError"
+      ],
+      "strings": []
+    },
+    {
+      "rva": "0xC81C",
+      "va": "0x14000C81C",
+      "end_rva": "0xC840",
+      "source": "call-target",
+      "instruction_count": 17,
+      "direct_calls": [],
+      "called_by": [
+        "0xC320",
+        "0xC39C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC840",
+      "va": "0x14000C840",
+      "end_rva": "0xC8F2",
+      "source": "pdata",
+      "instruction_count": 50,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC8F4",
+      "va": "0x14000C8F4",
+      "end_rva": "0xC911",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [
+        "0xC914"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC914",
+      "va": "0x14000C914",
+      "end_rva": "0xC974",
+      "source": "pdata",
+      "instruction_count": 29,
+      "direct_calls": [],
+      "called_by": [
+        "0xC8F4",
+        "0xCA4C"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC980",
+      "va": "0x14000C980",
+      "end_rva": "0xC9D0",
+      "source": "call-target",
+      "instruction_count": 35,
+      "direct_calls": [],
+      "called_by": [
+        "0xC9D0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xC9D0",
+      "va": "0x14000C9D0",
+      "end_rva": "0xCA1A",
+      "source": "pdata",
+      "instruction_count": 24,
+      "direct_calls": [
+        "0xC980",
+        "0xCA20"
+      ],
+      "called_by": [
+        "0x2CCC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xCA20",
+      "va": "0x14000CA20",
+      "end_rva": "0xCA4C",
+      "source": "call-target",
+      "instruction_count": 15,
+      "direct_calls": [],
+      "called_by": [
+        "0xC9D0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xCA4C",
+      "va": "0x14000CA4C",
+      "end_rva": "0xCACB",
+      "source": "pdata",
+      "instruction_count": 37,
+      "direct_calls": [
+        "0x2C44",
+        "0xC914"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xCAE0",
+      "va": "0x14000CAE0",
+      "end_rva": "0xCB2E",
+      "source": "pdata",
+      "instruction_count": 19,
+      "direct_calls": [],
+      "called_by": [
+        "0x93B8",
+        "0xADB8",
+        "0xB890",
+        "0xB998",
+        "0xBAB4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xCB30",
+      "va": "0x14000CB30",
+      "end_rva": "0xCB7B",
+      "source": "pdata",
+      "instruction_count": 22,
+      "direct_calls": [
+        "0x2CCC",
+        "0x3220",
+        "0x65B4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xCB80",
+      "va": "0x14000CB80",
+      "end_rva": "0xCC10",
+      "source": "call-target",
+      "instruction_count": 49,
+      "direct_calls": [],
+      "called_by": [
+        "0x9360"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xCC10",
+      "va": "0x14000CC10",
+      "end_rva": "0xCC12",
+      "source": "pdata",
+      "instruction_count": 1,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xCC30",
+      "va": "0x14000CC30",
+      "end_rva": "0xCC36",
+      "source": "pdata",
+      "instruction_count": 1,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xCC50",
+      "va": "0x14000CC50",
+      "end_rva": "0xCC56",
+      "source": "pdata",
+      "instruction_count": 1,
+      "direct_calls": [],
+      "called_by": [
+        "0x5104",
+        "0x5230",
+        "0x5338",
+        "0x5B20",
+        "0x5B58",
+        "0x5BCC",
+        "0x5DA0",
+        "0x6260",
+        "0x65B4",
+        "0x71BC",
+        "0x72B0",
+        "0x9A78",
+        "0x9AF8",
+        "0x9BCC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xCC80",
+      "va": "0x14000CC80",
+      "end_rva": "0xCC90",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xCC90",
+      "va": "0x14000CC90",
+      "end_rva": "0xD018",
+      "source": "pdata",
+      "instruction_count": 176,
+      "direct_calls": [],
+      "called_by": [
+        "0x12C0",
+        "0x15C4",
+        "0x2170",
+        "0x22BC",
+        "0x4EF0",
+        "0x7708",
+        "0x7D34",
+        "0x7F84",
+        "0x85B8",
+        "0x8E24",
+        "0x93B8",
+        "0x9960",
+        "0xAA20"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xD040",
+      "va": "0x14000D040",
+      "end_rva": "0xD050",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xD050",
+      "va": "0x14000D050",
+      "end_rva": "0xD6BD",
+      "source": "pdata",
+      "instruction_count": 342,
+      "direct_calls": [],
+      "called_by": [
+        "0x11D4",
+        "0x15C4",
+        "0x3484",
+        "0x8A18",
+        "0xB3FC"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xD6D0",
+      "va": "0x14000D6D0",
+      "end_rva": "0xD778",
+      "source": "pdata",
+      "instruction_count": 57,
+      "direct_calls": [],
+      "called_by": [
+        "0x2EE4"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xD790",
+      "va": "0x14000D790",
+      "end_rva": "0xD7F7",
+      "source": "pdata",
+      "instruction_count": 31,
+      "direct_calls": [],
+      "called_by": [
+        "0x3F64"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xD810",
+      "va": "0x14000D810",
+      "end_rva": "0xD88D",
+      "source": "pdata",
+      "instruction_count": 37,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xD8A0",
+      "va": "0x14000D8A0",
+      "end_rva": "0xD967",
+      "source": "pdata",
+      "instruction_count": 69,
+      "direct_calls": [],
+      "called_by": [
+        "0x12C0"
+      ],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xD970",
+      "va": "0x14000D970",
+      "end_rva": "0xD98E",
+      "source": "pdata",
+      "instruction_count": 12,
+      "direct_calls": [
+        "0x5338"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xD98E",
+      "va": "0x14000D98E",
+      "end_rva": "0xD9A6",
+      "source": "pdata",
+      "instruction_count": 10,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xD9A6",
+      "va": "0x14000D9A6",
+      "end_rva": "0xDA4D",
+      "source": "pdata",
+      "instruction_count": 40,
+      "direct_calls": [
+        "0x3220",
+        "0x42B4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDA4D",
+      "va": "0x14000DA4D",
+      "end_rva": "0xDADF",
+      "source": "pdata",
+      "instruction_count": 41,
+      "direct_calls": [
+        "0x3220",
+        "0x65B4"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDADF",
+      "va": "0x14000DADF",
+      "end_rva": "0xDB00",
+      "source": "pdata",
+      "instruction_count": 11,
+      "direct_calls": [
+        "0x4508"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDB00",
+      "va": "0x14000DB00",
+      "end_rva": "0xDB86",
+      "source": "pdata",
+      "instruction_count": 38,
+      "direct_calls": [
+        "0x2B98",
+        "0x2F8C",
+        "0x3004",
+        "0x3220"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDB86",
+      "va": "0x14000DB86",
+      "end_rva": "0xDB9C",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [
+        "0x3058"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDB9C",
+      "va": "0x14000DB9C",
+      "end_rva": "0xDBBF",
+      "source": "pdata",
+      "instruction_count": 12,
+      "direct_calls": [
+        "0x3220"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDBC0",
+      "va": "0x14000DBC0",
+      "end_rva": "0xDBD6",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDBD6",
+      "va": "0x14000DBD6",
+      "end_rva": "0xDBEC",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDBEC",
+      "va": "0x14000DBEC",
+      "end_rva": "0xDC06",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDC06",
+      "va": "0x14000DC06",
+      "end_rva": "0xDC33",
+      "source": "pdata",
+      "instruction_count": 16,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDC33",
+      "va": "0x14000DC33",
+      "end_rva": "0xDC4D",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDC4D",
+      "va": "0x14000DC4D",
+      "end_rva": "0xDC67",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDC67",
+      "va": "0x14000DC67",
+      "end_rva": "0xDC80",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDC80",
+      "va": "0x14000DC80",
+      "end_rva": "0xDC99",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDC99",
+      "va": "0x14000DC99",
+      "end_rva": "0xDCB2",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDCB2",
+      "va": "0x14000DCB2",
+      "end_rva": "0xDCD3",
+      "source": "pdata",
+      "instruction_count": 12,
+      "direct_calls": [
+        "0x7498"
+      ],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDCD3",
+      "va": "0x14000DCD3",
+      "end_rva": "0xDCEE",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDCEE",
+      "va": "0x14000DCEE",
+      "end_rva": "0xDD0B",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDD0B",
+      "va": "0x14000DD0B",
+      "end_rva": "0xDD25",
+      "source": "pdata",
+      "instruction_count": 9,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDD25",
+      "va": "0x14000DD25",
+      "end_rva": "0xDD3C",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDD3C",
+      "va": "0x14000DD3C",
+      "end_rva": "0xDD55",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDD55",
+      "va": "0x14000DD55",
+      "end_rva": "0xDD6D",
+      "source": "pdata",
+      "instruction_count": 8,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    },
+    {
+      "rva": "0xDD70",
+      "va": "0x14000DD70",
+      "end_rva": "0xDD90",
+      "source": "pdata",
+      "instruction_count": 12,
+      "direct_calls": [],
+      "called_by": [],
+      "import_calls": [],
+      "strings": []
+    }
+  ]
+}

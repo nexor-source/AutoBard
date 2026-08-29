@@ -16,3 +16,9 @@ def test_input_command_accepts_viiper_backend() -> None:
     args = _build_parser().parse_args(["test-input", "--mouse-backend", "viiper"])
 
     assert args.mouse_backend == "viiper"
+
+
+def test_gui_command_is_available() -> None:
+    args = _build_parser().parse_args(["gui"])
+
+    assert args.command == "gui"

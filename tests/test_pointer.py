@@ -72,5 +72,11 @@ def test_bootstrap_window_rejects_distant_animated_scenery() -> None:
     cv2.rectangle(second, (345, 5), (370, 84), (240, 250, 255), -1)
     measurement = detector.detect(second, bootstrap_x=100)
 
+    assert measurement is None
+
+    third = frame(130)
+    cv2.rectangle(third, (345, 5), (370, 84), (240, 250, 255), -1)
+    measurement = detector.detect(third, bootstrap_x=100)
+
     assert measurement is not None
-    assert abs(measurement.x - 120) < 7
+    assert abs(measurement.x - 130) < 7

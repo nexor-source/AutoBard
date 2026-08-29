@@ -1,0 +1,45 @@
+{
+  "input": "D:\\workApp\\Github\\AutoBard\\reverse_analysis\\output\\auto\\payload_final.bin",
+  "payload_sha256": "2065E6DEB694BC2D0D6D8F45650BF2D2BDF395DF0CAB28A9B94E26BCD7C04DF8",
+  "config_offset": "0x42EE",
+  "config_size": "0x1D0",
+  "config_key": "0xC0DEFACE",
+  "encrypted_sha256": "5A7A13CDB93F2379B15A097B3FBA99DCBA3EE7FB5D98E70D1F2BD391AE3BCF66",
+  "decrypted_sha256": "15C2DA7AAA20A0D53AAF22AFF3F3AC7F77F16777FCD1EE5376B1AB8D1B5CC39F",
+  "magic_ascii": "DMV2",
+  "declared_size": 464,
+  "version": 2,
+  "header_valid": true,
+  "decoded_fields": {
+    "server": "154.82.93.152",
+    "port": 443,
+    "cache_directory_name_and_xor_key": "853EAFC200002A0D",
+    "inner_marker": "%@)!#!$",
+    "field_0x15c_16_bytes_hex": "17E936CD21C167C3712E430C1308E267",
+    "field_0x16c_32_bytes_hex": "D57A419AE153533CB8567F3DA79F7F33DC0E9F555EA771BCE949F9EF938CCA99",
+    "inferred_cache_path": "%ProgramData%\\853EAFC200002A0D\\1"
+  },
+  "nonzero_32_byte_field_at_0x16c": true,
+  "printable_runs": [
+    {
+      "offset": "0x0",
+      "encoding": "ascii",
+      "value": "DMV2"
+    },
+    {
+      "offset": "0xC",
+      "encoding": "ascii",
+      "value": "154.82.93.152"
+    },
+    {
+      "offset": "0x10B",
+      "encoding": "ascii",
+      "value": "853EAFC200002A0D"
+    },
+    {
+      "offset": "0x147",
+      "encoding": "ascii",
+      "value": "%@)!#!$"
+    }
+  ]
+}

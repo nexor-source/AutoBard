@@ -19,6 +19,8 @@ class HotkeyService:
         self.config = config
         self.quit_event = threading.Event()
         self.start_event = threading.Event()
+        self.ready_event = threading.Event()
+        self.stopped_event = threading.Event()
         self.active_session: AutoBardSession | None = None
         self.worker: threading.Thread | None = None
         self.action: ActionSink | None = None
@@ -28,6 +30,10 @@ class HotkeyService:
 
     def _start(self) -> None:
         self.start_event.set()
+
+    def request_session(self) -> None:
+        """Request one detection session from a GUI or another controller."""
+        self._start()
 
     def _on_click(self, _x: int, _y: int, button: mouse.Button, pressed: bool) -> None:
         if pressed or button != mouse.Button.right:
@@ -53,9 +59,15 @@ class HotkeyService:
         if self.active_session is not None:
             self.active_session.abort()
 
+    def abort_session(self) -> None:
+        self._abort()
+
     def _quit(self) -> None:
         self._abort()
         self.quit_event.set()
+
+    def stop(self) -> None:
+        self._quit()
 
     def _run_session(self) -> None:
         try:
@@ -79,21 +91,27 @@ class HotkeyService:
             self.active_session = None
 
     def run(self) -> None:
+        self.quit_event.clear()
+        self.ready_event.clear()
+        self.stopped_event.clear()
         hotkeys = self.config["hotkeys"]
         mapping = {
             str(hotkeys["abort"]): self._abort,
             str(hotkeys["quit"]): self._quit,
         }
-        self.action = create_action_sink(self.config["action"])
         try:
+            self.action = create_action_sink(self.config["action"])
             interval_ms = round(self.double_right_click_interval_s * 1000)
-            print(
-                f"AutoBard online: start=double-right-click ({interval_ms}ms) "
-                f"abort={hotkeys['abort']} quit={hotkeys['quit']}"
+            LOGGER.info(
+                "AutoBard online: start=double-right-click (%dms) abort=%s quit=%s",
+                interval_ms,
+                hotkeys["abort"],
+                hotkeys["quit"],
             )
             with keyboard.GlobalHotKeys(mapping) as keyboard_listener, mouse.Listener(
                 on_click=self._on_click
             ) as mouse_listener:
+                self.ready_event.set()
                 while not self.quit_event.wait(0.05):
                     if self.start_event.is_set():
                         self.start_event.clear()
@@ -107,5 +125,8 @@ class HotkeyService:
             if self.worker is not None:
                 self.worker.join(timeout=2.0)
         finally:
-            self.action.close()
+            if self.action is not None:
+                self.action.close()
             self.action = None
+            self.ready_event.clear()
+            self.stopped_event.set()

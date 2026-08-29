@@ -24,6 +24,8 @@ def _build_parser() -> argparse.ArgumentParser:
     run = sub.add_parser("run", help="Run the global-hotkey service")
     run.add_argument("--once", action="store_true", help="Run one session immediately")
 
+    sub.add_parser("gui", help="Open the Windows graphical interface")
+
     calibration = sub.add_parser("calibrate", help="Interactively select capture and note ROIs")
     calibration.add_argument("--output", default="config/settings.json")
 
@@ -58,6 +60,10 @@ def main(argv: list[str] | None = None) -> int:
     )
     try:
         config = load_config(args.config)
+        if args.command == "gui":
+            from .gui import main as gui_main
+
+            return gui_main(args.config)
         if args.command == "run":
             if args.once:
                 _, capture_rect = resolve_capture_rect(config)

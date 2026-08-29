@@ -17,15 +17,32 @@ class NoteScheduler:
         self.frame_width = frame_width
         self.latency_s = float(config.get("input_latency_ms", 22)) / 1000.0
         self.hit_window = max(1.0, frame_width * float(config.get("hit_window_ratio", 0.008)))
+        self.model_latency_s = float(
+            config.get("model_input_latency_ms", config.get("input_latency_ms", 22))
+        ) / 1000.0
+        self.model_hit_window = max(
+            1.0,
+            frame_width
+            * float(config.get("model_hit_window_ratio", config.get("hit_window_ratio", 0.008))),
+        )
         self.miss_margin = max(1.0, frame_width * float(config.get("miss_margin_ratio", 0.012)))
         self.initial_skip_notes = max(0, int(config.get("initial_skip_notes", 0)))
         self._has_initial_pointer = False
         self.previous_x: float | None = None
 
-    def update(self, timestamp: float, pointer_x: float, speed: float | None) -> SchedulerUpdate:
+    def update(
+        self,
+        timestamp: float,
+        pointer_x: float,
+        speed: float | None,
+        *,
+        use_model: bool = False,
+    ) -> SchedulerUpdate:
         due: list[Note] = []
         missed: list[Note] = []
-        latency_lead = max(0.0, speed or 0.0) * self.latency_s
+        latency_s = self.model_latency_s if use_model else self.latency_s
+        hit_window = self.model_hit_window if use_model else self.hit_window
+        latency_lead = max(0.0, speed or 0.0) * latency_s
 
         if not self._has_initial_pointer:
             # Starting the detector requires a second right-click after the
@@ -46,13 +63,14 @@ class NoteScheduler:
             trigger_x = note.target - latency_lead
             crossed = self.previous_x is not None and self.previous_x < trigger_x <= pointer_x
             reached = pointer_x >= trigger_x
+            inside = note.left <= pointer_x and abs(pointer_x - trigger_x) <= hit_window
             # A very large detector jump must not turn already-passed notes into
             # delayed clicks. Normal frame-to-frame crossings remain inside the
             # note bounds plus the configured miss margin.
             if pointer_x > note.right + self.miss_margin:
                 note.status = "missed"
                 missed.append(note)
-            elif crossed or reached:
+            elif crossed or reached or inside:
                 note.status = "hit"
                 note.triggered_at = timestamp
                 due.append(note)

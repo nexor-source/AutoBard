@@ -1,0 +1,4001 @@
+{
+  "container": "D:\\7.0_64_create_thread_safe.exe",
+  "container_sha256": "8FDF00F61A4953846BEDC651F05BBD09B0247D9781C89DCE98FDDE72F18D9656",
+  "magic": "BLT_PAYLOAD_001",
+  "version": 1,
+  "architecture": "0x40",
+  "payload_offset": 104960,
+  "payload_size": 18307,
+  "payload_sha256": "C024DF023E491B4037E308878EC9F12062AE13A0E148F09EBC8066B1533D0507",
+  "payload_entropy": 7.9885,
+  "initial_call_target": "0x4737",
+  "strings": [
+    {
+      "offset": "0xBE",
+      "encoding": "ascii",
+      "value": "G<3|<i"
+    },
+    {
+      "offset": "0x126",
+      "encoding": "ascii",
+      "value": "Y\"j[Ul="
+    },
+    {
+      "offset": "0x12E",
+      "encoding": "ascii",
+      "value": "&zT_("
+    },
+    {
+      "offset": "0x1DA",
+      "encoding": "ascii",
+      "value": "L8$gq"
+    },
+    {
+      "offset": "0x1EC",
+      "encoding": "ascii",
+      "value": "T?Ss!sd"
+    },
+    {
+      "offset": "0x25C",
+      "encoding": "ascii",
+      "value": "K^Bp~"
+    },
+    {
+      "offset": "0x276",
+      "encoding": "ascii",
+      "value": "GrZL|'"
+    },
+    {
+      "offset": "0x2E3",
+      "encoding": "ascii",
+      "value": "2b'PQ*,"
+    },
+    {
+      "offset": "0x49D",
+      "encoding": "ascii",
+      "value": ",w6Y,w"
+    },
+    {
+      "offset": "0x4C7",
+      "encoding": "ascii",
+      "value": "3<mUI1N"
+    },
+    {
+      "offset": "0x73C",
+      "encoding": "ascii",
+      "value": "oys.:2b"
+    },
+    {
+      "offset": "0x7B6",
+      "encoding": "ascii",
+      "value": "G~Td3|"
+    },
+    {
+      "offset": "0x932",
+      "encoding": "ascii",
+      "value": "|Wz+f"
+    },
+    {
+      "offset": "0x97F",
+      "encoding": "ascii",
+      "value": "bWU!}"
+    },
+    {
+      "offset": "0x9CF",
+      "encoding": "ascii",
+      "value": "{A]s|@$"
+    },
+    {
+      "offset": "0xB16",
+      "encoding": "ascii",
+      "value": "RY'Zl"
+    },
+    {
+      "offset": "0xB29",
+      "encoding": "ascii",
+      "value": "9:$P5|E"
+    },
+    {
+      "offset": "0xB84",
+      "encoding": "ascii",
+      "value": "&lPOMP"
+    },
+    {
+      "offset": "0xE77",
+      "encoding": "ascii",
+      "value": "%\\?A&"
+    },
+    {
+      "offset": "0xEDC",
+      "encoding": "ascii",
+      "value": "_rrJ*V@"
+    },
+    {
+      "offset": "0xF70",
+      "encoding": "ascii",
+      "value": "*2bOgaE"
+    },
+    {
+      "offset": "0xF8A",
+      "encoding": "ascii",
+      "value": "~~(_w"
+    },
+    {
+      "offset": "0x10B0",
+      "encoding": "ascii",
+      "value": "[W'xg"
+    },
+    {
+      "offset": "0x1127",
+      "encoding": "ascii",
+      "value": "1op[m"
+    },
+    {
+      "offset": "0x12A0",
+      "encoding": "ascii",
+      "value": "CifHA"
+    },
+    {
+      "offset": "0x1351",
+      "encoding": "ascii",
+      "value": "p#@*^}"
+    },
+    {
+      "offset": "0x14DB",
+      "encoding": "ascii",
+      "value": "iZpJ4"
+    },
+    {
+      "offset": "0x165D",
+      "encoding": "ascii",
+      "value": "}JPGw\"N`z"
+    },
+    {
+      "offset": "0x16F3",
+      "encoding": "ascii",
+      "value": ";f!gJ"
+    },
+    {
+      "offset": "0x180C",
+      "encoding": "ascii",
+      "value": ">|aWO"
+    },
+    {
+      "offset": "0x18B7",
+      "encoding": "ascii",
+      "value": "&ly(I"
+    },
+    {
+      "offset": "0x18D3",
+      "encoding": "ascii",
+      "value": "B}m$Tr"
+    },
+    {
+      "offset": "0x19C9",
+      "encoding": "ascii",
+      "value": "Te1Wh"
+    },
+    {
+      "offset": "0x1B7C",
+      "encoding": "ascii",
+      "value": ")*['@(>f"
+    },
+    {
+      "offset": "0x1EA1",
+      "encoding": "ascii",
+      "value": "3x4k9"
+    },
+    {
+      "offset": "0x1EAC",
+      "encoding": "ascii",
+      "value": ";A#K7"
+    },
+    {
+      "offset": "0x1EB2",
+      "encoding": "ascii",
+      "value": "O}8mZ"
+    },
+    {
+      "offset": "0x1F3A",
+      "encoding": "ascii",
+      "value": "^#XH_+"
+    },
+    {
+      "offset": "0x1FE8",
+      "encoding": "ascii",
+      "value": "2YbO=Z"
+    },
+    {
+      "offset": "0x20DC",
+      "encoding": "ascii",
+      "value": "Q2bp&"
+    },
+    {
+      "offset": "0x2150",
+      "encoding": "ascii",
+      "value": "*=,(K^"
+    },
+    {
+      "offset": "0x2175",
+      "encoding": "ascii",
+      "value": ",)7jS"
+    },
+    {
+      "offset": "0x2200",
+      "encoding": "ascii",
+      "value": "}w5+0"
+    },
+    {
+      "offset": "0x225C",
+      "encoding": "ascii",
+      "value": "|W0TR"
+    },
+    {
+      "offset": "0x24F8",
+      "encoding": "ascii",
+      "value": "2q}YwM"
+    },
+    {
+      "offset": "0x263D",
+      "encoding": "ascii",
+      "value": "XF|Z>"
+    },
+    {
+      "offset": "0x2824",
+      "encoding": "ascii",
+      "value": "G]n2:"
+    },
+    {
+      "offset": "0x2843",
+      "encoding": "ascii",
+      "value": "0l.{,"
+    },
+    {
+      "offset": "0x286B",
+      "encoding": "ascii",
+      "value": "tQG'\"5"
+    },
+    {
+      "offset": "0x29EE",
+      "encoding": "ascii",
+      "value": ")Jc^0"
+    },
+    {
+      "offset": "0x2A57",
+      "encoding": "ascii",
+      "value": "@`/+A"
+    },
+    {
+      "offset": "0x2A66",
+      "encoding": "ascii",
+      "value": "x2~ DD"
+    },
+    {
+      "offset": "0x2D47",
+      "encoding": "ascii",
+      "value": "}:dn,"
+    },
+    {
+      "offset": "0x2EBC",
+      "encoding": "ascii",
+      "value": "h;ZW "
+    },
+    {
+      "offset": "0x2F06",
+      "encoding": "ascii",
+      "value": "z Kdm="
+    },
+    {
+      "offset": "0x2F15",
+      "encoding": "ascii",
+      "value": "_3|Jd"
+    },
+    {
+      "offset": "0x2F26",
+      "encoding": "ascii",
+      "value": "Qz}F*\\T"
+    },
+    {
+      "offset": "0x3097",
+      "encoding": "ascii",
+      "value": "8s-T\"%k"
+    },
+    {
+      "offset": "0x30D4",
+      "encoding": "ascii",
+      "value": "w\"DFM"
+    },
+    {
+      "offset": "0x31C2",
+      "encoding": "ascii",
+      "value": "`+lu@v"
+    },
+    {
+      "offset": "0x34B6",
+      "encoding": "ascii",
+      "value": "&zT.!u"
+    },
+    {
+      "offset": "0x355E",
+      "encoding": "ascii",
+      "value": "VZzr6"
+    },
+    {
+      "offset": "0x3623",
+      "encoding": "ascii",
+      "value": "de=H-~"
+    },
+    {
+      "offset": "0x379B",
+      "encoding": "ascii",
+      "value": ".aW\\s"
+    },
+    {
+      "offset": "0x37B2",
+      "encoding": "ascii",
+      "value": "7dCcY"
+    },
+    {
+      "offset": "0x38EA",
+      "encoding": "ascii",
+      "value": "-#aPFA"
+    },
+    {
+      "offset": "0x390A",
+      "encoding": "ascii",
+      "value": "K2JmM"
+    },
+    {
+      "offset": "0x3B6B",
+      "encoding": "ascii",
+      "value": "(HJ1t"
+    },
+    {
+      "offset": "0x3C88",
+      "encoding": "ascii",
+      "value": ":C`-:"
+    },
+    {
+      "offset": "0x3CA8",
+      "encoding": "ascii",
+      "value": ")hCBS"
+    },
+    {
+      "offset": "0x406B",
+      "encoding": "ascii",
+      "value": "o%Q\"H"
+    },
+    {
+      "offset": "0x43A9",
+      "encoding": "ascii",
+      "value": "NElW$~"
+    },
+    {
+      "offset": "0x442D",
+      "encoding": "ascii",
+      "value": ">)d}(-="
+    },
+    {
+      "offset": "0x4443",
+      "encoding": "ascii",
+      "value": "C`+\\JNaY"
+    },
+    {
+      "offset": "0x4494",
+      "encoding": "ascii",
+      "value": "pY!~N"
+    },
+    {
+      "offset": "0x4666",
+      "encoding": "ascii",
+      "value": "4W|N&"
+    },
+    {
+      "offset": "0x46BA",
+      "encoding": "ascii",
+      "value": "6=_U^"
+    },
+    {
+      "offset": "0x4711",
+      "encoding": "ascii",
+      "value": "v'og<"
+    },
+    {
+      "offset": "0x4728",
+      "encoding": "ascii",
+      "value": "@p.BM"
+    }
+  ],
+  "stage_one_entry": "0x5",
+  "stage_two_entry": "0x29",
+  "stage_two_entropy": 7.9895,
+  "stage_two_strings": [
+    {
+      "offset": "0x118",
+      "encoding": "ascii",
+      "value": "<@_.Y"
+    },
+    {
+      "offset": "0x12A",
+      "encoding": "ascii",
+      "value": ";-#H\\"
+    },
+    {
+      "offset": "0x397",
+      "encoding": "ascii",
+      "value": "4EE9Z"
+    },
+    {
+      "offset": "0x587",
+      "encoding": "ascii",
+      "value": "z:u8u"
+    },
+    {
+      "offset": "0x643",
+      "encoding": "ascii",
+      "value": "~S#zb"
+    },
+    {
+      "offset": "0x6F2",
+      "encoding": "ascii",
+      "value": "VW4:r"
+    },
+    {
+      "offset": "0x735",
+      "encoding": "ascii",
+      "value": "KJ}a]"
+    },
+    {
+      "offset": "0x786",
+      "encoding": "ascii",
+      "value": "8q9kEP"
+    },
+    {
+      "offset": "0x79B",
+      "encoding": "ascii",
+      "value": ")ShM{p"
+    },
+    {
+      "offset": "0x898",
+      "encoding": "ascii",
+      "value": "mfigi"
+    },
+    {
+      "offset": "0x9F8",
+      "encoding": "ascii",
+      "value": "87Z1jc"
+    },
+    {
+      "offset": "0xA7F",
+      "encoding": "ascii",
+      "value": ",%k'P"
+    },
+    {
+      "offset": "0xAC0",
+      "encoding": "ascii",
+      "value": "6@1yE"
+    },
+    {
+      "offset": "0xAC9",
+      "encoding": "ascii",
+      "value": "r]+[9"
+    },
+    {
+      "offset": "0xB19",
+      "encoding": "ascii",
+      "value": "(/j.o"
+    },
+    {
+      "offset": "0xBEB",
+      "encoding": "ascii",
+      "value": "J6+m?"
+    },
+    {
+      "offset": "0xC12",
+      "encoding": "ascii",
+      "value": "eCf4<"
+    },
+    {
+      "offset": "0xCF1",
+      "encoding": "ascii",
+      "value": "5WS<3"
+    },
+    {
+      "offset": "0xD14",
+      "encoding": "ascii",
+      "value": "M@WJ^"
+    },
+    {
+      "offset": "0xDBD",
+      "encoding": "ascii",
+      "value": "t*3l6"
+    },
+    {
+      "offset": "0xE3C",
+      "encoding": "ascii",
+      "value": "i([e%"
+    },
+    {
+      "offset": "0xEA6",
+      "encoding": "ascii",
+      "value": "A$ex+"
+    },
+    {
+      "offset": "0xFFA",
+      "encoding": "ascii",
+      "value": "N2S-('"
+    },
+    {
+      "offset": "0x103A",
+      "encoding": "ascii",
+      "value": "!D)+,fc)"
+    },
+    {
+      "offset": "0x10C8",
+      "encoding": "ascii",
+      "value": "2e9HmQ"
+    },
+    {
+      "offset": "0x1118",
+      "encoding": "ascii",
+      "value": "?ED!JDi"
+    },
+    {
+      "offset": "0x1188",
+      "encoding": "ascii",
+      "value": "bbx(kO"
+    },
+    {
+      "offset": "0x1210",
+      "encoding": "ascii",
+      "value": "MPP(."
+    },
+    {
+      "offset": "0x12DC",
+      "encoding": "ascii",
+      "value": "L1%gnm"
+    },
+    {
+      "offset": "0x137E",
+      "encoding": "ascii",
+      "value": "~_KY["
+    },
+    {
+      "offset": "0x13D6",
+      "encoding": "ascii",
+      "value": "Zk\\Q3"
+    },
+    {
+      "offset": "0x1577",
+      "encoding": "ascii",
+      "value": "]4ayV"
+    },
+    {
+      "offset": "0x15FF",
+      "encoding": "ascii",
+      "value": "$mz{%P{"
+    },
+    {
+      "offset": "0x1651",
+      "encoding": "ascii",
+      "value": "6p&-H"
+    },
+    {
+      "offset": "0x1749",
+      "encoding": "ascii",
+      "value": "*XN&TG,6h"
+    },
+    {
+      "offset": "0x1829",
+      "encoding": "ascii",
+      "value": "Hy5zA"
+    },
+    {
+      "offset": "0x191A",
+      "encoding": "ascii",
+      "value": "N_7$z"
+    },
+    {
+      "offset": "0x19AD",
+      "encoding": "ascii",
+      "value": "R@i&#"
+    },
+    {
+      "offset": "0x1A47",
+      "encoding": "ascii",
+      "value": "pXp2|"
+    },
+    {
+      "offset": "0x1C44",
+      "encoding": "ascii",
+      "value": "+f!caa"
+    },
+    {
+      "offset": "0x1D0C",
+      "encoding": "ascii",
+      "value": "5zPC:?G#x"
+    },
+    {
+      "offset": "0x2004",
+      "encoding": "ascii",
+      "value": "#nTE[d"
+    },
+    {
+      "offset": "0x201D",
+      "encoding": "ascii",
+      "value": "[~WUb"
+    },
+    {
+      "offset": "0x21A4",
+      "encoding": "ascii",
+      "value": "[-LIp-"
+    },
+    {
+      "offset": "0x223E",
+      "encoding": "ascii",
+      "value": "4e8?rcM7e"
+    },
+    {
+      "offset": "0x232F",
+      "encoding": "ascii",
+      "value": "t\\n;@"
+    },
+    {
+      "offset": "0x24A0",
+      "encoding": "ascii",
+      "value": "u@N!="
+    },
+    {
+      "offset": "0x25BA",
+      "encoding": "ascii",
+      "value": ";`roJ"
+    },
+    {
+      "offset": "0x2631",
+      "encoding": "ascii",
+      "value": "1ejxnES"
+    },
+    {
+      "offset": "0x26A1",
+      "encoding": "ascii",
+      "value": ")^n,%gJxW]"
+    },
+    {
+      "offset": "0x26EA",
+      "encoding": "ascii",
+      "value": "7Rrl9z"
+    },
+    {
+      "offset": "0x2769",
+      "encoding": "ascii",
+      "value": "_.?Vb"
+    },
+    {
+      "offset": "0x298B",
+      "encoding": "ascii",
+      "value": "t6uKw/"
+    },
+    {
+      "offset": "0x29CB",
+      "encoding": "ascii",
+      "value": "6t +d"
+    },
+    {
+      "offset": "0x2AB0",
+      "encoding": "ascii",
+      "value": "0RN$V"
+    },
+    {
+      "offset": "0x2BC6",
+      "encoding": "ascii",
+      "value": "Ed@!-@["
+    },
+    {
+      "offset": "0x2D3A",
+      "encoding": "ascii",
+      "value": "4Fx:9~/FZ"
+    },
+    {
+      "offset": "0x2DC7",
+      "encoding": "ascii",
+      "value": "FVVPf>"
+    },
+    {
+      "offset": "0x2F22",
+      "encoding": "ascii",
+      "value": "tn%(-"
+    },
+    {
+      "offset": "0x30E3",
+      "encoding": "ascii",
+      "value": "3i$:M"
+    },
+    {
+      "offset": "0x317F",
+      "encoding": "ascii",
+      "value": "Y_bKi\""
+    },
+    {
+      "offset": "0x3220",
+      "encoding": "ascii",
+      "value": "-F^H]"
+    },
+    {
+      "offset": "0x32FE",
+      "encoding": "ascii",
+      "value": "8::i7/EF"
+    },
+    {
+      "offset": "0x33B0",
+      "encoding": "ascii",
+      "value": "!qJ:N"
+    },
+    {
+      "offset": "0x34D0",
+      "encoding": "ascii",
+      "value": "_LsaMY"
+    },
+    {
+      "offset": "0x3501",
+      "encoding": "ascii",
+      "value": "tkDM&"
+    },
+    {
+      "offset": "0x366C",
+      "encoding": "ascii",
+      "value": "&1V~!"
+    },
+    {
+      "offset": "0x36A4",
+      "encoding": "ascii",
+      "value": "[nqo&"
+    },
+    {
+      "offset": "0x3860",
+      "encoding": "ascii",
+      "value": " _d/`"
+    },
+    {
+      "offset": "0x38BA",
+      "encoding": "ascii",
+      "value": "RO!Ed"
+    },
+    {
+      "offset": "0x3B95",
+      "encoding": "ascii",
+      "value": "qF}<S"
+    },
+    {
+      "offset": "0x3E65",
+      "encoding": "ascii",
+      "value": "itmR_"
+    },
+    {
+      "offset": "0x3F05",
+      "encoding": "ascii",
+      "value": "}c#ha`u"
+    },
+    {
+      "offset": "0x3F21",
+      "encoding": "ascii",
+      "value": "c<~=Wu,<"
+    },
+    {
+      "offset": "0x3F49",
+      "encoding": "ascii",
+      "value": "5_4V5"
+    },
+    {
+      "offset": "0x422B",
+      "encoding": "ascii",
+      "value": "}5RB\\"
+    },
+    {
+      "offset": "0x43AD",
+      "encoding": "ascii",
+      "value": "Z@sy|"
+    },
+    {
+      "offset": "0x4468",
+      "encoding": "ascii",
+      "value": "]){@'"
+    },
+    {
+      "offset": "0x447D",
+      "encoding": "ascii",
+      "value": "v/E7r X"
+    },
+    {
+      "offset": "0x4517",
+      "encoding": "ascii",
+      "value": "</TOy"
+    },
+    {
+      "offset": "0x4551",
+      "encoding": "ascii",
+      "value": "Cv%P,9]"
+    },
+    {
+      "offset": "0x4620",
+      "encoding": "ascii",
+      "value": "o1Qli:"
+    },
+    {
+      "offset": "0x46CD",
+      "encoding": "ascii",
+      "value": "_T0Ezf"
+    }
+  ],
+  "stage_three_entry": "0x37",
+  "stage_three_entropy": 7.9894,
+  "stage_three_strings": [
+    {
+      "offset": "0x118",
+      "encoding": "ascii",
+      "value": "<@_.Y"
+    },
+    {
+      "offset": "0x12A",
+      "encoding": "ascii",
+      "value": ";-#H\\"
+    },
+    {
+      "offset": "0x397",
+      "encoding": "ascii",
+      "value": "4EE9Z"
+    },
+    {
+      "offset": "0x587",
+      "encoding": "ascii",
+      "value": "z:u8u"
+    },
+    {
+      "offset": "0x643",
+      "encoding": "ascii",
+      "value": "~S#zb"
+    },
+    {
+      "offset": "0x6F2",
+      "encoding": "ascii",
+      "value": "VW4:r"
+    },
+    {
+      "offset": "0x735",
+      "encoding": "ascii",
+      "value": "KJ}a]"
+    },
+    {
+      "offset": "0x786",
+      "encoding": "ascii",
+      "value": "8q9kEP"
+    },
+    {
+      "offset": "0x79B",
+      "encoding": "ascii",
+      "value": ")ShM{p"
+    },
+    {
+      "offset": "0x898",
+      "encoding": "ascii",
+      "value": "mfigi"
+    },
+    {
+      "offset": "0x9F8",
+      "encoding": "ascii",
+      "value": "87Z1jc"
+    },
+    {
+      "offset": "0xA7F",
+      "encoding": "ascii",
+      "value": ",%k'P"
+    },
+    {
+      "offset": "0xAC0",
+      "encoding": "ascii",
+      "value": "6@1yE"
+    },
+    {
+      "offset": "0xAC9",
+      "encoding": "ascii",
+      "value": "r]+[9"
+    },
+    {
+      "offset": "0xB19",
+      "encoding": "ascii",
+      "value": "(/j.o"
+    },
+    {
+      "offset": "0xBEB",
+      "encoding": "ascii",
+      "value": "J6+m?"
+    },
+    {
+      "offset": "0xC12",
+      "encoding": "ascii",
+      "value": "eCf4<"
+    },
+    {
+      "offset": "0xCF1",
+      "encoding": "ascii",
+      "value": "5WS<3"
+    },
+    {
+      "offset": "0xD14",
+      "encoding": "ascii",
+      "value": "M@WJ^"
+    },
+    {
+      "offset": "0xDBD",
+      "encoding": "ascii",
+      "value": "t*3l6"
+    },
+    {
+      "offset": "0xE3C",
+      "encoding": "ascii",
+      "value": "i([e%"
+    },
+    {
+      "offset": "0xEA6",
+      "encoding": "ascii",
+      "value": "A$ex+"
+    },
+    {
+      "offset": "0xFFA",
+      "encoding": "ascii",
+      "value": "N2S-('"
+    },
+    {
+      "offset": "0x103A",
+      "encoding": "ascii",
+      "value": "!D)+,fc)"
+    },
+    {
+      "offset": "0x10C8",
+      "encoding": "ascii",
+      "value": "2e9HmQ"
+    },
+    {
+      "offset": "0x1118",
+      "encoding": "ascii",
+      "value": "?ED!JDi"
+    },
+    {
+      "offset": "0x1188",
+      "encoding": "ascii",
+      "value": "bbx(kO"
+    },
+    {
+      "offset": "0x1210",
+      "encoding": "ascii",
+      "value": "MPP(."
+    },
+    {
+      "offset": "0x12DC",
+      "encoding": "ascii",
+      "value": "L1%gnm"
+    },
+    {
+      "offset": "0x137E",
+      "encoding": "ascii",
+      "value": "~_KY["
+    },
+    {
+      "offset": "0x13D6",
+      "encoding": "ascii",
+      "value": "Zk\\Q3"
+    },
+    {
+      "offset": "0x1577",
+      "encoding": "ascii",
+      "value": "]4ayV"
+    },
+    {
+      "offset": "0x15FF",
+      "encoding": "ascii",
+      "value": "$mz{%P{"
+    },
+    {
+      "offset": "0x1651",
+      "encoding": "ascii",
+      "value": "6p&-H"
+    },
+    {
+      "offset": "0x1749",
+      "encoding": "ascii",
+      "value": "*XN&TG,6h"
+    },
+    {
+      "offset": "0x1829",
+      "encoding": "ascii",
+      "value": "Hy5zA"
+    },
+    {
+      "offset": "0x191A",
+      "encoding": "ascii",
+      "value": "N_7$z"
+    },
+    {
+      "offset": "0x19AD",
+      "encoding": "ascii",
+      "value": "R@i&#"
+    },
+    {
+      "offset": "0x1A47",
+      "encoding": "ascii",
+      "value": "pXp2|"
+    },
+    {
+      "offset": "0x1C44",
+      "encoding": "ascii",
+      "value": "+f!caa"
+    },
+    {
+      "offset": "0x1D0C",
+      "encoding": "ascii",
+      "value": "5zPC:?G#x"
+    },
+    {
+      "offset": "0x2004",
+      "encoding": "ascii",
+      "value": "#nTE[d"
+    },
+    {
+      "offset": "0x201D",
+      "encoding": "ascii",
+      "value": "[~WUb"
+    },
+    {
+      "offset": "0x21A4",
+      "encoding": "ascii",
+      "value": "[-LIp-"
+    },
+    {
+      "offset": "0x223E",
+      "encoding": "ascii",
+      "value": "4e8?rcM7e"
+    },
+    {
+      "offset": "0x232F",
+      "encoding": "ascii",
+      "value": "t\\n;@"
+    },
+    {
+      "offset": "0x24A0",
+      "encoding": "ascii",
+      "value": "u@N!="
+    },
+    {
+      "offset": "0x25BA",
+      "encoding": "ascii",
+      "value": ";`roJ"
+    },
+    {
+      "offset": "0x2631",
+      "encoding": "ascii",
+      "value": "1ejxnES"
+    },
+    {
+      "offset": "0x26A1",
+      "encoding": "ascii",
+      "value": ")^n,%gJxW]"
+    },
+    {
+      "offset": "0x26EA",
+      "encoding": "ascii",
+      "value": "7Rrl9z"
+    },
+    {
+      "offset": "0x2769",
+      "encoding": "ascii",
+      "value": "_.?Vb"
+    },
+    {
+      "offset": "0x298B",
+      "encoding": "ascii",
+      "value": "t6uKw/"
+    },
+    {
+      "offset": "0x29CB",
+      "encoding": "ascii",
+      "value": "6t +d"
+    },
+    {
+      "offset": "0x2AB0",
+      "encoding": "ascii",
+      "value": "0RN$V"
+    },
+    {
+      "offset": "0x2BC6",
+      "encoding": "ascii",
+      "value": "Ed@!-@["
+    },
+    {
+      "offset": "0x2D3A",
+      "encoding": "ascii",
+      "value": "4Fx:9~/FZ"
+    },
+    {
+      "offset": "0x2DC7",
+      "encoding": "ascii",
+      "value": "FVVPf>"
+    },
+    {
+      "offset": "0x2F22",
+      "encoding": "ascii",
+      "value": "tn%(-"
+    },
+    {
+      "offset": "0x30E3",
+      "encoding": "ascii",
+      "value": "3i$:M"
+    },
+    {
+      "offset": "0x317F",
+      "encoding": "ascii",
+      "value": "Y_bKi\""
+    },
+    {
+      "offset": "0x3220",
+      "encoding": "ascii",
+      "value": "-F^H]"
+    },
+    {
+      "offset": "0x32FE",
+      "encoding": "ascii",
+      "value": "8::i7/EF"
+    },
+    {
+      "offset": "0x33B0",
+      "encoding": "ascii",
+      "value": "!qJ:N"
+    },
+    {
+      "offset": "0x34D0",
+      "encoding": "ascii",
+      "value": "_LsaMY"
+    },
+    {
+      "offset": "0x3501",
+      "encoding": "ascii",
+      "value": "tkDM&"
+    },
+    {
+      "offset": "0x366C",
+      "encoding": "ascii",
+      "value": "&1V~!"
+    },
+    {
+      "offset": "0x36A4",
+      "encoding": "ascii",
+      "value": "[nqo&"
+    },
+    {
+      "offset": "0x3860",
+      "encoding": "ascii",
+      "value": " _d/`"
+    },
+    {
+      "offset": "0x38BA",
+      "encoding": "ascii",
+      "value": "RO!Ed"
+    },
+    {
+      "offset": "0x3B95",
+      "encoding": "ascii",
+      "value": "qF}<S"
+    },
+    {
+      "offset": "0x3E65",
+      "encoding": "ascii",
+      "value": "itmR_"
+    },
+    {
+      "offset": "0x3F05",
+      "encoding": "ascii",
+      "value": "}c#ha`u"
+    },
+    {
+      "offset": "0x3F21",
+      "encoding": "ascii",
+      "value": "c<~=Wu,<"
+    },
+    {
+      "offset": "0x3F49",
+      "encoding": "ascii",
+      "value": "5_4V5"
+    },
+    {
+      "offset": "0x422B",
+      "encoding": "ascii",
+      "value": "}5RB\\"
+    },
+    {
+      "offset": "0x43AD",
+      "encoding": "ascii",
+      "value": "Z@sy|"
+    },
+    {
+      "offset": "0x4468",
+      "encoding": "ascii",
+      "value": "]){@'"
+    },
+    {
+      "offset": "0x447D",
+      "encoding": "ascii",
+      "value": "v/E7r X"
+    },
+    {
+      "offset": "0x4517",
+      "encoding": "ascii",
+      "value": "</TOy"
+    },
+    {
+      "offset": "0x4551",
+      "encoding": "ascii",
+      "value": "Cv%P,9]"
+    },
+    {
+      "offset": "0x4620",
+      "encoding": "ascii",
+      "value": "o1Qli:"
+    },
+    {
+      "offset": "0x46CD",
+      "encoding": "ascii",
+      "value": "_T0Ezf"
+    }
+  ],
+  "stage_four_entry": "0x56",
+  "stage_four_entropy": 7.9891,
+  "stage_four_strings": [
+    {
+      "offset": "0x87",
+      "encoding": "ascii",
+      "value": "ae(mmm"
+    },
+    {
+      "offset": "0xBA",
+      "encoding": "ascii",
+      "value": "Vjb|j4G"
+    },
+    {
+      "offset": "0x1A4",
+      "encoding": "ascii",
+      "value": "E7i+;jZ"
+    },
+    {
+      "offset": "0x38D",
+      "encoding": "ascii",
+      "value": "m&+FQ"
+    },
+    {
+      "offset": "0x763",
+      "encoding": "ascii",
+      "value": "W!bUz"
+    },
+    {
+      "offset": "0x875",
+      "encoding": "ascii",
+      "value": "| d>+\\-:"
+    },
+    {
+      "offset": "0xC15",
+      "encoding": "ascii",
+      "value": "t\"``7R"
+    },
+    {
+      "offset": "0xDAE",
+      "encoding": "ascii",
+      "value": "88*:'"
+    },
+    {
+      "offset": "0xE20",
+      "encoding": "ascii",
+      "value": "mOOHr\"<f"
+    },
+    {
+      "offset": "0xF0D",
+      "encoding": "ascii",
+      "value": "m7BEB"
+    },
+    {
+      "offset": "0xFEF",
+      "encoding": "ascii",
+      "value": "l`=c8"
+    },
+    {
+      "offset": "0x100A",
+      "encoding": "ascii",
+      "value": "3^$rSh"
+    },
+    {
+      "offset": "0x10E1",
+      "encoding": "ascii",
+      "value": "LvSs:"
+    },
+    {
+      "offset": "0x110E",
+      "encoding": "ascii",
+      "value": "R,XE$"
+    },
+    {
+      "offset": "0x11C0",
+      "encoding": "ascii",
+      "value": "h^/x@"
+    },
+    {
+      "offset": "0x12D5",
+      "encoding": "ascii",
+      "value": "\"R#qh"
+    },
+    {
+      "offset": "0x138C",
+      "encoding": "ascii",
+      "value": "`&gZ]"
+    },
+    {
+      "offset": "0x1463",
+      "encoding": "ascii",
+      "value": "@d&o+"
+    },
+    {
+      "offset": "0x149D",
+      "encoding": "ascii",
+      "value": ",LYhK5"
+    },
+    {
+      "offset": "0x14CC",
+      "encoding": "ascii",
+      "value": "jf{*+"
+    },
+    {
+      "offset": "0x1696",
+      "encoding": "ascii",
+      "value": "0K1!;"
+    },
+    {
+      "offset": "0x182F",
+      "encoding": "ascii",
+      "value": "&d99Dy"
+    },
+    {
+      "offset": "0x18C0",
+      "encoding": "ascii",
+      "value": "'3LTyW"
+    },
+    {
+      "offset": "0x1979",
+      "encoding": "ascii",
+      "value": "+&=w+"
+    },
+    {
+      "offset": "0x198A",
+      "encoding": "ascii",
+      "value": "**R;L"
+    },
+    {
+      "offset": "0x19F0",
+      "encoding": "ascii",
+      "value": "G#dexfR"
+    },
+    {
+      "offset": "0x1A2F",
+      "encoding": "ascii",
+      "value": "kA+ZS"
+    },
+    {
+      "offset": "0x1A4A",
+      "encoding": "ascii",
+      "value": "Li\"FJ"
+    },
+    {
+      "offset": "0x1A57",
+      "encoding": "ascii",
+      "value": "J;2P%{"
+    },
+    {
+      "offset": "0x1A62",
+      "encoding": "ascii",
+      "value": "|J1Vo"
+    },
+    {
+      "offset": "0x1B27",
+      "encoding": "ascii",
+      "value": "JCtB_"
+    },
+    {
+      "offset": "0x1BBE",
+      "encoding": "ascii",
+      "value": "}=C,R"
+    },
+    {
+      "offset": "0x1CCB",
+      "encoding": "ascii",
+      "value": "UBp>y"
+    },
+    {
+      "offset": "0x1D13",
+      "encoding": "ascii",
+      "value": "YilC%;"
+    },
+    {
+      "offset": "0x1DC6",
+      "encoding": "ascii",
+      "value": "LNOY]fN"
+    },
+    {
+      "offset": "0x1E12",
+      "encoding": "ascii",
+      "value": "#{O%EN"
+    },
+    {
+      "offset": "0x1E6C",
+      "encoding": "ascii",
+      "value": "(g-3,"
+    },
+    {
+      "offset": "0x1FA8",
+      "encoding": "ascii",
+      "value": ":VGKS"
+    },
+    {
+      "offset": "0x20E9",
+      "encoding": "ascii",
+      "value": "F32~'"
+    },
+    {
+      "offset": "0x218C",
+      "encoding": "ascii",
+      "value": "LDU7b_"
+    },
+    {
+      "offset": "0x220B",
+      "encoding": "ascii",
+      "value": "4j^H]%"
+    },
+    {
+      "offset": "0x223B",
+      "encoding": "ascii",
+      "value": "]Fi]#"
+    },
+    {
+      "offset": "0x24FB",
+      "encoding": "ascii",
+      "value": "8:?;>f"
+    },
+    {
+      "offset": "0x260A",
+      "encoding": "ascii",
+      "value": "cS[D7"
+    },
+    {
+      "offset": "0x2787",
+      "encoding": "ascii",
+      "value": "%LOSk"
+    },
+    {
+      "offset": "0x28E5",
+      "encoding": "ascii",
+      "value": "==)cn"
+    },
+    {
+      "offset": "0x2950",
+      "encoding": "ascii",
+      "value": "Ur=/~z2"
+    },
+    {
+      "offset": "0x2982",
+      "encoding": "ascii",
+      "value": "QRO0T^"
+    },
+    {
+      "offset": "0x2A02",
+      "encoding": "ascii",
+      "value": "P/5,QE(["
+    },
+    {
+      "offset": "0x2AE6",
+      "encoding": "ascii",
+      "value": "XJP)b"
+    },
+    {
+      "offset": "0x2C4D",
+      "encoding": "ascii",
+      "value": "[-Ev:$m"
+    },
+    {
+      "offset": "0x2C93",
+      "encoding": "ascii",
+      "value": "h\\N)E"
+    },
+    {
+      "offset": "0x2E50",
+      "encoding": "ascii",
+      "value": "N2?Z0"
+    },
+    {
+      "offset": "0x3136",
+      "encoding": "ascii",
+      "value": "{3mVH"
+    },
+    {
+      "offset": "0x32C7",
+      "encoding": "ascii",
+      "value": "08g+JYW"
+    },
+    {
+      "offset": "0x3481",
+      "encoding": "ascii",
+      "value": "l.1Qr"
+    },
+    {
+      "offset": "0x34AA",
+      "encoding": "ascii",
+      "value": "tw$ZD"
+    },
+    {
+      "offset": "0x34D5",
+      "encoding": "ascii",
+      "value": "K5;7G"
+    },
+    {
+      "offset": "0x34F7",
+      "encoding": "ascii",
+      "value": "j@^1^"
+    },
+    {
+      "offset": "0x3532",
+      "encoding": "ascii",
+      "value": "%sF%e"
+    },
+    {
+      "offset": "0x35AF",
+      "encoding": "ascii",
+      "value": "bY7;Mc"
+    },
+    {
+      "offset": "0x3742",
+      "encoding": "ascii",
+      "value": "rK7y1"
+    },
+    {
+      "offset": "0x3883",
+      "encoding": "ascii",
+      "value": "9CIl "
+    },
+    {
+      "offset": "0x38F4",
+      "encoding": "ascii",
+      "value": "?Ig\"~"
+    },
+    {
+      "offset": "0x392C",
+      "encoding": "ascii",
+      "value": "L2UD^"
+    },
+    {
+      "offset": "0x39B9",
+      "encoding": "ascii",
+      "value": "m!?N$"
+    },
+    {
+      "offset": "0x3A16",
+      "encoding": "ascii",
+      "value": "KZC>m"
+    },
+    {
+      "offset": "0x3AC3",
+      "encoding": "ascii",
+      "value": "q%q:=N"
+    },
+    {
+      "offset": "0x3B76",
+      "encoding": "ascii",
+      "value": "0S0C5I"
+    },
+    {
+      "offset": "0x3BE4",
+      "encoding": "ascii",
+      "value": "B6G5~"
+    },
+    {
+      "offset": "0x3C99",
+      "encoding": "ascii",
+      "value": "dPG}34"
+    },
+    {
+      "offset": "0x3FF2",
+      "encoding": "ascii",
+      "value": "L30jR"
+    },
+    {
+      "offset": "0x407A",
+      "encoding": "ascii",
+      "value": "!Kx{M"
+    },
+    {
+      "offset": "0x41F5",
+      "encoding": "ascii",
+      "value": "hIu@&"
+    },
+    {
+      "offset": "0x42A9",
+      "encoding": "ascii",
+      "value": "4N'oz"
+    },
+    {
+      "offset": "0x4303",
+      "encoding": "ascii",
+      "value": "gXjJrL"
+    },
+    {
+      "offset": "0x4336",
+      "encoding": "ascii",
+      "value": "hN$JB"
+    },
+    {
+      "offset": "0x44B4",
+      "encoding": "ascii",
+      "value": "gl98x"
+    },
+    {
+      "offset": "0x455E",
+      "encoding": "ascii",
+      "value": "a7Xv&"
+    },
+    {
+      "offset": "0x4658",
+      "encoding": "ascii",
+      "value": "/s^{;"
+    }
+  ],
+  "stage_five_entry": "0x5F",
+  "stage_five_entropy": 7.989,
+  "stage_five_strings": [
+    {
+      "offset": "0x87",
+      "encoding": "ascii",
+      "value": "ae(mmm"
+    },
+    {
+      "offset": "0xBA",
+      "encoding": "ascii",
+      "value": "Vjb|j4G"
+    },
+    {
+      "offset": "0x1A4",
+      "encoding": "ascii",
+      "value": "E7i+;jZ"
+    },
+    {
+      "offset": "0x38D",
+      "encoding": "ascii",
+      "value": "m&+FQ"
+    },
+    {
+      "offset": "0x763",
+      "encoding": "ascii",
+      "value": "W!bUz"
+    },
+    {
+      "offset": "0x875",
+      "encoding": "ascii",
+      "value": "| d>+\\-:"
+    },
+    {
+      "offset": "0xC15",
+      "encoding": "ascii",
+      "value": "t\"``7R"
+    },
+    {
+      "offset": "0xDAE",
+      "encoding": "ascii",
+      "value": "88*:'"
+    },
+    {
+      "offset": "0xE20",
+      "encoding": "ascii",
+      "value": "mOOHr\"<f"
+    },
+    {
+      "offset": "0xF0D",
+      "encoding": "ascii",
+      "value": "m7BEB"
+    },
+    {
+      "offset": "0xFEF",
+      "encoding": "ascii",
+      "value": "l`=c8"
+    },
+    {
+      "offset": "0x100A",
+      "encoding": "ascii",
+      "value": "3^$rSh"
+    },
+    {
+      "offset": "0x10E1",
+      "encoding": "ascii",
+      "value": "LvSs:"
+    },
+    {
+      "offset": "0x110E",
+      "encoding": "ascii",
+      "value": "R,XE$"
+    },
+    {
+      "offset": "0x11C0",
+      "encoding": "ascii",
+      "value": "h^/x@"
+    },
+    {
+      "offset": "0x12D5",
+      "encoding": "ascii",
+      "value": "\"R#qh"
+    },
+    {
+      "offset": "0x138C",
+      "encoding": "ascii",
+      "value": "`&gZ]"
+    },
+    {
+      "offset": "0x1463",
+      "encoding": "ascii",
+      "value": "@d&o+"
+    },
+    {
+      "offset": "0x149D",
+      "encoding": "ascii",
+      "value": ",LYhK5"
+    },
+    {
+      "offset": "0x14CC",
+      "encoding": "ascii",
+      "value": "jf{*+"
+    },
+    {
+      "offset": "0x1696",
+      "encoding": "ascii",
+      "value": "0K1!;"
+    },
+    {
+      "offset": "0x182F",
+      "encoding": "ascii",
+      "value": "&d99Dy"
+    },
+    {
+      "offset": "0x18C0",
+      "encoding": "ascii",
+      "value": "'3LTyW"
+    },
+    {
+      "offset": "0x1979",
+      "encoding": "ascii",
+      "value": "+&=w+"
+    },
+    {
+      "offset": "0x198A",
+      "encoding": "ascii",
+      "value": "**R;L"
+    },
+    {
+      "offset": "0x19F0",
+      "encoding": "ascii",
+      "value": "G#dexfR"
+    },
+    {
+      "offset": "0x1A2F",
+      "encoding": "ascii",
+      "value": "kA+ZS"
+    },
+    {
+      "offset": "0x1A4A",
+      "encoding": "ascii",
+      "value": "Li\"FJ"
+    },
+    {
+      "offset": "0x1A57",
+      "encoding": "ascii",
+      "value": "J;2P%{"
+    },
+    {
+      "offset": "0x1A62",
+      "encoding": "ascii",
+      "value": "|J1Vo"
+    },
+    {
+      "offset": "0x1B27",
+      "encoding": "ascii",
+      "value": "JCtB_"
+    },
+    {
+      "offset": "0x1BBE",
+      "encoding": "ascii",
+      "value": "}=C,R"
+    },
+    {
+      "offset": "0x1CCB",
+      "encoding": "ascii",
+      "value": "UBp>y"
+    },
+    {
+      "offset": "0x1D13",
+      "encoding": "ascii",
+      "value": "YilC%;"
+    },
+    {
+      "offset": "0x1DC6",
+      "encoding": "ascii",
+      "value": "LNOY]fN"
+    },
+    {
+      "offset": "0x1E12",
+      "encoding": "ascii",
+      "value": "#{O%EN"
+    },
+    {
+      "offset": "0x1E6C",
+      "encoding": "ascii",
+      "value": "(g-3,"
+    },
+    {
+      "offset": "0x1FA8",
+      "encoding": "ascii",
+      "value": ":VGKS"
+    },
+    {
+      "offset": "0x20E9",
+      "encoding": "ascii",
+      "value": "F32~'"
+    },
+    {
+      "offset": "0x218C",
+      "encoding": "ascii",
+      "value": "LDU7b_"
+    },
+    {
+      "offset": "0x220B",
+      "encoding": "ascii",
+      "value": "4j^H]%"
+    },
+    {
+      "offset": "0x223B",
+      "encoding": "ascii",
+      "value": "]Fi]#"
+    },
+    {
+      "offset": "0x24FB",
+      "encoding": "ascii",
+      "value": "8:?;>f"
+    },
+    {
+      "offset": "0x260A",
+      "encoding": "ascii",
+      "value": "cS[D7"
+    },
+    {
+      "offset": "0x2787",
+      "encoding": "ascii",
+      "value": "%LOSk"
+    },
+    {
+      "offset": "0x28E5",
+      "encoding": "ascii",
+      "value": "==)cn"
+    },
+    {
+      "offset": "0x2950",
+      "encoding": "ascii",
+      "value": "Ur=/~z2"
+    },
+    {
+      "offset": "0x2982",
+      "encoding": "ascii",
+      "value": "QRO0T^"
+    },
+    {
+      "offset": "0x2A02",
+      "encoding": "ascii",
+      "value": "P/5,QE(["
+    },
+    {
+      "offset": "0x2AE6",
+      "encoding": "ascii",
+      "value": "XJP)b"
+    },
+    {
+      "offset": "0x2C4D",
+      "encoding": "ascii",
+      "value": "[-Ev:$m"
+    },
+    {
+      "offset": "0x2C93",
+      "encoding": "ascii",
+      "value": "h\\N)E"
+    },
+    {
+      "offset": "0x2E50",
+      "encoding": "ascii",
+      "value": "N2?Z0"
+    },
+    {
+      "offset": "0x3136",
+      "encoding": "ascii",
+      "value": "{3mVH"
+    },
+    {
+      "offset": "0x32C7",
+      "encoding": "ascii",
+      "value": "08g+JYW"
+    },
+    {
+      "offset": "0x3481",
+      "encoding": "ascii",
+      "value": "l.1Qr"
+    },
+    {
+      "offset": "0x34AA",
+      "encoding": "ascii",
+      "value": "tw$ZD"
+    },
+    {
+      "offset": "0x34D5",
+      "encoding": "ascii",
+      "value": "K5;7G"
+    },
+    {
+      "offset": "0x34F7",
+      "encoding": "ascii",
+      "value": "j@^1^"
+    },
+    {
+      "offset": "0x3532",
+      "encoding": "ascii",
+      "value": "%sF%e"
+    },
+    {
+      "offset": "0x35AF",
+      "encoding": "ascii",
+      "value": "bY7;Mc"
+    },
+    {
+      "offset": "0x3742",
+      "encoding": "ascii",
+      "value": "rK7y1"
+    },
+    {
+      "offset": "0x3883",
+      "encoding": "ascii",
+      "value": "9CIl "
+    },
+    {
+      "offset": "0x38F4",
+      "encoding": "ascii",
+      "value": "?Ig\"~"
+    },
+    {
+      "offset": "0x392C",
+      "encoding": "ascii",
+      "value": "L2UD^"
+    },
+    {
+      "offset": "0x39B9",
+      "encoding": "ascii",
+      "value": "m!?N$"
+    },
+    {
+      "offset": "0x3A16",
+      "encoding": "ascii",
+      "value": "KZC>m"
+    },
+    {
+      "offset": "0x3AC3",
+      "encoding": "ascii",
+      "value": "q%q:=N"
+    },
+    {
+      "offset": "0x3B76",
+      "encoding": "ascii",
+      "value": "0S0C5I"
+    },
+    {
+      "offset": "0x3BE4",
+      "encoding": "ascii",
+      "value": "B6G5~"
+    },
+    {
+      "offset": "0x3C99",
+      "encoding": "ascii",
+      "value": "dPG}34"
+    },
+    {
+      "offset": "0x3FF2",
+      "encoding": "ascii",
+      "value": "L30jR"
+    },
+    {
+      "offset": "0x407A",
+      "encoding": "ascii",
+      "value": "!Kx{M"
+    },
+    {
+      "offset": "0x41F5",
+      "encoding": "ascii",
+      "value": "hIu@&"
+    },
+    {
+      "offset": "0x42A9",
+      "encoding": "ascii",
+      "value": "4N'oz"
+    },
+    {
+      "offset": "0x4303",
+      "encoding": "ascii",
+      "value": "gXjJrL"
+    },
+    {
+      "offset": "0x4336",
+      "encoding": "ascii",
+      "value": "hN$JB"
+    },
+    {
+      "offset": "0x44B4",
+      "encoding": "ascii",
+      "value": "gl98x"
+    },
+    {
+      "offset": "0x455E",
+      "encoding": "ascii",
+      "value": "a7Xv&"
+    },
+    {
+      "offset": "0x4658",
+      "encoding": "ascii",
+      "value": "/s^{;"
+    }
+  ],
+  "stage_six_entry": "0x83",
+  "stage_six_entropy": 7.9905,
+  "stage_six_strings": [
+    {
+      "offset": "0xE6",
+      "encoding": "ascii",
+      "value": "szzzz:"
+    },
+    {
+      "offset": "0x125",
+      "encoding": "ascii",
+      "value": "`dRx#"
+    },
+    {
+      "offset": "0x1DF",
+      "encoding": "ascii",
+      "value": ",;qUU"
+    },
+    {
+      "offset": "0x3A8",
+      "encoding": "ascii",
+      "value": "i=paCo\""
+    },
+    {
+      "offset": "0x3D2",
+      "encoding": "ascii",
+      "value": "Q4/+["
+    },
+    {
+      "offset": "0x529",
+      "encoding": "ascii",
+      "value": "[x)FF"
+    },
+    {
+      "offset": "0x536",
+      "encoding": "ascii",
+      "value": "hq0Qx>X"
+    },
+    {
+      "offset": "0x5E6",
+      "encoding": "ascii",
+      "value": "r!Q;*"
+    },
+    {
+      "offset": "0x6EA",
+      "encoding": "ascii",
+      "value": "}EEH="
+    },
+    {
+      "offset": "0x747",
+      "encoding": "ascii",
+      "value": "?@V\"C"
+    },
+    {
+      "offset": "0x7B5",
+      "encoding": "ascii",
+      "value": "#'3+Fb"
+    },
+    {
+      "offset": "0xB26",
+      "encoding": "ascii",
+      "value": "AZnmq"
+    },
+    {
+      "offset": "0xC42",
+      "encoding": "ascii",
+      "value": "Yz;DZ"
+    },
+    {
+      "offset": "0xD73",
+      "encoding": "ascii",
+      "value": "~$F/s"
+    },
+    {
+      "offset": "0xEA1",
+      "encoding": "ascii",
+      "value": ".@,76"
+    },
+    {
+      "offset": "0xF84",
+      "encoding": "ascii",
+      "value": "<&X!/"
+    },
+    {
+      "offset": "0xFFF",
+      "encoding": "ascii",
+      "value": "SlWk-P@"
+    },
+    {
+      "offset": "0x1011",
+      "encoding": "ascii",
+      "value": "Gz$@B"
+    },
+    {
+      "offset": "0x10A8",
+      "encoding": "ascii",
+      "value": "Q=5=I "
+    },
+    {
+      "offset": "0x117C",
+      "encoding": "ascii",
+      "value": "BX\\ch"
+    },
+    {
+      "offset": "0x11C4",
+      "encoding": "ascii",
+      "value": "d}<1V"
+    },
+    {
+      "offset": "0x11DA",
+      "encoding": "ascii",
+      "value": "h|cO5"
+    },
+    {
+      "offset": "0x11FA",
+      "encoding": "ascii",
+      "value": "&[#iW"
+    },
+    {
+      "offset": "0x120D",
+      "encoding": "ascii",
+      "value": "Jsa% "
+    },
+    {
+      "offset": "0x1223",
+      "encoding": "ascii",
+      "value": "|`tn~"
+    },
+    {
+      "offset": "0x12F9",
+      "encoding": "ascii",
+      "value": "%%H88"
+    },
+    {
+      "offset": "0x137D",
+      "encoding": "ascii",
+      "value": "X1z4p"
+    },
+    {
+      "offset": "0x1501",
+      "encoding": "ascii",
+      "value": "AG,>r"
+    },
+    {
+      "offset": "0x1596",
+      "encoding": "ascii",
+      "value": "'j>BQ"
+    },
+    {
+      "offset": "0x15C6",
+      "encoding": "ascii",
+      "value": "H]1pC"
+    },
+    {
+      "offset": "0x1646",
+      "encoding": "ascii",
+      "value": ")/i11"
+    },
+    {
+      "offset": "0x165E",
+      "encoding": "ascii",
+      "value": "~ LgX/"
+    },
+    {
+      "offset": "0x17A1",
+      "encoding": "ascii",
+      "value": "acfnYSi"
+    },
+    {
+      "offset": "0x1900",
+      "encoding": "ascii",
+      "value": "uB`j'y."
+    },
+    {
+      "offset": "0x1932",
+      "encoding": "ascii",
+      "value": "~FK=5H"
+    },
+    {
+      "offset": "0x1D9E",
+      "encoding": "ascii",
+      "value": ")7E Zk"
+    },
+    {
+      "offset": "0x1E7D",
+      "encoding": "ascii",
+      "value": "VL',4Q"
+    },
+    {
+      "offset": "0x2061",
+      "encoding": "ascii",
+      "value": "HY8ccgWF"
+    },
+    {
+      "offset": "0x2120",
+      "encoding": "ascii",
+      "value": "yw*WU"
+    },
+    {
+      "offset": "0x21C0",
+      "encoding": "ascii",
+      "value": "Ai530^"
+    },
+    {
+      "offset": "0x221B",
+      "encoding": "ascii",
+      "value": "vf,4LF"
+    },
+    {
+      "offset": "0x2375",
+      "encoding": "ascii",
+      "value": "/2DW8*_9"
+    },
+    {
+      "offset": "0x23C3",
+      "encoding": "ascii",
+      "value": "(nZ_*"
+    },
+    {
+      "offset": "0x24DA",
+      "encoding": "ascii",
+      "value": "2Z|^7Io"
+    },
+    {
+      "offset": "0x2629",
+      "encoding": "ascii",
+      "value": ".2o<n"
+    },
+    {
+      "offset": "0x2661",
+      "encoding": "ascii",
+      "value": "0Q%kwp"
+    },
+    {
+      "offset": "0x2703",
+      "encoding": "ascii",
+      "value": "jEqJK"
+    },
+    {
+      "offset": "0x2714",
+      "encoding": "ascii",
+      "value": "r;*)L* "
+    },
+    {
+      "offset": "0x2810",
+      "encoding": "ascii",
+      "value": "&5gk9P"
+    },
+    {
+      "offset": "0x2920",
+      "encoding": "ascii",
+      "value": "#2.bz"
+    },
+    {
+      "offset": "0x297E",
+      "encoding": "ascii",
+      "value": "0`Ra="
+    },
+    {
+      "offset": "0x2A1F",
+      "encoding": "ascii",
+      "value": "wk\\X2"
+    },
+    {
+      "offset": "0x2AF7",
+      "encoding": "ascii",
+      "value": "DYR;b"
+    },
+    {
+      "offset": "0x2C74",
+      "encoding": "ascii",
+      "value": "\\5?tM"
+    },
+    {
+      "offset": "0x2C9E",
+      "encoding": "ascii",
+      "value": "R=7VJ"
+    },
+    {
+      "offset": "0x2D09",
+      "encoding": "ascii",
+      "value": "IAJBs"
+    },
+    {
+      "offset": "0x2D39",
+      "encoding": "ascii",
+      "value": "-dl7:x("
+    },
+    {
+      "offset": "0x2E16",
+      "encoding": "ascii",
+      "value": "s-rtx6]G"
+    },
+    {
+      "offset": "0x30C5",
+      "encoding": "ascii",
+      "value": "kjq{_;vu"
+    },
+    {
+      "offset": "0x30F8",
+      "encoding": "ascii",
+      "value": "A&%a0"
+    },
+    {
+      "offset": "0x312E",
+      "encoding": "ascii",
+      "value": "Az}hvh"
+    },
+    {
+      "offset": "0x3162",
+      "encoding": "ascii",
+      "value": "zGF_g"
+    },
+    {
+      "offset": "0x3494",
+      "encoding": "ascii",
+      "value": ":s(8["
+    },
+    {
+      "offset": "0x36D0",
+      "encoding": "ascii",
+      "value": "Mwz6U"
+    },
+    {
+      "offset": "0x371E",
+      "encoding": "ascii",
+      "value": "t DFN"
+    },
+    {
+      "offset": "0x3855",
+      "encoding": "ascii",
+      "value": "i:w)?"
+    },
+    {
+      "offset": "0x3915",
+      "encoding": "ascii",
+      "value": "P%~u<p"
+    },
+    {
+      "offset": "0x3A68",
+      "encoding": "ascii",
+      "value": "p[V$f,"
+    },
+    {
+      "offset": "0x3B47",
+      "encoding": "ascii",
+      "value": "QmcsR"
+    },
+    {
+      "offset": "0x3B64",
+      "encoding": "ascii",
+      "value": "NR{ux"
+    },
+    {
+      "offset": "0x3B9F",
+      "encoding": "ascii",
+      "value": "0uA1K"
+    },
+    {
+      "offset": "0x3BC1",
+      "encoding": "ascii",
+      "value": "`*]~D"
+    },
+    {
+      "offset": "0x3D7E",
+      "encoding": "ascii",
+      "value": "84_!4R"
+    },
+    {
+      "offset": "0x3ED7",
+      "encoding": "ascii",
+      "value": "NaoGy"
+    },
+    {
+      "offset": "0x3FF8",
+      "encoding": "ascii",
+      "value": "1Z\"ivc5b"
+    },
+    {
+      "offset": "0x403F",
+      "encoding": "ascii",
+      "value": "Ffh!/\""
+    },
+    {
+      "offset": "0x40A0",
+      "encoding": "ascii",
+      "value": "xSZ=)"
+    },
+    {
+      "offset": "0x411E",
+      "encoding": "ascii",
+      "value": "zuv.6"
+    },
+    {
+      "offset": "0x412B",
+      "encoding": "ascii",
+      "value": "j}&Goy"
+    },
+    {
+      "offset": "0x41F1",
+      "encoding": "ascii",
+      "value": "784Y9"
+    },
+    {
+      "offset": "0x422A",
+      "encoding": "ascii",
+      "value": "RCs2`"
+    },
+    {
+      "offset": "0x42CD",
+      "encoding": "ascii",
+      "value": "mp6lpD"
+    },
+    {
+      "offset": "0x4355",
+      "encoding": "ascii",
+      "value": "FE\\:o*d"
+    },
+    {
+      "offset": "0x43C0",
+      "encoding": "ascii",
+      "value": "hKNfS}U"
+    },
+    {
+      "offset": "0x446F",
+      "encoding": "ascii",
+      "value": "v\"xr]"
+    },
+    {
+      "offset": "0x44B7",
+      "encoding": "ascii",
+      "value": "BY+SN|"
+    },
+    {
+      "offset": "0x44DD",
+      "encoding": "ascii",
+      "value": " $w~Wf!b4KJ&h*rE^"
+    },
+    {
+      "offset": "0x4517",
+      "encoding": "ascii",
+      "value": "j~1~k"
+    },
+    {
+      "offset": "0x460A",
+      "encoding": "ascii",
+      "value": "F*V;g"
+    }
+  ],
+  "stage_seven_entry": "0x8C",
+  "stage_seven_entropy": 7.9904,
+  "stage_seven_strings": [
+    {
+      "offset": "0xE6",
+      "encoding": "ascii",
+      "value": "szzzz:"
+    },
+    {
+      "offset": "0x125",
+      "encoding": "ascii",
+      "value": "`dRx#"
+    },
+    {
+      "offset": "0x1DF",
+      "encoding": "ascii",
+      "value": ",;qUU"
+    },
+    {
+      "offset": "0x3A8",
+      "encoding": "ascii",
+      "value": "i=paCo\""
+    },
+    {
+      "offset": "0x3D2",
+      "encoding": "ascii",
+      "value": "Q4/+["
+    },
+    {
+      "offset": "0x529",
+      "encoding": "ascii",
+      "value": "[x)FF"
+    },
+    {
+      "offset": "0x536",
+      "encoding": "ascii",
+      "value": "hq0Qx>X"
+    },
+    {
+      "offset": "0x5E6",
+      "encoding": "ascii",
+      "value": "r!Q;*"
+    },
+    {
+      "offset": "0x6EA",
+      "encoding": "ascii",
+      "value": "}EEH="
+    },
+    {
+      "offset": "0x747",
+      "encoding": "ascii",
+      "value": "?@V\"C"
+    },
+    {
+      "offset": "0x7B5",
+      "encoding": "ascii",
+      "value": "#'3+Fb"
+    },
+    {
+      "offset": "0xB26",
+      "encoding": "ascii",
+      "value": "AZnmq"
+    },
+    {
+      "offset": "0xC42",
+      "encoding": "ascii",
+      "value": "Yz;DZ"
+    },
+    {
+      "offset": "0xD73",
+      "encoding": "ascii",
+      "value": "~$F/s"
+    },
+    {
+      "offset": "0xEA1",
+      "encoding": "ascii",
+      "value": ".@,76"
+    },
+    {
+      "offset": "0xF84",
+      "encoding": "ascii",
+      "value": "<&X!/"
+    },
+    {
+      "offset": "0xFFF",
+      "encoding": "ascii",
+      "value": "SlWk-P@"
+    },
+    {
+      "offset": "0x1011",
+      "encoding": "ascii",
+      "value": "Gz$@B"
+    },
+    {
+      "offset": "0x10A8",
+      "encoding": "ascii",
+      "value": "Q=5=I "
+    },
+    {
+      "offset": "0x117C",
+      "encoding": "ascii",
+      "value": "BX\\ch"
+    },
+    {
+      "offset": "0x11C4",
+      "encoding": "ascii",
+      "value": "d}<1V"
+    },
+    {
+      "offset": "0x11DA",
+      "encoding": "ascii",
+      "value": "h|cO5"
+    },
+    {
+      "offset": "0x11FA",
+      "encoding": "ascii",
+      "value": "&[#iW"
+    },
+    {
+      "offset": "0x120D",
+      "encoding": "ascii",
+      "value": "Jsa% "
+    },
+    {
+      "offset": "0x1223",
+      "encoding": "ascii",
+      "value": "|`tn~"
+    },
+    {
+      "offset": "0x12F9",
+      "encoding": "ascii",
+      "value": "%%H88"
+    },
+    {
+      "offset": "0x137D",
+      "encoding": "ascii",
+      "value": "X1z4p"
+    },
+    {
+      "offset": "0x1501",
+      "encoding": "ascii",
+      "value": "AG,>r"
+    },
+    {
+      "offset": "0x1596",
+      "encoding": "ascii",
+      "value": "'j>BQ"
+    },
+    {
+      "offset": "0x15C6",
+      "encoding": "ascii",
+      "value": "H]1pC"
+    },
+    {
+      "offset": "0x1646",
+      "encoding": "ascii",
+      "value": ")/i11"
+    },
+    {
+      "offset": "0x165E",
+      "encoding": "ascii",
+      "value": "~ LgX/"
+    },
+    {
+      "offset": "0x17A1",
+      "encoding": "ascii",
+      "value": "acfnYSi"
+    },
+    {
+      "offset": "0x1900",
+      "encoding": "ascii",
+      "value": "uB`j'y."
+    },
+    {
+      "offset": "0x1932",
+      "encoding": "ascii",
+      "value": "~FK=5H"
+    },
+    {
+      "offset": "0x1D9E",
+      "encoding": "ascii",
+      "value": ")7E Zk"
+    },
+    {
+      "offset": "0x1E7D",
+      "encoding": "ascii",
+      "value": "VL',4Q"
+    },
+    {
+      "offset": "0x2061",
+      "encoding": "ascii",
+      "value": "HY8ccgWF"
+    },
+    {
+      "offset": "0x2120",
+      "encoding": "ascii",
+      "value": "yw*WU"
+    },
+    {
+      "offset": "0x21C0",
+      "encoding": "ascii",
+      "value": "Ai530^"
+    },
+    {
+      "offset": "0x221B",
+      "encoding": "ascii",
+      "value": "vf,4LF"
+    },
+    {
+      "offset": "0x2375",
+      "encoding": "ascii",
+      "value": "/2DW8*_9"
+    },
+    {
+      "offset": "0x23C3",
+      "encoding": "ascii",
+      "value": "(nZ_*"
+    },
+    {
+      "offset": "0x24DA",
+      "encoding": "ascii",
+      "value": "2Z|^7Io"
+    },
+    {
+      "offset": "0x2629",
+      "encoding": "ascii",
+      "value": ".2o<n"
+    },
+    {
+      "offset": "0x2661",
+      "encoding": "ascii",
+      "value": "0Q%kwp"
+    },
+    {
+      "offset": "0x2703",
+      "encoding": "ascii",
+      "value": "jEqJK"
+    },
+    {
+      "offset": "0x2714",
+      "encoding": "ascii",
+      "value": "r;*)L* "
+    },
+    {
+      "offset": "0x2810",
+      "encoding": "ascii",
+      "value": "&5gk9P"
+    },
+    {
+      "offset": "0x2920",
+      "encoding": "ascii",
+      "value": "#2.bz"
+    },
+    {
+      "offset": "0x297E",
+      "encoding": "ascii",
+      "value": "0`Ra="
+    },
+    {
+      "offset": "0x2A1F",
+      "encoding": "ascii",
+      "value": "wk\\X2"
+    },
+    {
+      "offset": "0x2AF7",
+      "encoding": "ascii",
+      "value": "DYR;b"
+    },
+    {
+      "offset": "0x2C74",
+      "encoding": "ascii",
+      "value": "\\5?tM"
+    },
+    {
+      "offset": "0x2C9E",
+      "encoding": "ascii",
+      "value": "R=7VJ"
+    },
+    {
+      "offset": "0x2D09",
+      "encoding": "ascii",
+      "value": "IAJBs"
+    },
+    {
+      "offset": "0x2D39",
+      "encoding": "ascii",
+      "value": "-dl7:x("
+    },
+    {
+      "offset": "0x2E16",
+      "encoding": "ascii",
+      "value": "s-rtx6]G"
+    },
+    {
+      "offset": "0x30C5",
+      "encoding": "ascii",
+      "value": "kjq{_;vu"
+    },
+    {
+      "offset": "0x30F8",
+      "encoding": "ascii",
+      "value": "A&%a0"
+    },
+    {
+      "offset": "0x312E",
+      "encoding": "ascii",
+      "value": "Az}hvh"
+    },
+    {
+      "offset": "0x3162",
+      "encoding": "ascii",
+      "value": "zGF_g"
+    },
+    {
+      "offset": "0x3494",
+      "encoding": "ascii",
+      "value": ":s(8["
+    },
+    {
+      "offset": "0x36D0",
+      "encoding": "ascii",
+      "value": "Mwz6U"
+    },
+    {
+      "offset": "0x371E",
+      "encoding": "ascii",
+      "value": "t DFN"
+    },
+    {
+      "offset": "0x3855",
+      "encoding": "ascii",
+      "value": "i:w)?"
+    },
+    {
+      "offset": "0x3915",
+      "encoding": "ascii",
+      "value": "P%~u<p"
+    },
+    {
+      "offset": "0x3A68",
+      "encoding": "ascii",
+      "value": "p[V$f,"
+    },
+    {
+      "offset": "0x3B47",
+      "encoding": "ascii",
+      "value": "QmcsR"
+    },
+    {
+      "offset": "0x3B64",
+      "encoding": "ascii",
+      "value": "NR{ux"
+    },
+    {
+      "offset": "0x3B9F",
+      "encoding": "ascii",
+      "value": "0uA1K"
+    },
+    {
+      "offset": "0x3BC1",
+      "encoding": "ascii",
+      "value": "`*]~D"
+    },
+    {
+      "offset": "0x3D7E",
+      "encoding": "ascii",
+      "value": "84_!4R"
+    },
+    {
+      "offset": "0x3ED7",
+      "encoding": "ascii",
+      "value": "NaoGy"
+    },
+    {
+      "offset": "0x3FF8",
+      "encoding": "ascii",
+      "value": "1Z\"ivc5b"
+    },
+    {
+      "offset": "0x403F",
+      "encoding": "ascii",
+      "value": "Ffh!/\""
+    },
+    {
+      "offset": "0x40A0",
+      "encoding": "ascii",
+      "value": "xSZ=)"
+    },
+    {
+      "offset": "0x411E",
+      "encoding": "ascii",
+      "value": "zuv.6"
+    },
+    {
+      "offset": "0x412B",
+      "encoding": "ascii",
+      "value": "j}&Goy"
+    },
+    {
+      "offset": "0x41F1",
+      "encoding": "ascii",
+      "value": "784Y9"
+    },
+    {
+      "offset": "0x422A",
+      "encoding": "ascii",
+      "value": "RCs2`"
+    },
+    {
+      "offset": "0x42CD",
+      "encoding": "ascii",
+      "value": "mp6lpD"
+    },
+    {
+      "offset": "0x4355",
+      "encoding": "ascii",
+      "value": "FE\\:o*d"
+    },
+    {
+      "offset": "0x43C0",
+      "encoding": "ascii",
+      "value": "hKNfS}U"
+    },
+    {
+      "offset": "0x446F",
+      "encoding": "ascii",
+      "value": "v\"xr]"
+    },
+    {
+      "offset": "0x44B7",
+      "encoding": "ascii",
+      "value": "BY+SN|"
+    },
+    {
+      "offset": "0x44DD",
+      "encoding": "ascii",
+      "value": " $w~Wf!b4KJ&h*rE^"
+    },
+    {
+      "offset": "0x4517",
+      "encoding": "ascii",
+      "value": "j~1~k"
+    },
+    {
+      "offset": "0x460A",
+      "encoding": "ascii",
+      "value": "F*V;g"
+    }
+  ],
+  "stage_eight_entry": "0xBE",
+  "stage_eight_entropy": 7.9886,
+  "stage_eight_strings": [
+    {
+      "offset": "0x2A2",
+      "encoding": "ascii",
+      "value": "Kb9JK"
+    },
+    {
+      "offset": "0x30E",
+      "encoding": "ascii",
+      "value": "$jxC7"
+    },
+    {
+      "offset": "0x8EB",
+      "encoding": "ascii",
+      "value": "mm>3j"
+    },
+    {
+      "offset": "0xB3C",
+      "encoding": "ascii",
+      "value": "79!|U"
+    },
+    {
+      "offset": "0xB50",
+      "encoding": "ascii",
+      "value": "pnMmD"
+    },
+    {
+      "offset": "0xBC0",
+      "encoding": "ascii",
+      "value": ".q1Lv"
+    },
+    {
+      "offset": "0xC74",
+      "encoding": "ascii",
+      "value": "S@ek?"
+    },
+    {
+      "offset": "0xEF4",
+      "encoding": "ascii",
+      "value": "^'7\"+"
+    },
+    {
+      "offset": "0xF6C",
+      "encoding": "ascii",
+      "value": "+8X SI"
+    },
+    {
+      "offset": "0xFDD",
+      "encoding": "ascii",
+      "value": "OMOuP"
+    },
+    {
+      "offset": "0x10AF",
+      "encoding": "ascii",
+      "value": "%D3YS@"
+    },
+    {
+      "offset": "0x10C3",
+      "encoding": "ascii",
+      "value": "b9)d)"
+    },
+    {
+      "offset": "0x1291",
+      "encoding": "ascii",
+      "value": "x-Pi^"
+    },
+    {
+      "offset": "0x1424",
+      "encoding": "ascii",
+      "value": "CQc^wc`V"
+    },
+    {
+      "offset": "0x1461",
+      "encoding": "ascii",
+      "value": "W1JuI"
+    },
+    {
+      "offset": "0x14FD",
+      "encoding": "ascii",
+      "value": "$tx5&"
+    },
+    {
+      "offset": "0x1665",
+      "encoding": "ascii",
+      "value": "fpX}g1"
+    },
+    {
+      "offset": "0x16E9",
+      "encoding": "ascii",
+      "value": "B!H3+"
+    },
+    {
+      "offset": "0x173A",
+      "encoding": "ascii",
+      "value": "pbQGIl"
+    },
+    {
+      "offset": "0x1A41",
+      "encoding": "ascii",
+      "value": "9k,Kf"
+    },
+    {
+      "offset": "0x1A79",
+      "encoding": "ascii",
+      "value": "1te~NL"
+    },
+    {
+      "offset": "0x1AD1",
+      "encoding": "ascii",
+      "value": "aW\\fz"
+    },
+    {
+      "offset": "0x1C17",
+      "encoding": "ascii",
+      "value": "4Z\\#L"
+    },
+    {
+      "offset": "0x1C8E",
+      "encoding": "ascii",
+      "value": "E!-nt3"
+    },
+    {
+      "offset": "0x1D7D",
+      "encoding": "ascii",
+      "value": "VUqVL/"
+    },
+    {
+      "offset": "0x1E66",
+      "encoding": "ascii",
+      "value": "<4oZH"
+    },
+    {
+      "offset": "0x1E88",
+      "encoding": "ascii",
+      "value": "bMY[m"
+    },
+    {
+      "offset": "0x2068",
+      "encoding": "ascii",
+      "value": "*<v>6"
+    },
+    {
+      "offset": "0x20D9",
+      "encoding": "ascii",
+      "value": "EO${D"
+    },
+    {
+      "offset": "0x214D",
+      "encoding": "ascii",
+      "value": "ly2yQ"
+    },
+    {
+      "offset": "0x22AF",
+      "encoding": "ascii",
+      "value": ".E$UOo"
+    },
+    {
+      "offset": "0x234E",
+      "encoding": "ascii",
+      "value": "\"1*5@"
+    },
+    {
+      "offset": "0x236C",
+      "encoding": "ascii",
+      "value": "r+^Co"
+    },
+    {
+      "offset": "0x238B",
+      "encoding": "ascii",
+      "value": "\\+D`*;p"
+    },
+    {
+      "offset": "0x23B8",
+      "encoding": "ascii",
+      "value": "V3+5,"
+    },
+    {
+      "offset": "0x23E6",
+      "encoding": "ascii",
+      "value": ";Uf\"9"
+    },
+    {
+      "offset": "0x2443",
+      "encoding": "ascii",
+      "value": "8>yku"
+    },
+    {
+      "offset": "0x248E",
+      "encoding": "ascii",
+      "value": "<MCOf>"
+    },
+    {
+      "offset": "0x2515",
+      "encoding": "ascii",
+      "value": "hiM6B6JI"
+    },
+    {
+      "offset": "0x253D",
+      "encoding": "ascii",
+      "value": "i5psD:?"
+    },
+    {
+      "offset": "0x2658",
+      "encoding": "ascii",
+      "value": "KmH:L"
+    },
+    {
+      "offset": "0x26FF",
+      "encoding": "ascii",
+      "value": "|L}X?"
+    },
+    {
+      "offset": "0x27B1",
+      "encoding": "ascii",
+      "value": "nECgE"
+    },
+    {
+      "offset": "0x2807",
+      "encoding": "ascii",
+      "value": "&w(eO"
+    },
+    {
+      "offset": "0x2929",
+      "encoding": "ascii",
+      "value": "Kv7z@*"
+    },
+    {
+      "offset": "0x29FF",
+      "encoding": "ascii",
+      "value": "#bQg}"
+    },
+    {
+      "offset": "0x2C4C",
+      "encoding": "ascii",
+      "value": "&|G{Jev"
+    },
+    {
+      "offset": "0x2F8F",
+      "encoding": "ascii",
+      "value": "##Pwc"
+    },
+    {
+      "offset": "0x2FBC",
+      "encoding": "ascii",
+      "value": "CK+V+"
+    },
+    {
+      "offset": "0x329E",
+      "encoding": "ascii",
+      "value": "joU!*"
+    },
+    {
+      "offset": "0x33EC",
+      "encoding": "ascii",
+      "value": "![CE."
+    },
+    {
+      "offset": "0x354A",
+      "encoding": "ascii",
+      "value": "P<a\\nK"
+    },
+    {
+      "offset": "0x35B4",
+      "encoding": "ascii",
+      "value": "C>?CqW"
+    },
+    {
+      "offset": "0x35D0",
+      "encoding": "ascii",
+      "value": "s2\"4=\\"
+    },
+    {
+      "offset": "0x3703",
+      "encoding": "ascii",
+      "value": "m(wgL%"
+    },
+    {
+      "offset": "0x3793",
+      "encoding": "ascii",
+      "value": "R'*7m"
+    },
+    {
+      "offset": "0x396F",
+      "encoding": "ascii",
+      "value": "I5\"/{4"
+    },
+    {
+      "offset": "0x3996",
+      "encoding": "ascii",
+      "value": "}GYKCsa"
+    },
+    {
+      "offset": "0x3C4F",
+      "encoding": "ascii",
+      "value": "PQ=tM"
+    },
+    {
+      "offset": "0x3E1B",
+      "encoding": "ascii",
+      "value": "B(;dD0r1'"
+    },
+    {
+      "offset": "0x3E7A",
+      "encoding": "ascii",
+      "value": "UNcXxm"
+    },
+    {
+      "offset": "0x3EDD",
+      "encoding": "ascii",
+      "value": "\\^.kh"
+    },
+    {
+      "offset": "0x40D9",
+      "encoding": "ascii",
+      "value": "~5>^?"
+    },
+    {
+      "offset": "0x42E5",
+      "encoding": "ascii",
+      "value": "49.Jq{B"
+    },
+    {
+      "offset": "0x44F9",
+      "encoding": "ascii",
+      "value": "`R9!~I"
+    },
+    {
+      "offset": "0x45EF",
+      "encoding": "ascii",
+      "value": "9)c4p"
+    },
+    {
+      "offset": "0x4605",
+      "encoding": "ascii",
+      "value": "B94tU"
+    }
+  ],
+  "stage_nine_entry": "0xCC",
+  "stage_nine_entropy": 7.9885,
+  "stage_nine_strings": [
+    {
+      "offset": "0x2A2",
+      "encoding": "ascii",
+      "value": "Kb9JK"
+    },
+    {
+      "offset": "0x30E",
+      "encoding": "ascii",
+      "value": "$jxC7"
+    },
+    {
+      "offset": "0x8EB",
+      "encoding": "ascii",
+      "value": "mm>3j"
+    },
+    {
+      "offset": "0xB3C",
+      "encoding": "ascii",
+      "value": "79!|U"
+    },
+    {
+      "offset": "0xB50",
+      "encoding": "ascii",
+      "value": "pnMmD"
+    },
+    {
+      "offset": "0xBC0",
+      "encoding": "ascii",
+      "value": ".q1Lv"
+    },
+    {
+      "offset": "0xC74",
+      "encoding": "ascii",
+      "value": "S@ek?"
+    },
+    {
+      "offset": "0xEF4",
+      "encoding": "ascii",
+      "value": "^'7\"+"
+    },
+    {
+      "offset": "0xF6C",
+      "encoding": "ascii",
+      "value": "+8X SI"
+    },
+    {
+      "offset": "0xFDD",
+      "encoding": "ascii",
+      "value": "OMOuP"
+    },
+    {
+      "offset": "0x10AF",
+      "encoding": "ascii",
+      "value": "%D3YS@"
+    },
+    {
+      "offset": "0x10C3",
+      "encoding": "ascii",
+      "value": "b9)d)"
+    },
+    {
+      "offset": "0x1291",
+      "encoding": "ascii",
+      "value": "x-Pi^"
+    },
+    {
+      "offset": "0x1424",
+      "encoding": "ascii",
+      "value": "CQc^wc`V"
+    },
+    {
+      "offset": "0x1461",
+      "encoding": "ascii",
+      "value": "W1JuI"
+    },
+    {
+      "offset": "0x14FD",
+      "encoding": "ascii",
+      "value": "$tx5&"
+    },
+    {
+      "offset": "0x1665",
+      "encoding": "ascii",
+      "value": "fpX}g1"
+    },
+    {
+      "offset": "0x16E9",
+      "encoding": "ascii",
+      "value": "B!H3+"
+    },
+    {
+      "offset": "0x173A",
+      "encoding": "ascii",
+      "value": "pbQGIl"
+    },
+    {
+      "offset": "0x1A41",
+      "encoding": "ascii",
+      "value": "9k,Kf"
+    },
+    {
+      "offset": "0x1A79",
+      "encoding": "ascii",
+      "value": "1te~NL"
+    },
+    {
+      "offset": "0x1AD1",
+      "encoding": "ascii",
+      "value": "aW\\fz"
+    },
+    {
+      "offset": "0x1C17",
+      "encoding": "ascii",
+      "value": "4Z\\#L"
+    },
+    {
+      "offset": "0x1C8E",
+      "encoding": "ascii",
+      "value": "E!-nt3"
+    },
+    {
+      "offset": "0x1D7D",
+      "encoding": "ascii",
+      "value": "VUqVL/"
+    },
+    {
+      "offset": "0x1E66",
+      "encoding": "ascii",
+      "value": "<4oZH"
+    },
+    {
+      "offset": "0x1E88",
+      "encoding": "ascii",
+      "value": "bMY[m"
+    },
+    {
+      "offset": "0x2068",
+      "encoding": "ascii",
+      "value": "*<v>6"
+    },
+    {
+      "offset": "0x20D9",
+      "encoding": "ascii",
+      "value": "EO${D"
+    },
+    {
+      "offset": "0x214D",
+      "encoding": "ascii",
+      "value": "ly2yQ"
+    },
+    {
+      "offset": "0x22AF",
+      "encoding": "ascii",
+      "value": ".E$UOo"
+    },
+    {
+      "offset": "0x234E",
+      "encoding": "ascii",
+      "value": "\"1*5@"
+    },
+    {
+      "offset": "0x236C",
+      "encoding": "ascii",
+      "value": "r+^Co"
+    },
+    {
+      "offset": "0x238B",
+      "encoding": "ascii",
+      "value": "\\+D`*;p"
+    },
+    {
+      "offset": "0x23B8",
+      "encoding": "ascii",
+      "value": "V3+5,"
+    },
+    {
+      "offset": "0x23E6",
+      "encoding": "ascii",
+      "value": ";Uf\"9"
+    },
+    {
+      "offset": "0x2443",
+      "encoding": "ascii",
+      "value": "8>yku"
+    },
+    {
+      "offset": "0x248E",
+      "encoding": "ascii",
+      "value": "<MCOf>"
+    },
+    {
+      "offset": "0x2515",
+      "encoding": "ascii",
+      "value": "hiM6B6JI"
+    },
+    {
+      "offset": "0x253D",
+      "encoding": "ascii",
+      "value": "i5psD:?"
+    },
+    {
+      "offset": "0x2658",
+      "encoding": "ascii",
+      "value": "KmH:L"
+    },
+    {
+      "offset": "0x26FF",
+      "encoding": "ascii",
+      "value": "|L}X?"
+    },
+    {
+      "offset": "0x27B1",
+      "encoding": "ascii",
+      "value": "nECgE"
+    },
+    {
+      "offset": "0x2807",
+      "encoding": "ascii",
+      "value": "&w(eO"
+    },
+    {
+      "offset": "0x2929",
+      "encoding": "ascii",
+      "value": "Kv7z@*"
+    },
+    {
+      "offset": "0x29FF",
+      "encoding": "ascii",
+      "value": "#bQg}"
+    },
+    {
+      "offset": "0x2C4C",
+      "encoding": "ascii",
+      "value": "&|G{Jev"
+    },
+    {
+      "offset": "0x2F8F",
+      "encoding": "ascii",
+      "value": "##Pwc"
+    },
+    {
+      "offset": "0x2FBC",
+      "encoding": "ascii",
+      "value": "CK+V+"
+    },
+    {
+      "offset": "0x329E",
+      "encoding": "ascii",
+      "value": "joU!*"
+    },
+    {
+      "offset": "0x33EC",
+      "encoding": "ascii",
+      "value": "![CE."
+    },
+    {
+      "offset": "0x354A",
+      "encoding": "ascii",
+      "value": "P<a\\nK"
+    },
+    {
+      "offset": "0x35B4",
+      "encoding": "ascii",
+      "value": "C>?CqW"
+    },
+    {
+      "offset": "0x35D0",
+      "encoding": "ascii",
+      "value": "s2\"4=\\"
+    },
+    {
+      "offset": "0x3703",
+      "encoding": "ascii",
+      "value": "m(wgL%"
+    },
+    {
+      "offset": "0x3793",
+      "encoding": "ascii",
+      "value": "R'*7m"
+    },
+    {
+      "offset": "0x396F",
+      "encoding": "ascii",
+      "value": "I5\"/{4"
+    },
+    {
+      "offset": "0x3996",
+      "encoding": "ascii",
+      "value": "}GYKCsa"
+    },
+    {
+      "offset": "0x3C4F",
+      "encoding": "ascii",
+      "value": "PQ=tM"
+    },
+    {
+      "offset": "0x3E1B",
+      "encoding": "ascii",
+      "value": "B(;dD0r1'"
+    },
+    {
+      "offset": "0x3E7A",
+      "encoding": "ascii",
+      "value": "UNcXxm"
+    },
+    {
+      "offset": "0x3EDD",
+      "encoding": "ascii",
+      "value": "\\^.kh"
+    },
+    {
+      "offset": "0x40D9",
+      "encoding": "ascii",
+      "value": "~5>^?"
+    },
+    {
+      "offset": "0x42E5",
+      "encoding": "ascii",
+      "value": "49.Jq{B"
+    },
+    {
+      "offset": "0x44F9",
+      "encoding": "ascii",
+      "value": "`R9!~I"
+    },
+    {
+      "offset": "0x45EF",
+      "encoding": "ascii",
+      "value": "9)c4p"
+    },
+    {
+      "offset": "0x4605",
+      "encoding": "ascii",
+      "value": "B94tU"
+    }
+  ],
+  "stage_ten_entry": "0xF4",
+  "stage_ten_entropy": 7.987,
+  "stage_ten_strings": [
+    {
+      "offset": "0x10A",
+      "encoding": "ascii",
+      "value": "2:ywo"
+    },
+    {
+      "offset": "0x12F",
+      "encoding": "ascii",
+      "value": "ymv22"
+    },
+    {
+      "offset": "0x164",
+      "encoding": "ascii",
+      "value": "!;-`0"
+    },
+    {
+      "offset": "0x1AC",
+      "encoding": "ascii",
+      "value": "|K`8B0"
+    },
+    {
+      "offset": "0x1F6",
+      "encoding": "ascii",
+      "value": "L6cLc"
+    },
+    {
+      "offset": "0x332",
+      "encoding": "ascii",
+      "value": "wiPvI"
+    },
+    {
+      "offset": "0x3C5",
+      "encoding": "ascii",
+      "value": "\\b}F$,"
+    },
+    {
+      "offset": "0x555",
+      "encoding": "ascii",
+      "value": "oEl+N="
+    },
+    {
+      "offset": "0x592",
+      "encoding": "ascii",
+      "value": "b+KBI"
+    },
+    {
+      "offset": "0x685",
+      "encoding": "ascii",
+      "value": "9MXXsC"
+    },
+    {
+      "offset": "0x6AC",
+      "encoding": "ascii",
+      "value": "a0iR|"
+    },
+    {
+      "offset": "0x854",
+      "encoding": "ascii",
+      "value": "iQBLy"
+    },
+    {
+      "offset": "0xBB7",
+      "encoding": "ascii",
+      "value": "/ZL=\\"
+    },
+    {
+      "offset": "0xBC7",
+      "encoding": "ascii",
+      "value": "dWm]t"
+    },
+    {
+      "offset": "0xC17",
+      "encoding": "ascii",
+      "value": "M[YI)z"
+    },
+    {
+      "offset": "0xD6B",
+      "encoding": "ascii",
+      "value": ";=[3\\"
+    },
+    {
+      "offset": "0xEE6",
+      "encoding": "ascii",
+      "value": "dT(([u)?K}9E"
+    },
+    {
+      "offset": "0xFB5",
+      "encoding": "ascii",
+      "value": "!1D;#"
+    },
+    {
+      "offset": "0x109E",
+      "encoding": "ascii",
+      "value": "c? <\""
+    },
+    {
+      "offset": "0x1465",
+      "encoding": "ascii",
+      "value": "#zq>d2I"
+    },
+    {
+      "offset": "0x14C8",
+      "encoding": "ascii",
+      "value": ":\"#8Y"
+    },
+    {
+      "offset": "0x15DC",
+      "encoding": "ascii",
+      "value": "jWa9d"
+    },
+    {
+      "offset": "0x1658",
+      "encoding": "ascii",
+      "value": "2.LA\\"
+    },
+    {
+      "offset": "0x1686",
+      "encoding": "ascii",
+      "value": "Q?}tp3?"
+    },
+    {
+      "offset": "0x1867",
+      "encoding": "ascii",
+      "value": ">`8j5"
+    },
+    {
+      "offset": "0x1959",
+      "encoding": "ascii",
+      "value": "E~xfp"
+    },
+    {
+      "offset": "0x1D48",
+      "encoding": "ascii",
+      "value": "4k\":8&"
+    },
+    {
+      "offset": "0x1DCD",
+      "encoding": "ascii",
+      "value": "eD_0o&t"
+    },
+    {
+      "offset": "0x1F1F",
+      "encoding": "ascii",
+      "value": "bl*1?"
+    },
+    {
+      "offset": "0x1FC9",
+      "encoding": "ascii",
+      "value": "1 Hih"
+    },
+    {
+      "offset": "0x219D",
+      "encoding": "ascii",
+      "value": "p9f=M"
+    },
+    {
+      "offset": "0x21AA",
+      "encoding": "ascii",
+      "value": "!_R'06"
+    },
+    {
+      "offset": "0x2278",
+      "encoding": "ascii",
+      "value": "mcwrm"
+    },
+    {
+      "offset": "0x2358",
+      "encoding": "ascii",
+      "value": ")wqPoap"
+    },
+    {
+      "offset": "0x2478",
+      "encoding": "ascii",
+      "value": "n]_-&"
+    },
+    {
+      "offset": "0x264D",
+      "encoding": "ascii",
+      "value": ":e,jUTPk"
+    },
+    {
+      "offset": "0x2687",
+      "encoding": "ascii",
+      "value": "457O."
+    },
+    {
+      "offset": "0x2711",
+      "encoding": "ascii",
+      "value": "!a}V|"
+    },
+    {
+      "offset": "0x27A4",
+      "encoding": "ascii",
+      "value": "!`YOT"
+    },
+    {
+      "offset": "0x2B7E",
+      "encoding": "ascii",
+      "value": "Ya&C!k"
+    },
+    {
+      "offset": "0x2C88",
+      "encoding": "ascii",
+      "value": "RR8f)A"
+    },
+    {
+      "offset": "0x2E08",
+      "encoding": "ascii",
+      "value": "t\\V#fX*"
+    },
+    {
+      "offset": "0x2EA1",
+      "encoding": "ascii",
+      "value": "?s'X`I"
+    },
+    {
+      "offset": "0x3029",
+      "encoding": "ascii",
+      "value": "sNH(_"
+    },
+    {
+      "offset": "0x3168",
+      "encoding": "ascii",
+      "value": "=<5t&4"
+    },
+    {
+      "offset": "0x32CD",
+      "encoding": "ascii",
+      "value": "vF{'a"
+    },
+    {
+      "offset": "0x3404",
+      "encoding": "ascii",
+      "value": "^Up_J"
+    },
+    {
+      "offset": "0x3443",
+      "encoding": "ascii",
+      "value": "<H,<N*"
+    },
+    {
+      "offset": "0x3466",
+      "encoding": "ascii",
+      "value": "d!6l>"
+    },
+    {
+      "offset": "0x351B",
+      "encoding": "ascii",
+      "value": "+'V,&"
+    },
+    {
+      "offset": "0x35B7",
+      "encoding": "ascii",
+      "value": ">&U!%"
+    },
+    {
+      "offset": "0x35C5",
+      "encoding": "ascii",
+      "value": " 1[n^_I"
+    },
+    {
+      "offset": "0x3674",
+      "encoding": "ascii",
+      "value": "Qj3UF"
+    },
+    {
+      "offset": "0x3686",
+      "encoding": "ascii",
+      "value": "4#ZUU"
+    },
+    {
+      "offset": "0x36F7",
+      "encoding": "ascii",
+      "value": "KyvhUKP"
+    },
+    {
+      "offset": "0x393C",
+      "encoding": "ascii",
+      "value": "EY<~7SFz"
+    },
+    {
+      "offset": "0x39F0",
+      "encoding": "ascii",
+      "value": "PR+zo"
+    },
+    {
+      "offset": "0x3A2C",
+      "encoding": "ascii",
+      "value": "cPA7 "
+    },
+    {
+      "offset": "0x3A8A",
+      "encoding": "ascii",
+      "value": "t$y[c"
+    },
+    {
+      "offset": "0x3AC8",
+      "encoding": "ascii",
+      "value": "wI?H)"
+    },
+    {
+      "offset": "0x3BF0",
+      "encoding": "ascii",
+      "value": "esX~'"
+    },
+    {
+      "offset": "0x3CF1",
+      "encoding": "ascii",
+      "value": "#$?i%k>."
+    },
+    {
+      "offset": "0x3E05",
+      "encoding": "ascii",
+      "value": ",@@M T"
+    },
+    {
+      "offset": "0x3E28",
+      "encoding": "ascii",
+      "value": "=$6 J"
+    },
+    {
+      "offset": "0x3E8C",
+      "encoding": "ascii",
+      "value": "Qs`l`"
+    },
+    {
+      "offset": "0x3ED0",
+      "encoding": "ascii",
+      "value": "5P gs:"
+    },
+    {
+      "offset": "0x3FC6",
+      "encoding": "ascii",
+      "value": "Wn6O\"k"
+    },
+    {
+      "offset": "0x4036",
+      "encoding": "ascii",
+      "value": "FS`=>3 "
+    },
+    {
+      "offset": "0x406C",
+      "encoding": "ascii",
+      "value": "rss/]="
+    },
+    {
+      "offset": "0x418D",
+      "encoding": "ascii",
+      "value": "B~Ez>F"
+    },
+    {
+      "offset": "0x42B8",
+      "encoding": "ascii",
+      "value": "<8IXsIP"
+    },
+    {
+      "offset": "0x4442",
+      "encoding": "ascii",
+      "value": "JYd]0"
+    },
+    {
+      "offset": "0x456B",
+      "encoding": "ascii",
+      "value": "s01mg"
+    }
+  ]
+}
