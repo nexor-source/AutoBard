@@ -58,7 +58,7 @@ def test_pointer_detector_ignores_a_changed_capture_border_during_bootstrap() ->
     assert abs(measurement.x - 120) < 7
 
 
-def test_bootstrap_window_rejects_distant_animated_scenery() -> None:
+def test_bootstrap_window_uses_local_pointer_despite_distant_animation() -> None:
     detector = PointerDetector({
         **CONFIG,
         "bootstrap_border_ratio": 0.03,
@@ -72,7 +72,8 @@ def test_bootstrap_window_rejects_distant_animated_scenery() -> None:
     cv2.rectangle(second, (345, 5), (370, 84), (240, 250, 255), -1)
     measurement = detector.detect(second, bootstrap_x=100)
 
-    assert measurement is None
+    assert measurement is not None
+    assert abs(measurement.x - 120) < 7
 
     third = frame(130)
     cv2.rectangle(third, (345, 5), (370, 84), (240, 250, 255), -1)
@@ -80,3 +81,13 @@ def test_bootstrap_window_rejects_distant_animated_scenery() -> None:
 
     assert measurement is not None
     assert abs(measurement.x - 130) < 7
+
+
+def test_explicit_bootstrap_bounds_can_cover_first_two_notes() -> None:
+    detector = PointerDetector(CONFIG)
+    assert detector.detect(frame(225), search_bounds=(70, 270)) is None
+
+    measurement = detector.detect(frame(240), search_bounds=(70, 270))
+
+    assert measurement is not None
+    assert abs(measurement.x - 240) < 7

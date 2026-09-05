@@ -77,6 +77,7 @@ class AutoBardGui:
         action = self.config["action"]
         hotkeys = self.config["hotkeys"]
         debug = self.config["debug"]
+        session = self.config["session"]
         calibration = self.config.get("calibration", {})
         updates = self.config.get("updates", {})
         self.status_text = StringVar(value="已停止")
@@ -93,6 +94,9 @@ class AutoBardGui:
         )
         self.calibration_countdown = IntVar(
             value=int(calibration.get("countdown_s", 5))
+        )
+        self.pointer_start_delay = IntVar(
+            value=int(session.get("pointer_start_delay_ms", 0))
         )
         self.debug_enabled = BooleanVar(value=bool(debug.get("enabled", True)))
         self.update_enabled = BooleanVar(value=bool(updates.get("enabled", True)))
@@ -263,14 +267,29 @@ class AutoBardGui:
             textvariable=self.calibration_countdown,
             width=12,
         ).grid(row=6, column=1, sticky="w", padx=(8, 24), pady=(8, 4))
+        ttk.Label(parent, text="额外启动延迟 (ms)").grid(
+            row=6, column=2, sticky="w", pady=(8, 4)
+        )
+        ttk.Spinbox(
+            parent,
+            from_=0,
+            to=2000,
+            increment=25,
+            textvariable=self.pointer_start_delay,
+            width=10,
+        ).grid(row=6, column=3, sticky="w", padx=8, pady=(8, 4))
         ttk.Label(
             parent,
-            text="点击校准后用于切换到游戏；GUI 会自动最小化",
+            text=(
+                "指针会自动等待连续向右运动后再锁定；额外延迟通常保持 0，"
+                "仅用于规避特殊界面动画"
+            ),
             style="Subheader.TLabel",
-        ).grid(row=6, column=2, columnspan=2, sticky="w", pady=(8, 4))
+            wraplength=690,
+        ).grid(row=7, column=0, columnspan=4, sticky="w", pady=(2, 4))
 
         actions = ttk.Frame(parent)
-        actions.grid(row=7, column=0, columnspan=4, sticky="ew", pady=(10, 0))
+        actions.grid(row=8, column=0, columnspan=4, sticky="ew", pady=(10, 0))
         ttk.Button(actions, text="保存设置", command=self.save_settings).pack(side="left")
         self.calibrate_button = ttk.Button(
             actions, text="重新校准画面", command=self.run_calibration
@@ -322,6 +341,9 @@ class AutoBardGui:
         calibration = config.setdefault("calibration", {})
         calibration["countdown_s"] = max(
             0, min(60, int(self.calibration_countdown.get()))
+        )
+        config["session"]["pointer_start_delay_ms"] = max(
+            0, min(2000, int(self.pointer_start_delay.get()))
         )
         config["debug"]["enabled"] = bool(self.debug_enabled.get())
         updates = config.setdefault("updates", {})

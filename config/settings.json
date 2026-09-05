@@ -66,7 +66,12 @@
     "backward_tolerance_ratio": 0.025,
     "max_prediction_error_ratio": 0.05,
     "prediction_hold_ms": 90,
-    "speed_hold_ms": 1200
+    "speed_hold_ms": 1200,
+    "bootstrap_confirm_frames": 3,
+    "bootstrap_min_displacement_ratio": 0.008,
+    "bootstrap_backward_tolerance_ratio": 0.004,
+    "bootstrap_max_gap_ms": 80,
+    "bootstrap_expand_ms": 150
   },
   "scheduler": {
     "input_latency_ms": 45,
@@ -80,6 +85,7 @@
   "session": {
     "initial_note_frames": 5,
     "initial_frame_spacing_ms": 8,
+    "pointer_start_delay_ms": 0,
     "max_duration_s": 8.0,
     "pointer_lost_timeout_ms": 320,
     "minimum_runtime_ms": 250,

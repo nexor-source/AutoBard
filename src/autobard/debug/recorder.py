@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import json
 from datetime import datetime
 from pathlib import Path
 
@@ -41,6 +42,10 @@ class DebugRecorder:
             "schedule_mode",
             "action_submit_delay_ms",
             "action_call_ms",
+            "candidate_x",
+            "acquisition_state",
+            "search_left",
+            "search_right",
         ])
         if self.record_video:
             width, height = frame_size
@@ -54,6 +59,11 @@ class DebugRecorder:
     def save_image(self, name: str, image: np.ndarray) -> None:
         if self.enabled:
             cv2.imwrite(str(self.directory / name), image)
+
+    def save_json(self, name: str, value: object) -> None:
+        if self.enabled:
+            with (self.directory / name).open("w", encoding="utf-8") as handle:
+                json.dump(value, handle, ensure_ascii=False, indent=2)
 
     def record(
         self,
@@ -69,6 +79,10 @@ class DebugRecorder:
         schedule_mode: str = "",
         action_submit_delay_ms: str = "",
         action_call_ms: str = "",
+        candidate_x: float | None = None,
+        acquisition_state: str = "",
+        search_left: float | None = None,
+        search_right: float | None = None,
     ) -> None:
         if not self.enabled:
             return
@@ -85,6 +99,10 @@ class DebugRecorder:
             schedule_mode,
             action_submit_delay_ms,
             action_call_ms,
+            candidate_x,
+            acquisition_state,
+            search_left,
+            search_right,
         ])
         if any(part.startswith("H") for part in events.split(";")):
             self._event_index += 1

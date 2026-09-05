@@ -211,6 +211,18 @@ autobard --config config/settings.json test-input --delay-s 5 --mouse-backend se
 
 一次演奏条内的指针速度保持不变。第一次有效 hit 时，跟踪器会锁定本局已经拟合出的速度；后续 hit 只把轨迹位置重新锚定到该 note 中心，不再重新估算速度，因此中心附近的抖动不会让后续 note 延迟。每次开始新的演奏条都会创建新的跟踪器并重新估速，所以不同演奏条之间的速度可以不同。`prediction_search_ratio` 和 `max_prediction_error_ratio` 用于防止检测重新锁到刚命中的静止 note。
 
+程序会在双击后立即观察画面，但不会因为一个瞬时亮点就开始演奏。首次搜索从第一、第二颗音符附近开始，候选必须连续向右移动 3 帧才会锁定；如果暂时没有找到，搜索区域会在 150ms 内逐渐扩展到整条音符区域。这样既不会过早把进入动画当成指针，也不会因为指针离开第一颗音符附近而永久检测不到。
+
+GUI 中的“额外启动延迟 (ms)”是可选的兼容参数，对应配置为：
+
+```json
+"session": {"pointer_start_delay_ms": 0}
+```
+
+延迟从本次双击触发的会话开始时计算，范围为 0–2000ms，默认 0ms。通常应保持为 0，让连续运动确认自动判断指针何时真正出现；只有某台电脑存在持续且特殊的界面动画时才需要增加。程序仍会立即读取初始音符。
+
+每个调试目录还会保存 `session_meta.json`、`pointer_search_start.jpg`，成功锁定时再保存 `pointer_locked.jpg`。`tracking.csv` 的 `candidate_x`、`acquisition_state`、`search_left` 和 `search_right` 可用于判断候选为何尚未锁定。
+
 ### 命中整体偏早或偏晚
 
 ```json

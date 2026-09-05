@@ -38,6 +38,7 @@ class PointerDetector:
         bgr: np.ndarray,
         predicted_x: float | None = None,
         bootstrap_x: float | None = None,
+        search_bounds: tuple[float, float] | None = None,
     ) -> PointerMeasurement | None:
         height, width = bgr.shape[:2]
         gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
@@ -55,7 +56,7 @@ class PointerDetector:
         self._previous_gray = gray
         # During a live session the pointer is moving. Waiting for one frame difference
         # is safer than locking the tracker onto a static note edge.
-        if not has_previous and predicted_x is None and bootstrap_x is None:
+        if not has_previous and predicted_x is None:
             return None
 
         gold = warm_gold_score(bgr)
@@ -114,6 +115,27 @@ class PointerDetector:
                 selection_scores[-border:] = -np.inf
                 statistics_scores = combined[border:-border]
 
+            # Bootstrap only inside the part of the note lane where the pointer
+            # can plausibly be. Pick the best local motion instead of finding a
+            # stronger animation elsewhere and discarding the complete frame.
+            bounds = search_bounds
+            if bounds is None and bootstrap_x is not None and np.isfinite(bootstrap_x):
+                radius = max(
+                    12.0,
+                    width * float(self.config.get("bootstrap_search_ratio", 0.10)),
+                )
+                bounds = (float(bootstrap_x) - radius, float(bootstrap_x) + radius)
+            if bounds is not None:
+                lower, upper = sorted((float(bounds[0]), float(bounds[1])))
+                xs = np.arange(width, dtype=np.float32)
+                local = (xs >= max(float(border), lower)) & (
+                    xs <= min(float(width - border - 1), upper)
+                )
+                if not local.any():
+                    return None
+                selection_scores = np.where(local, combined, -np.inf)
+                statistics_scores = combined[local]
+
         peak_x = int(np.argmax(selection_scores))
         peak = float(combined[peak_x])
         baseline = float(np.median(statistics_scores))
@@ -132,14 +154,4 @@ class PointerDetector:
         while right < width - 1 and right - peak_x < max_width and combined[right + 1] >= half_height:
             right += 1
         measured_x = float((left + right) / 2.0)
-        if bootstrap_x is not None and np.isfinite(bootstrap_x):
-            # Keep the successful global motion search, but reject an implausible
-            # winner far away from the first note. The next frame gets a fresh
-            # global attempt instead of being forced onto a static note edge.
-            radius = max(
-                12.0,
-                width * float(self.config.get("bootstrap_search_ratio", 0.10)),
-            )
-            if abs(measured_x - float(bootstrap_x)) > radius:
-                return None
         return PointerMeasurement(measured_x, confidence, float(right - left + 1))

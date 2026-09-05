@@ -37,8 +37,18 @@ def test_calibration_countdown_default_and_validation(tmp_path) -> None:
     config = load_config(tmp_path / "missing.json")
 
     assert config["calibration"]["countdown_s"] == 5
+    assert config["session"]["pointer_start_delay_ms"] == 0
     config["calibration"]["countdown_s"] = 60
     validate_config(config)
     config["calibration"]["countdown_s"] = 61
     with pytest.raises(ValueError, match="calibration.countdown_s"):
+        validate_config(config)
+
+
+def test_pointer_start_delay_validation(tmp_path) -> None:
+    config = load_config(tmp_path / "missing.json")
+    config["session"]["pointer_start_delay_ms"] = 2000
+    validate_config(config)
+    config["session"]["pointer_start_delay_ms"] = 2001
+    with pytest.raises(ValueError, match="session.pointer_start_delay_ms"):
         validate_config(config)

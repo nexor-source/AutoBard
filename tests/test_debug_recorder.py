@@ -28,3 +28,5 @@ def test_debug_recorder_buffers_event_and_followup_frames(tmp_path) -> None:
     assert rows[0]["events"] == "H1"
     assert "action_submit_delay_ms" in rows[0]
     assert "action_call_ms" in rows[0]
+    assert "candidate_x" in rows[0]
+    assert "acquisition_state" in rows[0]

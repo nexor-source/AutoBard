@@ -15,7 +15,7 @@ from .debug import DebugRecorder
 from .debug.overlay import draw_overlay
 from .models import Note, PointerMeasurement, Rect, SessionState
 from .timing import NoteScheduler
-from .tracking import PointerTracker
+from .tracking import PointerBootstrapper, PointerTracker
 from .vision import NoteDetector, PointerDetector
 
 LOGGER = logging.getLogger(__name__)
@@ -31,6 +31,36 @@ def _capture_has_signal(bgr: np.ndarray) -> bool:
     # already-hit notes change color and narrow pending notes may occupy less
     # than ten percent of the note band.
     return float(np.percentile(bgr[:, :, :3], 99.0)) >= 32.0
+
+
+def _remaining_pointer_start_delay_s(
+    session_started_at: float,
+    delay_ms: int,
+    now: float,
+) -> float:
+    configured_s = max(0.0, float(delay_ms) / 1000.0)
+    return max(0.0, configured_s - max(0.0, now - session_started_at))
+
+
+def _pointer_bootstrap_search_bounds(
+    notes: list[Note],
+    frame_width: int,
+    elapsed_s: float,
+    expand_ms: int,
+) -> tuple[float, float]:
+    """Expand startup search from the first two notes to the complete note lane."""
+    ordered = sorted(notes, key=lambda note: note.target)
+    margin = max(8.0, frame_width * 0.025)
+    left = max(0.0, ordered[0].left - margin)
+    initial_right = min(
+        float(frame_width - 1),
+        ordered[min(1, len(ordered) - 1)].right + margin,
+    )
+    full_right = min(float(frame_width - 1), ordered[-1].right + margin)
+    expand_s = max(0.0, float(expand_ms) / 1000.0)
+    progress = 1.0 if expand_s == 0.0 else min(1.0, max(0.0, elapsed_s) / expand_s)
+    right = initial_right + (full_right - initial_right) * progress
+    return left, max(left + 1.0, right)
 
 
 @dataclass(slots=True)
@@ -88,7 +118,7 @@ class AutoBardSession:
 
         try:
             with source:
-                initial, initial_timestamp = self._read_initial_frames(source)
+                initial, _initial_timestamp = self._read_initial_frames(source)
                 height, width = initial.shape[:2]
                 note_band = Rect(0, 0, width, height).subrect_from_normalized(vision_cfg["note_band_normalized"])
                 note_crop = note_band.crop(initial)
@@ -106,14 +136,59 @@ class AutoBardSession:
                 LOGGER.info("Detected %d notes at %s", len(notes), [round(note.target, 1) for note in notes])
                 scheduler = NoteScheduler(notes, self.config["scheduler"], width)
                 tracker = PointerTracker(self.config["tracking"], width)
+                bootstrapper = PointerBootstrapper(self.config["tracking"], width)
                 pointer_detector = PointerDetector(vision_cfg["pointer"])
                 recorder = DebugRecorder(self.config["debug"], (width, height), int(capture_cfg["target_fps"]))
                 recorder.save_image("initial_capture.jpg", initial)
                 recorder.save_image("note_mask.png", note_result.mask)
                 recorder.save_image("notes_overlay.jpg", draw_overlay(initial, notes, note_band))
+                recorder.save_json(
+                    "session_meta.json",
+                    {
+                        "pointer_start_delay_ms": int(
+                            self.config["session"].get("pointer_start_delay_ms", 0)
+                        ),
+                        "bootstrap_confirm_frames": bootstrapper.confirm_frames,
+                        "bootstrap_expand_ms": int(
+                            self.config["tracking"].get("bootstrap_expand_ms", 150)
+                        ),
+                        "frame_width": width,
+                        "frame_height": height,
+                        "notes": [
+                            {
+                                "index": note.index,
+                                "left": note.left,
+                                "right": note.right,
+                                "target": note.target,
+                            }
+                            for note in notes
+                        ],
+                    },
+                )
+
+                pointer_delay_ms = int(
+                    self.config["session"].get("pointer_start_delay_ms", 0)
+                )
+                remaining_delay_s = _remaining_pointer_start_delay_s(
+                    start_wall,
+                    pointer_delay_ms,
+                    time.perf_counter(),
+                )
+                if remaining_delay_s > 0:
+                    LOGGER.info(
+                        "Waiting %.0fms before pointer tracking (configured=%dms)",
+                        remaining_delay_s * 1000.0,
+                        pointer_delay_ms,
+                    )
+                    self.abort_event.wait(remaining_delay_s)
 
                 state = SessionState.TRACKING_POINTER
-                first_timestamp = initial_timestamp
+                tracking_started_wall = time.perf_counter()
+                first_timestamp: float | None = None
+                pointer_acquired = False
+                pointer_search_expand_ms = int(
+                    self.config["tracking"].get("bootstrap_expand_ms", 150)
+                )
                 last_valid_pointer_at: float | None = None
                 prediction_hold_s = float(self.config["tracking"].get("prediction_hold_ms", 90)) / 1000.0
                 lost_timeout_s = float(self.config["session"].get("pointer_lost_timeout_ms", 320)) / 1000.0
@@ -128,26 +203,60 @@ class AutoBardSession:
                 while not self.abort_event.is_set():
                     captured = source.read()
                     frame_count += 1
+                    if first_timestamp is None:
+                        first_timestamp = captured.timestamp
                     elapsed = captured.timestamp - first_timestamp
 
                     capture_has_signal = _capture_has_signal(captured.image)
 
                     predicted = tracker.predict(captured.timestamp)
-                    bootstrap_x = (
-                        notes[0].right
-                        if predicted is None and frame_count > 1
+                    search_bounds = (
+                        _pointer_bootstrap_search_bounds(
+                            notes,
+                            width,
+                            elapsed,
+                            pointer_search_expand_ms,
+                        )
+                        if predicted is None
                         else None
                     )
                     measurement = (
                         pointer_detector.detect(
                             captured.image,
                             predicted,
-                            bootstrap_x=bootstrap_x,
+                            search_bounds=search_bounds,
                         )
                         if capture_has_signal
                         else None
                     )
-                    accepted = measurement is not None and tracker.update(captured.timestamp, measurement)
+                    candidate_x = measurement.x if measurement is not None else None
+                    accepted = False
+                    if predicted is None:
+                        confirmed = bootstrapper.update(captured.timestamp, measurement)
+                        if confirmed is not None:
+                            tracker.reset()
+                            accepted = True
+                            for sample in confirmed:
+                                accepted = tracker.update(
+                                    sample.timestamp,
+                                    sample.measurement,
+                                ) and accepted
+                            if not accepted:
+                                tracker.reset()
+                            measurement = confirmed[-1].measurement
+                            pointer_acquired = accepted
+                            if pointer_acquired:
+                                LOGGER.info(
+                                    "Pointer acquired at x=%.1f after %.0fms (%d samples)",
+                                    measurement.x,
+                                    elapsed * 1000.0,
+                                    len(confirmed),
+                                )
+                    else:
+                        accepted = measurement is not None and tracker.update(
+                            captured.timestamp,
+                            measurement,
+                        )
 
                     pointer_for_schedule: float | None = None
                     measured_x = measurement.x if accepted and measurement is not None else None
@@ -217,6 +326,11 @@ class AutoBardSession:
                             )
 
                     overlay = draw_overlay(captured.image, notes, note_band, shown_measurement, tracker.speed)
+                    if frame_count == 1:
+                        recorder.save_image("pointer_search_start.jpg", overlay)
+                    if pointer_acquired:
+                        recorder.save_image("pointer_locked.jpg", overlay)
+                        pointer_acquired = False
                     recorder.record(
                         frame_count,
                         captured.timestamp,
@@ -230,6 +344,14 @@ class AutoBardSession:
                         schedule_mode="model" if schedule_uses_model else "live",
                         action_submit_delay_ms=";".join(action_submit_delays),
                         action_call_ms=";".join(action_call_durations),
+                        candidate_x=candidate_x,
+                        acquisition_state=(
+                            "tracking"
+                            if tracker.last_x is not None
+                            else f"confirming:{bootstrapper.sample_count}"
+                        ),
+                        search_left=search_bounds[0] if search_bounds is not None else None,
+                        search_right=search_bounds[1] if search_bounds is not None else None,
                     )
 
                     if scheduler.complete:
@@ -255,7 +377,7 @@ class AutoBardSession:
                 if self.abort_event.is_set():
                     state = SessionState.ABORTED
 
-                duration = max(time.perf_counter() - start_wall, 1e-6)
+                duration = max(time.perf_counter() - tracking_started_wall, 1e-6)
                 return SessionResult(
                     state=state,
                     note_count=len(notes),

@@ -43,12 +43,16 @@ def _package_defaults() -> dict[str, Any]:
         "tracking": {"history_size": 18, "min_fit_samples": 4, "min_speed_px_s": 20.0,
                      "max_speed_px_s": 3000.0, "backward_tolerance_ratio": 0.025,
                      "max_prediction_error_ratio": 0.05, "prediction_hold_ms": 90,
-                     "speed_hold_ms": 1200},
+                     "speed_hold_ms": 1200, "bootstrap_confirm_frames": 3,
+                     "bootstrap_min_displacement_ratio": 0.008,
+                     "bootstrap_backward_tolerance_ratio": 0.004,
+                     "bootstrap_max_gap_ms": 80, "bootstrap_expand_ms": 150},
         "scheduler": {"input_latency_ms": 22, "hit_window_ratio": 0.008,
                       "model_input_latency_ms": 27, "model_hit_window_ratio": 0.004,
                       "miss_margin_ratio": 0.012, "initial_skip_notes": 1,
                       "model_schedule_max_note_width_ratio": 0.05},
         "session": {"initial_note_frames": 5, "initial_frame_spacing_ms": 8,
+                    "pointer_start_delay_ms": 0,
                     "max_duration_s": 8.0, "pointer_lost_timeout_ms": 320,
                     "minimum_runtime_ms": 250, "post_complete_observe_ms": 150},
         "action": {
@@ -109,3 +113,6 @@ def validate_config(config: Mapping[str, Any]) -> None:
     countdown_s = int(config.get("calibration", {}).get("countdown_s", 5))
     if not 0 <= countdown_s <= 60:
         raise ValueError("calibration.countdown_s must be between 0 and 60")
+    pointer_delay_ms = int(config.get("session", {}).get("pointer_start_delay_ms", 0))
+    if not 0 <= pointer_delay_ms <= 2000:
+        raise ValueError("session.pointer_start_delay_ms must be between 0 and 2000")

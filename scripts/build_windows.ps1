@@ -6,6 +6,12 @@ param(
 $ErrorActionPreference = "Stop"
 $projectRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $python = Join-Path $projectRoot ".venv\Scripts\python.exe"
+$bundle = Join-Path $projectRoot "dist\AutoBard"
+$archive = Join-Path $projectRoot "dist\AutoBard-win64.zip"
+$checksum = "$archive.sha256"
+$preserveRoot = $null
+$preservedConfig = $false
+$preservedDebug = $false
 
 if (-not (Test-Path -LiteralPath $python)) {
     throw "Virtual environment not found: $python"
@@ -13,6 +19,22 @@ if (-not (Test-Path -LiteralPath $python)) {
 
 Push-Location $projectRoot
 try {
+    $localConfig = Join-Path $bundle "config\settings.json"
+    $localDebug = Join-Path $bundle "debug_output"
+    if ((Test-Path -LiteralPath $localConfig) -or (Test-Path -LiteralPath $localDebug)) {
+        $preserveRoot = Join-Path $projectRoot ("build\local-state-" + [guid]::NewGuid().ToString("N"))
+        New-Item -ItemType Directory -Path $preserveRoot | Out-Null
+        if (Test-Path -LiteralPath $localConfig) {
+            New-Item -ItemType Directory -Path (Join-Path $preserveRoot "config") | Out-Null
+            Copy-Item -LiteralPath $localConfig -Destination (Join-Path $preserveRoot "config\settings.json")
+            $preservedConfig = $true
+        }
+        if (Test-Path -LiteralPath $localDebug) {
+            Copy-Item -LiteralPath $localDebug -Destination $preserveRoot -Recurse
+            $preservedDebug = $true
+        }
+    }
+
     if (-not $SkipInstall) {
         & $python -m pip install -e ".[windows-fast,build]"
         if ($LASTEXITCODE -ne 0) { throw "Dependency installation failed" }
@@ -25,9 +47,6 @@ try {
     & $python -m PyInstaller --noconfirm --clean AutoBard.spec
     if ($LASTEXITCODE -ne 0) { throw "PyInstaller build failed" }
 
-    $bundle = Join-Path $projectRoot "dist\AutoBard"
-    $archive = Join-Path $projectRoot "dist\AutoBard-win64.zip"
-    $checksum = "$archive.sha256"
     if (-not (Test-Path -LiteralPath (Join-Path $bundle "AutoBard.exe"))) {
         throw "AutoBard.exe was not produced"
     }
@@ -50,5 +69,25 @@ try {
     Write-Host "Build complete: $bundle"
     Write-Host "Release assets: $archive and $checksum"
 } finally {
+    if ($null -ne $preserveRoot -and (Test-Path -LiteralPath $preserveRoot)) {
+        try {
+            if (-not (Test-Path -LiteralPath $bundle)) {
+                New-Item -ItemType Directory -Path $bundle | Out-Null
+            }
+            if ($preservedConfig) {
+                $bundleConfig = Join-Path $bundle "config"
+                if (-not (Test-Path -LiteralPath $bundleConfig)) {
+                    New-Item -ItemType Directory -Path $bundleConfig | Out-Null
+                }
+                Copy-Item -LiteralPath (Join-Path $preserveRoot "config\settings.json") -Destination (Join-Path $bundleConfig "settings.json") -Force
+            }
+            if ($preservedDebug) {
+                Copy-Item -LiteralPath (Join-Path $preserveRoot "debug_output") -Destination $bundle -Recurse -Force
+            }
+            Remove-Item -LiteralPath $preserveRoot -Recurse -Force
+        } catch {
+            Write-Warning "Could not restore local config/debug data. Preserved copy: $preserveRoot"
+        }
+    }
     Pop-Location
 }
