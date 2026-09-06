@@ -5,6 +5,8 @@ from dataclasses import dataclass
 
 from autobard.models import PointerMeasurement
 
+from .speed import RobustSpeedEstimator
+
 
 @dataclass(frozen=True, slots=True)
 class BootstrapSample:
@@ -16,11 +18,11 @@ class PointerBootstrapper:
     """Confirm real, right-moving pointer motion before starting a trajectory."""
 
     def __init__(self, config: dict, frame_width: int) -> None:
-        self.confirm_frames = max(2, int(config.get("bootstrap_confirm_frames", 3)))
+        self.confirm_frames = max(3, int(config.get("bootstrap_confirm_frames", 4)))
         self.min_displacement = max(
-            2.0,
+            1.5,
             frame_width
-            * float(config.get("bootstrap_min_displacement_ratio", 0.008)),
+            * float(config.get("bootstrap_min_displacement_ratio", 0.003)),
         )
         self.backward_tolerance = max(
             1.5,
@@ -32,6 +34,7 @@ class PointerBootstrapper:
             0.02,
             float(config.get("bootstrap_max_gap_ms", 80)) / 1000.0,
         )
+        self.min_r_squared = float(config.get("bootstrap_min_r_squared", 0.72))
         self._samples: deque[BootstrapSample] = deque(maxlen=self.confirm_frames)
 
     @property
@@ -74,11 +77,22 @@ class PointerBootstrapper:
 
         first = self._samples[0]
         last = self._samples[-1]
-        duration = last.timestamp - first.timestamp
         displacement = last.measurement.x - first.measurement.x
-        if duration <= 1e-6 or displacement < self.min_displacement:
+        if displacement < self.min_displacement:
             return None
-        speed = displacement / duration
-        if not self.min_speed <= speed <= self.max_speed:
+        estimator = RobustSpeedEstimator(
+            history_size=self.confirm_frames,
+            min_samples=self.confirm_frames,
+        )
+        for sample in self._samples:
+            estimator.add(
+                sample.timestamp,
+                sample.measurement.x,
+                sample.measurement.confidence,
+            )
+        fit = estimator.fit()
+        if fit is None or not self.min_speed <= fit.speed <= self.max_speed:
+            return None
+        if fit.r_squared < self.min_r_squared:
             return None
         return list(self._samples)

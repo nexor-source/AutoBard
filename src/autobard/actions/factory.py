@@ -26,7 +26,7 @@ def create_action_sink(config: dict) -> ActionSink:
                 raise ValueError("action.viiper must be an object")
             return ViiperAction(
                 kind=str(config.get("kind", "mouse_right")),
-                press_duration_ms=int(config.get("press_duration_ms", 8)),
+                press_duration_ms=int(config.get("press_duration_ms", 20)),
                 executable=str(viiper.get("executable", "runtime/viiper.exe")),
                 host=str(viiper.get("host", "127.0.0.1")),
                 api_port=int(viiper.get("api_port", 3242)),
@@ -39,7 +39,7 @@ def create_action_sink(config: dict) -> ActionSink:
         return SendInputAction(
             kind=str(config.get("kind", "mouse_right")),
             key=str(config.get("key", "space")),
-            press_duration_ms=int(config.get("press_duration_ms", 8)),
+            press_duration_ms=int(config.get("press_duration_ms", 20)),
             mouse_backend=mouse_backend,
         )
     raise ValueError(f"Unsupported action mode: {mode}")

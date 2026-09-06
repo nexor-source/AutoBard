@@ -99,6 +99,28 @@ class NoteDetector:
             expanded.append((left, right))
         intervals = merge_intervals(sorted(expanded), max_gap=close_w)
 
+        # A dim shoulder may be split into several short support islands by a
+        # glow/animation gap.  Attach those islands only to an already
+        # confirmed note and only when the complete island stays inside a
+        # small extension budget.  Rejecting (rather than clipping) islands
+        # outside that budget prevents a nearby pointer trail from dragging a
+        # wide first note far to the left.
+        support = intervals_from_bool(coverage >= edge_vertical_coverage)
+        shoulder_gap = max(
+            1,
+            round(width * float(self.config.get("shoulder_merge_gap_ratio", 0.012))),
+        )
+        shoulder_extension = max(
+            2,
+            round(width * float(self.config.get("shoulder_max_extension_ratio", 0.025))),
+        )
+        intervals = _attach_nearby_support(
+            intervals,
+            support,
+            max_gap=shoulder_gap,
+            max_extension=shoulder_extension,
+        )
+
         min_width = max(2, math.ceil(width * float(self.config.get("min_width_ratio", 0.009))))
         max_width = max(min_width + 1, round(width * float(self.config.get("max_width_ratio", 0.20))))
         minimum_confidence = float(self.config.get("min_confidence", 0.20))
@@ -121,3 +143,33 @@ class NoteDetector:
             notes.append(Note(len(notes), float(left), float(right), target, confidence))
 
         return NoteDetectionResult(notes, mask, column_score, column_threshold)
+
+
+def _attach_nearby_support(
+    confirmed: list[tuple[int, int]],
+    support: list[tuple[int, int]],
+    *,
+    max_gap: int,
+    max_extension: int,
+) -> list[tuple[int, int]]:
+    """Attach nearby low-coverage islands without creating new notes."""
+    attached: list[tuple[int, int]] = []
+    for original_left, original_right in confirmed:
+        left, right = original_left, original_right
+        changed = True
+        while changed:
+            changed = False
+            for support_left, support_right in support:
+                if support_right < left - max_gap or support_left > right + max_gap:
+                    continue
+                candidate_left = min(left, support_left)
+                candidate_right = max(right, support_right)
+                if original_left - candidate_left > max_extension:
+                    continue
+                if candidate_right - original_right > max_extension:
+                    continue
+                if candidate_left != left or candidate_right != right:
+                    left, right = candidate_left, candidate_right
+                    changed = True
+        attached.append((left, right))
+    return merge_intervals(sorted(attached), max_gap=0)

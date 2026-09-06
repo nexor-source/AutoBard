@@ -30,3 +30,5 @@ def test_debug_recorder_buffers_event_and_followup_frames(tmp_path) -> None:
     assert "action_call_ms" in rows[0]
     assert "candidate_x" in rows[0]
     assert "acquisition_state" in rows[0]
+    assert "post_action_state" in rows[0]
+    assert "post_action_outcome" in rows[0]

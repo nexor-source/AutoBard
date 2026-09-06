@@ -15,7 +15,11 @@ from .debug import DebugRecorder
 from .debug.overlay import draw_overlay
 from .models import Note, PointerMeasurement, Rect, SessionState
 from .timing import NoteScheduler
-from .tracking import PointerBootstrapper, PointerTracker
+from .tracking import (
+    PointerBootstrapper,
+    PointerTracker,
+    PostActionTrajectoryVerifier,
+)
 from .vision import NoteDetector, PointerDetector
 
 LOGGER = logging.getLogger(__name__)
@@ -139,6 +143,7 @@ class AutoBardSession:
                 bootstrapper = PointerBootstrapper(self.config["tracking"], width)
                 pointer_detector = PointerDetector(vision_cfg["pointer"])
                 recorder = DebugRecorder(self.config["debug"], (width, height), int(capture_cfg["target_fps"]))
+                recorder.save_image("initial_capture.png", initial)
                 recorder.save_image("initial_capture.jpg", initial)
                 recorder.save_image("note_mask.png", note_result.mask)
                 recorder.save_image("notes_overlay.jpg", draw_overlay(initial, notes, note_band))
@@ -149,9 +154,15 @@ class AutoBardSession:
                             self.config["session"].get("pointer_start_delay_ms", 0)
                         ),
                         "bootstrap_confirm_frames": bootstrapper.confirm_frames,
+                        "bootstrap_min_displacement": bootstrapper.min_displacement,
+                        "bootstrap_min_r_squared": bootstrapper.min_r_squared,
                         "bootstrap_expand_ms": int(
                             self.config["tracking"].get("bootstrap_expand_ms", 150)
                         ),
+                        "post_action_reanchor_samples": int(
+                            self.config["tracking"].get("post_action_reanchor_samples", 3)
+                        ),
+                        "early_trigger_tolerance": scheduler.early_trigger_tolerance,
                         "frame_width": width,
                         "frame_height": height,
                         "notes": [
@@ -199,6 +210,11 @@ class AutoBardSession:
                     0.0,
                     float(self.config["session"].get("post_complete_observe_ms", 150)) / 1000.0,
                 )
+                post_action_verifier: PostActionTrajectoryVerifier | None = None
+                post_action_samples = max(
+                    1,
+                    int(self.config["tracking"].get("post_action_reanchor_samples", 3)),
+                )
 
                 while not self.abort_event.is_set():
                     captured = source.read()
@@ -231,6 +247,8 @@ class AutoBardSession:
                     )
                     candidate_x = measurement.x if measurement is not None else None
                     accepted = False
+                    post_action_state = ""
+                    post_action_outcome = ""
                     if predicted is None:
                         confirmed = bootstrapper.update(captured.timestamp, measurement)
                         if confirmed is not None:
@@ -257,6 +275,33 @@ class AutoBardSession:
                             captured.timestamp,
                             measurement,
                         )
+
+                    if accepted and measurement is not None and post_action_verifier is not None:
+                        post_action_result = post_action_verifier.observe(
+                            captured.timestamp,
+                            measurement.x,
+                        )
+                        post_action_state = (
+                            f"observing:{post_action_verifier.sample_count}/"
+                            f"{post_action_verifier.required_samples}"
+                        )
+                        if post_action_result is not None:
+                            tracker.reanchor_to_observation(
+                                post_action_result.timestamp,
+                                post_action_result.x,
+                            )
+                            post_action_outcome = post_action_result.outcome
+                            post_action_state = f"applied:{post_action_result.sample_count}"
+                            LOGGER.info(
+                                "Post-action trajectory %s: x=%.1f samples=%d "
+                                "continuation_error=%.1f snap_error=%.1f",
+                                post_action_result.outcome,
+                                post_action_result.x,
+                                post_action_result.sample_count,
+                                post_action_result.continuation_error,
+                                post_action_result.snap_error,
+                            )
+                            post_action_verifier = None
 
                     pointer_for_schedule: float | None = None
                     measured_x = measurement.x if accepted and measurement is not None else None
@@ -305,6 +350,20 @@ class AutoBardSession:
                         )
                         event_labels.extend(f"M{note.index}" for note in update.newly_missed)
                         for note in update.due:
+                            if post_action_verifier is not None:
+                                partial_result = post_action_verifier.finish()
+                                if partial_result is not None:
+                                    tracker.reanchor_to_observation(
+                                        partial_result.timestamp,
+                                        partial_result.x,
+                                    )
+                                    post_action_outcome = partial_result.outcome
+                                    LOGGER.info(
+                                        "Post-action trajectory %s applied early from %d sample(s)",
+                                        partial_result.outcome,
+                                        partial_result.sample_count,
+                                    )
+                                post_action_verifier = None
                             action_started = time.perf_counter()
                             action.hit_note(note, action_started)
                             action_finished = time.perf_counter()
@@ -315,10 +374,30 @@ class AutoBardSession:
                                 f"{(action_finished - action_started) * 1000.0:.3f}"
                             )
                             event_labels.append(f"H{note.index}")
-                            # Anchor at the actual VIIPER submission time.
-                            # Using the earlier capture timestamp made the
-                            # next model segment 5-12 ms too early.
-                            tracker.reanchor_after_hit(action_started, note.target)
+                            # Submitting a click does not prove that the game
+                            # accepted it. Freeze this performance's speed but
+                            # keep the continuous position until the following
+                            # measurements reveal the actual post-action path.
+                            expected_action_x = tracker.predict(action_started)
+                            if (
+                                expected_action_x is not None
+                                and tracker.lock_session_speed(action_started)
+                                and tracker.speed is not None
+                            ):
+                                action_latency_s = (
+                                    scheduler.model_latency_s
+                                    if schedule_uses_model
+                                    else scheduler.latency_s
+                                )
+                                post_action_verifier = PostActionTrajectoryVerifier(
+                                    action_timestamp=action_started,
+                                    expected_x=expected_action_x,
+                                    note_target=note.target,
+                                    speed=tracker.speed,
+                                    input_latency_s=action_latency_s,
+                                    required_samples=post_action_samples,
+                                )
+                                post_action_state = f"observing:0/{post_action_samples}"
                         if update.newly_missed:
                             LOGGER.debug(
                                 "Missed notes: %s",
@@ -352,6 +431,8 @@ class AutoBardSession:
                         ),
                         search_left=search_bounds[0] if search_bounds is not None else None,
                         search_right=search_bounds[1] if search_bounds is not None else None,
+                        post_action_state=post_action_state,
+                        post_action_outcome=post_action_outcome,
                     )
 
                     if scheduler.complete:

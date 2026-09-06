@@ -33,7 +33,9 @@
       "min_confidence": 0.2,
       "min_brightness_p90": 60,
       "min_vertical_coverage": 0.68,
-      "edge_vertical_coverage": 0.35
+      "edge_vertical_coverage": 0.35,
+      "shoulder_merge_gap_ratio": 0.012,
+      "shoulder_max_extension_ratio": 0.025
     },
     "pointer": {
       "analysis_y": [
@@ -67,17 +69,20 @@
     "max_prediction_error_ratio": 0.05,
     "prediction_hold_ms": 90,
     "speed_hold_ms": 1200,
-    "bootstrap_confirm_frames": 3,
-    "bootstrap_min_displacement_ratio": 0.008,
+    "bootstrap_confirm_frames": 4,
+    "bootstrap_min_displacement_ratio": 0.003,
     "bootstrap_backward_tolerance_ratio": 0.004,
     "bootstrap_max_gap_ms": 80,
-    "bootstrap_expand_ms": 150
+    "bootstrap_expand_ms": 150,
+    "bootstrap_min_r_squared": 0.72,
+    "post_action_reanchor_samples": 3
   },
   "scheduler": {
     "input_latency_ms": 45,
     "hit_window_ratio": 0.008,
     "model_input_latency_ms": 50,
     "model_hit_window_ratio": 0.004,
+    "early_trigger_tolerance_ratio": 0.001,
     "miss_margin_ratio": 0.012,
     "initial_skip_notes": 1,
     "model_schedule_max_note_width_ratio": 0.05
@@ -96,7 +101,7 @@
     "kind": "mouse_right",
     "key": "space",
     "mouse_backend": "viiper",
-    "press_duration_ms": 10,
+    "press_duration_ms": 20,
     "acknowledge_online_risk": true,
     "viiper": {
       "executable": "runtime/viiper.exe",

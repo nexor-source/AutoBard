@@ -46,6 +46,8 @@ class DebugRecorder:
             "acquisition_state",
             "search_left",
             "search_right",
+            "post_action_state",
+            "post_action_outcome",
         ])
         if self.record_video:
             width, height = frame_size
@@ -83,6 +85,8 @@ class DebugRecorder:
         acquisition_state: str = "",
         search_left: float | None = None,
         search_right: float | None = None,
+        post_action_state: str = "",
+        post_action_outcome: str = "",
     ) -> None:
         if not self.enabled:
             return
@@ -103,6 +107,8 @@ class DebugRecorder:
             acquisition_state,
             search_left,
             search_right,
+            post_action_state,
+            post_action_outcome,
         ])
         if any(part.startswith("H") for part in events.split(";")):
             self._event_index += 1

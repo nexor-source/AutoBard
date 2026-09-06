@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import pytest
 
-from autobard.vision.notes import NoteDetector
+from autobard.vision.notes import NoteDetector, _attach_nearby_support
 
 
 CONFIG = {
@@ -71,3 +71,23 @@ def test_note_detector_expands_dim_shoulders_and_uses_geometric_center() -> None
     assert note.left < 91
     assert note.right > 113
     assert abs(note.target - (note.left + note.right - 1) / 2.0) < 0.01
+
+
+def test_fragmented_dim_shoulders_attach_within_a_strict_budget() -> None:
+    attached = _attach_nearby_support(
+        [(250, 287), (393, 417), (94, 145)],
+        [
+            (236, 238),
+            (244, 247),
+            (250, 287),
+            (379, 390),
+            (393, 416),
+            (419, 429),
+            (68, 92),
+            (94, 145),
+        ],
+        max_gap=7,
+        max_extension=14,
+    )
+
+    assert attached == [(94, 145), (236, 287), (379, 429)]

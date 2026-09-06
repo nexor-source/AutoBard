@@ -56,7 +56,7 @@ def test_hit_window_cannot_fire_before_note_left_edge() -> None:
     assert scheduler.update(0.02, 529.0, 304.5).due == [note]
 
 
-def test_hit_window_allows_a_bounded_early_trigger_inside_the_note() -> None:
+def test_hit_window_does_not_fire_before_the_compensated_trigger() -> None:
     note = Note(0, 179, 204, 191, 1.0)
     scheduler = NoteScheduler(
         [note],
@@ -64,10 +64,30 @@ def test_hit_window_allows_a_bounded_early_trigger_inside_the_note() -> None:
         581,
     )
 
-    # The compensated trigger is x=186.5. The visual margin remains bounded by
-    # the note's left edge: x=181 is too early, while x=182 is accepted.
+    # The compensated trigger is x=186.5. The old 4.65 px visual window fired
+    # at x=182; only the sub-pixel crossing tolerance is now allowed.
     assert scheduler.update(0.0, 181.0, 100.0).due == []
-    assert scheduler.update(0.02, 182.0, 100.0).due == [note]
+    assert scheduler.update(0.02, 182.0, 100.0).due == []
+    assert scheduler.update(0.04, 186.0, 100.0).due == [note]
+
+
+def test_collected_slow_note_does_not_fire_four_pixels_early() -> None:
+    note = Note(1, 195.0, 223.0, 208.5, 1.0)
+    scheduler = NoteScheduler(
+        [note],
+        {
+            "input_latency_ms": 45,
+            "hit_window_ratio": 0.008,
+            "early_trigger_tolerance_ratio": 0.001,
+            "miss_margin_ratio": 0.012,
+        },
+        581,
+    )
+
+    # Collected session 20260905_190907 used speed=108.644, so the desired
+    # trigger is x=203.61. x=199 used to pass through the broad hit window.
+    assert scheduler.update(0.0, 199.0, 108.644).due == []
+    assert scheduler.update(0.02, 205.0, 108.644).due == [note]
 
 
 def test_model_timing_anticipates_the_next_frame_at_high_speed() -> None:
@@ -104,8 +124,9 @@ def test_model_window_does_not_fire_a_slow_note_too_early() -> None:
     live.update(0.0, 360.0, 104.0)
     model.update(0.0, 360.0, 104.0, use_model=True)
 
-    assert live.update(0.02, 368.9, 104.0).due == [live_note]
+    assert live.update(0.02, 368.9, 104.0).due == []
     assert model.update(0.02, 368.9, 104.0, use_model=True).due == []
+    assert live.update(0.04, 373.0, 104.0).due == [live_note]
     assert model.update(0.04, 373.0, 104.0, use_model=True).due == [model_note]
 
 

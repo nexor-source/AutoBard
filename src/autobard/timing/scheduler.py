@@ -25,6 +25,10 @@ class NoteScheduler:
             frame_width
             * float(config.get("model_hit_window_ratio", config.get("hit_window_ratio", 0.008))),
         )
+        self.early_trigger_tolerance = max(
+            0.25,
+            frame_width * float(config.get("early_trigger_tolerance_ratio", 0.001)),
+        )
         self.miss_margin = max(1.0, frame_width * float(config.get("miss_margin_ratio", 0.012)))
         self.initial_skip_notes = max(0, int(config.get("initial_skip_notes", 0)))
         self._has_initial_pointer = False
@@ -41,7 +45,6 @@ class NoteScheduler:
         due: list[Note] = []
         missed: list[Note] = []
         latency_s = self.model_latency_s if use_model else self.latency_s
-        hit_window = self.model_hit_window if use_model else self.hit_window
         latency_lead = max(0.0, speed or 0.0) * latency_s
 
         if not self._has_initial_pointer:
@@ -62,15 +65,14 @@ class NoteScheduler:
                 continue
             trigger_x = note.target - latency_lead
             crossed = self.previous_x is not None and self.previous_x < trigger_x <= pointer_x
-            reached = pointer_x >= trigger_x
-            inside = note.left <= pointer_x and abs(pointer_x - trigger_x) <= hit_window
+            reached = pointer_x >= trigger_x - self.early_trigger_tolerance
             # A very large detector jump must not turn already-passed notes into
             # delayed clicks. Normal frame-to-frame crossings remain inside the
             # note bounds plus the configured miss margin.
             if pointer_x > note.right + self.miss_margin:
                 note.status = "missed"
                 missed.append(note)
-            elif crossed or reached or inside:
+            elif crossed or reached:
                 note.status = "hit"
                 note.triggered_at = timestamp
                 due.append(note)

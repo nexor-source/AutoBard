@@ -122,13 +122,33 @@ class PointerTracker:
             self._trajectory_x = float(x)
         return True
 
+    def lock_session_speed(self, timestamp: float) -> bool:
+        """Freeze this performance's speed without assuming that a hit landed."""
+        preserved_speed = self.speed
+        anchor_x = self.predict(timestamp)
+        if preserved_speed is None or anchor_x is None:
+            return False
+
+        self._session_speed = float(preserved_speed)
+        self._trajectory_timestamp = float(timestamp)
+        self._trajectory_x = float(anchor_x)
+        self.estimator.reset()
+        self.last_fit = None
+        return True
+
+    def reanchor_to_observation(self, timestamp: float, x: float) -> None:
+        """Align the locked model with an observed post-action trajectory."""
+        self._trajectory_timestamp = float(timestamp)
+        self._trajectory_x = float(x)
+        self.last_timestamp = float(timestamp)
+        self.last_x = float(x)
+
     def reanchor_after_hit(self, timestamp: float, note_center_x: float) -> None:
-        """Start a new motion segment after the game snaps the pointer to a hit note."""
+        """Compatibility helper for a known successful hit."""
         preserved_speed = self.speed
         hold_s = max(0.0, float(self.config.get("speed_hold_ms", 500)) / 1000.0)
 
-        if self._session_speed is None and preserved_speed is not None:
-            self._session_speed = preserved_speed
+        self.lock_session_speed(timestamp)
 
         self.estimator.reset()
         self.last_timestamp = float(timestamp)

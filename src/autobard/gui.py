@@ -85,7 +85,7 @@ class AutoBardGui:
         self.capture_backend = StringVar(value=str(capture.get("backend", "mss")))
         self.target_fps = IntVar(value=int(capture.get("target_fps", 120)))
         self.action_mode = StringVar(value=str(action.get("mode", "dry_run")))
-        self.press_duration = IntVar(value=int(action.get("press_duration_ms", 10)))
+        self.press_duration = IntVar(value=int(action.get("press_duration_ms", 20)))
         self.risk_acknowledged = BooleanVar(
             value=bool(action.get("acknowledge_online_risk", False))
         )
