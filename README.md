@@ -148,7 +148,7 @@ autobard --config config/settings.json analyze-video performance.mp4 --output-di
   "kind": "mouse_right",
   "mouse_backend": "viiper",
   "press_duration_ms": 20,
-  "acknowledge_online_risk": true,
+  "acknowledge_online_risk": false,
   "viiper": {
     "executable": "runtime/viiper.exe",
     "host": "127.0.0.1",
