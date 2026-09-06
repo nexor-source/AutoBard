@@ -77,7 +77,7 @@ def _package_defaults() -> dict[str, Any]:
         },
         "hotkeys": {"double_right_click_interval_ms": 350,
                     "abort": "<f9>", "quit": "<f10>"},
-        "debug": {"enabled": True, "output_dir": "debug_output",
+        "debug": {"enabled": False, "output_dir": "debug_output",
                   "save_every_n_frames": 0, "record_video": False,
                   "event_follow_frames": 6},
         "updates": {"enabled": True, "check_on_start": True,

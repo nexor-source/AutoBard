@@ -117,7 +117,7 @@
     "quit": "<f10>"
   },
   "debug": {
-    "enabled": true,
+    "enabled": false,
     "output_dir": "debug_output",
     "save_every_n_frames": 0,
     "record_video": false,

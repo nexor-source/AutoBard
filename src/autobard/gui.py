@@ -98,7 +98,7 @@ class AutoBardGui:
         self.pointer_start_delay = IntVar(
             value=int(session.get("pointer_start_delay_ms", 0))
         )
-        self.debug_enabled = BooleanVar(value=bool(debug.get("enabled", True)))
+        self.debug_enabled = BooleanVar(value=bool(debug.get("enabled", False)))
         self.update_enabled = BooleanVar(value=bool(updates.get("enabled", True)))
         self.update_on_start = BooleanVar(value=bool(updates.get("check_on_start", True)))
         self.github_repo = StringVar(
