@@ -91,3 +91,40 @@ def test_explicit_bootstrap_bounds_can_cover_first_two_notes() -> None:
 
     assert measurement is not None
     assert abs(measurement.x - 240) < 7
+
+
+def test_prediction_alone_cannot_create_a_pointer_in_a_blank_frame() -> None:
+    detector = PointerDetector(CONFIG)
+    blank = np.full((90, 420, 3), 100, dtype=np.uint8)
+    assert detector.detect(blank, predicted_x=200) is None
+    assert detector.detect(blank, predicted_x=202) is None
+
+
+def test_prediction_does_not_pull_visual_center_toward_the_model() -> None:
+    detector = PointerDetector({**CONFIG, "prediction_weight": 0.70})
+    detector.detect(frame(100), predicted_x=100)
+    measurement = detector.detect(frame(103), predicted_x=118)
+    assert measurement is not None
+    assert abs(measurement.x - 103) < 4
+
+
+def test_note_exclusion_follows_recalibrated_band() -> None:
+    detector = PointerDetector({**CONFIG, "excluded_y": [[0.47, 0.59]]}, (0.25, 0.40))
+    rows = detector._row_mask(100)
+    assert not rows[21:44].any()
+    assert rows[15]
+    assert rows[65]
+
+
+def test_calibrated_note_does_not_pull_slow_cursor_toward_its_edge() -> None:
+    cfg = {**CONFIG, "analysis_y": [0.36, 0.72],
+           "excluded_y": [[0.47, 0.59]], "prediction_weight": 0.70}
+    detector = PointerDetector(cfg, (0.42, 0.57))
+    for index in range(30):
+        x = round(100 + index * 60 / 70)
+        image = np.full((124, 574, 3), 20, dtype=np.uint8)
+        cv2.rectangle(image, (131, 52), (145, 72), (25, 190, 250), -1)
+        cv2.line(image, (x, 4), (x, 119), (40, 190, 245), 2)
+        measurement = detector.detect(image, predicted_x=x + 12)
+        assert measurement is not None
+        assert abs(measurement.x - x) < 4

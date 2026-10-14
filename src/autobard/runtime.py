@@ -141,7 +141,11 @@ class AutoBardSession:
                 scheduler = NoteScheduler(notes, self.config["scheduler"], width)
                 tracker = PointerTracker(self.config["tracking"], width)
                 bootstrapper = PointerBootstrapper(self.config["tracking"], width)
-                pointer_detector = PointerDetector(vision_cfg["pointer"])
+                pointer_detector = PointerDetector(
+                    vision_cfg["pointer"],
+                    (float(vision_cfg["note_band_normalized"][1]),
+                     float(vision_cfg["note_band_normalized"][3])),
+                )
                 recorder = DebugRecorder(self.config["debug"], (width, height), int(capture_cfg["target_fps"]))
                 recorder.save_image("initial_capture.png", initial)
                 recorder.save_image("initial_capture.jpg", initial)
@@ -165,6 +169,7 @@ class AutoBardSession:
                         "early_trigger_tolerance": scheduler.early_trigger_tolerance,
                         "frame_width": width,
                         "frame_height": height,
+                        "config": self.config,
                         "notes": [
                             {
                                 "index": note.index,
@@ -204,7 +209,8 @@ class AutoBardSession:
                 prediction_hold_s = float(self.config["tracking"].get("prediction_hold_ms", 90)) / 1000.0
                 lost_timeout_s = float(self.config["session"].get("pointer_lost_timeout_ms", 320)) / 1000.0
                 minimum_runtime_s = float(self.config["session"].get("minimum_runtime_ms", 250)) / 1000.0
-                max_duration_s = float(self.config["session"].get("max_duration_s", 8.0))
+                max_duration_s = float(self.config["session"].get("max_duration_s", 12.0))
+                end_reason = "aborted"
                 completed_at: float | None = None
                 post_complete_observe_s = max(
                     0.0,
@@ -433,6 +439,7 @@ class AutoBardSession:
                         search_right=search_bounds[1] if search_bounds is not None else None,
                         post_action_state=post_action_state,
                         post_action_outcome=post_action_outcome,
+                        raw_frame=captured.image,
                     )
 
                     if scheduler.complete:
@@ -440,11 +447,13 @@ class AutoBardSession:
                         if completed_at is None:
                             completed_at = captured.timestamp
                         if captured.timestamp - completed_at >= post_complete_observe_s:
+                            end_reason = "all_notes_processed"
                             break
                         continue
                     if elapsed >= max_duration_s:
                         LOGGER.warning("Session timed out after %.2fs", elapsed)
                         state = SessionState.FINISHED
+                        end_reason = "timeout"
                         break
                     if (
                         elapsed >= minimum_runtime_s
@@ -453,10 +462,21 @@ class AutoBardSession:
                     ):
                         LOGGER.info("Pointer lost for %.0fms; ending session", lost_timeout_s * 1000)
                         state = SessionState.FINISHED
+                        end_reason = "pointer_lost"
                         break
 
                 if self.abort_event.is_set():
                     state = SessionState.ABORTED
+                    end_reason = "aborted"
+
+                recorder.save_json("session_result.json", {
+                    "end_reason": end_reason,
+                    "elapsed_s": elapsed if first_timestamp is not None else 0.0,
+                    "max_duration_s": max_duration_s,
+                    "pending_count": scheduler.pending_count,
+                    "submitted_click_count": sum(note.status == "hit" for note in notes),
+                    "skipped_or_missed_count": sum(note.status == "missed" for note in notes),
+                })
 
                 duration = max(time.perf_counter() - tracking_started_wall, 1e-6)
                 return SessionResult(

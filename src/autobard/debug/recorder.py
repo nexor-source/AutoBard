@@ -87,6 +87,7 @@ class DebugRecorder:
         search_right: float | None = None,
         post_action_state: str = "",
         post_action_outcome: str = "",
+        raw_frame: np.ndarray | None = None,
     ) -> None:
         if not self.enabled:
             return
@@ -121,6 +122,8 @@ class DebugRecorder:
                 f"f{frame_index:05d}_p{self._event_offset:02d}.jpg"
             )
             self._event_images.append((name, overlay.copy()))
+            if raw_frame is not None:
+                self._event_images.append((name.removesuffix(".jpg") + "_raw.png", raw_frame.copy()))
             self._event_remaining -= 1
             self._event_offset += 1
         if self.video is not None:

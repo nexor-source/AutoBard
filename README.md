@@ -2,6 +2,9 @@
 
 .\.venv\Scripts\python.exe -m autobard --config config\settings.json run
 
+git tag -a v2.1.0 -m "AutoBard v2.1.0"
+git push origin v2.1.0
+
 这是对旧版单文件脚本的完整重构。旧实现保存在 `legacy/`，新实现默认只做视觉检测和日志输出，不会主动发送键鼠信号。
 
 > 在线游戏可能禁止自动化操作并导致账号处罚。`system_input` 使用 USB/IP 虚拟 HID 设备，但不包含或尝试反作弊绕过。开发和调参请优先使用 `dry_run`、录像或截图。

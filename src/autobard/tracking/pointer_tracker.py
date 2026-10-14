@@ -10,7 +10,7 @@ class PointerTracker:
         self.config = config
         self.frame_width = frame_width
         self.estimator = RobustSpeedEstimator(
-            history_size=int(config.get("history_size", 18)),
+            history_size=int(config.get("history_size", 90)),
             min_samples=int(config.get("min_fit_samples", 4)),
         )
         self.last_timestamp: float | None = None

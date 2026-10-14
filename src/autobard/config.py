@@ -42,7 +42,7 @@ def _package_defaults() -> dict[str, Any]:
                         "bootstrap_search_ratio": 0.10,
                         "min_confidence": 0.20, "max_width_ratio": 0.04},
         },
-        "tracking": {"history_size": 18, "min_fit_samples": 4, "min_speed_px_s": 20.0,
+        "tracking": {"history_size": 90, "min_fit_samples": 4, "min_speed_px_s": 20.0,
                      "max_speed_px_s": 3000.0, "backward_tolerance_ratio": 0.025,
                      "max_prediction_error_ratio": 0.05, "prediction_hold_ms": 90,
                      "speed_hold_ms": 1200, "bootstrap_confirm_frames": 4,
@@ -58,7 +58,7 @@ def _package_defaults() -> dict[str, Any]:
                       "model_schedule_max_note_width_ratio": 0.05},
         "session": {"initial_note_frames": 5, "initial_frame_spacing_ms": 8,
                     "pointer_start_delay_ms": 0,
-                    "max_duration_s": 8.0, "pointer_lost_timeout_ms": 320,
+                    "max_duration_s": 12.0, "pointer_lost_timeout_ms": 320,
                     "minimum_runtime_ms": 250, "post_complete_observe_ms": 150},
         "action": {
             "mode": "dry_run",

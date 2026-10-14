@@ -1,5 +1,6 @@
 import csv
 
+import cv2
 import numpy as np
 
 from autobard.debug import DebugRecorder
@@ -32,3 +33,16 @@ def test_debug_recorder_buffers_event_and_followup_frames(tmp_path) -> None:
     assert "acquisition_state" in rows[0]
     assert "post_action_state" in rows[0]
     assert "post_action_outcome" in rows[0]
+
+
+def test_raw_event_frame_is_lossless_and_not_the_overlay(tmp_path) -> None:
+    recorder = DebugRecorder({"enabled": True, "output_dir": str(tmp_path),
+                              "event_follow_frames": 0}, (40, 20), 60)
+    raw = np.full((20, 40, 3), (7, 83, 201), dtype=np.uint8)
+    overlay = np.zeros_like(raw)
+    recorder.record(1, 1.0, overlay, 10.0, 1.0, 60.0, 1,
+                    events="H1", raw_frame=raw)
+    raw[:] = 0
+    recorder.close()
+    saved = cv2.imread(str(next(recorder.directory.glob("event_*_raw.png"))))
+    assert np.all(saved == np.array([7, 83, 201], dtype=np.uint8))

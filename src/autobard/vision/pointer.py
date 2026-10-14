@@ -11,8 +11,9 @@ from .common import robust_unit, smooth_1d, warm_gold_score
 class PointerDetector:
     """Hybrid pointer detector: temporal motion + vertical edges + warm-color prior."""
 
-    def __init__(self, config: dict) -> None:
+    def __init__(self, config: dict, note_band_y: tuple[float, float] | None = None) -> None:
         self.config = config
+        self.note_band_y = note_band_y
         self._previous_gray: np.ndarray | None = None
 
     def reset(self) -> None:
@@ -24,7 +25,15 @@ class PointerDetector:
         start = max(0, min(height - 1, round(float(y0) * height)))
         end = max(start + 1, min(height, round(float(y1) * height)))
         row_mask[start:end] = True
-        for excluded in self.config.get("excluded_y", []):
+        exclusions = list(self.config.get("excluded_y", []))
+        if self.note_band_y is not None:
+            # Recalibration moves the note strip, whereas legacy excluded_y is
+            # fixed. Keep the actual strip (and its small artwork shoulders)
+            # out of the cursor features for both live and offline detection.
+            padding = 0.04
+            exclusions.append((self.note_band_y[0] - padding,
+                               self.note_band_y[1] + padding))
+        for excluded in exclusions:
             e0, e1 = excluded
             a = max(0, min(height, round(float(e0) * height)))
             b = max(a, min(height, round(float(e1) * height)))
@@ -65,16 +74,18 @@ class PointerDetector:
         # A 2-4 px pointer occupies far less than five percent of this narrow
         # ROI. The generic 95th-percentile normalization can therefore see a
         # zero high bound and erase the entire temporal-motion signal. Use a
-        # sparse-signal percentile for motion while retaining robust scaling.
+        # sparse-signal percentiles for all three features: after excluding
+        # notes, a genuine thin cursor can be the only edge/color signal too.
         motion = robust_unit(motion_col, low_q=50.0, high_q=99.0)
-        edges = robust_unit(edge_col)
-        color = robust_unit(color_col)
+        edges = robust_unit(edge_col, high_q=99.5)
+        color = robust_unit(color_col, high_q=99.5)
         combined = (
             float(self.config.get("motion_weight", 0.48)) * motion
             + float(self.config.get("edge_weight", 0.30)) * edges
             + float(self.config.get("color_weight", 0.22)) * color
         )
         combined = smooth_1d(combined, kernel=max(3, round(width * 0.007)))
+        visual_scores = combined
         selection_scores = combined
         statistics_scores = combined
 
@@ -82,7 +93,10 @@ class PointerDetector:
             sigma = max(2.0, width * float(self.config.get("prediction_sigma_ratio", 0.035)))
             xs = np.arange(width, dtype=np.float32)
             prior = np.exp(-0.5 * ((xs - float(predicted_x)) / sigma) ** 2)
-            combined += float(self.config.get("prediction_weight", 0.45)) * prior
+            # Prediction may choose a candidate, but must not manufacture visual
+            # confidence or broaden the measured cursor toward the trajectory.
+            combined = visual_scores * (1.0 + float(self.config.get("prediction_weight", 0.45)) * prior)
+            selection_scores = combined
 
             # Once a trajectory exists, a global maximum is often the bright,
             # static note that was just hit. Restrict selection to a generous
@@ -95,7 +109,7 @@ class PointerDetector:
             local = np.abs(xs - float(predicted_x)) <= search_radius
             if local.any():
                 selection_scores = np.where(local, combined, -np.inf)
-                statistics_scores = combined[local]
+                statistics_scores = visual_scores[local]
         else:
             # Capture/overlay borders can change between the priming frame and
             # the first live frame, producing an extremely strong false motion
@@ -105,6 +119,9 @@ class PointerDetector:
                 0.78 * motion + 0.10 * edges + 0.12 * color,
                 kernel=max(3, round(width * 0.007)),
             )
+            visual_scores = combined
+            selection_scores = combined
+            statistics_scores = combined
             border = max(
                 2,
                 round(width * float(self.config.get("bootstrap_border_ratio", 0.03))),
@@ -137,7 +154,7 @@ class PointerDetector:
                 statistics_scores = combined[local]
 
         peak_x = int(np.argmax(selection_scores))
-        peak = float(combined[peak_x])
+        peak = float(visual_scores[peak_x])
         baseline = float(np.median(statistics_scores))
         spread = float(np.median(np.abs(statistics_scores - baseline)) + 1e-6)
         distinctness = float(np.clip((peak - baseline) / (6.0 * spread), 0.0, 1.0))
@@ -149,9 +166,9 @@ class PointerDetector:
         left = peak_x
         right = peak_x
         max_width = max(2, round(width * float(self.config.get("max_width_ratio", 0.04))))
-        while left > 0 and peak_x - left < max_width and combined[left - 1] >= half_height:
+        while left > 0 and peak_x - left < max_width and visual_scores[left - 1] >= half_height:
             left -= 1
-        while right < width - 1 and right - peak_x < max_width and combined[right + 1] >= half_height:
+        while right < width - 1 and right - peak_x < max_width and visual_scores[right + 1] >= half_height:
             right += 1
         measured_x = float((left + right) / 2.0)
         return PointerMeasurement(measured_x, confidence, float(right - left + 1))

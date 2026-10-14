@@ -75,7 +75,11 @@ def analyze_video(
     csv_writer = csv.writer(csv_handle)
     csv_writer.writerow(["frame", "time_s", "pointer_x", "confidence", "speed", "due_notes", "pending"])
 
-    pointer_detector = PointerDetector(config["vision"]["pointer"])
+    pointer_detector = PointerDetector(
+        config["vision"]["pointer"],
+        (float(config["vision"]["note_band_normalized"][1]),
+         float(config["vision"]["note_band_normalized"][3])),
+    )
     tracker = PointerTracker(config["tracking"], width)
     scheduler = NoteScheduler(notes, config["scheduler"], width)
     frame_index = 0
