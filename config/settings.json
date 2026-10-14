@@ -1,4 +1,5 @@
 {
+  "config_revision": 1,
   "window": {
     "title_contains": "Dark and Darker",
     "fallback_to_primary_monitor": true

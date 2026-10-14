@@ -1,9 +1,16 @@
+import json
 from pathlib import Path
 
 from PyInstaller.utils.hooks import collect_submodules
+from autobard.config import _package_defaults
 
 
 project_root = Path(SPECPATH)
+# Build a clean first-install configuration instead of distributing the
+# developer's calibrated coordinates, input acknowledgement, or debug mode.
+release_config = project_root / "build" / "release-config" / "settings.json"
+release_config.parent.mkdir(parents=True, exist_ok=True)
+release_config.write_text(json.dumps(_package_defaults(), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 hidden_imports = [
     "pynput.keyboard._win32",
     "pynput.mouse._win32",
@@ -19,7 +26,7 @@ analysis = Analysis(
     pathex=[str(project_root / "src")],
     binaries=[(str(project_root / "runtime" / "viiper.exe"), "runtime")],
     datas=[
-        (str(project_root / "config" / "settings.json"), "config"),
+        (str(release_config), "config"),
         (str(project_root / "README.md"), "."),
         (str(project_root / "LICENSE"), "."),
         (str(project_root / "CHANGELOG.md"), "."),

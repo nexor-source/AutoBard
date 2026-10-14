@@ -2,11 +2,48 @@ from __future__ import annotations
 
 import copy
 import json
+import logging
+import os
+import tempfile
 from pathlib import Path
 from typing import Any, Mapping
 
 
 DEFAULT_CONFIG_PATH = Path("config/settings.json")
+CONFIG_REVISION = 1
+LOGGER = logging.getLogger(__name__)
+
+
+def _migrate_config(loaded: Mapping[str, Any]) -> tuple[dict[str, Any], bool]:
+    """Upgrade legacy defaults once, leaving calibration and other values alone."""
+    migrated = copy.deepcopy(dict(loaded))
+    revision = migrated.get("config_revision", 0)
+    if isinstance(revision, bool) or not isinstance(revision, int) or revision < 0:
+        raise ValueError("config_revision must be a non-negative integer")
+    if revision >= CONFIG_REVISION:
+        return migrated, False
+    if revision < 1:
+        for section, key, old, new in (
+            ("tracking", "history_size", 18, 90),
+            ("session", "max_duration_s", 8.0, 12.0),
+        ):
+            values = migrated.get(section)
+            if isinstance(values, dict) and values.get(key) == old:
+                values[key] = new
+        migrated["config_revision"] = 1
+    return migrated, True
+
+
+def _persist_migration(path: Path, original: bytes, migrated: dict[str, Any]) -> None:
+    if path.read_bytes() != original:
+        raise OSError("Configuration changed while being loaded; migration was not saved")
+    backup = path.with_name(path.name + ".pre-migration-v1.bak")
+    try:
+        with backup.open("xb") as handle:
+            handle.write(original)
+    except FileExistsError:
+        pass
+    save_config(migrated, path)
 
 
 def _deep_merge(base: dict[str, Any], override: Mapping[str, Any]) -> dict[str, Any]:
@@ -21,6 +58,7 @@ def _deep_merge(base: dict[str, Any], override: Mapping[str, Any]) -> dict[str, 
 def _package_defaults() -> dict[str, Any]:
     # A compact fallback allows the package to run even if the external file was moved.
     return {
+        "config_revision": CONFIG_REVISION,
         "window": {"title_contains": "Dark and Darker", "fallback_to_primary_monitor": True},
         "calibration": {"countdown_s": 5},
         "capture": {"backend": "mss", "target_fps": 120, "monitor_index": 1,
@@ -51,8 +89,8 @@ def _package_defaults() -> dict[str, Any]:
                      "bootstrap_max_gap_ms": 80, "bootstrap_expand_ms": 150,
                      "bootstrap_min_r_squared": 0.72,
                      "post_action_reanchor_samples": 3},
-        "scheduler": {"input_latency_ms": 22, "hit_window_ratio": 0.008,
-                      "model_input_latency_ms": 27, "model_hit_window_ratio": 0.004,
+        "scheduler": {"input_latency_ms": 45, "hit_window_ratio": 0.008,
+                      "model_input_latency_ms": 50, "model_hit_window_ratio": 0.004,
                       "early_trigger_tolerance_ratio": 0.001,
                       "miss_margin_ratio": 0.012, "initial_skip_notes": 1,
                       "model_schedule_max_note_width_ratio": 0.05},
@@ -90,11 +128,22 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
     config = _package_defaults()
     selected = Path(path) if path else DEFAULT_CONFIG_PATH
     if selected.exists():
-        with selected.open("r", encoding="utf-8") as handle:
-            loaded = json.load(handle)
+        original = selected.read_bytes()
+        loaded = json.loads(original)
         if not isinstance(loaded, dict):
             raise ValueError("Configuration root must be a JSON object")
-        _deep_merge(config, loaded)
+        migrated, changed = _migrate_config(loaded)
+        _deep_merge(config, migrated)
+        # Never rewrite invalid settings. A read-only installation can still
+        # use the migrated values in memory without damaging the original.
+        validate_config(config)
+        if changed:
+            try:
+                _persist_migration(selected, original, migrated)
+            except OSError as exc:
+                LOGGER.warning("配置迁移已在本次运行生效，但无法保存备份或配置：%s", exc)
+            else:
+                LOGGER.info("旧配置已升级；原配置备份：%s.pre-migration-v1.bak", selected)
     validate_config(config)
     return config
 
@@ -102,7 +151,18 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
 def save_config(config: Mapping[str, Any], path: str | Path) -> None:
     target = Path(path)
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps(config, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    contents = json.dumps(config, ensure_ascii=False, indent=2) + "\n"
+    temporary: Path | None = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=target.parent,
+                                         prefix=target.name + ".", suffix=".tmp",
+                                         delete=False) as handle:
+            temporary = Path(handle.name)
+            handle.write(contents)
+        os.replace(temporary, target)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
 
 
 def validate_config(config: Mapping[str, Any]) -> None:

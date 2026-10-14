@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.1.1
+
+- Improve cursor detection by following the calibrated note exclusion band and keeping prediction separate from visual confidence and position.
+- Increase the default speed-fit window to 90 samples and the session timeout to 12 seconds; preserve the double-right-click trigger and intentional first-note skip.
+- Include raw event screenshots, configuration snapshots and session end reasons for diagnostics.
+- Migrate preserved legacy configurations on first launch: upgrade the old 18-sample speed window to 90 and the old 8-second session limit to 12 seconds.
+- Back up the original configuration before migration, preserve calibration and other settings, and keep non-default values and later user changes.
+- Save configuration files atomically; read-only installations still use migrated values for the current run.
+- Package a clean first-install configuration independently of local calibration and debug settings.
+
 ## 2.1.0
 
 - Added a Windows GUI for service control, calibration, settings and logs.

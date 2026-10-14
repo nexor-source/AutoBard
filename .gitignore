@@ -8,3 +8,4 @@ dist/
 build/
 debug_output/
 config/settings.local.json
+*.pre-migration-v*.bak

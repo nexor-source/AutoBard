@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "autobard-refactored"
-version = "2.1.0"
+version = "2.1.1"
 description = "Low-latency, testable visual detector for a horizontal rhythm bar"
 readme = "README.md"
 requires-python = ">=3.11"

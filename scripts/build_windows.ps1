@@ -13,6 +13,12 @@ $preserveRoot = $null
 $preservedConfig = $false
 $preservedDebug = $false
 
+# Resolve all directories touched by recursive cleanup within this checkout.
+$distRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot "dist")) + [IO.Path]::DirectorySeparatorChar
+if (-not ([IO.Path]::GetFullPath($bundle)).StartsWith($distRoot, [StringComparison]::OrdinalIgnoreCase)) {
+    throw "Build output is outside the project's dist directory"
+}
+
 if (-not (Test-Path -LiteralPath $python)) {
     throw "Virtual environment not found: $python"
 }
@@ -84,7 +90,12 @@ try {
             if ($preservedDebug) {
                 Copy-Item -LiteralPath (Join-Path $preserveRoot "debug_output") -Destination $bundle -Recurse -Force
             }
-            Remove-Item -LiteralPath $preserveRoot -Recurse -Force
+            $resolvedPreserve = (Resolve-Path -LiteralPath $preserveRoot).Path
+            $allowedBuildRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot "build")) + [IO.Path]::DirectorySeparatorChar
+            if (-not $resolvedPreserve.StartsWith($allowedBuildRoot, [StringComparison]::OrdinalIgnoreCase)) {
+                throw "Preserved state cleanup is outside the project's build directory"
+            }
+            Remove-Item -LiteralPath $resolvedPreserve -Recurse -Force
         } catch {
             Write-Warning "Could not restore local config/debug data. Preserved copy: $preserveRoot"
         }

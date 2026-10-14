@@ -59,9 +59,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${{ github.ref_name }}" `
-            dist/AutoBard-win64.zip `
-            dist/AutoBard-win64.zip.sha256 `
-            --verify-tag `
-            --generate-notes `
-            --title "AutoBard ${{ github.ref_name }}"
+          $releaseArguments = @("release", "create", "${{ github.ref_name }}", "dist/AutoBard-win64.zip", "dist/AutoBard-win64.zip.sha256", "--verify-tag", "--title", "AutoBard ${{ github.ref_name }}")
+          $notesFile = "docs/releases/${{ github.ref_name }}.md"
+          if (Test-Path -LiteralPath $notesFile) {
+            $releaseArguments += @("--notes-file", $notesFile)
+          } else {
+            $releaseArguments += "--generate-notes"
+          }
+          & gh @releaseArguments
+          if ($LASTEXITCODE -ne 0) { throw "Release publication failed" }
