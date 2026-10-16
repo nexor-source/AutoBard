@@ -2,6 +2,16 @@ from autobard.models import PointerMeasurement
 from autobard.tracking import PointerTracker
 
 
+def test_model_is_used_only_while_it_agrees_with_actual_position():
+    tracker = PointerTracker(CONFIG, 574)
+    for index in range(4):
+        t = index * 0.02
+        tracker.update(t, measurement(100 + 60 * t))
+    assert tracker.lock_session_speed(0.06)
+    assert tracker.model_agrees_with_observation(0.1, 106)
+    assert not tracker.model_agrees_with_observation(0.1, 99)
+
+
 CONFIG = {
     "history_size": 18,
     "min_fit_samples": 4,

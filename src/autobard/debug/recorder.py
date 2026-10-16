@@ -48,6 +48,8 @@ class DebugRecorder:
             "search_right",
             "post_action_state",
             "post_action_outcome",
+            "frame_is_fresh", "speed_locked", "model_x", "model_error",
+            "speed_fit_span_ms", "speed_fit_r_squared",
         ])
         if self.record_video:
             width, height = frame_size
@@ -88,6 +90,12 @@ class DebugRecorder:
         post_action_state: str = "",
         post_action_outcome: str = "",
         raw_frame: np.ndarray | None = None,
+        frame_is_fresh: bool | None = None,
+        speed_locked: bool | None = None,
+        model_x: float | None = None,
+        model_error: float | None = None,
+        speed_fit_span_ms: float | None = None,
+        speed_fit_r_squared: float | None = None,
     ) -> None:
         if not self.enabled:
             return
@@ -110,6 +118,8 @@ class DebugRecorder:
             search_right,
             post_action_state,
             post_action_outcome,
+            frame_is_fresh, speed_locked, model_x, model_error,
+            speed_fit_span_ms, speed_fit_r_squared,
         ])
         if any(part.startswith("H") for part in events.split(";")):
             self._event_index += 1

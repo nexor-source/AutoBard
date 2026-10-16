@@ -1,0 +1,1703 @@
+[
+  {
+    "session": "20261016_145602_967153",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 9.214204200005042,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "80",
+        "timestamp": "110165.682390100",
+        "events": "H0",
+        "pointer_x": "63.488188976377955",
+        "measured_x": "63.488188976377955",
+        "speed": "60.815378118948466",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "188",
+        "timestamp": "110166.857216400",
+        "events": "H1",
+        "pointer_x": "134.56335824010864",
+        "measured_x": "127.4769230769231",
+        "speed": "60.815378118948466",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "326",
+        "timestamp": "110168.176540000",
+        "events": "H2",
+        "pointer_x": "204.86838999900584",
+        "measured_x": "218.9938618925831",
+        "speed": "60.815378118948466",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "435",
+        "timestamp": "110169.206704600",
+        "events": "H3",
+        "pointer_x": "275.29454122230436",
+        "measured_x": "273.4761904761905",
+        "speed": "60.815378118948466",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "561",
+        "timestamp": "110170.399005800",
+        "events": "H4",
+        "pointer_x": "346.2031555354216",
+        "measured_x": "345.47330097087377",
+        "speed": "60.815378118948466",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "667",
+        "timestamp": "110171.565793200",
+        "events": "H5",
+        "pointer_x": "416.6224577811508",
+        "measured_x": "414.9938618925831",
+        "speed": "60.815378118948466",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "785",
+        "timestamp": "110172.744806400",
+        "events": "H6",
+        "pointer_x": "487.20052095598555",
+        "measured_x": "486.47619047619054",
+        "speed": "60.815378118948466",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "897",
+        "timestamp": "110173.935080000",
+        "events": "H7",
+        "pointer_x": "558.0983398563576",
+        "measured_x": "556.9938618925831",
+        "speed": "60.815378118948466",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_145616_747919",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 9.371607099994435,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "89",
+        "timestamp": "110179.616719200",
+        "events": "H0",
+        "pointer_x": "63.993861892583126",
+        "measured_x": "63.993861892583126",
+        "speed": "60.29296710978044",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "200",
+        "timestamp": "110180.810871800",
+        "events": "H1",
+        "pointer_x": "135.1787283287312",
+        "measured_x": "134.9938618925831",
+        "speed": "60.29296710978044",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "315",
+        "timestamp": "110181.961573000",
+        "events": "H2",
+        "pointer_x": "204.51538896529547",
+        "measured_x": "204.46511627906978",
+        "speed": "60.29296710978044",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "428",
+        "timestamp": "110183.146373600",
+        "events": "H3",
+        "pointer_x": "275.81076328557504",
+        "measured_x": "272.0072501294666",
+        "speed": "60.29296710978044",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "564",
+        "timestamp": "110184.427714700",
+        "events": "H4",
+        "pointer_x": "346.4100075483253",
+        "measured_x": "357.9938618925831",
+        "speed": "60.29296710978044",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "659",
+        "timestamp": "110185.492796300",
+        "events": "H5",
+        "pointer_x": "416.5403995645887",
+        "measured_x": "415.4769230769232",
+        "speed": "60.29296710978044",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "779",
+        "timestamp": "110186.686832600",
+        "events": "H6",
+        "pointer_x": "487.2637112663468",
+        "measured_x": "487.47692307692313",
+        "speed": "60.29296710978044",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "887",
+        "timestamp": "110187.868593000",
+        "events": "H7",
+        "pointer_x": "557.9193529491666",
+        "measured_x": "557.9938618925831",
+        "speed": "60.29296710978044",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_145633_840964",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 9.369201200010139,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "109",
+        "timestamp": "110196.706466400",
+        "events": "H0",
+        "pointer_x": "63.993861892583126",
+        "measured_x": "63.993861892583126",
+        "speed": "59.96973555024773",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "221",
+        "timestamp": "110197.880390900",
+        "events": "H1",
+        "pointer_x": "134.186401705403",
+        "measured_x": "134.48302370275462",
+        "speed": "59.96973555024773",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "332",
+        "timestamp": "110199.047238700",
+        "events": "H2",
+        "pointer_x": "204.51674231951824",
+        "measured_x": "204.9938618925831",
+        "speed": "59.96973555024773",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "441",
+        "timestamp": "110200.240995800",
+        "events": "H3",
+        "pointer_x": "275.4383718844598",
+        "measured_x": "275.9587863053707",
+        "speed": "59.96973555024773",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "542",
+        "timestamp": "110201.422736600",
+        "events": "H4",
+        "pointer_x": "346.3820809690857",
+        "measured_x": "346.9938618925831",
+        "speed": "59.96973555024773",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "655",
+        "timestamp": "110202.601815100",
+        "events": "H5",
+        "pointer_x": "416.85586897588325",
+        "measured_x": "416.9938618925831",
+        "speed": "59.96973555024773",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "782",
+        "timestamp": "110203.774786800",
+        "events": "H6",
+        "pointer_x": "487.29034192208564",
+        "measured_x": "486.99386189258314",
+        "speed": "59.96973555024773",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "909",
+        "timestamp": "110204.957950900",
+        "events": "H7",
+        "pointer_x": "558.1592487468959",
+        "measured_x": "558.9938618925831",
+        "speed": "59.96973555024773",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_145647_957946",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 9.172816000005696,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "69",
+        "timestamp": "110210.632730300",
+        "events": "H0",
+        "pointer_x": "53.47183979974969",
+        "measured_x": "53.47183979974969",
+        "speed": "61.70707895570699",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "178",
+        "timestamp": "110211.787537700",
+        "events": "H1",
+        "pointer_x": "125.16140074275029",
+        "measured_x": "124.47619047619048",
+        "speed": "61.70707895570699",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "296",
+        "timestamp": "110212.967706700",
+        "events": "H2",
+        "pointer_x": "197.15808707252125",
+        "measured_x": "196.9938618925831",
+        "speed": "61.70707895570699",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "399",
+        "timestamp": "110214.150756300",
+        "events": "H3",
+        "pointer_x": "269.2409786695938",
+        "measured_x": "267.9819328447247",
+        "speed": "61.70707895570699",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "514",
+        "timestamp": "110215.329290100",
+        "events": "H4",
+        "pointer_x": "340.85969494598595",
+        "measured_x": "340.9938618925831",
+        "speed": "61.70707895570699",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "619",
+        "timestamp": "110216.511515100",
+        "events": "H5",
+        "pointer_x": "413.45827990929234",
+        "measured_x": "412.99386189258314",
+        "speed": "61.70707895570699",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "721",
+        "timestamp": "110217.701145700",
+        "events": "H6",
+        "pointer_x": "486.52386802158435",
+        "measured_x": "485.9938618925831",
+        "speed": "61.70707895570699",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "831",
+        "timestamp": "110218.880372800",
+        "events": "H7",
+        "pointer_x": "557.9632659607989",
+        "measured_x": "557.9938618925831",
+        "speed": "61.70707895570699",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_145701_618354",
+    "result": null,
+    "events": []
+  },
+  {
+    "session": "20261016_145702_519198",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 9.530652100002044,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "105",
+        "timestamp": "110225.554603800",
+        "events": "H0",
+        "pointer_x": "71.99386189258313",
+        "measured_x": "71.99386189258313",
+        "speed": "59.195350227169435",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "223",
+        "timestamp": "110226.732146300",
+        "events": "H1",
+        "pointer_x": "141.0035156937331",
+        "measured_x": "140.9938618925831",
+        "speed": "59.195350227169435",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "343",
+        "timestamp": "110227.901970600",
+        "events": "H2",
+        "pointer_x": "210.2278341283768",
+        "measured_x": "209.99386189258308",
+        "speed": "59.195350227169435",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "452",
+        "timestamp": "110229.090073400",
+        "events": "H3",
+        "pointer_x": "280.4696352953541",
+        "measured_x": "278.94406280667323",
+        "speed": "59.195350227169435",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "572",
+        "timestamp": "110230.276523800",
+        "events": "H4",
+        "pointer_x": "349.5406024419109",
+        "measured_x": "349.9938618925831",
+        "speed": "59.195350227169435",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "685",
+        "timestamp": "110231.442071200",
+        "events": "H5",
+        "pointer_x": "419.2755466903292",
+        "measured_x": "419.4761904761904",
+        "speed": "59.195350227169435",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "796",
+        "timestamp": "110232.630559800",
+        "events": "H6",
+        "pointer_x": "488.81669282395103",
+        "measured_x": "487.4718397997497",
+        "speed": "59.195350227169435",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "911",
+        "timestamp": "110233.803469100",
+        "events": "H7",
+        "pointer_x": "558.2325602572627",
+        "measured_x": "558.4830237027546",
+        "speed": "59.195350227169435",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_145716_530811",
+    "result": {
+      "end_reason": "pointer_lost",
+      "elapsed_s": 8.801211799989687,
+      "max_duration_s": 12.0,
+      "pending_count": 1,
+      "submitted_click_count": 7,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "98",
+        "timestamp": "110239.443408400",
+        "events": "H0",
+        "pointer_x": "65.96909527622097",
+        "measured_x": "65.96909527622097",
+        "speed": "59.62044420021237",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "199",
+        "timestamp": "110240.609804600",
+        "events": "H1",
+        "pointer_x": "135.85601809240757",
+        "measured_x": "136.4718397997497",
+        "speed": "59.62044420021237",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "309",
+        "timestamp": "110241.771758900",
+        "events": "H2",
+        "pointer_x": "205.51501141607073",
+        "measured_x": "205.46511627906975",
+        "speed": "59.62044420021237",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "424",
+        "timestamp": "110242.969856300",
+        "events": "H3",
+        "pointer_x": "276.14198196482164",
+        "measured_x": "277.4830237027546",
+        "speed": "59.62044420021237",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "535",
+        "timestamp": "110244.130202300",
+        "events": "H4",
+        "pointer_x": "346.46387236910726",
+        "measured_x": "345.93875242404664",
+        "speed": "59.62044420021237",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "653",
+        "timestamp": "110245.331429400",
+        "events": "H5",
+        "pointer_x": "417.4650743136252",
+        "measured_x": "417.9938618925831",
+        "speed": "59.62044420021237",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "760",
+        "timestamp": "110246.501575500",
+        "events": "H6",
+        "pointer_x": "487.92785914518885",
+        "measured_x": "488.4769230769231",
+        "speed": "59.62044420021237",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_145816_575360",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 9.353660799999489,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "92",
+        "timestamp": "110299.438438400",
+        "events": "H0",
+        "pointer_x": "64.47619047619048",
+        "measured_x": "64.47619047619048",
+        "speed": "59.642878120671874",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "212",
+        "timestamp": "110300.617495300",
+        "events": "H1",
+        "pointer_x": "134.46699364597342",
+        "measured_x": "134.47619047619048",
+        "speed": "59.642878120671874",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "329",
+        "timestamp": "110301.790606700",
+        "events": "H2",
+        "pointer_x": "204.5695290887927",
+        "measured_x": "205.46511627906975",
+        "speed": "59.642878120671874",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "440",
+        "timestamp": "110302.966999700",
+        "events": "H3",
+        "pointer_x": "275.42484469246097",
+        "measured_x": "275.4846153846154",
+        "speed": "59.642878120671874",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "551",
+        "timestamp": "110304.160614400",
+        "events": "H4",
+        "pointer_x": "346.398655304777",
+        "measured_x": "346.9938618925831",
+        "speed": "59.642878120671874",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "664",
+        "timestamp": "110305.323416500",
+        "events": "H5",
+        "pointer_x": "416.4784900822764",
+        "measured_x": "416.9938618925831",
+        "speed": "59.642878120671874",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "784",
+        "timestamp": "110306.505430000",
+        "events": "H6",
+        "pointer_x": "487.07293883776623",
+        "measured_x": "487.99228964130066",
+        "speed": "59.642878120671874",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "905",
+        "timestamp": "110307.682672000",
+        "events": "H7",
+        "pointer_x": "558.1147643048959",
+        "measured_x": "557.9938618925831",
+        "speed": "59.642878120671874",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_145828_211232",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 9.282518599997275,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "68",
+        "timestamp": "110310.986243900",
+        "events": "H0",
+        "pointer_x": "59.48302370275464",
+        "measured_x": "59.48302370275464",
+        "speed": "60.671661935468215",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "176",
+        "timestamp": "110312.156825500",
+        "events": "H1",
+        "pointer_x": "130.2471826011309",
+        "measured_x": "129.9938618925831",
+        "speed": "60.671661935468215",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "288",
+        "timestamp": "110313.351896400",
+        "events": "H2",
+        "pointer_x": "202.28290445346434",
+        "measured_x": "201.99386189258308",
+        "speed": "60.671661935468215",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "401",
+        "timestamp": "110314.519357200",
+        "events": "H3",
+        "pointer_x": "273.07735246425136",
+        "measured_x": "272.4852498494883",
+        "speed": "60.671661935468215",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "515",
+        "timestamp": "110315.699341700",
+        "events": "H4",
+        "pointer_x": "344.2032203930885",
+        "measured_x": "343.99386189258314",
+        "speed": "60.671661935468215",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "631",
+        "timestamp": "110316.893387800",
+        "events": "H5",
+        "pointer_x": "415.75558030506124",
+        "measured_x": "415.9938618925831",
+        "speed": "60.671661935468215",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "737",
+        "timestamp": "110318.064521700",
+        "events": "H6",
+        "pointer_x": "486.9110332370136",
+        "measured_x": "486.4769230769231",
+        "speed": "60.671661935468215",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "853",
+        "timestamp": "110319.248705600",
+        "events": "H7",
+        "pointer_x": "558.1204712933071",
+        "measured_x": "557.9922896413007",
+        "speed": "60.671661935468215",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_145840_348417",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 8.669751900000847,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "22",
+        "timestamp": "110322.521096800",
+        "events": "H0",
+        "pointer_x": "24.993861892583123",
+        "measured_x": "24.993861892583123",
+        "speed": "65.30528459908966",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "134",
+        "timestamp": "110323.705801100",
+        "events": "H1",
+        "pointer_x": "101.59464822617394",
+        "measured_x": "100.99386189258311",
+        "speed": "65.30528459908966",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "246",
+        "timestamp": "110324.866731900",
+        "events": "H2",
+        "pointer_x": "176.8192427414384",
+        "measured_x": "175.47619047619045",
+        "speed": "65.30528459908966",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "364",
+        "timestamp": "110326.045968600",
+        "events": "H3",
+        "pointer_x": "252.91960055949824",
+        "measured_x": "251.9700748129676",
+        "speed": "65.30528459908966",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "479",
+        "timestamp": "110327.237933400",
+        "events": "H4",
+        "pointer_x": "329.3715047890487",
+        "measured_x": "329.0071138211382",
+        "speed": "65.30528459908966",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "596",
+        "timestamp": "110328.402284500",
+        "events": "H5",
+        "pointer_x": "404.92559922081625",
+        "measured_x": "403.99386189258314",
+        "speed": "65.30528459908966",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "712",
+        "timestamp": "110329.581171200",
+        "events": "H6",
+        "pointer_x": "480.93184352610876",
+        "measured_x": "479.4769230769231",
+        "speed": "65.30528459908966",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "827",
+        "timestamp": "110330.770383100",
+        "events": "H7",
+        "pointer_x": "557.6797545351567",
+        "measured_x": "556.4769230769231",
+        "speed": "65.30528459908966",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_145851_863742",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 8.643315799999982,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "24",
+        "timestamp": "110334.038762700",
+        "events": "H0",
+        "pointer_x": "24.47692307692308",
+        "measured_x": "24.47692307692308",
+        "speed": "66.3485039401878",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "126",
+        "timestamp": "110335.184492500",
+        "events": "H1",
+        "pointer_x": "100.18641504382263",
+        "measured_x": "97.99386189258313",
+        "speed": "66.3485039401878",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "236",
+        "timestamp": "110336.360017000",
+        "events": "H2",
+        "pointer_x": "176.05365900559025",
+        "measured_x": "174.47619047619048",
+        "speed": "66.3485039401878",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "352",
+        "timestamp": "110337.535581900",
+        "events": "H3",
+        "pointer_x": "252.56258820609966",
+        "measured_x": "250.47619047619048",
+        "speed": "66.3485039401878",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "461",
+        "timestamp": "110338.712991500",
+        "events": "H4",
+        "pointer_x": "328.742759405294",
+        "measured_x": "325.956827309237",
+        "speed": "66.3485039401878",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "572",
+        "timestamp": "110339.907161800",
+        "events": "H5",
+        "pointer_x": "405.1430724871034",
+        "measured_x": "402.4881889763779",
+        "speed": "66.3485039401878",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "686",
+        "timestamp": "110341.083124400",
+        "events": "H6",
+        "pointer_x": "480.7605442010282",
+        "measured_x": "479.4769230769231",
+        "speed": "66.3485039401878",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "794",
+        "timestamp": "110342.261786700",
+        "events": "H7",
+        "pointer_x": "557.8433099917397",
+        "measured_x": "555.9938618925831",
+        "speed": "66.3485039401878",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_145908_278021",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 8.187795299993013,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "4",
+        "timestamp": "110350.221516400",
+        "events": "H0",
+        "pointer_x": "8.999999999999996",
+        "measured_x": "8.999999999999996",
+        "speed": "81.3983773521825",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "90",
+        "timestamp": "110351.190763700",
+        "events": "H1",
+        "pointer_x": "86.2464338393411",
+        "measured_x": "72.99386189258311",
+        "speed": "81.3983773521825",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "202",
+        "timestamp": "110352.322748900",
+        "events": "H2",
+        "pointer_x": "164.62844103297948",
+        "measured_x": "147.9938618925831",
+        "speed": "81.3983773521825",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "315",
+        "timestamp": "110353.502405800",
+        "events": "H3",
+        "pointer_x": "243.39121065680422",
+        "measured_x": "226.9938618925831",
+        "speed": "81.3983773521825",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "423",
+        "timestamp": "110354.668150900",
+        "events": "H4",
+        "pointer_x": "321.45280442967913",
+        "measured_x": "304.4881889763779",
+        "speed": "81.3983773521825",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "530",
+        "timestamp": "110355.854796400",
+        "events": "H5",
+        "pointer_x": "400.1882870882765",
+        "measured_x": "382.9576145884672",
+        "speed": "81.3983773521825",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "648",
+        "timestamp": "110357.045946800",
+        "events": "H6",
+        "pointer_x": "478.3261931196806",
+        "measured_x": "461.9938618925831",
+        "speed": "81.3983773521825",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "767",
+        "timestamp": "110358.219762100",
+        "events": "H7",
+        "pointer_x": "556.9105375652363",
+        "measured_x": "540.4769230769232",
+        "speed": "81.3983773521825",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_145917_735429",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 9.405920899997,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "86",
+        "timestamp": "110360.636061100",
+        "events": "H0",
+        "pointer_x": "64.99374348279457",
+        "measured_x": "64.99374348279457",
+        "speed": "59.451135385406964",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "195",
+        "timestamp": "110361.814089700",
+        "events": "H1",
+        "pointer_x": "134.73467929787975",
+        "measured_x": "135.47619047619045",
+        "speed": "59.451135385406964",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "301",
+        "timestamp": "110362.980859700",
+        "events": "H2",
+        "pointer_x": "205.0094970167274",
+        "measured_x": "205.46511627906975",
+        "speed": "59.451135385406964",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "414",
+        "timestamp": "110364.184601200",
+        "events": "H3",
+        "pointer_x": "276.5598113189125",
+        "measured_x": "277.4830237027546",
+        "speed": "59.451135385406964",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "529",
+        "timestamp": "110365.347650800",
+        "events": "H4",
+        "pointer_x": "346.72607458669523",
+        "measured_x": "347.45801526717565",
+        "speed": "59.451135385406964",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "634",
+        "timestamp": "110366.519707700",
+        "events": "H5",
+        "pointer_x": "417.084296310062",
+        "measured_x": "415.9938618925831",
+        "speed": "59.451135385406964",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "743",
+        "timestamp": "110367.726200900",
+        "events": "H6",
+        "pointer_x": "488.4199578124843",
+        "measured_x": "489.4769230769231",
+        "speed": "59.451135385406964",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "847",
+        "timestamp": "110368.893286400",
+        "events": "H7",
+        "pointer_x": "558.3662991556796",
+        "measured_x": "558.9756097560976",
+        "speed": "59.451135385406964",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_145930_391340",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 9.393606700003147,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "92",
+        "timestamp": "110373.305753500",
+        "events": "H0",
+        "pointer_x": "66.99386189258311",
+        "measured_x": "66.99386189258311",
+        "speed": "60.1232841425997",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "194",
+        "timestamp": "110374.466550200",
+        "events": "H1",
+        "pointer_x": "136.48315828910415",
+        "measured_x": "135.47619047619045",
+        "speed": "60.1232841425997",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "304",
+        "timestamp": "110375.662436300",
+        "events": "H2",
+        "pointer_x": "207.19223322773274",
+        "measured_x": "206.99386189258314",
+        "speed": "60.1232841425997",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "413",
+        "timestamp": "110376.822904000",
+        "events": "H3",
+        "pointer_x": "277.1407415532933",
+        "measured_x": "276.47692307692313",
+        "speed": "60.1232841425997",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "522",
+        "timestamp": "110378.012789000",
+        "events": "H4",
+        "pointer_x": "347.6018948596324",
+        "measured_x": "347.45290830055893",
+        "speed": "60.1232841425997",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "629",
+        "timestamp": "110379.187108500",
+        "events": "H5",
+        "pointer_x": "417.81446968087494",
+        "measured_x": "416.9938618925831",
+        "speed": "60.1232841425997",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "739",
+        "timestamp": "110380.365513700",
+        "events": "H6",
+        "pointer_x": "487.9476927465686",
+        "measured_x": "486.99386189258314",
+        "speed": "60.1232841425997",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "849",
+        "timestamp": "110381.549020000",
+        "events": "H7",
+        "pointer_x": "558.257237998665",
+        "measured_x": "557.9938618925831",
+        "speed": "60.1232841425997",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_145944_645652",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 9.021036399994045,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "53",
+        "timestamp": "110387.156666500",
+        "events": "H0",
+        "pointer_x": "44.993861892583126",
+        "measured_x": "44.993861892583126",
+        "speed": "61.642519737425246",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "156",
+        "timestamp": "110388.323749700",
+        "events": "H1",
+        "pointer_x": "117.11882530393734",
+        "measured_x": "117.47692307692309",
+        "speed": "61.642519737425246",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "267",
+        "timestamp": "110389.519669900",
+        "events": "H2",
+        "pointer_x": "191.2289620525059",
+        "measured_x": "192.47619047619045",
+        "speed": "61.642519737425246",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "374",
+        "timestamp": "110390.690276400",
+        "events": "H3",
+        "pointer_x": "264.248002853984",
+        "measured_x": "264.9690183532581",
+        "speed": "61.642519737425246",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "486",
+        "timestamp": "110391.879027900",
+        "events": "H4",
+        "pointer_x": "337.74595629702395",
+        "measured_x": "338.9938618925831",
+        "speed": "61.642519737425246",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "597",
+        "timestamp": "110393.045691700",
+        "events": "H5",
+        "pointer_x": "410.9095458853014",
+        "measured_x": "411.4761904761904",
+        "speed": "61.642519737425246",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "716",
+        "timestamp": "110394.216921000",
+        "events": "H6",
+        "pointer_x": "484.04819384461047",
+        "measured_x": "484.4769230769232",
+        "speed": "61.642519737425246",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "841",
+        "timestamp": "110395.421905300",
+        "events": "H7",
+        "pointer_x": "558.9198552249496",
+        "measured_x": "559.4769230769231",
+        "speed": "61.642519737425246",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_150008_316375",
+    "result": null,
+    "events": []
+  },
+  {
+    "session": "20261016_150009_362806",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 8.48987340000167,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "11",
+        "timestamp": "110411.368413800",
+        "events": "H0",
+        "pointer_x": "12.993743482794576",
+        "measured_x": "12.993743482794576",
+        "speed": "66.51405288200108",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "123",
+        "timestamp": "110412.526745300",
+        "events": "H1",
+        "pointer_x": "89.99327213451089",
+        "measured_x": "88.99374348279459",
+        "speed": "66.51405288200108",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "230",
+        "timestamp": "110413.706834100",
+        "events": "H2",
+        "pointer_x": "167.979530013003",
+        "measured_x": "167.47619047619048",
+        "speed": "66.51405288200108",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "352",
+        "timestamp": "110414.896134900",
+        "events": "H3",
+        "pointer_x": "246.28978417807497",
+        "measured_x": "245.97007481296757",
+        "speed": "66.51405288200108",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "470",
+        "timestamp": "110416.073365800",
+        "events": "H4",
+        "pointer_x": "323.639754940566",
+        "measured_x": "322.94406280667323",
+        "speed": "66.51405288200108",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "592",
+        "timestamp": "110417.248062400",
+        "events": "H5",
+        "pointer_x": "401.2741223651785",
+        "measured_x": "401.4761904761904",
+        "speed": "66.51405288200108",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "711",
+        "timestamp": "110418.417439500",
+        "events": "H6",
+        "pointer_x": "479.1540055895633",
+        "measured_x": "478.4761904761905",
+        "speed": "66.51405288200108",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "829",
+        "timestamp": "110419.604242500",
+        "events": "H7",
+        "pointer_x": "556.8274792069865",
+        "measured_x": "557.0",
+        "speed": "66.51405288200108",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_150020_894213",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 8.407814899997902,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "7",
+        "timestamp": "110422.888430000",
+        "events": "H0",
+        "pointer_x": "13.993861892583123",
+        "measured_x": "13.993861892583123",
+        "speed": "71.1132474591064",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "105",
+        "timestamp": "110423.991162100",
+        "events": "H1",
+        "pointer_x": "91.53899360383042",
+        "measured_x": "86.99386189258311",
+        "speed": "71.1132474591064",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "218",
+        "timestamp": "110425.152467200",
+        "events": "H2",
+        "pointer_x": "168.73359371887148",
+        "measured_x": "162.47619047619045",
+        "speed": "71.1132474591064",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "336",
+        "timestamp": "110426.324777800",
+        "events": "H3",
+        "pointer_x": "246.26723217056673",
+        "measured_x": "240.46116207951073",
+        "speed": "71.1132474591064",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "448",
+        "timestamp": "110427.496922400",
+        "events": "H4",
+        "pointer_x": "323.4692342136539",
+        "measured_x": "317.9272289156627",
+        "speed": "71.1132474591064",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "569",
+        "timestamp": "110428.680702900",
+        "events": "H5",
+        "pointer_x": "401.81396215619316",
+        "measured_x": "395.9937434827945",
+        "speed": "71.1132474591064",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "681",
+        "timestamp": "110429.855002100",
+        "events": "H6",
+        "pointer_x": "479.06860327592375",
+        "measured_x": "472.9764705882352",
+        "speed": "71.1132474591064",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "798",
+        "timestamp": "110431.049460400",
+        "events": "H7",
+        "pointer_x": "556.957333975174",
+        "measured_x": "550.9937434827945",
+        "speed": "71.1132474591064",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_150030_977290",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 8.796110100010992,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "34",
+        "timestamp": "110433.279383800",
+        "events": "H0",
+        "pointer_x": "32.95761458846722",
+        "measured_x": "32.95761458846722",
+        "speed": "63.79886200730535",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "143",
+        "timestamp": "110434.446085800",
+        "events": "H1",
+        "pointer_x": "107.09255712317709",
+        "measured_x": "105.99374348279457",
+        "speed": "63.79886200730535",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "250",
+        "timestamp": "110435.629156000",
+        "events": "H2",
+        "pointer_x": "181.88244405168842",
+        "measured_x": "181.47619047619045",
+        "speed": "63.79886200730535",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "359",
+        "timestamp": "110436.806926800",
+        "events": "H3",
+        "pointer_x": "257.19500105713655",
+        "measured_x": "256.99374348279457",
+        "speed": "63.79886200730535",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "476",
+        "timestamp": "110437.976982400",
+        "events": "H4",
+        "pointer_x": "331.9818018313533",
+        "measured_x": "331.4813991103922",
+        "speed": "63.79886200730535",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "596",
+        "timestamp": "110439.162418600",
+        "events": "H5",
+        "pointer_x": "406.9251272166014",
+        "measured_x": "406.99374348279457",
+        "speed": "63.79886200730535",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "715",
+        "timestamp": "110440.352788100",
+        "events": "H6",
+        "pointer_x": "482.80084500343304",
+        "measured_x": "482.4761904761904",
+        "speed": "63.79886200730535",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "823",
+        "timestamp": "110441.522807000",
+        "events": "H7",
+        "pointer_x": "557.6663098401681",
+        "measured_x": "556.9937434827946",
+        "speed": "63.79886200730535",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_150043_291432",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 9.200369799989858,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "73",
+        "timestamp": "110446.001981400",
+        "events": "H0",
+        "pointer_x": "55.98170630301014",
+        "measured_x": "55.98170630301014",
+        "speed": "61.10854123865882",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "192",
+        "timestamp": "110447.169969900",
+        "events": "H1",
+        "pointer_x": "127.05762192481245",
+        "measured_x": "126.99374348279456",
+        "speed": "61.10854123865882",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "307",
+        "timestamp": "110448.338205100",
+        "events": "H2",
+        "pointer_x": "198.79810002806795",
+        "measured_x": "198.4769230769231",
+        "speed": "61.10854123865882",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "420",
+        "timestamp": "110449.516824400",
+        "events": "H3",
+        "pointer_x": "270.3863057012534",
+        "measured_x": "269.5",
+        "speed": "61.10854123865882",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "540",
+        "timestamp": "110450.701543900",
+        "events": "H4",
+        "pointer_x": "342.4245215527211",
+        "measured_x": "341.9937434827945",
+        "speed": "61.10854123865882",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "654",
+        "timestamp": "110451.879558400",
+        "events": "H5",
+        "pointer_x": "413.9410340393369",
+        "measured_x": "413.99386189258314",
+        "speed": "61.10854123865882",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "768",
+        "timestamp": "110453.057730600",
+        "events": "H6",
+        "pointer_x": "486.3367894511762",
+        "measured_x": "485.4761904761905",
+        "speed": "61.10854123865882",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "889",
+        "timestamp": "110454.240348400",
+        "events": "H7",
+        "pointer_x": "557.893921334571",
+        "measured_x": "557.9937434827945",
+        "speed": "61.10854123865882",
+        "schedule_mode": "model"
+      }
+    ]
+  },
+  {
+    "session": "20261016_150057_828476",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 8.701594999991357,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "7",
+        "timestamp": "110459.822029000",
+        "events": "H0",
+        "pointer_x": "12.987730061349692",
+        "measured_x": "12.987730061349692",
+        "speed": "53.44482445310803",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "149",
+        "timestamp": "110461.266086300",
+        "events": "H1",
+        "pointer_x": "90.28918882303961",
+        "measured_x": "107.99386189258311",
+        "speed": "53.44482445310803",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "251",
+        "timestamp": "110462.368075200",
+        "events": "H2",
+        "pointer_x": "168.1439011559168",
+        "measured_x": "180.9938618925831",
+        "speed": "53.44482445310803",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "359",
+        "timestamp": "110463.566760500",
+        "events": "H3",
+        "pointer_x": "246.13794588756696",
+        "measured_x": "260.4852498494883",
+        "speed": "53.44482445310803",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "478",
+        "timestamp": "110464.751119700",
+        "events": "H4",
+        "pointer_x": "323.80280628043175",
+        "measured_x": "338.99374348279457",
+        "speed": "53.44482445310803",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "593",
+        "timestamp": "110465.914626600",
+        "events": "H5",
+        "pointer_x": "401.3318012264767",
+        "measured_x": "414.9938618925831",
+        "speed": "53.44482445310803",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "709",
+        "timestamp": "110467.111737100",
+        "events": "H6",
+        "pointer_x": "479.61697906283433",
+        "measured_x": "494.4761904761904",
+        "speed": "53.44482445310803",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "828",
+        "timestamp": "110468.284077600",
+        "events": "H7",
+        "pointer_x": "557.9014581552069",
+        "measured_x": "",
+        "speed": "53.44482445310803",
+        "schedule_mode": "live"
+      }
+    ]
+  },
+  {
+    "session": "20261016_150110_017469",
+    "result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 9.010514800000237,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    },
+    "events": [
+      {
+        "frame": "49",
+        "timestamp": "110472.518405100",
+        "events": "H0",
+        "pointer_x": "43.99386189258312",
+        "measured_x": "43.99386189258312",
+        "speed": "61.981399173117346",
+        "schedule_mode": "live"
+      },
+      {
+        "frame": "159",
+        "timestamp": "110473.695134800",
+        "events": "H1",
+        "pointer_x": "116.27158741319309",
+        "measured_x": "116.48302370275464",
+        "speed": "61.981399173117346",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "280",
+        "timestamp": "110474.869541000",
+        "events": "H2",
+        "pointer_x": "190.01039159885934",
+        "measured_x": "190.48818897637793",
+        "speed": "61.981399173117346",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "403",
+        "timestamp": "110476.040633100",
+        "events": "H3",
+        "pointer_x": "262.90279421944155",
+        "measured_x": "263.48854961832063",
+        "speed": "61.981399173117346",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "525",
+        "timestamp": "110477.224948900",
+        "events": "H4",
+        "pointer_x": "336.9070634774962",
+        "measured_x": "337.4761904761904",
+        "speed": "61.981399173117346",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "646",
+        "timestamp": "110478.414217100",
+        "events": "H5",
+        "pointer_x": "410.45887103065024",
+        "measured_x": "411.4769230769231",
+        "speed": "61.981399173117346",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "767",
+        "timestamp": "110479.588266000",
+        "events": "H6",
+        "pointer_x": "483.9600944518665",
+        "measured_x": "484.4769230769232",
+        "speed": "61.981399173117346",
+        "schedule_mode": "model"
+      },
+      {
+        "frame": "887",
+        "timestamp": "110480.783744700",
+        "events": "H7",
+        "pointer_x": "558.3829495394389",
+        "measured_x": "558.4718397997498",
+        "speed": "61.981399173117346",
+        "schedule_mode": "model"
+      }
+    ]
+  }
+]

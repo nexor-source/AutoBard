@@ -1,0 +1,438 @@
+[
+  {
+    "session": "20261016_142723_506782",
+    "old_targets": [
+      140.5,
+      244.0,
+      275.0,
+      381.0,
+      411.0,
+      539.0
+    ],
+    "new_targets": [
+      131.5,
+      267.0,
+      402.5,
+      538.0
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 2.3876219999947352,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 6,
+      "skipped_or_missed_count": 0
+    }
+  },
+  {
+    "session": "20261016_142730_475906",
+    "old_targets": [
+      132.5,
+      259.5,
+      402.5,
+      538.0
+    ],
+    "new_targets": [
+      130.5,
+      266.0,
+      401.0,
+      536.5
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 2.2806412000063574,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 4,
+      "skipped_or_missed_count": 0
+    }
+  },
+  {
+    "session": "20261016_142736_928955",
+    "old_targets": [
+      263.5,
+      396.5,
+      463.5,
+      529.5
+    ],
+    "new_targets": [
+      262.0,
+      395.0,
+      461.5,
+      528.0
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 2.0688864000112517,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 4,
+      "skipped_or_missed_count": 0
+    }
+  },
+  {
+    "session": "20261016_142742_351298",
+    "old_targets": [
+      14.5,
+      116.5,
+      259.0,
+      401.5,
+      544.5
+    ],
+    "new_targets": [
+      115.0,
+      258.0,
+      401.0,
+      543.5
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 3.2715406000061193,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 4,
+      "skipped_or_missed_count": 1
+    }
+  },
+  {
+    "session": "20261016_142748_747531",
+    "old_targets": [
+      73.5,
+      132.5,
+      267.5,
+      403.5,
+      538.0
+    ],
+    "new_targets": [
+      130.5,
+      266.0,
+      401.0,
+      536.5
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 2.2750100000121165,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 4,
+      "skipped_or_missed_count": 1
+    }
+  },
+  {
+    "session": "20261016_142756_470658",
+    "old_targets": [
+      9.5,
+      99.0,
+      200.5,
+      251.5,
+      404.0,
+      505.5,
+      556.5
+    ],
+    "new_targets": [
+      97.5,
+      199.5,
+      250.5,
+      402.5,
+      504.5,
+      555.5
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 5.649060700001428,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 6,
+      "skipped_or_missed_count": 1
+    }
+  },
+  {
+    "session": "20261016_142809_572777",
+    "old_targets": [
+      25.5,
+      132.5,
+      267.5,
+      402.5,
+      538.0
+    ],
+    "new_targets": [
+      130.5,
+      266.0,
+      401.0,
+      536.5
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 2.553119699994568,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 4,
+      "skipped_or_missed_count": 1
+    }
+  },
+  {
+    "session": "20261016_142851_430970",
+    "old_targets": [
+      68.0,
+      138.5,
+      209.5,
+      280.0,
+      350.5,
+      421.5,
+      492.5,
+      563.0
+    ],
+    "new_targets": [
+      66.5,
+      137.5,
+      208.0,
+      278.5,
+      349.5,
+      420.0,
+      490.5,
+      561.5
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 5.118771000008564,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 7,
+      "skipped_or_missed_count": 1
+    }
+  },
+  {
+    "session": "20261016_142903_207955",
+    "old_targets": [
+      68.0,
+      138.5,
+      209.5,
+      280.0,
+      350.5,
+      421.5,
+      492.5,
+      563.0
+    ],
+    "new_targets": [
+      66.5,
+      137.5,
+      208.0,
+      278.5,
+      349.5,
+      420.0,
+      490.5,
+      561.5
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 9.381021000008332,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    }
+  },
+  {
+    "session": "20261016_142919_862273",
+    "old_targets": [
+      29.5,
+      105.5,
+      182.0,
+      258.0,
+      334.0,
+      410.0,
+      486.0,
+      562.0
+    ],
+    "new_targets": [
+      28.0,
+      104.5,
+      180.5,
+      256.5,
+      332.5,
+      408.5,
+      484.5,
+      561.0
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 2.172371699998621,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 7,
+      "skipped_or_missed_count": 1
+    }
+  },
+  {
+    "session": "20261016_142924_631957",
+    "old_targets": [
+      94.5,
+      172.5,
+      250.5,
+      328.5,
+      406.5,
+      484.0,
+      562.0
+    ],
+    "new_targets": [
+      16.0,
+      93.5,
+      171.0,
+      249.0,
+      327.0,
+      405.0,
+      482.5,
+      560.5
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 1.401378399998066,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 5,
+      "skipped_or_missed_count": 2
+    }
+  },
+  {
+    "session": "20261016_142941_604358",
+    "old_targets": [
+      38.0,
+      113.0,
+      188.0,
+      263.0,
+      338.0,
+      412.5,
+      487.5,
+      562.0
+    ],
+    "new_targets": [
+      36.5,
+      111.5,
+      186.5,
+      261.5,
+      336.5,
+      411.5,
+      486.0,
+      561.0
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 8.822901099993032,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    }
+  },
+  {
+    "session": "20261016_142953_202845",
+    "old_targets": [
+      38.0,
+      113.0,
+      188.0,
+      263.0,
+      338.0,
+      413.0,
+      487.5,
+      562.0
+    ],
+    "new_targets": [
+      37.0,
+      111.5,
+      186.5,
+      261.5,
+      336.5,
+      411.5,
+      486.5,
+      561.0
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 8.868017599990708,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    }
+  },
+  {
+    "session": "20261016_143005_558913",
+    "old_targets": [
+      200.5,
+      228.5,
+      298.5,
+      368.5
+    ],
+    "new_targets": [],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 2.2135681999934604,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 4,
+      "skipped_or_missed_count": 0
+    }
+  },
+  {
+    "session": "20261016_143016_171364",
+    "old_targets": [
+      43.0,
+      117.5,
+      191.5,
+      266.0,
+      340.0,
+      414.0,
+      488.0,
+      562.5
+    ],
+    "new_targets": [
+      41.5,
+      116.0,
+      190.5,
+      264.5,
+      338.5,
+      412.5,
+      486.5,
+      561.0
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 8.944857400012552,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    }
+  },
+  {
+    "session": "20261016_143027_636337",
+    "old_targets": [
+      49.5,
+      123.0,
+      196.0,
+      269.5,
+      342.5,
+      416.0,
+      489.5,
+      562.5
+    ],
+    "new_targets": [
+      48.0,
+      121.5,
+      194.5,
+      267.5,
+      341.5,
+      414.5,
+      487.5,
+      561.5
+    ],
+    "old_result": {
+      "end_reason": "all_notes_processed",
+      "elapsed_s": 9.03875569999218,
+      "max_duration_s": 12.0,
+      "pending_count": 0,
+      "submitted_click_count": 8,
+      "skipped_or_missed_count": 0
+    }
+  }
+]

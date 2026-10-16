@@ -1,0 +1,50 @@
+[
+  {
+    "session": "20261014_093049_563930",
+    "candidates_before": 8,
+    "notes_after": 7,
+    "removed_edge_targets": [
+      15.0
+    ]
+  },
+  {
+    "session": "20261014_093104_157228",
+    "candidates_before": 8,
+    "notes_after": 7,
+    "removed_edge_targets": [
+      15.0
+    ]
+  },
+  {
+    "session": "20261014_093115_378479",
+    "candidates_before": 8,
+    "notes_after": 7,
+    "removed_edge_targets": [
+      9.5
+    ]
+  },
+  {
+    "session": "20261014_093127_738677",
+    "candidates_before": 8,
+    "notes_after": 7,
+    "removed_edge_targets": [
+      13.5
+    ]
+  },
+  {
+    "session": "20261014_093139_493978",
+    "candidates_before": 8,
+    "notes_after": 7,
+    "removed_edge_targets": [
+      15.5
+    ]
+  },
+  {
+    "session": "20261014_093155_420337",
+    "candidates_before": 8,
+    "notes_after": 7,
+    "removed_edge_targets": [
+      14.5
+    ]
+  }
+]

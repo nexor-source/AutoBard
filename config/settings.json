@@ -92,6 +92,8 @@
     "initial_note_frames": 5,
     "initial_frame_spacing_ms": 8,
     "pointer_start_delay_ms": 0,
+    "startup_click_interval_ms": 100,
+    "startup_note_timeout_ms": 2000,
     "max_duration_s": 12.0,
     "pointer_lost_timeout_ms": 320,
     "minimum_runtime_ms": 250,
@@ -113,9 +115,13 @@
     }
   },
   "hotkeys": {
+    "trigger": "scroll_down",
     "double_right_click_interval_ms": 350,
     "abort": "<f9>",
     "quit": "<f10>"
+  },
+  "feedback": {
+    "sound_enabled": true
   },
   "debug": {
     "enabled": true,

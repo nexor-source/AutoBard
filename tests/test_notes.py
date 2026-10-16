@@ -5,6 +5,16 @@ import pytest
 from autobard.vision.notes import NoteDetector, _attach_nearby_support
 
 
+def test_gold_core_target_does_not_inherit_even_kernel_shift():
+    from autobard.config import _package_defaults
+    from autobard.vision.notes import NoteDetector
+
+    image = np.full((17, 100, 3), 80, np.uint8)
+    image[:, 11:18] = (30, 190, 245)
+    image[:3, 11] = (80, 80, 80)
+    notes = NoteDetector(_package_defaults()["vision"]["notes"]).detect(image, strict_gold=True).notes
+    assert len(notes) == 1
+    assert notes[0].target == 14.0
 CONFIG = {
     "pixel_quantile": 0.73,
     "column_coverage": 0.18,

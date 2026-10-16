@@ -82,7 +82,10 @@ def test_slow_performance_runs_past_eight_seconds_when_allowed(
 
         def read(self):
             self.timestamp += 1 / 70
-            return CaptureFrame(image, self.timestamp)
+            rendered = image.copy()
+            x = min(573, int(20 + 60 * (self.timestamp - 1000)))
+            rendered[:, x] = (40, 215, 250)
+            return CaptureFrame(rendered, self.timestamp)
 
     source = Source()
     monkeypatch.setattr(runtime, "create_capture", lambda *args: source)

@@ -25,14 +25,15 @@ class NoteDetector:
     def __init__(self, config: dict) -> None:
         self.config = config
 
-    def detect(self, bgr: np.ndarray) -> NoteDetectionResult:
+    def detect(self, bgr: np.ndarray, *, strict_gold: bool = False) -> NoteDetectionResult:
         if bgr.ndim != 3 or bgr.shape[2] < 3:
             raise ValueError("Note detector expects a BGR image")
         height, width = bgr.shape[:2]
         if width < 8 or height < 3:
             return NoteDetectionResult([], np.zeros((height, width), np.uint8), np.zeros(width), 1.0)
 
-        brightness = cv2.cvtColor(bgr[:, :, :3], cv2.COLOR_BGR2HSV)[:, :, 2]
+        hsv = cv2.cvtColor(bgr[:, :, :3], cv2.COLOR_BGR2HSV)
+        brightness = hsv[:, :, 2]
         brightness_p90 = float(np.percentile(brightness, 90))
         minimum_brightness_p90 = float(self.config.get("min_brightness_p90", 60))
         if brightness_p90 < minimum_brightness_p90:
@@ -43,11 +44,21 @@ class NoteDetector:
                 1.0,
             )
 
-        score = warm_gold_score(bgr)
-        pixel_quantile = float(self.config.get("pixel_quantile", 0.76))
-        threshold = float(np.quantile(score, pixel_quantile))
-        # Guard against a nearly uniform bright scene.
-        threshold = max(threshold, float(np.median(score) + 0.08))
+        if strict_gold:
+            # Pending notes have a saturated orange core. Pale shoulders and
+            # animated strings must not become additional notes or shift targets.
+            score = (
+                (hsv[:, :, 0] >= 10) & (hsv[:, :, 0] <= 40)
+                & (hsv[:, :, 1] >= 120) & (brightness >= 140)
+            ).astype(np.float32)
+            threshold = 0.5
+        else:
+            score = warm_gold_score(bgr)
+            pixel_quantile = float(self.config.get("pixel_quantile", 0.76))
+            threshold = float(np.quantile(score, pixel_quantile))
+            # Guard against a nearly uniform bright scene.
+            threshold = max(threshold, float(np.median(score) + 0.08))
+        raw_gold_coverage = np.mean(score >= threshold, axis=0) if strict_gold else None
         mask = (score >= threshold).astype(np.uint8) * 255
 
         open_kernel = np.ones((max(1, round(height * 0.12)), 2), np.uint8)
@@ -61,7 +72,7 @@ class NoteDetector:
 
         minimum_coverage = float(self.config.get("column_coverage", 0.20))
         adaptive = float(np.median(column_score) + 1.8 * np.median(np.abs(column_score - np.median(column_score))))
-        column_threshold = max(minimum_coverage, adaptive)
+        column_threshold = 0.5 if strict_gold else max(minimum_coverage, adaptive)
         # Real note blocks fill most of the tightly calibrated note band. Thin
         # horizontal rails, text strokes, and pointer trails can have a strong
         # color score but do not cover enough rows to be notes.
@@ -137,6 +148,13 @@ class NoteDetector:
             # weighted centroid slightly to the right. Timing should use the
             # geometric center of the complete hit box instead.
             target = float((left + right - 1) / 2.0)
+            if raw_gold_coverage is not None:
+                # Even-sized morphology can move a clipped startup component
+                # right by one column. Include the original core at its edge.
+                core_left, core_right = max(0, left - 2), min(width, right + 2)
+                core = np.flatnonzero(raw_gold_coverage[core_left:core_right] >= minimum_vertical_coverage)
+                if core.size:
+                    target = float(core_left + (core[0] + core[-1]) / 2)
             confidence = float(np.clip(np.mean(segment), 0.0, 1.0))
             if confidence < minimum_confidence:
                 continue

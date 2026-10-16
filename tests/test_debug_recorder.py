@@ -33,6 +33,9 @@ def test_debug_recorder_buffers_event_and_followup_frames(tmp_path) -> None:
     assert "acquisition_state" in rows[0]
     assert "post_action_state" in rows[0]
     assert "post_action_outcome" in rows[0]
+    assert "frame_is_fresh" in rows[0]
+    assert "model_error" in rows[0]
+    assert "speed_fit_span_ms" in rows[0]
 
 
 def test_raw_event_frame_is_lossless_and_not_the_overlay(tmp_path) -> None:

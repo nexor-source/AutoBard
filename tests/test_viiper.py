@@ -51,3 +51,20 @@ def test_viiper_right_click_uses_mouse_hid_reports(monkeypatch) -> None:
         "bus/4/remove 2",
         "bus/remove 4",
     ]
+
+
+def test_startup_uses_the_same_right_button_output_as_note_hits(monkeypatch):
+    # Exercise the inherited startup operation through the real VIIPER hit path.
+    import threading
+
+    stream = FakeStream()
+    action = object.__new__(ViiperAction)
+    action._lock = threading.Lock()
+    action._closed = False
+    action._stream = stream
+    action.duration = 0
+    action.start_performance(1.0)
+    assert stream.sent == [
+        struct.pack("<Bhhhh", MOUSE_BUTTON_RIGHT, 0, 0, 0, 0),
+        struct.pack("<Bhhhh", 0, 0, 0, 0, 0),
+    ]

@@ -31,6 +31,7 @@ class NoteScheduler:
         )
         self.miss_margin = max(1.0, frame_width * float(config.get("miss_margin_ratio", 0.012)))
         self.initial_skip_notes = max(0, int(config.get("initial_skip_notes", 0)))
+        self.require_gold_window = bool(config.get("require_gold_window", False))
         self._has_initial_pointer = False
         self.previous_x: float | None = None
 
@@ -41,6 +42,7 @@ class NoteScheduler:
         speed: float | None,
         *,
         use_model: bool = False,
+        observed_x: float | None = None,
     ) -> SchedulerUpdate:
         due: list[Note] = []
         missed: list[Note] = []
@@ -48,10 +50,8 @@ class NoteScheduler:
         latency_lead = max(0.0, speed or 0.0) * latency_s
 
         if not self._has_initial_pointer:
-            # Starting the detector requires a second right-click after the
-            # performance has begun. The first note is intentionally sacrificed,
-            # and any other note already behind the first observed pointer must
-            # never produce a delayed click or a false post-hit reanchor.
+            # Skip the first note only when requested. Notes already behind the
+            # initial pointer must never cause a delayed click or false reanchor.
             for index, note in enumerate(self.notes):
                 if note.status == "pending" and (
                     index < self.initial_skip_notes or note.target <= pointer_x
@@ -62,6 +62,15 @@ class NoteScheduler:
 
         for note in self.notes:
             if note.status != "pending":
+                continue
+            if (
+                self.require_gold_window and observed_x is not None
+                and observed_x + latency_lead > note.right + 1.0
+            ):
+                # A stale-frame jump may cross the trigger and the entire gold
+                # region at once. Never turn that into a late click on this note.
+                note.status = "missed"
+                missed.append(note)
                 continue
             trigger_x = note.target - latency_lead
             crossed = self.previous_x is not None and self.previous_x < trigger_x <= pointer_x

@@ -5,11 +5,49 @@ import numpy as np
 
 from autobard.models import PointerMeasurement
 
-from .common import robust_unit, smooth_1d, warm_gold_score
+from .common import intervals_from_bool, robust_unit, smooth_1d, warm_gold_score
+
+
+def vertical_pointer_measurement(
+    bgr: np.ndarray, note_band_y: tuple[float, float],
+    max_width_ratio: float = 0.04,
+) -> PointerMeasurement | None:
+    """Find a thin gold line present both above and below the calibrated staff.
+
+    Moving strings and titles may be bright, but do not span both row groups.
+    This also permits a real pointer close to x=0 without trusting the border.
+    """
+    height, width = bgr.shape[:2]
+    top_end = round((note_band_y[0] - 0.06) * height)
+    bottom_start = round((note_band_y[1] + 0.08) * height)
+    top_start, bottom_end = round(0.06 * height), round(0.94 * height)
+    if top_end - top_start < 3 or bottom_end - bottom_start < 3:
+        return None
+    hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)
+    blue, green, red = (bgr[:, :, i].astype(np.int16) for i in range(3))
+    gold = (
+        (red - blue > 40) & (green - blue > 20) & (red >= green * 0.95)
+        & (hsv[:, :, 2] >= 150) & (hsv[:, :, 0] >= 10) & (hsv[:, :, 0] <= 45)
+    )
+    # A one-pixel horizontal allowance tolerates the pointer's tapered ends.
+    gold = cv2.dilate(gold.astype(np.uint8), np.ones((1, 3), np.uint8))
+    upper = gold[top_start:top_end].mean(axis=0)
+    lower = gold[bottom_start:bottom_end].mean(axis=0)
+    support = np.minimum(upper, lower)
+    candidates = [
+        (a, b) for a, b in intervals_from_bool(support >= 0.65)
+        if 1 <= b - a <= max(3, round(width * max_width_ratio))
+    ]
+    if not candidates:
+        return None
+    left, right = max(candidates, key=lambda ab: float(support[ab[0]:ab[1]].max()))
+    weights = support[left:right]
+    x = float(np.average(np.arange(left, right), weights=weights))
+    return PointerMeasurement(x, float(weights.max()), float(right - left))
 
 
 class PointerDetector:
-    """Hybrid pointer detector: temporal motion + vertical edges + warm-color prior."""
+    """Use calibrated vertical geometry, or hybrid features without calibration."""
 
     def __init__(self, config: dict, note_band_y: tuple[float, float] | None = None) -> None:
         self.config = config
@@ -49,6 +87,12 @@ class PointerDetector:
         bootstrap_x: float | None = None,
         search_bounds: tuple[float, float] | None = None,
     ) -> PointerMeasurement | None:
+        if self.note_band_y is not None:
+            # Use the pointer's actual long vertical shape. A prediction or a
+            # moving string cannot establish evidence for a missing pointer.
+            return vertical_pointer_measurement(
+                bgr, self.note_band_y, float(self.config.get("max_width_ratio", 0.04)),
+            )
         height, width = bgr.shape[:2]
         gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
         rows = self._row_mask(height)

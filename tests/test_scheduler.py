@@ -2,6 +2,18 @@ from autobard.models import Note
 from autobard.timing.scheduler import NoteScheduler
 
 
+def test_gold_window_prevents_late_click_after_a_stale_frame_jump():
+    note = Note(0, 131.5, 143.5, 137.5, 1)
+    scheduler = NoteScheduler([note], {
+        "input_latency_ms": 45, "model_input_latency_ms": 50,
+        "miss_margin_ratio": 0.012, "require_gold_window": True,
+    }, 574)
+    scheduler.update(1.0, 130.5, 60, observed_x=130.5)
+    result = scheduler.update(1.1, 150.3, 60, use_model=True, observed_x=151)
+    assert result.due == []
+    assert result.newly_missed == [note]
+
+
 def test_scheduler_triggers_each_note_once() -> None:
     notes = [Note(0, 95, 105, 100, 1.0), Note(1, 195, 205, 200, 1.0)]
     scheduler = NoteScheduler(notes, {"input_latency_ms": 0, "hit_window_ratio": 0.005, "miss_margin_ratio": 0.01}, 500)

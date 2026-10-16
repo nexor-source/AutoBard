@@ -12,7 +12,9 @@ from tkinter import BooleanVar, IntVar, StringVar, Tk, messagebox
 from tkinter import scrolledtext, ttk
 
 from . import __version__
-from .calibration import CalibrationCancelled, calibrate, calibration_instructions
+from .calibration import calibration_instructions
+from .calibration_ui import CalibrationWizard
+from .window import enable_dpi_awareness
 from .config import load_config, save_config, validate_config
 from .service import HotkeyService
 from .usbip import UsbIpDriverStatus, detect_usbip_driver
@@ -49,9 +51,8 @@ class AutoBardGui:
         self.messages: queue.Queue[tuple[str, object]] = queue.Queue()
         self.service: HotkeyService | None = None
         self.service_thread: threading.Thread | None = None
-        self.calibration_thread: threading.Thread | None = None
         self.calibration_in_progress = False
-        self.calibration_after_id: str | None = None
+        self.calibration_wizard: CalibrationWizard | None = None
         self.update_thread: threading.Thread | None = None
         self.usbip_check_thread: threading.Thread | None = None
         self.usbip_driver_status: UsbIpDriverStatus | None = None
@@ -92,6 +93,15 @@ class AutoBardGui:
         self.double_click_interval = IntVar(
             value=int(hotkeys.get("double_right_click_interval_ms", 350))
         )
+        self.scroll_direction = StringVar(
+            value="向上滚动" if hotkeys.get("trigger") == "scroll_up" else "向下滚动"
+        )
+        self.skip_first_note = BooleanVar(
+            value=bool(self.config["scheduler"].get("initial_skip_notes", 1))
+        )
+        self.sound_enabled = BooleanVar(
+            value=bool(self.config.get("feedback", {}).get("sound_enabled", True))
+        )
         self.calibration_countdown = IntVar(
             value=int(calibration.get("countdown_s", 5))
         )
@@ -107,8 +117,8 @@ class AutoBardGui:
 
     def _configure_window(self) -> None:
         self.root.title(f"AutoBard {__version__}")
-        self.root.geometry("820x680")
-        self.root.minsize(740, 600)
+        self.root.geometry("860x730")
+        self.root.minsize(820, 690)
         self.root.option_add("*Font", ("Microsoft YaHei UI", 10))
         style = ttk.Style(self.root)
         if "vista" in style.theme_names():
@@ -163,7 +173,7 @@ class AutoBardGui:
         self.abort_button.pack(side="left", padx=4)
         ttk.Label(
             controls,
-            text="双击右键开始 · F9 中止 · F10 停止服务",
+            text="滚轮开始 · F9 中止 · F10 停止服务",
             style="Subheader.TLabel",
         ).pack(side="right")
 
@@ -218,33 +228,44 @@ class AutoBardGui:
             row=1, column=3, sticky="w", padx=8, pady=4
         )
 
-        ttk.Label(parent, text="双击间隔 (ms)").grid(row=2, column=0, sticky="w", pady=4)
-        ttk.Spinbox(
-            parent, from_=100, to=1000, textvariable=self.double_click_interval, width=12
+        ttk.Label(parent, text="弹奏快捷键").grid(row=2, column=0, sticky="w", pady=4)
+        ttk.Combobox(
+            parent, textvariable=self.scroll_direction,
+            values=("向下滚动", "向上滚动"), state="readonly", width=12,
         ).grid(row=2, column=1, sticky="w", padx=(8, 24), pady=4)
+        ttk.Checkbutton(
+            parent, text="跳过第一颗音符", variable=self.skip_first_note,
+        ).grid(row=2, column=2, columnspan=2, sticky="w", pady=4)
         ttk.Checkbutton(parent, text="保存调试数据", variable=self.debug_enabled).grid(
-            row=2, column=2, sticky="w", pady=4
+            row=3, column=2, sticky="w", pady=4
         )
+        ttk.Checkbutton(
+            parent, text="接管和结束提示音", variable=self.sound_enabled,
+        ).grid(row=3, column=0, columnspan=2, sticky="w", pady=4)
+        ttk.Label(
+            parent, text="仅在游戏前台触发并屏蔽所选滚轮方向；不跳音发一次右键，跳首音发两次。",
+            style="Subheader.TLabel",
+        ).grid(row=4, column=0, columnspan=4, sticky="w", pady=(2, 4))
         ttk.Checkbutton(
             parent,
             text="我了解在线游戏自动化可能带来的账号风险",
             variable=self.risk_acknowledged,
-        ).grid(row=3, column=0, columnspan=4, sticky="w", pady=(8, 4))
+        ).grid(row=5, column=0, columnspan=4, sticky="w", pady=(8, 4))
 
         ttk.Separator(parent).grid(
-            row=4, column=0, columnspan=4, sticky="ew", pady=(10, 8)
+            row=6, column=0, columnspan=4, sticky="ew", pady=(10, 8)
         )
-        ttk.Label(parent, text="USB/IP 驱动").grid(row=5, column=0, sticky="nw", pady=4)
+        ttk.Label(parent, text="USB/IP 驱动").grid(row=7, column=0, sticky="nw", pady=4)
         self.usbip_status_label = ttk.Label(
             parent,
             textvariable=self.usbip_status_text,
             wraplength=430,
         )
         self.usbip_status_label.grid(
-            row=5, column=1, columnspan=2, sticky="w", padx=(8, 12), pady=4
+            row=7, column=1, columnspan=2, sticky="w", padx=(8, 12), pady=4
         )
         usbip_actions = ttk.Frame(parent)
-        usbip_actions.grid(row=5, column=3, sticky="e", pady=4)
+        usbip_actions.grid(row=7, column=3, sticky="e", pady=4)
         self.usbip_check_button = ttk.Button(
             usbip_actions,
             text="重新检测",
@@ -258,7 +279,7 @@ class AutoBardGui:
         ).pack(side="left", padx=(6, 0))
 
         ttk.Label(parent, text="校准准备时间 (秒)").grid(
-            row=6, column=0, sticky="w", pady=(8, 4)
+            row=8, column=0, sticky="w", pady=(8, 4)
         )
         ttk.Spinbox(
             parent,
@@ -266,9 +287,9 @@ class AutoBardGui:
             to=60,
             textvariable=self.calibration_countdown,
             width=12,
-        ).grid(row=6, column=1, sticky="w", padx=(8, 24), pady=(8, 4))
+        ).grid(row=8, column=1, sticky="w", padx=(8, 24), pady=(8, 4))
         ttk.Label(parent, text="额外启动延迟 (ms)").grid(
-            row=6, column=2, sticky="w", pady=(8, 4)
+            row=8, column=2, sticky="w", pady=(8, 4)
         )
         ttk.Spinbox(
             parent,
@@ -277,7 +298,7 @@ class AutoBardGui:
             increment=25,
             textvariable=self.pointer_start_delay,
             width=10,
-        ).grid(row=6, column=3, sticky="w", padx=8, pady=(8, 4))
+        ).grid(row=8, column=3, sticky="w", padx=8, pady=(8, 4))
         ttk.Label(
             parent,
             text=(
@@ -286,10 +307,10 @@ class AutoBardGui:
             ),
             style="Subheader.TLabel",
             wraplength=690,
-        ).grid(row=7, column=0, columnspan=4, sticky="w", pady=(2, 4))
+        ).grid(row=9, column=0, columnspan=4, sticky="w", pady=(2, 4))
 
         actions = ttk.Frame(parent)
-        actions.grid(row=8, column=0, columnspan=4, sticky="ew", pady=(10, 0))
+        actions.grid(row=10, column=0, columnspan=4, sticky="ew", pady=(10, 0))
         ttk.Button(actions, text="保存设置", command=self.save_settings).pack(side="left")
         self.calibrate_button = ttk.Button(
             actions, text="重新校准画面", command=self.run_calibration
@@ -338,6 +359,11 @@ class AutoBardGui:
         config["hotkeys"]["double_right_click_interval_ms"] = max(
             50, int(self.double_click_interval.get())
         )
+        config["hotkeys"]["trigger"] = (
+            "scroll_up" if self.scroll_direction.get() == "向上滚动" else "scroll_down"
+        )
+        config["scheduler"]["initial_skip_notes"] = int(self.skip_first_note.get())
+        config.setdefault("feedback", {})["sound_enabled"] = bool(self.sound_enabled.get())
         calibration = config.setdefault("calibration", {})
         calibration["countdown_s"] = max(
             0, min(60, int(self.calibration_countdown.get()))
@@ -461,44 +487,22 @@ class AutoBardGui:
         self.calibration_in_progress = True
         self._refresh_buttons()
         self.root.iconify()
-        self._append_log(
-            f"校准准备开始：GUI 已最小化，{countdown_s} 秒后截图。"
-        )
-        self._calibration_countdown_tick(countdown_s)
-
-    def _calibration_countdown_tick(self, remaining: int) -> None:
-        if self.closing or not self.calibration_in_progress:
-            return
-        if remaining > 0:
-            self.status_text.set(f"校准将在 {remaining} 秒后截图…")
-            self.calibration_after_id = self.root.after(
-                1000,
-                lambda: self._calibration_countdown_tick(remaining - 1),
-            )
-            return
-
-        self.calibration_after_id = None
-        self.status_text.set("正在截图并等待框选…")
-        self.calibration_thread = threading.Thread(
-            target=self._calibration_worker,
-            name="autobard-calibration",
-            daemon=True,
-        )
-        self.calibration_thread.start()
-
-    def _calibration_worker(self) -> None:
+        self._append_log("校准引导已打开：切回游戏后开始倒计时；F8 立即截图，Esc 取消。")
         try:
-            calibrate(copy.deepcopy(self.config), str(self.config_path))
-            self.messages.put(("calibration_done", None))
-        except CalibrationCancelled:
-            self.messages.put(("calibration_cancelled", None))
+            self.calibration_wizard = CalibrationWizard(
+                self.root, copy.deepcopy(self.config), self.config_path,
+                lambda kind, value: self.messages.put((kind, value)),
+            )
+            self.calibration_wizard.start()
         except Exception as exc:
-            LOGGER.exception("校准失败")
-            self.messages.put(("calibration_error", str(exc)))
+            if self.calibration_wizard is not None:
+                self.calibration_wizard.finish("calibration_error", str(exc))
+            else:
+                self.messages.put(("calibration_error", str(exc)))
 
     def _restore_after_calibration(self) -> None:
+        self.calibration_wizard = None
         self.calibration_in_progress = False
-        self.calibration_after_id = None
         self.root.deiconify()
         self.root.lift()
         self._refresh_buttons()
@@ -708,7 +712,10 @@ class AutoBardGui:
 
         if self.service is not None and self.service.ready_event.is_set():
             if not self.status_text.get().startswith("正在下载"):
-                self.status_text.set("运行中 · 等待双击右键")
+                direction = "向上滚轮" if self.service.trigger == "scroll_up" else "向下滚轮"
+                if self.service.trigger == "double_right_click":
+                    direction = "双击右键"
+                self.status_text.set(f"运行中 · 等待{direction}")
             self._refresh_buttons()
         if not self.closing:
             self.root.after(100, self._poll)
@@ -739,6 +746,8 @@ class AutoBardGui:
         if self.closing:
             return
         self.closing = True
+        if self.calibration_wizard is not None:
+            self.calibration_wizard.finish("calibration_cancelled", None)
         if self.service is not None:
             self.service.stop()
         self._wait_then_close()
@@ -755,6 +764,7 @@ def main(config_path: str | Path | None = None) -> int:
     app_dir = application_directory()
     os.chdir(app_dir)
     selected = Path(config_path) if config_path else app_dir / "config" / "settings.json"
+    enable_dpi_awareness()
     root = Tk()
     try:
         AutoBardGui(root, selected)

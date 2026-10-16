@@ -88,7 +88,9 @@ def _package_defaults() -> dict[str, Any]:
                      "bootstrap_backward_tolerance_ratio": 0.004,
                      "bootstrap_max_gap_ms": 80, "bootstrap_expand_ms": 150,
                      "bootstrap_min_r_squared": 0.72,
-                     "post_action_reanchor_samples": 3},
+                     "post_action_reanchor_samples": 3,
+                     "speed_lock_min_samples": 12, "speed_lock_min_span_ms": 400,
+                     "speed_lock_min_r_squared": 0.98, "model_max_disagreement_ratio": 0.0035},
         "scheduler": {"input_latency_ms": 45, "hit_window_ratio": 0.008,
                       "model_input_latency_ms": 50, "model_hit_window_ratio": 0.004,
                       "early_trigger_tolerance_ratio": 0.001,
@@ -96,6 +98,8 @@ def _package_defaults() -> dict[str, Any]:
                       "model_schedule_max_note_width_ratio": 0.05},
         "session": {"initial_note_frames": 5, "initial_frame_spacing_ms": 8,
                     "pointer_start_delay_ms": 0,
+                    "startup_click_interval_ms": 100, "startup_note_timeout_ms": 2000,
+                    "stale_frame_timeout_ms": 80,
                     "max_duration_s": 12.0, "pointer_lost_timeout_ms": 320,
                     "minimum_runtime_ms": 250, "post_complete_observe_ms": 150},
         "action": {
@@ -113,8 +117,9 @@ def _package_defaults() -> dict[str, Any]:
                 "startup_timeout_s": 10.0,
             },
         },
-        "hotkeys": {"double_right_click_interval_ms": 350,
+        "hotkeys": {"trigger": "scroll_down", "double_right_click_interval_ms": 350,
                     "abort": "<f9>", "quit": "<f10>"},
+        "feedback": {"sound_enabled": True},
         "debug": {"enabled": False, "output_dir": "debug_output",
                   "save_every_n_frames": 0, "record_video": False,
                   "event_follow_frames": 6},
@@ -181,3 +186,27 @@ def validate_config(config: Mapping[str, Any]) -> None:
     pointer_delay_ms = int(config.get("session", {}).get("pointer_start_delay_ms", 0))
     if not 0 <= pointer_delay_ms <= 2000:
         raise ValueError("session.pointer_start_delay_ms must be between 0 and 2000")
+    if config.get("hotkeys", {}).get("trigger", "scroll_down") not in {
+        "scroll_up", "scroll_down", "double_right_click",
+    }:
+        raise ValueError("hotkeys.trigger must be scroll_up, scroll_down or double_right_click")
+    skip = config.get("scheduler", {}).get("initial_skip_notes", 1)
+    if isinstance(skip, bool) or not isinstance(skip, int) or skip not in (0, 1):
+        raise ValueError("scheduler.initial_skip_notes must be 0 or 1")
+    for key, default, low, high in (
+        ("startup_click_interval_ms", 100, 20, 500),
+        ("startup_note_timeout_ms", 2000, 100, 5000),
+        ("stale_frame_timeout_ms", 80, 20, 2000),
+    ):
+        if not low <= int(config.get("session", {}).get(key, default)) <= high:
+            raise ValueError(f"session.{key} must be between {low} and {high}")
+    if not isinstance(config.get("feedback", {}).get("sound_enabled", True), bool):
+        raise ValueError("feedback.sound_enabled must be a boolean")
+    for key, default, low, high in (
+        ("speed_lock_min_samples", 12, 4, 10000),
+        ("speed_lock_min_span_ms", 400, 0, 5000),
+        ("speed_lock_min_r_squared", 0.98, 0, 1),
+        ("model_max_disagreement_ratio", 0.0035, 0, 0.1),
+    ):
+        if not low <= float(config.get("tracking", {}).get(key, default)) <= high:
+            raise ValueError(f"tracking.{key} must be between {low} and {high}")

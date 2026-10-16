@@ -136,6 +136,32 @@ class PointerTracker:
         self.last_fit = None
         return True
 
+    @property
+    def speed_fit_span_ms(self) -> float:
+        samples = self.estimator.samples
+        return (samples[-1][0] - samples[0][0]) * 1000 if len(samples) >= 2 else 0.0
+
+    def try_lock_session_speed(self, timestamp: float) -> bool:
+        """Do not freeze a short, quantized startup fit for the entire song."""
+        if self.has_locked_speed:
+            return True
+        fit = self.last_fit
+        if (
+            fit is None
+            or fit.sample_count < int(self.config.get("speed_lock_min_samples", 12))
+            or self.speed_fit_span_ms < float(self.config.get("speed_lock_min_span_ms", 400))
+            or fit.r_squared < float(self.config.get("speed_lock_min_r_squared", 0.98))
+        ):
+            return False
+        return self.lock_session_speed(timestamp)
+
+    def model_agrees_with_observation(self, timestamp: float, x: float) -> bool:
+        predicted = self.predict(timestamp)
+        tolerance = max(1.0, self.frame_width * float(
+            self.config.get("model_max_disagreement_ratio", 0.0035),
+        ))
+        return self.has_locked_speed and predicted is not None and abs(predicted - x) <= tolerance
+
     def reanchor_to_observation(self, timestamp: float, x: float) -> None:
         """Align the locked model with an observed post-action trajectory."""
         self._trajectory_timestamp = float(timestamp)

@@ -64,11 +64,12 @@ def get_note_area():
         bar = cv2.resize(bar, (520, 31), interpolation=cv2.INTER_CUBIC)
     # cv2.imwrite('bar.jpg', bar)
     # 对(232,178,54)(RGB)进行相似颜色提取轮廓
-    benchmark = np.uint8([[54, 178, 232]])
+    # Compute in signed integers before clipping; uint8 arithmetic can wrap in NumPy 2.
+    benchmark = np.array([[54, 178, 232]], dtype=np.int32)
     delta = 44
     # 确保 lower 和 upper 的值在 0 到 255 之间
-    lower = np.clip(np.array([benchmark[0][0] - delta, benchmark[0][1] - delta, benchmark[0][2] - delta]), 0, 255)
-    upper = np.clip(np.array([benchmark[0][0] + delta, benchmark[0][1] + delta, benchmark[0][2] + delta]), 0, 255)
+    lower = np.clip(benchmark[0] - delta, 0, 255).astype(np.uint8)
+    upper = np.clip(benchmark[0] + delta, 0, 255).astype(np.uint8)
     mask = cv2.inRange(bar, lower, upper)
     kernel = np.ones((2, 2), np.uint8)
     mask = cv2.dilate(mask, kernel, iterations=1)
@@ -108,11 +109,12 @@ def get_pointer_area():
     # cv2.imwrite('pointer.jpg', pointer)
 
     # 对(243,196,118)(RGB)进行相似颜色提取轮廓
-    benchmark = np.uint8([[118, 196, 243]])
+    # Compute in signed integers before clipping; uint8 arithmetic can wrap in NumPy 2.
+    benchmark = np.array([[118, 196, 243]], dtype=np.int32)
     delta = 50
     # 确保 lower 和 upper 的值在 0 到 255 之间
-    lower = np.clip(np.array([benchmark[0][0] - delta, benchmark[0][1] - delta, benchmark[0][2] - delta]), 0, 255)
-    upper = np.clip(np.array([benchmark[0][0] + delta, benchmark[0][1] + delta, benchmark[0][2] + delta]), 0, 255)
+    lower = np.clip(benchmark[0] - delta, 0, 255).astype(np.uint8)
+    upper = np.clip(benchmark[0] + delta, 0, 255).astype(np.uint8)
     mask = cv2.inRange(pointer, lower, upper)
     # mask 60~72 行像素全部改为黑色
     mask[scale(60, 'y'):scale(72, 'y'), :] = 0

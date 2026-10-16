@@ -75,6 +75,37 @@ def primary_monitor_rect(monitor_index: int = 1) -> Rect:
         )
 
 
+def foreground_game_rect(title_contains: str) -> Rect | None:
+    """Resolve only the active, non-minimized game's client area for calibration."""
+    if os.name != "nt":
+        return None
+    user32 = ctypes.windll.user32
+    user32.GetForegroundWindow.restype = wintypes.HWND
+    user32.IsIconic.argtypes = [wintypes.HWND]
+    user32.GetWindowTextLengthW.argtypes = [wintypes.HWND]
+    user32.GetWindowTextW.argtypes = [wintypes.HWND, wintypes.LPWSTR, ctypes.c_int]
+    user32.GetClientRect.argtypes = [wintypes.HWND, ctypes.POINTER(wintypes.RECT)]
+    user32.ClientToScreen.argtypes = [wintypes.HWND, ctypes.POINTER(wintypes.POINT)]
+    hwnd = user32.GetForegroundWindow()
+    if not hwnd or user32.IsIconic(hwnd):
+        return None
+    length = user32.GetWindowTextLengthW(hwnd)
+    title = ctypes.create_unicode_buffer(length + 1)
+    user32.GetWindowTextW(hwnd, title, length + 1)
+    if not title_contains or title_contains.casefold() not in title.value.casefold():
+        return None
+    client = wintypes.RECT()
+    origin = wintypes.POINT()
+    if not user32.GetClientRect(hwnd, ctypes.byref(client)):
+        return None
+    if not user32.ClientToScreen(hwnd, ctypes.byref(origin)):
+        return None
+    width, height = client.right - client.left, client.bottom - client.top
+    if width <= 0 or height <= 0:
+        return None
+    return Rect(origin.x, origin.y, origin.x + width, origin.y + height)
+
+
 def resolve_capture_rect(config: dict) -> tuple[Rect, Rect]:
     window_cfg = config["window"]
     capture_cfg = config["capture"]
